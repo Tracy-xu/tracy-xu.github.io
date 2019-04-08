@@ -2,7 +2,7 @@
 title: Git Commit Message Style Guide
 date: 2019-04-03 16:44:35
 tags:
-categories: 开发规范
+categories: Coding Style
 ---
 
 Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交。
