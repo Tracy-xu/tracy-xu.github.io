@@ -86,22 +86,23 @@ Header 部分只有一行，包括三个字段：type（必需）、scope（可�
 type 用于说明 commit 的类别，只允许使用下面 9 个标识。
 
 ```
-build      # 构建过程或辅助工具的变动。影响构建系统或外部依赖关系的更改（比如：Gulp、broccoli、NPM）
-ci         # 配置文件（对 CI 配置文件和脚本的更改，比如：circle、browserstack、sattlabs）
-docs       # 文档（documentation）
-feat       # 新功能（feature）
-fix        # 修补 bug
-prerf      # 性能（提高性能的代码更改）
+build      # 构建过程或辅助工具的变动。影响构建系统或外部依赖关系的更改（比如：Gulp、Broccoli、NPM）
+ci         # 配置文件（对 CI 配置文件和脚本的更改，比如：Travis、Circle、BrowserStack、SauceLabs）
+docs       # 文档（Documentation，比如 Readme、Changelog、Contribute 等等）
+feat       # 新功能（Feature）
+fix        # 修复 Bug
+prerf      # 性能（提高性能的代码更改，比如，提升性能、体验）
 refactor   # 重构（即不是新增功能，也不是修改 bug 的代码变动）
 style      # 格式（不影响代码运行的变动，比如：空白、换行、分号等）
 test       # 测试（增加测试或更正现有测试）
+revert     # 回滚（回滚到某一个版本，带上版本号）
 ```
 
 如果 type 为 feat 和 fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）建议不要放入 Change log。
 
 * scope
 
-scope 用于说明 commit 影响的范围，比如框架中的数据层、控制层、视图层，或业务中某个业务模块，视具体项目的不同而不同。
+scope 用于说明 commit 影响的范围，比如框架中的数据层、控制层、视图层，或业务中某个业务模块，视具体项目的不同而不同，比如：user 用户、pay 支付、product 产品、article 文章、core 核心、router 路由、api 接口、doc 文档...
 
 * subject
 
@@ -112,6 +113,8 @@ subject 是 commit 目的的简短描述，不超过 50 个字符。
 第一个字母小写
 结尾不加句号（.）
 ```
+
+常用表述语有：add、change、update、remove、delete。
 
 ### Body
 
@@ -139,10 +142,14 @@ BREAKING CHANGE: isolate scope bindings definition has changed.
 
 在开源的项目中，如果当前 commit 针对某个 issue 或 pr，那么可以在 Footer 部分关闭这个 issue 或 pr。
 
+例如：
+
 ```
 Fixes #21388
 PR Closes #234
 ```
+
+常用的表述语有：close、fix、resolve。
 
 ### Revert
 
