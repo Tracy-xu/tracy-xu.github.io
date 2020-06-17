@@ -7,7 +7,7 @@ menu:
   归档: /archives
   分类: /categories
   # Tags: /tags
-  关于我们: /about.html
+  关于我: /about.html
   #联系我们: /contact.html
 
 # Default post title
@@ -37,7 +37,7 @@ google_analytics:
 # rss_url: \#
 
 # Footer About Text
-footer_about: "云谷课堂前端团队，立志成为一只卓越的前端团队."
+footer_about: "享受编程和技术所带来的快乐"
 
 # Footer Copyright Line
-footer_copyright: "Copyright©云谷阳光网络科技有限公司. All Rights Reserved."
+footer_copyright: "Copyright©Tracy-xu'Blog. All Rights Reserved."
