@@ -1,8 +1,8 @@
 ---
 title: Git Commit Message Style Guide
-date: 2019-04-03 16:44:35
+date: 2019-04-20 16:44:35
 tags:
-categories: Project
+categories: project
 ---
 
 Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交。
@@ -22,7 +22,6 @@ git commit
 目前，社区有多种 Commit message 的写法规范。本文介绍 Angular 规范，这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
 
 <!--more-->
-
 
 ## 格式化的 Commit Message 的作用
 
@@ -45,7 +44,6 @@ git log HEAD --grep feature
 * 可以直接从 commit 生成 Change log。
 
 Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。
-
 
 ## Angular Commit Message 规范
 
@@ -197,7 +195,6 @@ settings -> Git -> Edit global .gitconfig
 [commit]
   template = d:/commit-template
 ```
-
 
 ## 生成 Change Log
 

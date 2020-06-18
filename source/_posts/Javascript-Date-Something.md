@@ -1,8 +1,8 @@
 ---
 title: 记录 Date 中的两个坑
-date: 2019-04-06 21:23:57
+date: 2019-04-01 21:23:57
 tags:
-categories: JavaScript
+categories: javascript
 ---
 
 ## new Date 参数 dataString 格式问题
@@ -23,7 +23,6 @@ new Date('2019-01-25T09:14:10.099+0000').getTime();     // NaN
 <!--more-->
 
 对于这个问题，要么要求后端返回标准的日期字符串格式，要么前端将数据纠正（moment、data-fns 就做了处理）。
-
 
 ## setDate 的副作用
 
