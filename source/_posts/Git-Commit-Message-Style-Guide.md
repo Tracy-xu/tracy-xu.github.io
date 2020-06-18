@@ -21,7 +21,7 @@ git commit
 
 目前，社区有多种 Commit message 的写法规范。本文介绍 Angular 规范，这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
 
-<!--more-->
+<!-- more -->
 
 ## 格式化的 Commit Message 的作用
 

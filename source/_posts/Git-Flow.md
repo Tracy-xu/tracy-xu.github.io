@@ -18,7 +18,7 @@ Git 工作流（Work Flow）是一种代码管理（版本管理、分支管理.
 
 在 Git 中常见的工作流有：Git Flow、GitHub Flow、GitLab Flow。
 
-<!--more-->
+<!-- more -->
 
 ## Git Flow
 
