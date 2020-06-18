@@ -71,12 +71,12 @@ Shift + F11             # 断点：步出。单步退出（step out, 跳出函�
 F10                     # 断点：步过。单步跳过（step over, 单步执行, 不进入函数）
 F8                      # 断点：断续（继续执行）
 
-# Element 快捷键
+# Element
 Enter                   # 添加属性
 F2                      # 修改 HTML
 Delete                  # 删除元素
 
-# Source（基本跟 Sublime 快捷键一样）
+# Source（这部分基本跟 Sublime 快捷键一致）
 Ctrl + O                # Goto Anything: 打开文件
 Ctrl + Shit + O         # Goto Anything: 跳到函数定义位置
 Ctrl + G                # Goto Anything: 行跳转
