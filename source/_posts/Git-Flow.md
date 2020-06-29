@@ -100,41 +100,40 @@ git flow feature help  # 查看 feature 帮助
 
 ```
 # init
-git flow init                           # 初始化。会询问分支的命名，初始化完成后自动切换到了 develop 分支
+git flow init                           # 初始化。会询问分支的命名，初始化完成后自动切换到了 develop 分支。支持 -f -d 参数
 
 # feature
-git flow feature start MYFEATURE        # 开始一个 feature（git checkout -b Feature/MYFEATURE。MYFEATURE 是 Feature 的后缀 -- 如果有设置前缀）
-git flow feature publish MYFEATURE      # publish 一个 feature（git push）
+git flow feature start MYFEATURE        # 开始一个 feature。相当于 git checkout -b feature/MYFEATURE
+git flow feature publish MYFEATURE      # publish 一个 feature。相当于 git push
 git flow feature pull origin MYFEATURE  # 获取 publish 的 feature
-git flow feature finish MYFEATURE       # 完成一个 Feature。该命令用于将 feature 分支合并入 develop 分支并切换到 develop 分支，且删除该分支
+git flow feature finish MYFEATURE       # 完成一个 feature。该命令将 feature 分支合并入 develop 分支，并切换到 develop 删除 feature
 
 # release
-git flow release start MYRELEASE        # 开始一个 release（git flow release start v1.0.0，MYRELEASE 是 Release 的后缀，分支全称是 Release/v1.0.0）
+git flow release start MYRELEASE        # 开始一个 release。git flow release start v1.0.0，分支全称是 release/v1.0.0
 git flow release publish MYRELEASE      # publish 一个 release
-git flow release finish MYRELEASE       # 发布一个 release。该命令用于将 release 合并入 master 和 develop 并切换到 master，删除该 release，创建 tag
+git flow release finish MYRELEASE       # 发布一个 release。该命令将 release 合并入 master 和 develop 并切换到 master，删除该 release，创建 tag
 
 # hotfix
-git flow hotfix start MYVERSION         # 开始一个 Hotfix
-git flow hotfix finish MYVERSION        # 发布一个 Hotfix
+git flow hotfix start MYVERSION         # 开始一个 hotfix
+git flow hotfix finish MYVERSION        # 发布一个 hotfix
 ```
 
-注：`git flow init` 时会询问分支的命名，发布和预发布这两个分支名称采用默认的 master 和 develop 即可，而其他的分支需要填写前缀，比如 `Feature/`。
+`git flow init` 会询问分支的命名，发布和预发布这两个分支名称采用默认的 master 和 develop 即可，而其他的分支需要填写前缀，比如 `feature/`。
 
 ```
-$ git flow init
-Initialized empty Git repository in E:/新建文件夹/.git/
+git flow init
+
+Initialized empty Git repository in /Users/tracy-xu/Desktop/test/.git/
 No branches exist yet. Base branches must be created now.
-Branch name for production releases: [master]
-Branch name for "next release" development: [develop]
+Branch name for production releases: [master] 
+Branch name for "next release" development: [develop] 
 
 How to name your supporting branch prefixes?
-Feature branches? [] Feature/
-Bugfix branches? [] Bugfix/
-Release branches? [] Release/
-Hotfix branches? [] Hotfix/
-Support branches? [] Support/
-Version tag prefix? [] Version/
-Hooks and filters directory? [E:/新建文件夹/.git/hooks]
+Feature branches? [feature/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] version/
 ```
 
 注：Release 和 Hotfix 命令使用和 Feature 一样，只是有些细微区别，比如 `git flow release finish` 命令将会将 Release 分支合并入 Master 和 Develop 两个分支，且会打上版本号（tag 需要有 message，要不然会创建失败）。
