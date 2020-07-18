@@ -5,45 +5,16 @@ tags:
 categories: project
 ---
 
-Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交。
-
-```
-git commit -m "hello world"
-```
-
-参数 -m，用来指定 commit mesage。如果一行不够，可以只执行 git commit，就会跳出文本编辑器，让你写多行：
-
-```
-git commit
-```
-
-为防止跳过规范，禁止使用 `git commit -m`，用 `git commit` 代替。
-
-目前，社区有多种 Commit message 的写法规范。本文介绍 Angular 规范，这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
+在 Git 中，我们使用 `git commit -m "xxx"` 来提交代码，参数 `-m` 用来指定 Commit Message（提交说明），直接执行 `git commit` 会进入编辑器模式，可提交多行说明。应书写应规范化的 Commit Message，规范化的 Commit Message 能带来很多好处：
 
 <!-- more -->
 
-## 格式化的 Commit Message 的作用
-
-* 语义明确，方便快速浏览
-
-比如，下面的命令显示上次发布后的变动，每个 commit 占据一行。你只看行首，就知道某次 commit 的目的。
-
 ```
-git log --pretty=format:%s
+* 提交说明明确，方便快速浏览和查找。git log --pretty=format:%s, git log HEAD --grep feature
+* 可以直接从 Commit 生成 Change Log
 ```
 
-* 可以过滤某些 commit，便于快速查找信息
-
-比如，下面的命令仅仅显示本次发布新增加的功能。
-
-```
-git log HEAD --grep feature
-```
-
-* 可以直接从 commit 生成 Change log。
-
-Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。
+目前，社区中有很多 Commit Message 规范，本文介绍 Angular Commit Message 规范，因其合理、系统，且有配套工具，在社区中得到来广泛的应用。
 
 ## Angular Commit Message 规范
 
@@ -84,16 +55,16 @@ Header 部分只有一行，包括三个字段：type（必需）、scope（可�
 type 用于说明 commit 的类别，只允许使用下面 9 个标识。
 
 ```
-build      # 构建过程或辅助工具的变动。影响构建系统或外部依赖关系的更改（比如：Gulp、Broccoli、NPM）
-ci         # 配置文件（对 CI 配置文件和脚本的更改，比如：Travis、Circle、BrowserStack、SauceLabs）
-docs       # 文档（Documentation，比如 Readme、Changelog、Contribute 等等）
-feat       # 新功能（Feature）
-fix        # 修复 Bug
-prerf      # 性能（提高性能的代码更改，比如，提升性能、体验）
-refactor   # 重构（即不是新增功能，也不是修改 bug 的代码变动）
-style      # 格式（不影响代码运行的变动，比如：空白、换行、分号等）
-test       # 测试（增加测试或更正现有测试）
-revert     # 回滚（回滚到某一个版本，带上版本号）
+* build      # 构建过程或辅助工具的变动。影响构建系统或外部依赖关系的更改（比如：Gulp、Broccoli、NPM）
+* ci         # 配置文件（对 CI 配置文件和脚本的更改，比如：Travis、Circle、BrowserStack、SauceLabs）
+* docs       # 文档（Documentation，比如 Readme、Changelog、Contribute 等等）
+* feat       # 新功能（Feature）
+* fix        # 修复 Bug
+* prerf      # 性能（提高性能的代码更改，比如，提升性能、体验）
+* refactor   # 重构（即不是新增功能，也不是修改 bug 的代码变动）
+* style      # 格式（不影响代码运行的变动，比如：空白、换行、分号等）
+* test       # 测试（增加测试或更正现有测试）
+* revert     # 回滚（回滚到某一个版本，带上版本号）
 ```
 
 如果 type 为 feat 和 fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）建议不要放入 Change log。
@@ -107,9 +78,9 @@ scope 用于说明 commit 影响的范围，比如框架中的数据层、控制
 subject 是 commit 目的的简短描述，不超过 50 个字符。
 
 ```
-以动词开头，使用第一人称现在时，比如 change，而不是 changed 或 changes
-第一个字母小写
-结尾不加句号（.）
+* 以动词开头，使用第一人称现在时，比如 change，而不是 changed 或 changes
+* 第一个字母小写
+* 结尾不加句号（.）
 ```
 
 常用表述语有：add、change、update、remove、delete。
@@ -119,8 +90,8 @@ subject 是 commit 目的的简短描述，不超过 50 个字符。
 Body 部分是对本次 commit 的详细描述，可以分成多行。有两个注意点：
 
 ```
-使用第一人称现在时，比如使用 change 而不是 changed 或 changes。
-应该说明代码变动的动机，以及与以前行为的对比。
+* 使用第一人称现在时，比如使用 change 而不是 changed 或 changes。
+* 应该说明代码变动的动机，以及与以前行为的对比。
 ```
 
 ### Footer
@@ -133,25 +104,23 @@ Footer 部分只用于两种情况。
 
 ```
 BREAKING CHANGE: isolate scope bindings definition has changed.
-...略
+...
 ```
 
 * 关闭 Issue 或 Pull requests
 
-在开源的项目中，如果当前 commit 针对某个 issue 或 pr，那么可以在 Footer 部分关闭这个 issue 或 pr。
-
-例如：
+在开源的项目中，如果当前 commit 针对某个 issue 或 pr，那么可以在 Footer 部分关闭这个 issue 或 pr。例如：
 
 ```
 Fixes #21388
 PR Closes #234
 ```
 
-常用的表述语有：close、fix、resolve。
+常用的表述语有 sclose、fix、resolve。
 
 ### Revert
 
-还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以 revert: 开头，后面跟着被撤销 Commit 的 Header。
+还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以 `revert:` 开头，后面跟着被撤销 Commit 的 Header。
 
 ```
 revert: feat(pencil): add 'graphiteWidth' option
@@ -166,23 +135,13 @@ Body 部分的格式是固定的，必须写成 This reverts commit <hash>.，�
 
 ## 设置 Commit Message Template
 
-通过设置全局 .gitconfig 来指定 commit message 模板。
-
-* 通过命令行
+通过设置全局 .gitconfig 来指定 Commit Message 模板。
 
 ```
 git config --global commit.template /d/commit-template
 ```
 
-* 通过 TortoiseGit
-
-依次点击：
-
-```
-settings -> Git -> Edit global .gitconfig
-```
-
-然后编辑这个全局 .gitconfig 文件，在其末尾加入 commit 字段：
+TortoiseGit 中可通过依次点击 `settings -> Git -> Edit global .gitconfig`，然后编辑这个全局 .gitconfig 文件，在其末尾加入 commit 字段配置。
 
 ```
 [user]
@@ -198,19 +157,7 @@ settings -> Git -> Edit global .gitconfig
 
 ## 生成 Change Log
 
-如果你的所有 Commit 都符合 Angular 格式，那么发布新版本时， Change log 就可以用脚本自动生成 [CHANGELOG.md](https://github.com/angular/angular/blob/master/CHANGELOG.md)。
-
-生成的文档包括以下三个部分：
-
-```
-New features
-Bug fixes
-Breaking changes.
-```
-
-每个部分都会罗列相关的 commit ，并且有指向这些 commit 的链接。当然，生成的文档允许手动修改，所以发布前，你还可以添加其他内容。
-
-[conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) 就是生成 Change log 的工具，运行下面的命令即可。
+Change Log 是发布新版本时，用来说明与上一个版本差异的文档。如果所有 Commit Message 都符合 Angular Commit Message 规范，那么发布新版本时，可以用 [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) 这个工具自动生成 [CHANGELOG.md](https://github.com/angular/angular/blob/master/CHANGELOG.md)。
 
 ```
 npm install -g conventional-changelog-cli
@@ -218,9 +165,7 @@ cd my-project
 conventional-changelog-cli -p angular -i CHANGELOG.md -s
 ```
 
-上面命令不会覆盖以前的 Change log，只会在 CHANGELOG.md 的头部加上自从上次发布以来的变动。
-
-如果你想生成所有发布的 Change log，要改为运行下面的命令。
+上面命令不会覆盖以前的 Change Log，只会在 CHANGELOG.md 的头部加上自从上次发布以来的变动。如果想要生成所有发布的 Change Log，要运行下面的命令：
 
 ```
 conventional-changelog-cli -p angular -i CHANGELOG.md -w -r 0
@@ -241,3 +186,13 @@ conventional-changelog-cli -p angular -i CHANGELOG.md -w -r 0
 ```
 npm run changelog
 ```
+
+生成的文档包括以下三个部分：
+
+```
+* New features
+* Bug fixes
+* Breaking changes.
+```
+
+每个部分都会罗列相关的 Commit ，并且有指向这些 Commit 的链接。当然，生成的文档允许手动修改，所以发布前，还可以添加其他内容。
