@@ -5,7 +5,7 @@ tags:
 categories: project
 ---
 
-Git 工作流（Work Flow）是一种代码管理（版本管理、分支管理...）方案。Git 工作流有很多种，在项目不复杂，开发人员较少时，可以采用简单的工作流，比如，一个人开发维护一个项目，一个 master 分支就可以满足需求，但是当项目业务庞大，迭代周期长，开发人员多，这时候就需要更加严格的 Work Flow 才能满足需求。
+Git 工作流（Work Flow）是一种代码管理（版本管理、分支管理...）方案。Git 工作流有很多种，在项目不复杂，开发人员较少时，可以采用简单的工作流，比如，一个人开发维护一个项目，一个 Master 分支就可以满足需求，但是当项目业务庞大，迭代周期长，开发人员多，这时候就需要更加严格的 Work Flow 才能满足需求。
 
 一个完整的 Git Work Flow 应该满足以下需求：
 
@@ -31,14 +31,14 @@ Git 工作流（Work Flow）是一种代码管理（版本管理、分支管理.
 从 Git Flow 流程图可以看出，Git Flow 的核心是 Branch，通过在项目的不同阶段对 Branch 的不同操作（create、merge、rebase...）来实现一个完整的高效率的工作流程。Git Flow Branches 主要分为两大类：Main Branchs（主分支） 和 Supporting branches（辅助分支）。其中 Main Branchs 中又包含了 Master 和 Develop，而 Supporting branches 中包含了 Feature、Release、Hotfix 以及其他自定义分支。Main Branchs 是长期分支，存活在项目的整个生命周期中，而 Supporting branches 分支是短期分支，短期分支合并后需要删除。
 
 ```
-master       # 主分支
-develop      # 开发分支
-Feature/*    # 功能分支
-Release/*    # 预发布分支
-Hotfix/*     # 热修复分支
+* master       # 主分支
+* develop      # 开发分支
+* feature/*    # 功能分支
+* release/*    # 预发布分支
+* hotfix/*     # 热修复分支
 ```
 
-在实践中，需求的创建、提测、发布应由项目负责人完成，普通的开发人员只需要开发功能和改 Bug。也就是说，对于 master、develop 这两个公共分支，只有项目负责人有操作权限，普通开发人员只有 feature、release、hotfix 三个辅助分支的操作权限。这样既保证了 master 和 develop 的整洁，而且普通开发人员不需掌握 Git Flow。
+在实践中，需求的创建、提测、发布应由项目负责人完成，普通的开发人员只需要开发功能和改 Bug。也就是说，对于 Master、Develop 这两个公共分支，只有项目负责人有操作权限，普通开发人员只有 Feature、Release、Hotfix 三个辅助分支的操作权限。这样既保证了 Master 和 Develop 的整洁，而且普通开发人员不需掌握 Git Flow。
 
 * Master
 
@@ -48,9 +48,9 @@ Hotfix/*     # 热修复分支
 
 * Develop
 
-开发分支用于日常开发，是 Feature 和 Release 分支的基础分支，存放最新的开发版（隔夜版 Nightly，是要发布到下一个 Release 的代码）。这个分支可能包含一定的 Bug（Release 还未合并的情况下），但不影响拉取新的 Feature 进行需求的开发（但是需要注意的是，假如 Feature/b 基于 Feature/a 的 Develop 创建，这时候的 Feature/b 不能比 Feature/a 早发布，如果想早发布只能将这个 Feature/b 当作一个 Hotfix 了）。
+开发分支用于日常开发，是 Feature 和 Release 分支的基础分支，存放最新的开发版（隔夜版 Nightly，是要发布到下一个 Release 的代码）。这个分支可能包含一定的 Bug（Release 还未合并的情况下），但不影响创建新的 Feature 进行新功能的开发（但是需要注意的是，假如 feature/b 基于 feature/a 的 Develop 创建，这时候的 feature/b 不能比 feature/a 早发布，如果想早发布只能将这个 feature/b 当作一个 Hotfix 了）。
 
-跟 master 一样，develop 的变动也只能是合并（feature、release），不能是直接修改。
+跟 Master 一样，Develop 的变动也只能是合并（Feature、Release），不能是直接修改。
 
 * Feature
 

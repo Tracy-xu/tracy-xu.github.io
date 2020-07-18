@@ -5,13 +5,13 @@ tags:
 categories: project
 ---
 
-在 Git 中，我们使用 `git commit -m "xxx"` 来提交代码，参数 `-m` 用来指定 Commit Message（提交说明），直接执行 `git commit` 会进入编辑器模式，可提交多行说明。应书写应规范化的 Commit Message，规范化的 Commit Message 能带来很多好处：
+在 Git 中，我们使用 `git commit -m "xxx"` 来提交代码，参数 `-m` 用来指定 Commit Message（提交说明），直接执行 `git commit` 会进入编辑器模式，可提交多行说明。Commit Message 应规范化，规范化的 Commit Message 能带来很多好处：
 
 <!-- more -->
 
 ```
-* 提交说明明确，方便快速浏览和查找。git log --pretty=format:%s, git log HEAD --grep feature
-* 可以直接从 Commit 生成 Change Log
+* 提交说明明确，方便快速浏览和查找，比如 git log --pretty=format:%s, git log HEAD --grep feature
+* 可以直接从 Commit Message 生成 Change Log
 ```
 
 目前，社区中有很多 Commit Message 规范，本文介绍 Angular Commit Message 规范，因其合理、系统，且有配套工具，在社区中得到来广泛的应用。
@@ -29,8 +29,6 @@ categories: project
 ```
 
 其中，Header 是必需的，Body 和 Footer 可以省略。`<BLANK LINE>` 指空行，各个部分必须由空行分割。为了避免自动换行影响美观，不管是哪一个部分，任何一行都不得超过 72 个字符（或 100 个字符）。
-
-比如：
 
 ```
 docs(changelog): update changelog to beta.5
@@ -52,7 +50,7 @@ Header 部分只有一行，包括三个字段：type（必需）、scope（可�
 
 * type
 
-type 用于说明 commit 的类别，只允许使用下面 9 个标识。
+type 用于说明 Commit 的类别，只允许使用下面 9 个标识。
 
 ```
 * build      # 构建过程或辅助工具的变动。影响构建系统或外部依赖关系的更改（比如：Gulp、Broccoli、NPM）
@@ -67,15 +65,15 @@ type 用于说明 commit 的类别，只允许使用下面 9 个标识。
 * revert     # 回滚（回滚到某一个版本，带上版本号）
 ```
 
-如果 type 为 feat 和 fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）建议不要放入 Change log。
+如果 type 为 feat 和 fix，则该 Commit 将肯定出现在 Change Log 之中。其他情况（docs、chore、style、refactor、test）建议不要放入 Change Log。
 
 * scope
 
-scope 用于说明 commit 影响的范围，比如框架中的数据层、控制层、视图层，或业务中某个业务模块，视具体项目的不同而不同，比如：user 用户、pay 支付、product 产品、article 文章、core 核心、router 路由、api 接口、doc 文档...
+scope 用于说明 Commit 影响的范围，比如框架中的数据层、控制层、视图层，或业务中某个业务模块，视具体项目的不同而不同，比如：user 用户、pay 支付、product 产品、article 文章、core 核心、router 路由、api 接口、doc 文档...
 
 * subject
 
-subject 是 commit 目的的简短描述，不超过 50 个字符。
+subject 是 Commit 目的的简短描述，不超过 50 个字符。
 
 ```
 * 以动词开头，使用第一人称现在时，比如 change，而不是 changed 或 changes
@@ -87,11 +85,11 @@ subject 是 commit 目的的简短描述，不超过 50 个字符。
 
 ### Body
 
-Body 部分是对本次 commit 的详细描述，可以分成多行。有两个注意点：
+Body 部分是对本次 Commit 的详细描述，可以分成多行。有两个注意点：
 
 ```
-* 使用第一人称现在时，比如使用 change 而不是 changed 或 changes。
-* 应该说明代码变动的动机，以及与以前行为的对比。
+* 使用第一人称现在时，比如使用 change 而不是 changed 或 changes
+* 应该说明代码变动的动机，以及与以前行为的对比
 ```
 
 ### Footer
@@ -120,7 +118,7 @@ PR Closes #234
 
 ### Revert
 
-还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以 `revert:` 开头，后面跟着被撤销 Commit 的 Header。
+还有一种特殊情况，如果当前 Commit 用于撤销以前的 Commit，则必须以 `revert:` 开头，后面跟着被撤销 Commit 的 Header。
 
 ```
 revert: feat(pencil): add 'graphiteWidth' option
@@ -128,9 +126,9 @@ revert: feat(pencil): add 'graphiteWidth' option
 This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 ```
 
-Body 部分的格式是固定的，必须写成 This reverts commit <hash>.，其中的 hash 是被撤销 commit 的 SHA 标识符。
+Body 部分的格式是固定的，必须写成 This reverts commit <hash>.，其中的 Hash 是被撤销 Commit 的 SHA 标识符。
 
-如果当前 commit 与被撤销的 commit 在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的 Reverts 小标题下面。
+如果当前 Commit 与被撤销的 Commit 在同一个发布（Release）里面，那么它们都不会出现在 Change Log 里面。如果两者在不同的发布，那么当前 Commit，会出现在 Change Log 的 Reverts 小标题下面。
 
 
 ## 设置 Commit Message Template
