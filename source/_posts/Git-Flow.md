@@ -5,77 +5,66 @@ tags:
 categories: project
 ---
 
-Git 工作流（Work Flow）是一种代码管理（版本管理、分支管理...）方案。Git 工作流有很多种，在项目不复杂，开发人员较少时，可以采用简单的工作流，比如，一个人开发维护一个项目，一个 Master 分支就可以满足需求，但是当项目业务庞大，迭代周期长，开发人员多，这时候就需要更加严格的 Work Flow 才能满足需求。
-
-一个完整的 Git Work Flow 应该满足以下需求：
+Git 工作流（Work Flow）是一种代码管理方案（版本管理、分支管理...）。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如，只有一个 Master 分支，但当项目庞大，迭代周期长，开发人员多时，就需要更加严格的 Work Flow 了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。一个完整的 Git Work Flow 应该满足以下需求：
 
 ```
-* 版本追溯 -- 标签管理
-* 多需求（feature）开发 -- 分支管理（feature）
-* 多需求（feature）协作 -- 分支管理（develop）
-* 分支职责独立（开发、预发布、发版、热修复） -- 分支管理
+* 多人协作和多功能并行的开发、测试、发布、热修复 -- 分支管理（develop、feature、release）
+* 版本追溯 -- 标签管理（tag）
 ```
-
-在 Git 中常见的工作流有：Git Flow、GitHub Flow、GitLab Flow。
 
 <!-- more -->
 
-## Git Flow
-
 2010 年 5 月，Vincent Driessen 在 “[A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)” 中介绍了一种构建在 Git 之上的软件开发模型。通过利用 Git 创建和管理分支的能力，为每个分支设定具有特定的含义名称，并将软件生命周期中的各类活动归并到不同的分支上，实现了软件开发过程不同阶段的相互隔离。这种软件开发的活动模型被 Vincent 称为 “Git Flow”。
 
-### 基本流程
+## Git Flow 基本流程
 
 ![Git Flow 流程图](/images/project/git/git-flow.jpg)
 
-从 Git Flow 流程图可以看出，Git Flow 的核心是 Branch，通过在项目的不同阶段对 Branch 的不同操作（create、merge、rebase...）来实现一个完整的高效率的工作流程。Git Flow Branches 主要分为两大类：Main Branchs（主分支） 和 Supporting branches（辅助分支）。其中 Main Branchs 中又包含了 Master 和 Develop，而 Supporting branches 中包含了 Feature、Release、Hotfix 以及其他自定义分支。Main Branchs 是长期分支，存活在项目的整个生命周期中，而 Supporting branches 分支是短期分支，短期分支合并后需要删除。
+从 Git Flow 流程图可以看出，Git Flow 的核心是 Branch，通过在项目的不同阶段对 Branch 的不同操作（create、merge、rebase...）来实现一个完整的高效率的工作流程。Git Flow Branches 主要分为两大类，Main Branchs（主分支） 和 Supporting Branches（辅助分支），其中 Main Branchs 包含了 Master 和 Develop，而 Supporting Branches 包含了 Feature、Release、Hotfix 以及其他自定义分支。Main Branchs 是长期分支，存活在项目的整个生命周期中，而 Supporting branches 分支是短期分支，短期分支合并后需要删除。
 
 ```
-* master       # 主分支
-* develop      # 开发分支
-* feature/*    # 功能分支
-* release/*    # 预发布分支
-* hotfix/*     # 热修复分支
+* master -- 主分支
+* develop -- 开发分支
+* feature/* -- 功能分支
+* release/* -- 预发布分支
+* hotfix/* -- 热修复分支
 ```
 
-在实践中，需求的创建、提测、发布应由项目负责人完成，普通的开发人员只需要开发功能和改 Bug。也就是说，对于 Master、Develop 这两个公共分支，只有项目负责人有操作权限，普通开发人员只有 Feature、Release、Hotfix 三个辅助分支的操作权限。这样既保证了 Master 和 Develop 的整洁，而且普通开发人员不需掌握 Git Flow。
+在实践中，需求的创建、提测、发布应由项目负责人完成，普通的开发人员只需要开发功能和改 Bug。也就是说，对于 Master、Develop 这两个公共分支，只有项目负责人有操作权限，普通开发人员只有 Feature、Release、Hotfix 三个辅助分支的操作权限，这样既保证了 Master 和 Develop 的整洁，而且普通开发人员也不需掌握 Git Flow。
 
-* Master
+### Master
 
 主分支用于发布，存放的是最稳定的正式版本。禁止在此分支上修改代码，只接受其他分支合并（Release、Hotfix）。另外，不管是用来发布 Release 还是 Hotfix，都需要打 Tag。
 
 注：初始化时，可使用 `--allow-empty` 参数来 commit 一个空分支（`git flow init` 就是如此），`git commit --allow-empty -m "initial commit"`。
 
-* Develop
+### Develop
 
 开发分支用于日常开发，是 Feature 和 Release 分支的基础分支，存放最新的开发版（隔夜版 Nightly，是要发布到下一个 Release 的代码）。这个分支可能包含一定的 Bug（Release 还未合并的情况下），但不影响创建新的 Feature 进行新功能的开发（但是需要注意的是，假如 feature/b 基于 feature/a 的 Develop 创建，这时候的 feature/b 不能比 feature/a 早发布，如果想早发布只能将这个 feature/b 当作一个 Hotfix 了）。
 
 跟 Master 一样，Develop 的变动也只能是合并（Feature、Release），不能是直接修改。
 
-* Feature
+### Feature
 
-功能分支用于开发新功能、代码重构、优化...，基于 Develop 创建，一般命名为 Feature/xxx。新功能开发完成，会合并回 Develop 分支进入下一个 Release。
+功能分支用于开发新功能、代码重构、优化...，基于 Develop 创建，一般命名为 feature/xxx。新功能开发完成，会合并回 Develop 分支进入下一个 Release。
 
-Feature 分支命名规则：分支类型/分支发布时间-分支功能。比如：Feature/20170401-fairy-flower（时间使用年月日命名，不足 2 位补 0）（猜想：目录命名以字母数字下划线命名，是不是为了符合 \w 规则，让 \w 更好匹配一些？？）
+Feature 分支命名规则是，分支类型/分支发布时间-分支功能。比如：feature/20170401-fairy-flower，时间使用年月日命名，不足 2 位补 0。
 
-* Release
+### Release
 
-预发布分支用于预发布（测试和测试阶段的 Bug 修复）。当需要发布一个新 Release 时，可以基于 Develop 分支创建一个 Release 分支，一般命名为 Release/v1.0.0（关于版本号的命名规则参考相关章节），完成 Release 后，需要合并到 Master 和 
-Develop。
+预发布分支用于预发布（测试和测试阶段的 Bug 修复）。当需要发布一个新 Release 时，可以基于 Develop 分支创建一个 Release 分支，一般命名为 release/v1.0.0（关于版本号的命名规则参考相关章节），完成 Release 后，需要合并到 Master 和 Develop。
 
-版本就是在这个阶段确定的，所以这个分支的命名会加版本后缀。
+版本就是在这个阶段确定的，所以这个分支的命名会加版本后缀。版本正式发布前可生成 Changelog 文档，然后再发布上线。
 
-版本正式发布前可生成 Changelog 文档，然后再发布上线。
+### Hotfix
 
-* Hotfix
+热修复分支，用于修改线上 Bug（比如回归时的 Bug，或者用户反馈的 Bug）。基于 Master 创建，一般命名为 hotfix/v1.0.0，测试通过后合并到 Master 分支和 Develop 分支。
 
-热修复分支，用于修改线上 Bug（比如回归时的 Bug，或者用户反馈的 Bug）。基于 Master 创建，一般命名为 Hotfix/v1.0.0，测试通过后合并到 Master 分支和 Develop 分支。
+## Git Flow 工具
 
-### Git Flow 工具
+一旦使用 Git Flow 模型，那么对分支的操作必然是频繁且重复的，这个时候可通过 [Git flow script 工具](https://github.com/nvie/gitflow)来简单化复杂的 Git 命令。
 
-一旦使用 Git Flow 模型，那么对分支的命令操作必然是频繁且重复的（虽然，理解了上面的流程后，可以不使用工具），这个时候可通过 [Git flow script 工具](https://github.com/nvie/gitflow)来简单化命令。
-
-* 安装
+### 安装
 
 ```
 # OS X
@@ -91,7 +80,7 @@ curl -L -O https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer
 bash gitflow-installer.sh
 ```
 
-* 使用
+### 使用
 
 ```
 git flow help          # 查看帮助
