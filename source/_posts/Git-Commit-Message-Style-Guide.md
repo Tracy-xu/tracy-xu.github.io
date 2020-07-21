@@ -143,7 +143,7 @@ TortoiseGit 中可通过依次点击 `settings -> Git -> Edit global .gitconfig`
 
 ```
 [user]
-    email = 240866271@qq.com
+    email = xxxxxx@qq.com
     name = Tracy
 [winUpdater]
     recentlySeenVersion = 2.17.0.windows.1
