@@ -1,1 +1,289 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="科里化"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>科里化 - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2020/12/02/Currying/">科里化</a></h1><div class="post-info"><span class="date">2020-12-02</span> <span class="category"><a href="/categories/javascript/">javascript</a></span></div></div><div class="content"><ul><li>版本 1</li></ul><p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.length === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> fn(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> currying(fn.bind(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = currying(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure><ul><li>版本 2</li></ul><p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p><p>有闭包的 bug</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = []; <span class="comment">// 搜集参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">...arg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;  <span class="comment">// 递归的中断条件，改为 arg.length === 0 更合适</span></span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, args); <span class="comment">// 改为 fn(...args) 更合适</span></span><br><span class="line">    &#125;</span><br><span class="line">    args = args.concat(arg);  <span class="comment">// ?</span></span><br><span class="line">    <span class="keyword">return</span> foo;  <span class="comment">// ?</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = currying(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure><ul><li>版本 3</li></ul><p>这个版本中，被科里化的函数的形参必须要有长度</p><p><a href="https://zhuanlan.zhihu.com/p/296852112" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/296852112</a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">_fn</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (args.length &gt;= fn.length) &#123; <span class="comment">// 这里通过型参长度来判断是否要调用，所以add的参数不能...</span></span><br><span class="line">      <span class="keyword">return</span> fn(...args) <span class="comment">// 不需要 call，fn.call(this, ...args)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...remain</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> _fn(...args, ...remain); <span class="comment">// 不需要 call，_fn.call(this, ...args, ...remain);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个版本中，被科里化函数的形参长度必须固定</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b, c, d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c +d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = currying(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure><p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用</p><p>判断收集结束有很多办法：对比实参和形参的长度（这样被科里化的函数形参不能使用…）；判断实参的个数是否为 0（不传）；</p><p>call、apply、bind 的主要作用是绑定this上下文，另外 apply 还可以用来传 spread 数组，不过已经被 es6 spread 代替</p><p>数组求和。。。</p><p>var arr = [1, 2, 3];<br>eval(arr.join(‘+’));</p></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="科里化"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>科里化 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/12/02/Currying/">
+                科里化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-12-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>版本 1</li>
+</ul>
+<p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>版本 2</li>
+</ul>
+<p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p>
+<p>有闭包的 bug</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> args = []; <span class="comment">// 搜集参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">...arg</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">arguments</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;  <span class="comment">// 递归的中断条件，改为 arg.length === 0 更合适</span></span><br><span class="line">      <span class="keyword">return</span> fn.<span class="title function_">apply</span>(<span class="literal">null</span>, args); <span class="comment">// 改为 fn(...args) 更合适</span></span><br><span class="line">    &#125;</span><br><span class="line">    args = args.<span class="title function_">concat</span>(arg);  <span class="comment">// ?</span></span><br><span class="line">    <span class="keyword">return</span> foo;  <span class="comment">// ?</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>版本 3</li>
+</ul>
+<p>这个版本中，被科里化的函数的形参必须要有长度</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/296852112">https://zhuanlan.zhihu.com/p/296852112</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">_fn</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> &gt;= fn.<span class="property">length</span>) &#123; <span class="comment">// 这里通过型参长度来判断是否要调用，所以add的参数不能...</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args) <span class="comment">// 不需要 call，fn.call(this, ...args)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...remain</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">_fn</span>(...args, ...remain); <span class="comment">// 不需要 call，_fn.call(this, ...args, ...remain);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个版本中，被科里化函数的形参长度必须固定</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a, b, c, d</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c +d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+
+<p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用</p>
+<p>判断收集结束有很多办法：对比实参和形参的长度（这样被科里化的函数形参不能使用…）；判断实参的个数是否为 0（不传）；</p>
+<p>call、apply、bind 的主要作用是绑定this上下文，另外 apply 还可以用来传 spread 数组，不过已经被 es6 spread 代替</p>
+<p>数组求和。。。</p>
+<p>var arr &#x3D; [1, 2, 3];<br>eval(arr.join(‘+’));</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

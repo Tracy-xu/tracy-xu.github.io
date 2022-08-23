@@ -1,1 +1,688 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="Vue 技术要点"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>Vue 技术要点 - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2020/10/15/Vue/">Vue 技术要点</a></h1><div class="post-info"><span class="date">2020-10-15</span> <span class="category"><a href="/categories/project/">project</a></span></div></div><div class="content"><h2 id="Vue-简介"><a href="#Vue-简介" class="headerlink" title="Vue 简介"></a>Vue 简介</h2><ul><li>优点</li></ul><p>渐进式：框架设计（可以直接引入使用，仅使用核心渲染功能，也可以配合构建工具，集成路由和数据管理，采用单文件组件的开发模式）<br>声明式渲染：响应式（数据驱动视图，当数据改变后，会通知视图，不是指响应式编程 Reactive Programming），不需要传统那样命令式的操作 DOM<br>组件化：<br>工程化：Vue-cli<br>全家桶？：vuex、vue-router 集中式数据管理和客户端路由</p><p>声明式渲染（Declarative View）与之相对应的是命令式渲染（Imperative View）</p><a id="more"></a><ul><li>特点</li></ul><p><a href="https://juejin.cn/post/6857669921166491662" target="_blank" rel="noopener">https://juejin.cn/post/6857669921166491662</a></p><ul><li>nextTicket</li></ul><ul><li>props</li></ul><p>props 的作用</p><p>props 的作用：<br>直接在视图或逻辑（注意响应式处理，watch、key + created/mounted）中消费；<br>初始化 data（一般命名为 initXXX，注意异步的 props，组件初始化完成，异步 props 才设置，这时组件内部会失去初始化时机，需要配合 v-if 或 key）</p><p>引用类型的 props；驱动组件逻辑（watch props，需要注意的是，如果 props 的变动早于组件的初始化，这时候是无法 watch，需要配合 created）</p><p>引用类型的副作用，有时候需要规避（比如 props 中），有时候需要利用（比如修改 v-for 列表中的某条数据）</p><p>props down 和 events up 是作为组件接口(高内聚低耦合)的存在</p><ul><li>key</li></ul><p>可用来刷新组件，配合 props 可用来做数据驱动逻辑的场景</p><ul><li>watch</li></ul><p>数据驱动逻辑</p><p>watch props，watch data</p><p>课堂内有时候 watch 不触发<br>个人感觉 watch 有些心智负担</p><ul><li>coputed</li></ul><p>依赖追踪，根据一个依赖数据，算出另一个数据<br>get、set</p><h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>sync：语法糖<br>v-module：语法糖</p><p>组件的生命周期：4 个节点(create,mount,update,destroy)，2 个状态(before,after，怎么取名呢)，共 8 个生命周期</p><p>钩子函数：由系统调用的函数（相当于 callback，比如 data 函数）</p><p>生命周期的钩子函数：生命周期的钩子函数是钩子函数里面一类，是在生命周期某个节点调用的钩子函数</p><p>注意箭头函数词法 this 的使用，有时候需要避开，有时候又需要利用</p><p>组件间的通信：event bus 作为组件间数据通信优点就是简单，但是如果滥用，也有缺点，数据流向不明确，可读性，维护性都不好。</p><ul><li>sync</li></ul><p>sync 是 prop 和 event 的语法糖。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:foo=&quot;bar&quot;</span><br><span class="line">@update:foo=&quot;(val) =&gt; bar = val&quot;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&apos;update:foo&apos;, val);</span><br></pre></td></tr></table></figure><p>JSX 中需要写为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo=&#123; this.bar &#125;</span><br><span class="line">&#123; ...&#123; on: &#123; &apos;update:foo&apos;: (val) =&gt; &#123; this.foo = val; &#125; &#125; &#125; &#125;</span><br></pre></td></tr></table></figure><p><code>:</code> 不是 JSX 语法，所以不能写为 <code>on-update:foo={ this.handleVisibleReply_Deteil }</code></p><p>sync 和 v-model 有什么区别</p><ul><li>slot</li></ul><slot name="operate" :assessment="item"></slot><template #operate="slotProps"><br><el-button v-if="showEvaluate(slotProps.assessment)" type="primary" size="mini" @click="handleOpenAssessment(slotProps.assessment)"><br>去评价<br></el-button><br><el-button v-else type="primary" size="mini" @click="handleOpenTeacherReport(slotProps.assessment)"><br>查看评价<br></el-button><br></template><template #default="slotProps"><br>…<br></template><p>v-slot:default 和 v-slot:operate 已经被废弃</p><p>jsx 中写法<br>父组件</p><p>子组件<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &#123;this.$scopedSlots.default(&#123;</span><br><span class="line">                assessment: this.assessment</span><br><span class="line">            &#125;)&#125;</span><br><span class="line"></span><br><span class="line">            &#123;this.$scopedSlots.operate(&#123;</span><br><span class="line">                assessment: this.assessment</span><br><span class="line">            &#125;)&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>父组件<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;AssessmentList</span><br><span class="line">    scopedSlots=&#123;&#123;</span><br><span class="line">        default: props =&gt; &#123;</span><br><span class="line">            return (</span><br><span class="line">                &lt;div style=&quot;line-height: 30px;&quot;&gt;</span><br><span class="line">                    &#123;props.assessment.title&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            );</span><br><span class="line">        &#125;,</span><br><span class="line">        operate: props =&gt; &#123;</span><br><span class="line">            return (</span><br><span class="line">                &lt;div style=&quot;line-height: 30px;&quot;&gt;</span><br><span class="line">                    &#123;props.assessment.title&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure><p></p><ul><li>组件风格</li></ul><p>template 组件 和 jsx 组件，tsx 组件</p><p>element-ui 以及 element-plus 组件是基于 template 风格，而 ant-design-vue、vant 则是基于 tsx 风格的（2.0 版本是基于 js/jsx 风格）</p><p><a href="https://www.zhihu.com/question/436260027" target="_blank" rel="noopener">https://www.zhihu.com/question/436260027</a><br><a href="https://github.com/hujiulong/blog/issues/11" target="_blank" rel="noopener">https://github.com/hujiulong/blog/issues/11</a><br><a href="https://www.zhihu.com/question/310485097/answer/591869966" target="_blank" rel="noopener">https://www.zhihu.com/question/310485097/answer/591869966</a></p><p>jsx 组件</p><p>vue 默认支持 js/jsx 组件，比如：</p><p>Level.jsx（后缀名也可改为 js）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    level: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 1,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const Tag = `h$&#123;this.level&#125;`;</span><br><span class="line">    return &lt;Tag&gt;&#123;this.$slots.default&#125;&#123;this.message()&#125;&lt;/Tag&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    message() &#123;</span><br><span class="line">      return &lt;div&gt;我是 &#123;this.level&#125; 级标签&lt;/div&gt;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>template 和 jsx 都是描述视图层的 DSL，最终都会编译伟 vdom。template 提供了插值、循环、判断，这满足了<br>一般的视图渲染要求，而 jsx 有更强的编程能力，能够使用 javascript 完整的编程能力。</p><p>有哪些东西是 template 不能做到，需要用到 jsx 的。</p><p><a href="https://www.zhihu.com/question/436260027" target="_blank" rel="noopener">https://www.zhihu.com/question/436260027</a></p><p><a href="https://www.zhihu.com/question/411745998" target="_blank" rel="noopener">https://www.zhihu.com/question/411745998</a></p><ul><li><p>指令</p></li><li><p>过滤器</p></li></ul><h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>插件通常用来为 Vue 添加全局功能，比如，注册全局组件、添加实例方法、添加全局指令…，可通过 use 安装 Vue.js 插件。<br>如果插件是一个对象，必须提供 install 方法，如果插件是一个函数，它会被作为 install 方法。install 方法调用时，会将 Vue 作为参数传入。</p><p>Vue.use 用于安装 plugin，为第三方 plugin 提供 Vue 上下文，比如 Element-ui （他们自己没有 Vue，只能消费者提供）<br>对于本地的 plugin，因为有 Vue 环境，可以不用 use，<code>import Vue from &#39;vue&#39;</code> 即可。</p><ul><li>全局组件</li></ul><p>第三方组件库的注册方式。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const install = function install(Vue) &#123;</span><br><span class="line">  components.map(component =&gt; Vue.component(component.name, component));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>一般组件内部也会提供 install 方法，方便按需引用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Dialog from &quot;./src/Dialog.vue&quot;;</span><br><span class="line"></span><br><span class="line">Dialog.install = function install(Vue) &#123;</span><br><span class="line">  Vue.component(Dialog.name, Dialog);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li>实例方法</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const install = (Vue) =&gt; &#123;</span><br><span class="line">  Vue.prototype.$xxx = xxx;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li>全局指令</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const install = (Vue) =&gt; &#123;</span><br><span class="line">  Vue.directive(&apos;default-img&apos;, async (el, binding) =&gt; &#123;</span><br><span class="line">    // ...</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default &#123; install &#125;;</span><br></pre></td></tr></table></figure><h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><p>判断路由前进还是后退</p><p>push、replace</p><p>动态路由需要有 scope，要不然匹配范围太广，比如 <code>/:id</code></p><ul><li>路由嵌套</li></ul><p>动画、嵌套路由/子路由（各子路由可以复用父路由，以达到组件公用）</p><p>嵌套路由的目的是为了复用公共组件的引用，通过嵌套路由，就不用一个个往路由组件中引用公共组件。常见的场景有：菜单栏、头部导航…，这种结构固定的页面中。</p><p>注意：通过嵌套路由引用的组件，在与其他组件通信时又些麻烦，所以一般建议，如果有通信需求，建议还是使用手动引用。</p><ul><li>路由刷新</li></ul><p>刷新路由组件比刷页面好，不用重新加载静态资源</p><p><a href="https://www.zhihu.com/question/49863095" target="_blank" rel="noopener">https://www.zhihu.com/question/49863095</a></p><ul><li>相同路由跳转</li></ul><p>Vue Router 中，跳转同一个路由组件时，即使路由参数不同（query、path），默认下为了复用，路由组件不会被刷新，这也意味着组件的生命周期钩子不会被调用，数据不会被刷新，可使用以下方法解决：</p><p>强制刷新：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view :key=&quot;$route.fullPath&quot; /&gt;</span><br></pre></td></tr></table></figure><p>通过 watch $route 或 beforeRouteUpdate 来手动刷新数据：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  this.$watch(</span><br><span class="line">    () =&gt; this.$route.params,</span><br><span class="line">    (toParams, previousParams) =&gt; &#123;</span><br><span class="line">      // 对路由变化做出响应...</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">async beforeRouteUpdate(to, from) &#123;</span><br><span class="line">  // 对路由变化做出响应...</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><ul><li>路由缓存</li></ul><p>keep-alive：列表到详情</p><p>替代 keep-alive 方案</p><p>通过 store、url 等方式缓存数据，可达到 keep-alive 缓存组件一样的效果，比如列表到详情中，如果将查询参数放到 url 中，返回时还能定位到具体的查询条件</p><p>列表到详情返回时维持列表的状态除 keep-alive 外，还有两种解决方案：<br>1）新开页（缺点–回退时前面页不知道，不会刷新；新开页要重新加载资源，慢）<br>2）缓存数据（url 或 store）而不是组件（比如myk 商城课程列表页），这是一个非常不错的办法</p><p>查询参数放 url 还有一个好处是分享</p><ul><li>滚动条位置</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export default new Router(&#123;</span><br><span class="line">    scrollBehavior(to, from, savedPosition) &#123;</span><br><span class="line">        if (savedPosition || to.meta.keepAlive) &#123; // 浏览器前进后退按钮切换路由</span><br><span class="line">            return savedPosition;</span><br><span class="line">        &#125; else &#123; // 通过&lt;router-link&gt;切换</span><br><span class="line">            return &#123;x: 0, y: 0&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用。</span><br></pre></td></tr></table></figure><p>如果数据是异步的，滚动条需要异步滚动，否则滚动位置会不准确</p><p>scrollBehavior 在 mounted 后执行，</p><p>需要将滚动行为与异步行为（Ajax、路由动画）结合起来，有些麻烦，有写人处理不好队列任务，干脆用 setTimeout。。。</p><p><a href="https://juejin.cn/post/6844903634484854797" target="_blank" rel="noopener">https://juejin.cn/post/6844903634484854797</a><br><a href="https://segmentfault.com/a/1190000022054521?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022054521?utm_source=tag-newest</a><br><a href="https://github.com/quasarframework/quasar/issues/1466" target="_blank" rel="noopener">https://github.com/quasarframework/quasar/issues/1466</a><br><a href="https://github.com/vuejs/vue-router/blob/dev/examples/scroll-behavior/app.js" target="_blank" rel="noopener">https://github.com/vuejs/vue-router/blob/dev/examples/scroll-behavior/app.js</a></p><p><a href="https://juejin.cn/post/6844903634484854797" target="_blank" rel="noopener">https://juejin.cn/post/6844903634484854797</a></p><p>beforeRouteEnter 中提前获取数据是一种选择</p><p>beforeRouteEnter(to, from, next) {<br>getPost(to.params.id, (err, post) =&gt; {<br>next(vm =&gt; vm.setData(err, post))<br>})<br>},</p><ul><li>路由权限控制</li></ul><p>HOC<br>路由守卫</p><h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>Vuex 是一个状态管理库（数据库），其特点是持久化、集中式、响应式。其作用有：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">基础数据的持久化：应用的生命周期内，用户信息、会话信息等基础信息的持久化</span><br><span class="line">跨级组件通信：通信有两种，数据和事件</span><br><span class="line">集中化管理：集中化的数据对象可以保证数据的一致性。课堂中，数据由发布、订阅、恢复产生，多点的生产，这要求统一的数据对象来保证一致性</span><br></pre></td></tr></table></figure><p>对于数据流比较简单的系统，也只有用户信息需要用到 Store。</p><p>注：对于跨级组件通信，个人更愿意用 Event Bus，临时私有数据放组件内部 State 会显得更内聚（可通过容器组件与展示组件解耦），且数据会随组件的销毁而销毁，不会像 Store 由于持久化的特性，需手动清空（比如课堂中关闭窗口时，需要手动 resetState）。</p><ul><li>使用原则</li></ul><p>mutation 不能有副作用，action 不但允许副作用，还能有返回。<br>action 的本质是发布订阅<br>mutation 中不能用异步，这样会造成状态的改变不可被 DevTools 追踪。</p><p>mutation type 常量</p><ul><li>配合 Storage</li></ul><p>由于 State 存储在内存，如果想要数据在应用生命周期外也能持久化（比如 Token），则需存 Storage。另外，Storage 不是响应式的，但可以通过 state 的 set get 实现响应式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    get msg() &#123;</span><br><span class="line">      return localStorage.msg;</span><br><span class="line">    &#125;,</span><br><span class="line">    set msg(val) &#123;</span><br><span class="line">      localStorage.msg = val;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    setMsg(state, payload) &#123;</span><br><span class="line">      state.msg = payload;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>store 模式</li></ul><p>可以用 Vue.observable（vue2）、reactive（vue3） 创建一个简单的可响应数据对象来进行状态管理。</p><p>store 模式没有专业 store（vuex、pinia） 的健壮和丰富的功能，比如 vuex 就提供 time-travel 调试和插件机制。</p><p>Vue3,我决定不再使用Vuex</p><p><a href="https://v3.cn.vuejs.org/guide/state-management.html#%E4%BB%8E%E9%9B%B6%E6%89%93%E9%80%A0%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86" target="_blank" rel="noopener">https://v3.cn.vuejs.org/guide/state-management.html#%E4%BB%8E%E9%9B%B6%E6%89%93%E9%80%A0%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86</a><br><a href="https://juejin.cn/post/6898504898380464142" target="_blank" rel="noopener">https://juejin.cn/post/6898504898380464142</a><br>使用Vue.observable()进行状态管理<br><a href="https://segmentfault.com/a/1190000019292569" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019292569</a><br><a href="https://www.jianshu.com/p/e97502f89bde" target="_blank" rel="noopener">https://www.jianshu.com/p/e97502f89bde</a><br><a href="https://www.52cik.com/2020/02/29/vue-observable.html" target="_blank" rel="noopener">https://www.52cik.com/2020/02/29/vue-observable.html</a></p><h2 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h2><p>代理<br>mock<br>完全版 vue</p><h2 id="nuxt"><a href="#nuxt" class="headerlink" title="nuxt"></a>nuxt</h2><p>ssr</p><h2 id="vue3"><a href="#vue3" class="headerlink" title="vue3"></a>vue3</h2><ul><li>Vue 2 的问题</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* TypeScript 支持不好</span><br><span class="line">* 逻辑抽象能力不强：HOC 或 Mixin 下的逻辑抽象有缺陷，逻辑关注点如果不被分离，意味着组件逻辑难以复用和分治，且难以阅读和理解，当项目体量变大时，会变得难以维护</span><br></pre></td></tr></table></figure><p>注：对于第二点，在 Vue2 中往往通过更合理的组件颗粒度划分来进行组件抽象，以组件复用和分治来代替逻辑复用和分治。</p><p>关注点分离（UI 的关注点分离、逻辑的关注点分离）</p><p>Mixin 的缺陷：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命名冲突：Mixin 很容易发生 property 名冲突</span><br><span class="line">隐式依赖：通过对 this 扩展的依赖，既不不显式，也不能被 linter</span><br><span class="line">扩展性差：可重用性是有限的：mixin 不能传递参数来改变它的逻辑，这降低了它们在抽象逻辑方面的灵活性</span><br></pre></td></tr></table></figure><p>HOC 的缺陷：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx</span><br></pre></td></tr></table></figure><p>为了解决上述问题，Vue 3 中</p><p><a href="https://juejin.cn/post/7055224376437784589" target="_blank" rel="noopener">https://juejin.cn/post/7055224376437784589</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用 TypeScript 重写 Vue，获得更好的类型支持。</span><br><span class="line">在响应式系统上，使用 Proxy 替换 Object.defineProperty。</span><br><span class="line">加入 Compositon API 来更好的抽象组件逻辑。</span><br><span class="line">优化了Virtual DOM</span><br><span class="line">更好的Tree shaking</span><br><span class="line">&lt;script setup&gt;</span><br></pre></td></tr></table></figure><ul><li>Composition API</li></ul><p>Composition API 逻辑抽象 提供了更好的代码组织和逻辑复用能力。</p><p>注意：逻辑关注点分离的目的是复用和分治，将关注点相关代码收集一起独立为 useXXX 组合式函数，然后在 <code>setup</code> 组合式 API 的入口中组合，不要把所有逻辑不加抽象、不加简化地都写在其中，这样就失去了 compostion 的意义了，代码量大很难维护，是一种反模式。</p><p>个人认为 Composition API 是对 Options API 的补充，而不是否定，如果 Geek 一点，使用 Script-Setup Sugar，可以节省很多代码量，可完全代替 Options API</p><p><a href="https://github.com/vueuse/vueuse" target="_blank" rel="noopener">https://github.com/vueuse/vueuse</a></p><p>Composition API 并不是把所有的逻辑都堆砌到 setup 中，setup 是组合入口，在这里组装 useXXX 的</p><p>可以在 src 目录下建立 composables 或 hooks 目录，将所有的 useXXX 函数放此处。</p><ul><li>Function-based API</li></ul><p>vue3 使用 Function-based API 而不是 Class API 的原因</p><p><a href="https://zhuanlan.zhihu.com/p/68477600" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/68477600</a><br><a href="https://zhuanlan.zhihu.com/p/68099662" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/68099662</a><br><a href="https://stackoverflow.com/questions/61301989/vue-3-what-is-the-class-based-api-function-based-api-reactivity-api-and-compos" target="_blank" rel="noopener">https://stackoverflow.com/questions/61301989/vue-3-what-is-the-class-based-api-function-based-api-reactivity-api-and-compos</a><br><a href="https://www.zhihu.com/question/325397290/answer/691200893" target="_blank" rel="noopener">https://www.zhihu.com/question/325397290/answer/691200893</a><br><a href="https://zhuanlan.zhihu.com/p/133819602" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/133819602</a></p><p>如果用户钟情于 Class API，可使用 vue-class-component<br><a href="https://www.zhihu.com/question/451424245/answer/1886655211" target="_blank" rel="noopener">https://www.zhihu.com/question/451424245/answer/1886655211</a></p><p><a href="https://www.zhihu.com/question/416652570/answer/1431359551" target="_blank" rel="noopener">https://www.zhihu.com/question/416652570/answer/1431359551</a><br><a href="https://zhuanlan.zhihu.com/p/436786508" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/436786508</a><br><a href="https://www.zhihu.com/question/453332049/answer/1835420993" target="_blank" rel="noopener">https://www.zhihu.com/question/453332049/answer/1835420993</a></p><p><a href="https://blog.csdn.net/u010059669/article/details/112287552" target="_blank" rel="noopener">https://blog.csdn.net/u010059669/article/details/112287552</a><br><a href="https://zhuanlan.zhihu.com/p/126552443" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/126552443</a><br><a href="https://www.zhihu.com/question/328247960" target="_blank" rel="noopener">https://www.zhihu.com/question/328247960</a><br><a href="https://zhuanlan.zhihu.com/p/181673485" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/181673485</a><br><a href="https://zhuanlan.zhihu.com/p/432068658" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/432068658</a><br><a href="https://www.cnblogs.com/fundebug/p/vue-virtual-dom.html" target="_blank" rel="noopener">https://www.cnblogs.com/fundebug/p/vue-virtual-dom.html</a><br><a href="https://www.zhihu.com/question/271485214" target="_blank" rel="noopener">https://www.zhihu.com/question/271485214</a><br><a href="https://zhuanlan.zhihu.com/p/111715881" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/111715881</a></p><p>注：react hook 一样，处理 class component 关注点分离和难以复用问题，处理 function component 没有状态。</p><p>注：Opetion API 也可以叫 Object API？</p><ul><li>底层变化</li></ul><p>Vue 3为什么要用 Proxy API 替代 DefineProperty API？</p><p>proxy和defineproperty区别</p><p><a href="https://blog.csdn.net/weixin_43443341/article/details/124041094" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43443341/article/details/124041094</a><br><a href="https://segmentfault.com/a/1190000041084082" target="_blank" rel="noopener">https://segmentfault.com/a/1190000041084082</a></p><ul><li>vue 3 的正确打开方式</li></ul><p>必须要用 script-setup sugar （vue3 兼容 option 是为了兼容，最佳实际自然是抛弃历史包袱使用 setup）<br>必须要用 TS（vue3 用 ts 重写的目的就是为了加强对 ts 的支持）<br>必须要用 provide/inject<br>必须舍弃 lifecycle hooks</p><p><a href="https://v3.cn.vuejs.org/api/sfc-script-setup.html" target="_blank" rel="noopener">https://v3.cn.vuejs.org/api/sfc-script-setup.html</a></p><ul><li>生态</li></ul><p>Vuex4 对 TypeScript 并不友好，所以我选择 Pinia<br><a href="https://www.zhihu.com/question/478752529" target="_blank" rel="noopener">https://www.zhihu.com/question/478752529</a><br><a href="https://zhuanlan.zhihu.com/p/413968851" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/413968851</a></p><p>Volar<br>&lt; setup&gt; + TS + Volar = 真香<br>Vue.js作者尤雨溪在VueConf 2021谈Vue 3 生态进展<br><a href="https://www.bilibili.com/video/BV1JK4y1G7bf" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1JK4y1G7bf</a><br>27:40 开始，可以说 Volar 是 Vetur 的继任者<br><a href="https://zhuanlan.zhihu.com/p/401160130" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/401160130</a></p><ul><li>vue-class-component</li></ul><p><a href="https://github.com/vuejs/vue-class-component" target="_blank" rel="noopener">https://github.com/vuejs/vue-class-component</a><br><a href="https://zhuanlan.zhihu.com/p/355315790" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/355315790</a><br><a href="https://cn.vuejs.org/v2/guide/typescript.html#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/typescript.html#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6</a></p><p>注：vue-class-component匹配Vue 3的v8版本还没有正式的文档</p><p><a href="https://github.com/vuejs/vue-class-component/tree/master/example/src/components" target="_blank" rel="noopener">https://github.com/vuejs/vue-class-component/tree/master/example/src/components</a><br>注：可以是 tsx 文件 也可以是 vue 文件</p><ul><li>vue-property-decorator</li></ul><p><a href="https://github.com/kaorun343/vue-property-decorator/issues/294" target="_blank" rel="noopener">https://github.com/kaorun343/vue-property-decorator/issues/294</a><br>注：应该暂时还不支持 vue3，package.json 中的 vue-class-component 版本还是 7.0</p><p>vue class component 是vue 官方出的，vue property decorator 是社区出的<br>其中 vue class component 提供了 vue component 等等<br>vue property decorator 深度依赖了 vue class component 拓展出了很多操作符 @Prop @Emit @Inject 等等 可以说是 vue class component 的一个超集<br>正常开发的时候 你只需要使用 vue property decorator 中提供的操作符即可 不用再从vue class componen 引入vue component</p><h2 id="vue-范式"><a href="#vue-范式" class="headerlink" title="vue 范式"></a>vue 范式</h2><p>JavaScript 是一个多范式的语言，支持 Class、Object、Function。Options API、Class API、Function API 。</p><p>喜欢装饰器，Class Component，Service Class 风格的选择 Angular，喜欢纯函数，Function Component，Hooks 的选择 React，没有啥偏好的使用 Vue</p><h3 id="与-React-区别"><a href="#与-React-区别" class="headerlink" title="与 React 区别"></a>与 React 区别</h3><p><a href="https://github.com/lihongxun945/myblog/issues/21" target="_blank" rel="noopener">https://github.com/lihongxun945/myblog/issues/21</a><br><a href="https://www.jianshu.com/p/b7cd52868e95" target="_blank" rel="noopener">https://www.jianshu.com/p/b7cd52868e95</a><br><a href="https://zhuanlan.zhihu.com/p/396229611" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/396229611</a><br><a href="https://www.zhihu.com/question/309891718/answer/2282544794" target="_blank" rel="noopener">https://www.zhihu.com/question/309891718/answer/2282544794</a></p><p>响应式原理不一样<br><a href="https://blog.csdn.net/SirM2z/article/details/71195059" target="_blank" rel="noopener">https://blog.csdn.net/SirM2z/article/details/71195059</a><br><a href="https://juejin.cn/post/6844904113432444942" target="_blank" rel="noopener">https://juejin.cn/post/6844904113432444942</a></p><p>react 面试题</p><p><a href="https://juejin.cn/post/6844903857135304718" target="_blank" rel="noopener">https://juejin.cn/post/6844903857135304718</a></p><p><a href="https://juejin.cn/post/6944863057000529933" target="_blank" rel="noopener">https://juejin.cn/post/6944863057000529933</a></p><p>响应式编程不是指的 RxJS Observable 那一套吗…和依赖追踪貌似关系不太大？</p><p><a href="https://juejin.cn/post/6844904103504527374" target="_blank" rel="noopener">https://juejin.cn/post/6844904103504527374</a></p><p>目前市面上的三种框架，无非是以Vue为首的响应式ui，这种框架特定就是简单，在通常意义下运行得非常快，但大规模的依赖收集和清理会带来额外的运作成本和内存消耗。第二种就是react这类，依靠f -&gt; UI这种声明式方案来更新视图，这种的好处在于它比依赖native api的响应式框架灵活太多。最后一种就是svelte，这种东西完全就是为web component而生，特点就是傻快，但没办法做dsl转换了（没vdom）。不过因为它就作用于小范围的dom，往往在编写小页面和web component时会带来的性能会远超于使用virtual dom或者增量dom的前端三框架。</p><p><a href="https://www.zhihu.com/question/446377023/answer/1756125862" target="_blank" rel="noopener">https://www.zhihu.com/question/446377023/answer/1756125862</a></p><p>个人倾向于认为即便有了调度的细粒度控制，整体上 React 计算 diff 的成本仍然比响应式框架高很多……像 concurrent mode 宣传中那样去优化跨越多帧（譬如 50-100ms 量级）的计算，无论怎么可控，听起来都已经像是有问题的了</p><p>vue-cli3<br><a href="https://blog.csdn.net/qinyuhua93/article/details/104820902" target="_blank" rel="noopener">https://blog.csdn.net/qinyuhua93/article/details/104820902</a></p><p><a href="https://www.zhihu.com/question/471825415" target="_blank" rel="noopener">https://www.zhihu.com/question/471825415</a><br><a href="https://zhuanlan.zhihu.com/p/441467856" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/441467856</a></p><p>vue3</p><p>Naive UI<br><a href="https://www.zhihu.com/question/463736268/answer/1928879382" target="_blank" rel="noopener">https://www.zhihu.com/question/463736268/answer/1928879382</a></p><p>vuex/Pinia</p><p>Vue 3 将成为新的默认版本<br><a href="https://zhuanlan.zhihu.com/p/460055155" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/460055155</a></p><p>Vite2 + Vue3 + TypeScript + Pinia<br><a href="https://zhuanlan.zhihu.com/p/441467856" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/441467856</a></p><p>升级 vue 版本<br>npm update vue -S<br>npm update vue-template-compiler -D</p><p>vue 和 vue-template-compiler，两者的版本需要同步，如果不同步项目会报错</p><h2 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h2><ul><li>ref、reactive、toRef、toRefs</li></ul><p>这几个 API 设计的目的就是为了在 setup 中使用响应式数据，setup 中不能使用 data 选项，只能通过上述方式使用响应式数据。</p><p>ref：返回一个响应式且可变（官网咖啡图）的 ref 对象。既支持原始类型，也支持引用类型，当值为引用类型时，底层使用的是 reactive。在模板中可省略 value 属性（自动解包）。</p><p>reactive：返回对象的响应式副本（基于 ES6 proxy 实现，响应式转换是“深层”的——它影响所有嵌套 property）。相当于 Vue2.x 的 Vue.observable () API（vue 2 中 data 选项的底层就是 Vue.observable，这两种方式都能创建响应式数据）。reactive 只支持将引用类型响应式，不支持原始类型。</p><p>toRef：用来将断开的响应式对象（被 reactive 包裹的对象）中某一个属性包裹成 ref 对象，并保持其和原对象的引用</p><p>toRefs：toRefs 和 toRef 功能是一致的，但是可以批量创建多个 ref 对象，注意，不支持可选 prop<br>响应式对象一旦被展开，其响应式特性会丢失，可用 toRefs 来解决</p><ul><li>attrs</li></ul><p>attrs 和 props 很相似，也是基于父子通信的数据，如果传递给组件的 attribute 或者 v-on 事件监听器，没有显式地声明在所接收组件的 props 或 emits 上，那么就会被挂到 attrs 上，且透传的 attribute 会自动添加到根元素的 attribute 中。</p><p>选项式 API 中，可通过 $attrs 访问，setup 中可通过 context 访问，setup sugar（script-setup） 中可通过 useAttrs 访问。</p><ul><li>refs</li></ul><p>选项式 API 中，可通过 $refs 访问 DOM，setup 中通过 ref 或函数绑定访问 DOM。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;handleClick&quot; ref=&quot;btn&quot;&gt;btn&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  setup() &#123;</span><br><span class="line">	const btn = ref(null);</span><br><span class="line">    const handleClick = () =&gt; &#123;</span><br><span class="line">	  console.log(btn.value);</span><br><span class="line">	&#125;;</span><br><span class="line">	return &#123;</span><br><span class="line">	  btn,</span><br><span class="line">	  handleClick,</span><br><span class="line">	&#125;;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;handleClick&quot; :ref=&quot;refBtn&quot;&gt;btn&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  setup() &#123;</span><br><span class="line">	let btn = null;</span><br><span class="line">	const refBtn = (el)=&gt; &#123;</span><br><span class="line">	  btn = el;</span><br><span class="line">	&#125;;</span><br><span class="line">    const handleClick = () =&gt; &#123;</span><br><span class="line">      console.log(btn, 11);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">	  refBtn,</span><br><span class="line">	  handleClick,</span><br><span class="line">	&#125;;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  &lt;li </span><br><span class="line">	v-for=&quot;(item, index) in list&quot; </span><br><span class="line">	:key=&quot;index&quot;</span><br><span class="line">	:ref=&quot;refLi&quot;</span><br><span class="line">  &gt;</span><br><span class="line">	&#123;&#123;item&#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line"></span><br><span class="line"> setup() &#123;</span><br><span class="line">   const list = reactive([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]);</span><br><span class="line">const elLi = reactive([]);</span><br><span class="line">const refLi = (el) =&gt; &#123;</span><br><span class="line">  elLi.push(el);</span><br><span class="line">&#125;;</span><br><span class="line">   nextTick(() =&gt; &#123;</span><br><span class="line">  console.log(elLi, 2222);</span><br><span class="line">   &#125;);</span><br><span class="line">return &#123;</span><br><span class="line">  list,</span><br><span class="line">     refLi,</span><br><span class="line">&#125;;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure><ul><li>defineComponent</li></ul><p>TS 类型本身是图灵完备的，类型图灵不完备的是发展不出类型体操的。</p><p>类型体操自然也有他的作用，比如说 Vue 就通过了大量的类型体操才实现了 defineComponent 的类型推导，否则你面对的可能是大量的 unknown 或 any。</p><p>defineComponent 最重要的是：在TypeScript下，给予了组件 正确的参数类型推断</p><p>将一个 组件用 defineComponent 包裹，仅仅只是为了 在 ts 下做类型推断</p><p>对传递给 setup() 的参数进行类型推断</p><ul><li>emits</li></ul><p>setup 选项的 this 不指向当前实例(undefined)，只能通过 context 使用 emit（推荐使用 emits 选项来定义组件可触发的事件），setup sugar 中通过 defineEmits 的返回使用 emit</p><p>emits 或 defineEmits 用来定义组件可向其父组件触发的事件。强烈建议声明组件所 emit 的事件，这尤为重要，vue3 中移除了 .native 修饰符，任何未在 emits 中声明的事件都将默认绑定到组件的根节点上（与 .native 修饰符的作用一样），对于那些被透传的原生事件，会被触发两次，emit 一次和应用在根元素上的原生事件一次。</p><p>vue2 中，组件上的 v-on 只会监听自定义事件 (用 $emit 触发的事件)，如果要监听根元素的原生事件，可以使用 .native 修饰符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;runoob @click=&quot;handleClick&quot;&gt;&lt;/runoob&gt;</span><br></pre></td></tr></table></figure><p>以上代码，在 Vue3 中，如果组件内部没有用 emits 声明事件，则 click 事件会被。而在 Vue2 中，click 算自定义事件，如果想成为原生事件需要加 native 修饰符。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;runoob @click.native=&quot;handleClick&quot;&gt;&lt;/runoob&gt;</span><br></pre></td></tr></table></figure><ul><li>expose</li></ul><p>Vue3 新特性，如果是 options api 类型的组件，不声明 expose 时，默认暴露当前组件实例的全部内容，声明了 expose 选项，expose 数组内标记的才会暴露。（expose:[]则什么都不暴露，注意这个问题。也可以利用这个特性提高组件使用的规范。）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default defineComponent(&#123;</span><br><span class="line">  expose: [&apos;nameA&apos;,...], // 可以 expose 当前实例的任何内容</span><br><span class="line">  methods: &#123;</span><br><span class="line">    nameA()&#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p><code>&lt;script setup&gt;</code> setup 语法糖的情况下，默认是封闭的，需要获取当前组件里的内容的话，必须显式 expose 出去。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&apos;ts&apos; setup&gt;</span><br><span class="line">import &#123;ref&#125; from &apos;vue&apos;;</span><br><span class="line">let refData = ref(&apos;寒蝉鸣泣之时&apos;)</span><br><span class="line">defineExpose(&#123;</span><br><span class="line">  refData,</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>TS类型：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123; ref,Ref &#125; from &quot;vue&quot;;</span><br><span class="line">//&gt; defineExpose</span><br><span class="line">interface exFace &#123;</span><br><span class="line">  ex1:Ref&lt;string&gt;,</span><br><span class="line">  ex2?:number</span><br><span class="line">&#125;</span><br><span class="line">let ex1 = ref(&apos;1&apos;)</span><br><span class="line">let exObj:exFace = &#123;</span><br><span class="line">  ex1,</span><br><span class="line">&#125;</span><br><span class="line">// 源码类型: const defineExpose: (exposed?: Record&lt;string, any&gt;) =&gt; void</span><br><span class="line">defineExpose(exObj)</span><br></pre></td></tr></table></figure><ul><li>jsx</li></ul><p>在 vue3 中使用 jsx，只能通过 option api 中的 render 函数或 setup 函数返回渲染函数，<code>&lt;script setup&gt;</code> 中不可使用。</p><p>const test = {<br>render(createElement) { // vue3 中 h 函数由 Vue 提供<br>return createElement(<br>‘div’, [<br>createElement(‘span’, ‘Heldlo’),<br>‘ world!’<br>]<br>);<br>}<br>};</p><p>// 组件的注册<br>// 全局注册<br>Vue.component(‘Test’, test)<br>// 局部注册<br>components: {<br>Test: test,<br>}</p><p>var test = {<br>setup() {<br>return () =&gt; {<br>return h(<br>‘div’, [<br>h(‘span’, ‘Heldlo’),<br>‘ world!’<br>]<br>);<br>}<br>},</p><p>注意：cdn 模式下不能使用 jsx，只能使用 vdom，jsx 需要使用 Babel 插件来转译</p><p>const test = {<br>render(createElement) { // vue3 中 h 函数由 Vue 提供<br>return createElement(<br>‘div’, [<br>createElement(‘span’, ‘Heldlo’),<br>‘ world!’<br>]<br>);<br>}<br>};</p><p>// 组件的注册：全局注册、局部注册<br>Vue.component(‘Test’, test)</p><h2 id="script-setup"><a href="#script-setup" class="headerlink" title="script setup"></a>script setup</h2><p><code>&lt;script setup&gt;</code> 语法糖里面的代码会被编译成组件 setup() 函数的内容。</p><ul><li><code>&lt;script setup&gt;</code> 中无需 return 声明的变量、函数以及 import 引入的内容，即可在<template>使用</template></li></ul><p>标准组件<code>&lt;script&gt;</code>需要写setup函数并繁琐retrun</p><ul><li><p><code>&lt;script setup&gt;</code>引入组件将自动注册</p></li><li><p>组件通信:在<code>&lt;script setup&gt;</code>中必须使用 defineProps 和 defineEmits API 来替代 props 和 emits</p></li><li><p><code>&lt;script setup&gt;</code>需主动向父组件暴露子组件属性 ：defineExpose</p></li></ul><p>使用 <code>&lt;script setup&gt;</code> 的组件，父组件是无法通过ref 或者 $parent 获取到子组件的ref等响应数据，需要通过defineExpose 主动暴露</p><ul><li>useSlots 和 useAttrs</li></ul><p>用于在 JSX 模式下使用 slot 和 attr，SFC 模式下，在<template>通过<slot>标签就可以渲染插槽</slot></template></p><ul><li>useRoute 和 useRouter</li></ul><p>setup 里不能访问 this，不能再直接访问 this.$router 或 this.$route。（getCurrentInstance可以替代this但不推荐）<br>推荐：使用useRoute 函数和useRouter函数替代this.$route 和 this.$router</p><p>命名空间组件<br>Suspense<br>编译器宏：withDefaults<br><code>&lt;style&gt;</code> 特性<br>watchEffect 和 watch</p><h3 id="编译-html-字符串"><a href="#编译-html-字符串" class="headerlink" title="编译 html 字符串"></a>编译 html 字符串</h3><p><a href="https://stackoverflow.com/questions/54617255/render-and-compile-string-using-vue-js" target="_blank" rel="noopener">https://stackoverflow.com/questions/54617255/render-and-compile-string-using-vue-js</a></p><p><a href="https://stackoverflow.com/questions/51006553/render-v-html-as-vue-components" target="_blank" rel="noopener">https://stackoverflow.com/questions/51006553/render-v-html-as-vue-components</a></p><p><a href="https://cloud.tencent.com/developer/article/1467371" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1467371</a></p><p><a href="https://www.cnblogs.com/lvonve/p/12470666.html" target="_blank" rel="noopener">https://www.cnblogs.com/lvonve/p/12470666.html</a><br><a href="https://www.zhihu.com/question/411745998" target="_blank" rel="noopener">https://www.zhihu.com/question/411745998</a><br><a href="https://www.zhihu.com/question/436260027" target="_blank" rel="noopener">https://www.zhihu.com/question/436260027</a><br><a href="https://segmentfault.com/q/1010000023534933" target="_blank" rel="noopener">https://segmentfault.com/q/1010000023534933</a><br><a href="https://zhuanlan.zhihu.com/p/153387704" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/153387704</a></p><p>jsx 和 SFC template 只能在脚手架下才能被编译为 vdom，直接用 <code>&lt;script&gt;</code> 引入的 vue 下不能使用<br><code>&lt;script&gt;</code> 引入的 vue 下只能使用 template 选项和 render createElement 手动写 vdom</p><p>不使用脚手架，只 <code>&lt;script&gt;</code> 引入来使用 vue，会大打折扣？损失哪些功能，只能用哪些功能</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  template: &apos;&lt;App/&gt;&apos;,</span><br><span class="line">  components: &#123; </span><br><span class="line">    App,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;).$mount(&apos;#app&apos;);</span><br></pre></td></tr></table></figure><p>You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.</p><p>意思是，要么使用完整版带 compoler 的 vue 在运行时动态编译 template，要不用 render 替换 template。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;);</span><br></pre></td></tr></table></figure><p>注：jsx 中使用其他组件，不需要用 components 注册</p><p>vue 项目要先编译再运行：编译 —》 运行</p><p>template 和 jsx 会预编译为 vdom（能静态分析，能提就能确定dom结构），但是对于 html 字符串（首先编译器不知道该不该编译，另外字符串不一定是静态的，可能是后台返回的），不管是 slot、v-html，mustashe 插值，都是按普通字符串处理，不会被编译，要想编译 html 字符串只能使用完整版的 vue，以 template 选项或 Vue.compiler 的方式在运行时动态编译。</p><p>这样是错误的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      str: &apos;&lt;div&gt;&lt;span&gt;hello&lt;/span&gt;,&lt;/div&gt;&apos;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const str = this.str.replace(/,/g, this.world());</span><br><span class="line">    console.log(this.world()); // vNode 是 Object</span><br><span class="line">    return &lt;div domPropsInnerHTML=&#123;str&#125;&gt;&lt;/div&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    world() &#123;</span><br><span class="line">      return &lt;span&gt;world&lt;/span&gt;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li>配置 vue-cli</li></ul><p>引入完整版 vue，有 2 种配置方法。</p><p>方法 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  runtimeCompiler:true,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>方法 2:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">function resolve (dir) &#123;</span><br><span class="line">  return path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  chainWebpack: config =&gt; &#123;</span><br><span class="line">    config.resolve.alias.set(&apos;vue$&apos;,&apos;vue/dist/vue.esm.js&apos;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>之后就可以这样写组件了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Test.js，jsx 后缀也可以</span><br><span class="line">export default &#123;</span><br><span class="line">  template: &apos;&lt;div&gt;&lt;span&gt;hello&lt;/span&gt;&lt;el-button @click=&quot;handleClick&quot;&gt;world&lt;/el-button&gt;&lt;/div&gt;&apos;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleClick() &#123;</span><br><span class="line">      alert();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// Test.jsx</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      str: &apos;&lt;div&gt;&lt;span&gt;hello&lt;/span&gt;,&lt;/div&gt;&apos;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render(h) &#123;</span><br><span class="line">    str = this.str.replace(/,/g, &apos;&lt;el-button @click=&quot;handleClick&quot;&gt;world&lt;/el-button&gt;&apos;);</span><br><span class="line">    const render = &#123;</span><br><span class="line">      template: str,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick() &#123;</span><br><span class="line">          alert();</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    return h(render);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  ...</span><br><span class="line">  render() &#123;</span><br><span class="line">    const str = this.str.replace(/,/g, &apos;&lt;el-button @click=&quot;handleClick&quot;&gt;world&lt;/el-button&gt;&apos;);</span><br><span class="line">    const Foo = Vue.extend(&#123;</span><br><span class="line">      template: str,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick() &#123;</span><br><span class="line">          alert();</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &lt;Foo&gt;&lt;/Foo&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Greeting /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">/* eslint-disable */</span><br><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  // render(h) &#123;</span><br><span class="line">  //   return h(foo, &#123;&#125;);</span><br><span class="line">  // &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    aa() &#123;</span><br><span class="line">      return &lt;div&gt;cccc&lt;/div&gt;;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    cc() &#123;</span><br><span class="line">      // const html = &lt;button onClick=&#123;this.handleClick&#125;&gt;btn&lt;/button&gt;;</span><br><span class="line">      const dd = Vue.extend(&#123;</span><br><span class="line">        template: &apos;&lt;div&gt;&lt;button @click=&quot;this.handleClick&quot;&gt;btn&lt;/button&gt;&lt;/div&gt;&apos;,</span><br><span class="line">      &#125;);</span><br><span class="line">      console.log(dd, 2222);</span><br><span class="line">      // const vNode = this.aa();</span><br><span class="line">      // console.log(vNode, 232323);</span><br><span class="line">      return dd;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  components: &#123;</span><br><span class="line">    &apos;Greeting&apos;: &#123;</span><br><span class="line">      data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          msg: &apos;hello world&apos;,</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      template: &apos;&lt;div&gt;&lt;button @click=&quot;handleClick&quot;&gt;btn&lt;/button&gt;&#123;&#123;msg&#125;&#125;&lt;Bar /&gt;&lt;/div&gt;&apos;,</span><br><span class="line"></span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick() &#123;</span><br><span class="line">          alert(&apos;ok&apos;);</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      components: &#123;</span><br><span class="line">        &apos;Bar&apos;: &#123;</span><br><span class="line">          data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">              name: &apos;bar&apos;,</span><br><span class="line">            &#125;;</span><br><span class="line">          &#125;,</span><br><span class="line"></span><br><span class="line">          created() &#123;</span><br><span class="line">            const foo = &apos;foo&apos;;</span><br><span class="line">            this.$options.template = `&lt;div&gt;&#123;&#123;name&#125;&#125;$&#123;foo&#125;&lt;/div&gt;`;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>工作中有需要对 v-html 返回数据做数据绑定的需求，比如题干中答题，这时候要不使用原生 DOM，要不使用 vue 运行时的编译能力了</p></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Vue 技术要点"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Vue 技术要点 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/10/15/Vue/">
+                Vue 技术要点
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-10-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/project/">project</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="Vue-简介"><a href="#Vue-简介" class="headerlink" title="Vue 简介"></a>Vue 简介</h2><ul>
+<li>优点</li>
+</ul>
+<p>渐进式：框架设计（可以直接引入使用，仅使用核心渲染功能，也可以配合构建工具，集成路由和数据管理，采用单文件组件的开发模式）<br>声明式渲染：响应式（数据驱动视图，当数据改变后，会通知视图，不是指响应式编程 Reactive Programming），不需要传统那样命令式的操作 DOM<br>组件化：<br>工程化：Vue-cli<br>全家桶？：vuex、vue-router  集中式数据管理和客户端路由</p>
+<p>声明式渲染（Declarative View）与之相对应的是命令式渲染（Imperative View）</p>
+<span id="more"></span>
+
+<ul>
+<li>特点</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6857669921166491662">https://juejin.cn/post/6857669921166491662</a></p>
+<ul>
+<li><p>nextTicket</p>
+</li>
+<li><p>props</p>
+</li>
+</ul>
+<p>props 的作用</p>
+<p>props 的作用：<br>直接在视图或逻辑（注意响应式处理，watch、key + created&#x2F;mounted）中消费；<br>初始化 data（一般命名为 initXXX，注意异步的 props，组件初始化完成，异步 props 才设置，这时组件内部会失去初始化时机，需要配合 v-if 或 key）</p>
+<p>引用类型的 props；驱动组件逻辑（watch props，需要注意的是，如果 props 的变动早于组件的初始化，这时候是无法 watch，需要配合 created）</p>
+<p>引用类型的副作用，有时候需要规避（比如 props 中），有时候需要利用（比如修改 v-for 列表中的某条数据）</p>
+<p>props down 和 events up 是作为组件接口(高内聚低耦合)的存在</p>
+<ul>
+<li>key</li>
+</ul>
+<p>可用来刷新组件，配合 props 可用来做数据驱动逻辑的场景</p>
+<ul>
+<li>watch</li>
+</ul>
+<p>数据驱动逻辑</p>
+<p>watch props，watch data</p>
+<p>课堂内有时候 watch 不触发<br>个人感觉 watch 有些心智负担</p>
+<ul>
+<li>coputed</li>
+</ul>
+<p>依赖追踪，根据一个依赖数据，算出另一个数据<br>get、set</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>sync：语法糖<br>v-module：语法糖</p>
+<p>组件的生命周期：4 个节点(create,mount,update,destroy)，2 个状态(before,after，怎么取名呢)，共 8 个生命周期</p>
+<p>钩子函数：由系统调用的函数（相当于 callback，比如 data 函数）</p>
+<p>生命周期的钩子函数：生命周期的钩子函数是钩子函数里面一类，是在生命周期某个节点调用的钩子函数</p>
+<p>注意箭头函数词法 this 的使用，有时候需要避开，有时候又需要利用</p>
+<p>组件间的通信：event bus 作为组件间数据通信优点就是简单，但是如果滥用，也有缺点，数据流向不明确，可读性，维护性都不好。</p>
+<ul>
+<li>sync</li>
+</ul>
+<p>sync 是 prop 和 event 的语法糖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:foo=&quot;bar&quot;</span><br><span class="line">@update:foo=&quot;(val) =&gt; bar = val&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&#x27;update:foo&#x27;, val);</span><br></pre></td></tr></table></figure>
+
+<p>JSX 中需要写为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo=&#123; this.bar &#125;</span><br><span class="line">&#123; ...&#123; on: &#123; &#x27;update:foo&#x27;: (val) =&gt; &#123; this.foo = val; &#125; &#125; &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>:</code> 不是 JSX 语法，所以不能写为 <code>on-update:foo=&#123; this.handleVisibleReply_Deteil &#125;</code></p>
+<p>sync 和 v-model 有什么区别</p>
+<ul>
+<li>slot</li>
+</ul>
+<p>&lt;slot<br>  name&#x3D;”operate”<br>  :assessment&#x3D;”item”</p>
+<blockquote>
+</slot>
+</blockquote>
+<p>&lt;template #operate&#x3D;”slotProps”&gt;<br>  &lt;el-button<br>    v-if&#x3D;”showEvaluate(slotProps.assessment)”<br>    type&#x3D;”primary”<br>    size&#x3D;”mini”<br>    @click&#x3D;”handleOpenAssessment(slotProps.assessment)”</p>
+<blockquote>
+</blockquote>
+<pre><code>去评价
+</code></pre>
+  </el-button>
+  <el-button
+    v-else
+    type="primary"
+    size="mini"
+    @click="handleOpenTeacherReport(slotProps.assessment)"
+  >
+    查看评价
+  </el-button>
+</template>
+
+
+<p>&lt;template #default&#x3D;”slotProps”&gt;<br>  …<br></template></p>
+<p>v-slot:default 和 v-slot:operate 已经被废弃</p>
+<p>jsx 中写法<br>父组件</p>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &#123;this.$scopedSlots.default(&#123;</span><br><span class="line">                assessment: this.assessment</span><br><span class="line">            &#125;)&#125;</span><br><span class="line"></span><br><span class="line">            &#123;this.$scopedSlots.operate(&#123;</span><br><span class="line">                assessment: this.assessment</span><br><span class="line">            &#125;)&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;AssessmentList</span><br><span class="line">    scopedSlots=&#123;&#123;</span><br><span class="line">        default: props =&gt; &#123;</span><br><span class="line">            return (</span><br><span class="line">                &lt;div style=&quot;line-height: 30px;&quot;&gt;</span><br><span class="line">                    &#123;props.assessment.title&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            );</span><br><span class="line">        &#125;,</span><br><span class="line">        operate: props =&gt; &#123;</span><br><span class="line">            return (</span><br><span class="line">                &lt;div style=&quot;line-height: 30px;&quot;&gt;</span><br><span class="line">                    &#123;props.assessment.title&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>组件风格</li>
+</ul>
+<p>template 组件 和 jsx 组件，tsx 组件</p>
+<p>element-ui 以及 element-plus 组件是基于 template 风格，而 ant-design-vue、vant 则是基于 tsx 风格的（2.0 版本是基于 js&#x2F;jsx 风格）</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/436260027">https://www.zhihu.com/question/436260027</a><br><a target="_blank" rel="noopener" href="https://github.com/hujiulong/blog/issues/11">https://github.com/hujiulong/blog/issues/11</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/310485097/answer/591869966">https://www.zhihu.com/question/310485097/answer/591869966</a></p>
+<p>jsx 组件</p>
+<p>vue 默认支持 js&#x2F;jsx 组件，比如：</p>
+<p>Level.jsx（后缀名也可改为 js）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    level: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 1,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const Tag = `h$&#123;this.level&#125;`;</span><br><span class="line">    return &lt;Tag&gt;&#123;this.$slots.default&#125;&#123;this.message()&#125;&lt;/Tag&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    message() &#123;</span><br><span class="line">      return &lt;div&gt;我是 &#123;this.level&#125; 级标签&lt;/div&gt;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<p>template 和 jsx 都是描述视图层的 DSL，最终都会编译伟 vdom。template 提供了插值、循环、判断，这满足了<br>一般的视图渲染要求，而 jsx 有更强的编程能力，能够使用 javascript 完整的编程能力。</p>
+<p>有哪些东西是 template 不能做到，需要用到 jsx 的。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/436260027">https://www.zhihu.com/question/436260027</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/411745998">https://www.zhihu.com/question/411745998</a></p>
+<ul>
+<li><p>指令</p>
+</li>
+<li><p>过滤器</p>
+</li>
+</ul>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>插件通常用来为 Vue 添加全局功能，比如，注册全局组件、添加实例方法、添加全局指令…，可通过 use 安装 Vue.js 插件。<br>如果插件是一个对象，必须提供 install 方法，如果插件是一个函数，它会被作为 install 方法。install 方法调用时，会将 Vue 作为参数传入。</p>
+<p>Vue.use 用于安装 plugin，为第三方 plugin 提供 Vue 上下文，比如 Element-ui （他们自己没有 Vue，只能消费者提供）<br>对于本地的 plugin，因为有 Vue 环境，可以不用 use，<code>import Vue from &#39;vue&#39;</code> 即可。</p>
+<ul>
+<li>全局组件</li>
+</ul>
+<p>第三方组件库的注册方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const install = function install(Vue) &#123;</span><br><span class="line">  components.map(component =&gt; Vue.component(component.name, component));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>一般组件内部也会提供 install 方法，方便按需引用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Dialog from &quot;./src/Dialog.vue&quot;;</span><br><span class="line"></span><br><span class="line">Dialog.install = function install(Vue) &#123;</span><br><span class="line">  Vue.component(Dialog.name, Dialog);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实例方法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const install = (Vue) =&gt; &#123;</span><br><span class="line">  Vue.prototype.$xxx = xxx;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>全局指令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const install = (Vue) =&gt; &#123;</span><br><span class="line">  Vue.directive(&#x27;default-img&#x27;, async (el, binding) =&gt; &#123;</span><br><span class="line">    // ...</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default &#123; install &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><p>判断路由前进还是后退</p>
+<p>push、replace</p>
+<p>动态路由需要有 scope，要不然匹配范围太广，比如 <code>/:id</code></p>
+<ul>
+<li>路由嵌套</li>
+</ul>
+<p>动画、嵌套路由&#x2F;子路由（各子路由可以复用父路由，以达到组件公用）</p>
+<p>嵌套路由的目的是为了复用公共组件的引用，通过嵌套路由，就不用一个个往路由组件中引用公共组件。常见的场景有：菜单栏、头部导航…，这种结构固定的页面中。</p>
+<p>注意：通过嵌套路由引用的组件，在与其他组件通信时又些麻烦，所以一般建议，如果有通信需求，建议还是使用手动引用。</p>
+<ul>
+<li>路由刷新</li>
+</ul>
+<p>刷新路由组件比刷页面好，不用重新加载静态资源</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/49863095">https://www.zhihu.com/question/49863095</a></p>
+<ul>
+<li>相同路由跳转</li>
+</ul>
+<p>Vue Router 中，跳转同一个路由组件时，即使路由参数不同（query、path），默认下为了复用，路由组件不会被刷新，这也意味着组件的生命周期钩子不会被调用，数据不会被刷新，可使用以下方法解决：</p>
+<p>强制刷新：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view :key=&quot;$route.fullPath&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过 watch $route 或 beforeRouteUpdate 来手动刷新数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  this.$watch(</span><br><span class="line">    () =&gt; this.$route.params,</span><br><span class="line">    (toParams, previousParams) =&gt; &#123;</span><br><span class="line">      // 对路由变化做出响应...</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">async beforeRouteUpdate(to, from) &#123;</span><br><span class="line">  // 对路由变化做出响应...</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>路由缓存</li>
+</ul>
+<p>keep-alive：列表到详情</p>
+<p>替代 keep-alive 方案</p>
+<p>通过 store、url 等方式缓存数据，可达到 keep-alive 缓存组件一样的效果，比如列表到详情中，如果将查询参数放到 url 中，返回时还能定位到具体的查询条件</p>
+<p>列表到详情返回时维持列表的状态除 keep-alive 外，还有两种解决方案：<br>1）新开页（缺点–回退时前面页不知道，不会刷新；新开页要重新加载资源，慢）<br>2）缓存数据（url 或 store）而不是组件（比如myk 商城课程列表页），这是一个非常不错的办法</p>
+<p>查询参数放 url 还有一个好处是分享</p>
+<ul>
+<li>滚动条位置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export default new Router(&#123;</span><br><span class="line">    scrollBehavior(to, from, savedPosition) &#123;</span><br><span class="line">        if (savedPosition || to.meta.keepAlive) &#123; // 浏览器前进后退按钮切换路由</span><br><span class="line">            return savedPosition;</span><br><span class="line">        &#125; else &#123; // 通过&lt;router-link&gt;切换</span><br><span class="line">            return &#123;x: 0, y: 0&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果数据是异步的，滚动条需要异步滚动，否则滚动位置会不准确</p>
+<p>scrollBehavior 在 mounted 后执行，</p>
+<p>需要将滚动行为与异步行为（Ajax、路由动画）结合起来，有些麻烦，有写人处理不好队列任务，干脆用 setTimeout。。。</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903634484854797">https://juejin.cn/post/6844903634484854797</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022054521?utm_source=tag-newest">https://segmentfault.com/a/1190000022054521?utm_source=tag-newest</a><br><a target="_blank" rel="noopener" href="https://github.com/quasarframework/quasar/issues/1466">https://github.com/quasarframework/quasar/issues/1466</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router/blob/dev/examples/scroll-behavior/app.js">https://github.com/vuejs/vue-router/blob/dev/examples/scroll-behavior/app.js</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903634484854797">https://juejin.cn/post/6844903634484854797</a></p>
+<p>beforeRouteEnter 中提前获取数据是一种选择</p>
+<p>  beforeRouteEnter(to, from, next) {<br>    getPost(to.params.id, (err, post) &#x3D;&gt; {<br>      next(vm &#x3D;&gt; vm.setData(err, post))<br>    })<br>  },</p>
+<ul>
+<li>路由权限控制</li>
+</ul>
+<p>HOC<br>路由守卫</p>
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>Vuex 是一个状态管理库（数据库），其特点是持久化、集中式、响应式。其作用有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">基础数据的持久化：应用的生命周期内，用户信息、会话信息等基础信息的持久化</span><br><span class="line">跨级组件通信：通信有两种，数据和事件</span><br><span class="line">集中化管理：集中化的数据对象可以保证数据的一致性。课堂中，数据由发布、订阅、恢复产生，多点的生产，这要求统一的数据对象来保证一致性</span><br></pre></td></tr></table></figure>
+
+<p>对于数据流比较简单的系统，也只有用户信息需要用到 Store。</p>
+<p>注：对于跨级组件通信，个人更愿意用 Event Bus，临时私有数据放组件内部 State 会显得更内聚（可通过容器组件与展示组件解耦），且数据会随组件的销毁而销毁，不会像 Store 由于持久化的特性，需手动清空（比如课堂中关闭窗口时，需要手动 resetState）。</p>
+<ul>
+<li>使用原则</li>
+</ul>
+<p>mutation 不能有副作用，action 不但允许副作用，还能有返回。<br>action 的本质是发布订阅<br>mutation 中不能用异步，这样会造成状态的改变不可被 DevTools 追踪。</p>
+<p>mutation type 常量</p>
+<ul>
+<li>配合 Storage</li>
+</ul>
+<p>由于 State 存储在内存，如果想要数据在应用生命周期外也能持久化（比如 Token），则需存 Storage。另外，Storage 不是响应式的，但可以通过 state 的 set get 实现响应式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    get msg() &#123;</span><br><span class="line">      return localStorage.msg;</span><br><span class="line">    &#125;,</span><br><span class="line">    set msg(val) &#123;</span><br><span class="line">      localStorage.msg = val;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    setMsg(state, payload) &#123;</span><br><span class="line">      state.msg = payload;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>store 模式</li>
+</ul>
+<p>可以用 Vue.observable（vue2）、reactive（vue3） 创建一个简单的可响应数据对象来进行状态管理。</p>
+<p>store 模式没有专业 store（vuex、pinia） 的健壮和丰富的功能，比如 vuex 就提供 time-travel 调试和插件机制。</p>
+<p>Vue3,我决定不再使用Vuex</p>
+<p><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/state-management.html#%E4%BB%8E%E9%9B%B6%E6%89%93%E9%80%A0%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">https://v3.cn.vuejs.org/guide/state-management.html#%E4%BB%8E%E9%9B%B6%E6%89%93%E9%80%A0%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6898504898380464142">https://juejin.cn/post/6898504898380464142</a><br>使用Vue.observable()进行状态管理<br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019292569">https://segmentfault.com/a/1190000019292569</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e97502f89bde">https://www.jianshu.com/p/e97502f89bde</a><br><a target="_blank" rel="noopener" href="https://www.52cik.com/2020/02/29/vue-observable.html">https://www.52cik.com/2020/02/29/vue-observable.html</a></p>
+<h2 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h2><p>代理<br>mock<br>完全版 vue</p>
+<h2 id="nuxt"><a href="#nuxt" class="headerlink" title="nuxt"></a>nuxt</h2><p>ssr</p>
+<h2 id="vue3"><a href="#vue3" class="headerlink" title="vue3"></a>vue3</h2><ul>
+<li>Vue 2 的问题</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* TypeScript 支持不好</span><br><span class="line">* 逻辑抽象能力不强：HOC 或 Mixin 下的逻辑抽象有缺陷，逻辑关注点如果不被分离，意味着组件逻辑难以复用和分治，且难以阅读和理解，当项目体量变大时，会变得难以维护</span><br></pre></td></tr></table></figure>
+
+<p>注：对于第二点，在 Vue2 中往往通过更合理的组件颗粒度划分来进行组件抽象，以组件复用和分治来代替逻辑复用和分治。</p>
+<p>关注点分离（UI 的关注点分离、逻辑的关注点分离）</p>
+<p>Mixin 的缺陷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命名冲突：Mixin 很容易发生 property 名冲突</span><br><span class="line">隐式依赖：通过对 this 扩展的依赖，既不不显式，也不能被 linter</span><br><span class="line">扩展性差：可重用性是有限的：mixin 不能传递参数来改变它的逻辑，这降低了它们在抽象逻辑方面的灵活性</span><br></pre></td></tr></table></figure>
+
+<p>HOC 的缺陷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx</span><br></pre></td></tr></table></figure>
+
+<p>为了解决上述问题，Vue 3 中</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7055224376437784589">https://juejin.cn/post/7055224376437784589</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用 TypeScript 重写 Vue，获得更好的类型支持。</span><br><span class="line">在响应式系统上，使用 Proxy 替换 Object.defineProperty。</span><br><span class="line">加入 Compositon API 来更好的抽象组件逻辑。</span><br><span class="line">优化了Virtual DOM</span><br><span class="line">更好的Tree shaking</span><br><span class="line">&lt;script setup&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Composition API</li>
+</ul>
+<p>Composition API 逻辑抽象 提供了更好的代码组织和逻辑复用能力。</p>
+<p>注意：逻辑关注点分离的目的是复用和分治，将关注点相关代码收集一起独立为 useXXX 组合式函数，然后在 <code>setup</code> 组合式 API 的入口中组合，不要把所有逻辑不加抽象、不加简化地都写在其中，这样就失去了 compostion 的意义了，代码量大很难维护，是一种反模式。</p>
+<p>个人认为 Composition API 是对 Options API 的补充，而不是否定，如果 Geek 一点，使用 Script-Setup Sugar，可以节省很多代码量，可完全代替 Options API</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vueuse/vueuse">https://github.com/vueuse/vueuse</a></p>
+<p>Composition API 并不是把所有的逻辑都堆砌到 setup 中，setup 是组合入口，在这里组装 useXXX 的</p>
+<p>可以在 src 目录下建立 composables 或 hooks 目录，将所有的 useXXX 函数放此处。</p>
+<ul>
+<li>Function-based API</li>
+</ul>
+<p>vue3 使用 Function-based API 而不是  Class API 的原因</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68477600">https://zhuanlan.zhihu.com/p/68477600</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68099662">https://zhuanlan.zhihu.com/p/68099662</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61301989/vue-3-what-is-the-class-based-api-function-based-api-reactivity-api-and-compos">https://stackoverflow.com/questions/61301989/vue-3-what-is-the-class-based-api-function-based-api-reactivity-api-and-compos</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/325397290/answer/691200893">https://www.zhihu.com/question/325397290/answer/691200893</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/133819602">https://zhuanlan.zhihu.com/p/133819602</a></p>
+<p>如果用户钟情于 Class API，可使用 vue-class-component<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/451424245/answer/1886655211">https://www.zhihu.com/question/451424245/answer/1886655211</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/416652570/answer/1431359551">https://www.zhihu.com/question/416652570/answer/1431359551</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/436786508">https://zhuanlan.zhihu.com/p/436786508</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/453332049/answer/1835420993">https://www.zhihu.com/question/453332049/answer/1835420993</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010059669/article/details/112287552">https://blog.csdn.net/u010059669/article/details/112287552</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/126552443">https://zhuanlan.zhihu.com/p/126552443</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/328247960">https://www.zhihu.com/question/328247960</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/181673485">https://zhuanlan.zhihu.com/p/181673485</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/432068658">https://zhuanlan.zhihu.com/p/432068658</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fundebug/p/vue-virtual-dom.html">https://www.cnblogs.com/fundebug/p/vue-virtual-dom.html</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/271485214">https://www.zhihu.com/question/271485214</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111715881">https://zhuanlan.zhihu.com/p/111715881</a></p>
+<p>注：react hook 一样，处理 class component 关注点分离和难以复用问题，处理 function component 没有状态。</p>
+<p>注：Opetion API 也可以叫 Object API？</p>
+<ul>
+<li>底层变化</li>
+</ul>
+<p>Vue 3为什么要用 Proxy API 替代 DefineProperty API？</p>
+<p>proxy和defineproperty区别</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43443341/article/details/124041094">https://blog.csdn.net/weixin_43443341/article/details/124041094</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000041084082">https://segmentfault.com/a/1190000041084082</a></p>
+<ul>
+<li>vue 3 的正确打开方式</li>
+</ul>
+<p>必须要用 script-setup sugar （vue3 兼容 option 是为了兼容，最佳实际自然是抛弃历史包袱使用 setup）<br>必须要用 TS（vue3 用 ts 重写的目的就是为了加强对 ts 的支持）<br>必须要用 provide&#x2F;inject<br>必须舍弃 lifecycle hooks</p>
+<p><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/sfc-script-setup.html">https://v3.cn.vuejs.org/api/sfc-script-setup.html</a></p>
+<ul>
+<li>生态</li>
+</ul>
+<p>Vuex4 对 TypeScript 并不友好，所以我选择 Pinia<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/478752529">https://www.zhihu.com/question/478752529</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/413968851">https://zhuanlan.zhihu.com/p/413968851</a></p>
+<p>Volar<br>&lt; setup&gt; + TS + Volar &#x3D; 真香<br>Vue.js作者尤雨溪在VueConf 2021谈Vue 3 生态进展<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JK4y1G7bf">https://www.bilibili.com/video/BV1JK4y1G7bf</a><br>27:40 开始，可以说 Volar 是 Vetur 的继任者<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/401160130">https://zhuanlan.zhihu.com/p/401160130</a></p>
+<ul>
+<li>vue-class-component</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-class-component">https://github.com/vuejs/vue-class-component</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/355315790">https://zhuanlan.zhihu.com/p/355315790</a><br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/typescript.html#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6">https://cn.vuejs.org/v2/guide/typescript.html#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6</a></p>
+<p>注：vue-class-component匹配Vue 3的v8版本还没有正式的文档</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-class-component/tree/master/example/src/components">https://github.com/vuejs/vue-class-component/tree/master/example/src/components</a><br>注：可以是 tsx 文件 也可以是 vue 文件</p>
+<ul>
+<li>vue-property-decorator</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/kaorun343/vue-property-decorator/issues/294">https://github.com/kaorun343/vue-property-decorator/issues/294</a><br>注：应该暂时还不支持 vue3，package.json 中的 vue-class-component 版本还是 7.0</p>
+<p>vue class component 是vue 官方出的，vue property decorator 是社区出的<br>其中 vue class component 提供了 vue component 等等<br>vue property decorator 深度依赖了 vue class component 拓展出了很多操作符 @Prop @Emit @Inject 等等 可以说是 vue class component 的一个超集<br>正常开发的时候 你只需要使用 vue property decorator 中提供的操作符即可 不用再从vue class componen 引入vue component</p>
+<h2 id="vue-范式"><a href="#vue-范式" class="headerlink" title="vue 范式"></a>vue 范式</h2><p>JavaScript 是一个多范式的语言，支持 Class、Object、Function。Options API、Class API、Function API 。</p>
+<p>喜欢装饰器，Class Component，Service Class 风格的选择 Angular，喜欢纯函数，Function Component，Hooks 的选择 React，没有啥偏好的使用 Vue</p>
+<h3 id="与-React-区别"><a href="#与-React-区别" class="headerlink" title="与 React 区别"></a>与 React 区别</h3><p><a target="_blank" rel="noopener" href="https://github.com/lihongxun945/myblog/issues/21">https://github.com/lihongxun945/myblog/issues/21</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b7cd52868e95">https://www.jianshu.com/p/b7cd52868e95</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/396229611">https://zhuanlan.zhihu.com/p/396229611</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/309891718/answer/2282544794">https://www.zhihu.com/question/309891718/answer/2282544794</a></p>
+<p>响应式原理不一样<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/SirM2z/article/details/71195059">https://blog.csdn.net/SirM2z/article/details/71195059</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904113432444942">https://juejin.cn/post/6844904113432444942</a></p>
+<p>react 面试题</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903857135304718">https://juejin.cn/post/6844903857135304718</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6944863057000529933">https://juejin.cn/post/6944863057000529933</a></p>
+<p>响应式编程不是指的 RxJS Observable 那一套吗…和依赖追踪貌似关系不太大？</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904103504527374">https://juejin.cn/post/6844904103504527374</a></p>
+<p>目前市面上的三种框架，无非是以Vue为首的响应式ui，这种框架特定就是简单，在通常意义下运行得非常快，但大规模的依赖收集和清理会带来额外的运作成本和内存消耗。第二种就是react这类，依靠f -&gt; UI这种声明式方案来更新视图，这种的好处在于它比依赖native api的响应式框架灵活太多。最后一种就是svelte，这种东西完全就是为web component而生，特点就是傻快，但没办法做dsl转换了（没vdom）。不过因为它就作用于小范围的dom，往往在编写小页面和web component时会带来的性能会远超于使用virtual dom或者增量dom的前端三框架。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/446377023/answer/1756125862">https://www.zhihu.com/question/446377023/answer/1756125862</a></p>
+<p>个人倾向于认为即便有了调度的细粒度控制，整体上 React 计算 diff 的成本仍然比响应式框架高很多……像 concurrent mode 宣传中那样去优化跨越多帧（譬如 50-100ms 量级）的计算，无论怎么可控，听起来都已经像是有问题的了</p>
+<p>vue-cli3<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qinyuhua93/article/details/104820902">https://blog.csdn.net/qinyuhua93/article/details/104820902</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/471825415">https://www.zhihu.com/question/471825415</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/441467856">https://zhuanlan.zhihu.com/p/441467856</a></p>
+<p>vue3</p>
+<p>Naive UI<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/463736268/answer/1928879382">https://www.zhihu.com/question/463736268/answer/1928879382</a></p>
+<p>vuex&#x2F;Pinia</p>
+<p>Vue 3 将成为新的默认版本<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/460055155">https://zhuanlan.zhihu.com/p/460055155</a></p>
+<p>Vite2 + Vue3 + TypeScript + Pinia<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/441467856">https://zhuanlan.zhihu.com/p/441467856</a></p>
+<p>升级 vue 版本<br>npm update vue -S<br>npm update vue-template-compiler -D</p>
+<p>vue 和 vue-template-compiler，两者的版本需要同步，如果不同步项目会报错</p>
+<h2 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h2><ul>
+<li>ref、reactive、toRef、toRefs</li>
+</ul>
+<p>这几个 API 设计的目的就是为了在 setup 中使用响应式数据，setup 中不能使用 data 选项，只能通过上述方式使用响应式数据。</p>
+<p>ref：返回一个响应式且可变（官网咖啡图）的 ref 对象。既支持原始类型，也支持引用类型，当值为引用类型时，底层使用的是 reactive。在模板中可省略 value 属性（自动解包）。</p>
+<p>reactive：返回对象的响应式副本（基于 ES6 proxy 实现，响应式转换是“深层”的——它影响所有嵌套 property）。相当于 Vue2.x 的 Vue.observable () API（vue 2 中 data 选项的底层就是 Vue.observable，这两种方式都能创建响应式数据）。reactive 只支持将引用类型响应式，不支持原始类型。</p>
+<p>toRef：用来将断开的响应式对象（被 reactive 包裹的对象）中某一个属性包裹成 ref 对象，并保持其和原对象的引用</p>
+<p>toRefs：toRefs 和 toRef 功能是一致的，但是可以批量创建多个 ref 对象，注意，不支持可选 prop<br>响应式对象一旦被展开，其响应式特性会丢失，可用 toRefs 来解决</p>
+<ul>
+<li>attrs</li>
+</ul>
+<p>attrs 和 props 很相似，也是基于父子通信的数据，如果传递给组件的 attribute 或者 v-on 事件监听器，没有显式地声明在所接收组件的 props 或 emits 上，那么就会被挂到 attrs 上，且透传的 attribute 会自动添加到根元素的 attribute 中。</p>
+<p>选项式 API 中，可通过 $attrs 访问，setup 中可通过 context 访问，setup sugar（script-setup） 中可通过 useAttrs 访问。</p>
+<ul>
+<li>refs</li>
+</ul>
+<p>选项式 API 中，可通过 $refs 访问 DOM，setup 中通过 ref 或函数绑定访问 DOM。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;handleClick&quot; ref=&quot;btn&quot;&gt;btn&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  setup() &#123;</span><br><span class="line">	const btn = ref(null);</span><br><span class="line">    const handleClick = () =&gt; &#123;</span><br><span class="line">	  console.log(btn.value);</span><br><span class="line">	&#125;;</span><br><span class="line">	return &#123;</span><br><span class="line">	  btn,</span><br><span class="line">	  handleClick,</span><br><span class="line">	&#125;;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;handleClick&quot; :ref=&quot;refBtn&quot;&gt;btn&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  setup() &#123;</span><br><span class="line">	let btn = null;</span><br><span class="line">	const refBtn = (el)=&gt; &#123;</span><br><span class="line">	  btn = el;</span><br><span class="line">	&#125;;</span><br><span class="line">    const handleClick = () =&gt; &#123;</span><br><span class="line">      console.log(btn, 11);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">	  refBtn,</span><br><span class="line">	  handleClick,</span><br><span class="line">	&#125;;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  &lt;li </span><br><span class="line">	v-for=&quot;(item, index) in list&quot; </span><br><span class="line">	:key=&quot;index&quot;</span><br><span class="line">	:ref=&quot;refLi&quot;</span><br><span class="line">  &gt;</span><br><span class="line">	&#123;&#123;item&#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line"></span><br><span class="line"> setup() &#123;</span><br><span class="line">   const list = reactive([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);</span><br><span class="line">const elLi = reactive([]);</span><br><span class="line">const refLi = (el) =&gt; &#123;</span><br><span class="line">  elLi.push(el);</span><br><span class="line">&#125;;</span><br><span class="line">   nextTick(() =&gt; &#123;</span><br><span class="line">  console.log(elLi, 2222);</span><br><span class="line">   &#125;);</span><br><span class="line">return &#123;</span><br><span class="line">  list,</span><br><span class="line">     refLi,</span><br><span class="line">&#125;;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>defineComponent</li>
+</ul>
+<p>TS 类型本身是图灵完备的，类型图灵不完备的是发展不出类型体操的。</p>
+<p>类型体操自然也有他的作用，比如说 Vue 就通过了大量的类型体操才实现了 defineComponent 的类型推导，否则你面对的可能是大量的 unknown 或 any。</p>
+<p>defineComponent 最重要的是：在TypeScript下，给予了组件 正确的参数类型推断 </p>
+<p>将一个 组件用 defineComponent 包裹，仅仅只是为了 在 ts 下对传递给 option 组件 setup() 的参数进行类型推断（script setup 没有此问题，defineProps 有类型）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">status</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">      <span class="attr">default</span>: <span class="string">&#x27;primary&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 这里的 props 被推到为 any 了</span></span><br><span class="line">  <span class="title function_">setup</span>(<span class="params">props</span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<ul>
+<li>emits</li>
+</ul>
+<p>setup 选项的 this 不指向当前实例(undefined)，只能通过 context 使用 emit（推荐使用 emits 选项来定义组件可触发的事件），setup sugar 中通过 defineEmits 的返回使用 emit</p>
+<p>emits 或 defineEmits 用来定义组件可向其父组件触发的事件。强烈建议声明组件所 emit 的事件，这尤为重要，vue3 中移除了 .native 修饰符，任何未在 emits 中声明的事件都将默认绑定到组件的根节点上（与 .native 修饰符的作用一样），对于那些被透传的原生事件，会被触发两次，emit 一次和应用在根元素上的原生事件一次。</p>
+<p>vue2 中，组件上的 v-on 只会监听自定义事件 (用 $emit 触发的事件)，如果要监听根元素的原生事件，可以使用 .native 修饰符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;runoob @click=&quot;handleClick&quot;&gt;&lt;/runoob&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码，在 Vue3 中，如果组件内部没有用 emits 声明事件，则 click 事件会被。而在 Vue2 中，click 算自定义事件，如果想成为原生事件需要加 native 修饰符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;runoob @click.native=&quot;handleClick&quot;&gt;&lt;/runoob&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>expose</li>
+</ul>
+<p>Vue3 新特性，如果是 options api 类型的组件，不声明 expose 时，默认暴露当前组件实例的全部内容，声明了 expose 选项，expose 数组内标记的才会暴露。（expose:[]则什么都不暴露，注意这个问题。也可以利用这个特性提高组件使用的规范。）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default defineComponent(&#123;</span><br><span class="line">  expose: [&#x27;nameA&#x27;,...], // 可以 expose 当前实例的任何内容</span><br><span class="line">  methods: &#123;</span><br><span class="line">    nameA()&#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;script setup&gt;</code> setup 语法糖的情况下，默认是封闭的，需要获取当前组件里的内容的话，必须显式 expose 出去。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&#x27;ts&#x27; setup&gt;</span><br><span class="line">import &#123;ref&#125; from &#x27;vue&#x27;;</span><br><span class="line">let refData = ref(&#x27;寒蝉鸣泣之时&#x27;)</span><br><span class="line">defineExpose(&#123;</span><br><span class="line">  refData,</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>TS类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123; ref,Ref &#125; from &quot;vue&quot;;</span><br><span class="line">//&gt; defineExpose</span><br><span class="line">interface exFace &#123;</span><br><span class="line">  ex1:Ref&lt;string&gt;,</span><br><span class="line">  ex2?:number</span><br><span class="line">&#125;</span><br><span class="line">let ex1 = ref(&#x27;1&#x27;)</span><br><span class="line">let exObj:exFace = &#123;</span><br><span class="line">  ex1,</span><br><span class="line">&#125;</span><br><span class="line">// 源码类型: const defineExpose: (exposed?: Record&lt;string, any&gt;) =&gt; void</span><br><span class="line">defineExpose(exObj)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jsx</li>
+</ul>
+<p>在 vue3 中使用 jsx，只能通过 option api 中的 render 函数或 setup 函数返回渲染函数，<code>&lt;script setup&gt;</code> 中不可使用。</p>
+<p>const test &#x3D; {<br>  render(createElement) {  &#x2F;&#x2F; vue3 中 h 函数由 Vue 提供<br>      return createElement(<br>      ‘div’, [<br>        createElement(‘span’, ‘Heldlo’),<br>        ‘ world!’<br>      ]<br>    );<br>  }<br>};</p>
+<p>&#x2F;&#x2F; 组件的注册<br>&#x2F;&#x2F; 全局注册<br>Vue.component(‘Test’, test)<br>&#x2F;&#x2F; 局部注册<br>components: {<br>  Test: test,<br>}</p>
+<p> var test &#x3D; {<br>    setup() {<br>      return () &#x3D;&gt; {<br>      return h(<br>      ‘div’, [<br>        h(‘span’, ‘Heldlo’),<br>        ‘ world!’<br>      ]<br>    );<br>      }<br>  },</p>
+<p>注意：cdn 模式下不能使用 jsx，只能使用 vdom，jsx 需要使用 Babel 插件来转译</p>
+<p>const test &#x3D; {<br>  render(createElement) {  &#x2F;&#x2F; vue3 中 h 函数由 Vue 提供<br>      return createElement(<br>      ‘div’, [<br>        createElement(‘span’, ‘Heldlo’),<br>        ‘ world!’<br>      ]<br>    );<br>  }<br>};</p>
+<p>&#x2F;&#x2F; 组件的注册：全局注册、局部注册<br>Vue.component(‘Test’, test)</p>
+<h2 id="script-setup"><a href="#script-setup" class="headerlink" title="script setup"></a>script setup</h2><p><code>&lt;script setup&gt;</code> 语法糖里面的代码会被编译成组件 setup() 函数的内容。</p>
+<ul>
+<li><code>&lt;script setup&gt;</code> 中无需 return 声明的变量、函数以及 import 引入的内容，即可在 <template/> 使用</li>
+</ul>
+<p>标准组件<code>&lt;script&gt;</code>需要写setup函数并繁琐retrun</p>
+<ul>
+<li><p><code>&lt;script setup&gt;</code>引入组件将自动注册</p>
+</li>
+<li><p>组件通信:在<code>&lt;script setup&gt;</code>中必须使用 defineProps 和 defineEmits API 来替代 props 和 emits</p>
+</li>
+<li><p><code>&lt;script setup&gt;</code>需主动向父组件暴露子组件属性 ：defineExpose</p>
+</li>
+</ul>
+<p>使用 <code>&lt;script setup&gt;</code> 的组件，父组件是无法通过ref 或者 $parent 获取到子组件的ref等响应数据，需要通过defineExpose 主动暴露</p>
+<ul>
+<li>useSlots 和 useAttrs</li>
+</ul>
+<p>用于在 JSX 模式下使用 slot 和 attr，SFC 模式下，在 <template/> 通过 <slot/> 标签就可以渲染插槽</p>
+<ul>
+<li>useRoute 和 useRouter</li>
+</ul>
+<p>setup 里不能访问 this，不能再直接访问 this.$router 或 this.$route。（getCurrentInstance可以替代this但不推荐）<br>推荐：使用useRoute 函数和useRouter函数替代this.$route 和 this.$router</p>
+<p>命名空间组件<br>Suspense<br>编译器宏：withDefaults<br><code>&lt;style&gt;</code> 特性<br>watchEffect 和 watch</p>
+<h3 id="编译-html-字符串"><a href="#编译-html-字符串" class="headerlink" title="编译 html 字符串"></a>编译 html 字符串</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54617255/render-and-compile-string-using-vue-js">https://stackoverflow.com/questions/54617255/render-and-compile-string-using-vue-js</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/51006553/render-v-html-as-vue-components">https://stackoverflow.com/questions/51006553/render-v-html-as-vue-components</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1467371">https://cloud.tencent.com/developer/article/1467371</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lvonve/p/12470666.html">https://www.cnblogs.com/lvonve/p/12470666.html</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/411745998">https://www.zhihu.com/question/411745998</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/436260027">https://www.zhihu.com/question/436260027</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000023534933">https://segmentfault.com/q/1010000023534933</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/153387704">https://zhuanlan.zhihu.com/p/153387704</a></p>
+<p>jsx 和 SFC template 只能在脚手架下才能被编译为 vdom，直接用 <code>&lt;script&gt;</code> 引入的 vue 下不能使用<br><code>&lt;script&gt;</code> 引入的 vue 下只能使用 template 选项和 render createElement 手动写 vdom</p>
+<p>不使用脚手架，只 <code>&lt;script&gt;</code> 引入来使用 vue，会大打折扣？损失哪些功能，只能用哪些功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  template: &#x27;&lt;App/&gt;&#x27;,</span><br><span class="line">  components: &#123; </span><br><span class="line">    App,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;).$mount(&#x27;#app&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.</p>
+<p>意思是，要么使用完整版带 compoler 的 vue 在运行时动态编译 template，要不用 render 替换 template。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&#x27;#app&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>注：jsx 中使用其他组件，不需要用 components 注册</p>
+<p>vue 项目要先编译再运行：编译  —》 运行</p>
+<p>template 和 jsx 会预编译为 vdom（能静态分析，能提就能确定dom结构），但是对于 html 字符串（首先编译器不知道该不该编译，另外字符串不一定是静态的，可能是后台返回的），不管是 slot、v-html，mustashe 插值，都是按普通字符串处理，不会被编译，要想编译 html 字符串只能使用完整版的 vue，以 template 选项或 Vue.compiler 的方式在运行时动态编译。</p>
+<p>这样是错误的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      str: &#x27;&lt;div&gt;&lt;span&gt;hello&lt;/span&gt;,&lt;/div&gt;&#x27;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const str = this.str.replace(/,/g, this.world());</span><br><span class="line">    console.log(this.world()); // vNode 是 Object</span><br><span class="line">    return &lt;div domPropsInnerHTML=&#123;str&#125;&gt;&lt;/div&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    world() &#123;</span><br><span class="line">      return &lt;span&gt;world&lt;/span&gt;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>配置 vue-cli</li>
+</ul>
+<p>引入完整版 vue，有 2 种配置方法。</p>
+<p>方法 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  runtimeCompiler:true,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>方法 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&#x27;path&#x27;);</span><br><span class="line">function resolve (dir) &#123;</span><br><span class="line">  return path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  chainWebpack: config =&gt; &#123;</span><br><span class="line">    config.resolve.alias.set(&#x27;vue$&#x27;,&#x27;vue/dist/vue.esm.js&#x27;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以这样写组件了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Test.js，jsx 后缀也可以</span><br><span class="line">export default &#123;</span><br><span class="line">  template: &#x27;&lt;div&gt;&lt;span&gt;hello&lt;/span&gt;&lt;el-button @click=&quot;handleClick&quot;&gt;world&lt;/el-button&gt;&lt;/div&gt;&#x27;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleClick() &#123;</span><br><span class="line">      alert();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// Test.jsx</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      str: &#x27;&lt;div&gt;&lt;span&gt;hello&lt;/span&gt;,&lt;/div&gt;&#x27;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render(h) &#123;</span><br><span class="line">    str = this.str.replace(/,/g, &#x27;&lt;el-button @click=&quot;handleClick&quot;&gt;world&lt;/el-button&gt;&#x27;);</span><br><span class="line">    const render = &#123;</span><br><span class="line">      template: str,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick() &#123;</span><br><span class="line">          alert();</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    return h(render);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  ...</span><br><span class="line">  render() &#123;</span><br><span class="line">    const str = this.str.replace(/,/g, &#x27;&lt;el-button @click=&quot;handleClick&quot;&gt;world&lt;/el-button&gt;&#x27;);</span><br><span class="line">    const Foo = Vue.extend(&#123;</span><br><span class="line">      template: str,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick() &#123;</span><br><span class="line">          alert();</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &lt;Foo&gt;&lt;/Foo&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Greeting /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">/* eslint-disable */</span><br><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  // render(h) &#123;</span><br><span class="line">  //   return h(foo, &#123;&#125;);</span><br><span class="line">  // &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    aa() &#123;</span><br><span class="line">      return &lt;div&gt;cccc&lt;/div&gt;;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    cc() &#123;</span><br><span class="line">      // const html = &lt;button onClick=&#123;this.handleClick&#125;&gt;btn&lt;/button&gt;;</span><br><span class="line">      const dd = Vue.extend(&#123;</span><br><span class="line">        template: &#x27;&lt;div&gt;&lt;button @click=&quot;this.handleClick&quot;&gt;btn&lt;/button&gt;&lt;/div&gt;&#x27;,</span><br><span class="line">      &#125;);</span><br><span class="line">      console.log(dd, 2222);</span><br><span class="line">      // const vNode = this.aa();</span><br><span class="line">      // console.log(vNode, 232323);</span><br><span class="line">      return dd;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  components: &#123;</span><br><span class="line">    &#x27;Greeting&#x27;: &#123;</span><br><span class="line">      data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          msg: &#x27;hello world&#x27;,</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      template: &#x27;&lt;div&gt;&lt;button @click=&quot;handleClick&quot;&gt;btn&lt;/button&gt;&#123;&#123;msg&#125;&#125;&lt;Bar /&gt;&lt;/div&gt;&#x27;,</span><br><span class="line"></span><br><span class="line">      methods: &#123;</span><br><span class="line">        handleClick() &#123;</span><br><span class="line">          alert(&#x27;ok&#x27;);</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      components: &#123;</span><br><span class="line">        &#x27;Bar&#x27;: &#123;</span><br><span class="line">          data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">              name: &#x27;bar&#x27;,</span><br><span class="line">            &#125;;</span><br><span class="line">          &#125;,</span><br><span class="line"></span><br><span class="line">          created() &#123;</span><br><span class="line">            const foo = &#x27;foo&#x27;;</span><br><span class="line">            this.$options.template = `&lt;div&gt;&#123;&#123;name&#125;&#125;$&#123;foo&#125;&lt;/div&gt;`;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>工作中有需要对 v-html 返回数据做数据绑定的需求，比如题干中答题，这时候要不使用原生 DOM，要不使用 vue 运行时的编译能力了</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,1 +1,307 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="算法面试题"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>算法面试题 - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2020/05/10/Interview-Algorithms/">算法面试题</a></h1><div class="post-info"><span class="date">2020-05-10</span> <span class="category"><a href="/categories/interview/">interview</a></span></div></div><div class="content"><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>写一个函数，列出一个整数所有的分解类型，比如对于数字4，可以做拆分得到下列字符串</p><p>1111<br>112<br>121<br>13<br>211<br>22<br>31<br>4</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//Decrease-and-conquer</span><br><span class="line">// f(1) = 0^f(1)=[[1]]</span><br><span class="line">// f(2) = 1^f(1) U 0^f(2) = [[1,1],[2]]</span><br><span class="line">// f(3) = 2^f(1) U 1^f(2) U 0^(3) = [[2,1],[1,1,1],[1,2],[3]]</span><br><span class="line">var resolve = (function ()&#123;</span><br><span class="line">    var table = [[],[[1]]];</span><br><span class="line">    //closure for cache</span><br><span class="line">    return function (number)&#123;</span><br><span class="line">        //recursion function</span><br><span class="line">        var callee = arguments.callee;</span><br><span class="line">        if (!table[number])&#123;</span><br><span class="line">            var arr = [];</span><br><span class="line">            for (var i=1;i&lt;number ;i++ )&#123;</span><br><span class="line">                //recursion for sub result</span><br><span class="line">                var subs = callee(number-i);</span><br><span class="line">                subs.forEach(function (sub)&#123;</span><br><span class="line">                    arr.push(sub.concat([i]));</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            arr.push([number]);</span><br><span class="line">            //cache result</span><br><span class="line">            table[number] = arr;</span><br><span class="line">        &#125;</span><br><span class="line">        return table[number];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure><ul><li>求和</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) &#123; <span class="comment">// n &lt;= 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> n + add(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(<span class="number">50</span>);</span><br></pre></td></tr></table></figure><h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul><li>按时间从小到大排序输出每个分数大于 60 分的人的姓名和对应分数。</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  A: &#123;</span><br><span class="line">    name: <span class="string">'aaa'</span>,</span><br><span class="line">    score: <span class="number">60</span>,</span><br><span class="line">    time: <span class="string">'Mon May 16 2016 18:48:34 GMT+0800 (中国标准时间)'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  B: &#123;</span><br><span class="line">    name: <span class="string">'bbb'</span>,</span><br><span class="line">    score: <span class="number">50</span>,</span><br><span class="line">    time: <span class="string">'Mon May 16 2017 18:48:34 GMT+0800 (中国标准时间)'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  C: &#123;</span><br><span class="line">    name: <span class="string">'ccc'</span>,</span><br><span class="line">    score: <span class="number">90</span>,</span><br><span class="line">    time: <span class="string">'Mon May 16 2018 18:48:34 GMT+0800 (中国标准时间)'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  D: &#123;</span><br><span class="line">    name: <span class="string">'ddd'</span>,</span><br><span class="line">    score: <span class="number">80</span>,</span><br><span class="line">    time: <span class="string">'Mon May 16 2014 18:48:34 GMT+0800 (中国标准时间)'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  E: &#123;</span><br><span class="line">    name: <span class="string">'eee'</span>,</span><br><span class="line">    score: <span class="number">81</span>,</span><br><span class="line">    time: <span class="string">'Mon May 15 2014 18:48:34 GMT+0800 (中国标准时间)'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res = <span class="built_in">Object</span>.values(obj)</span><br><span class="line">  .filter(<span class="function">(<span class="params">&#123; score &#125;</span>) =&gt;</span> score &gt; <span class="number">60</span>)</span><br><span class="line">  .sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Date</span>(a.time).getTime() -<span class="keyword">new</span> <span class="built_in">Date</span>(b.time).getTime());</span><br></pre></td></tr></table></figure><ul><li>已知后台返回树形数据如下所示，将其处理为一个树形结构。</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">56</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">81</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">74</span>, <span class="attr">parentId</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">76</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">63</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">80</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">87</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">62</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">86</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure><p>树形结构如下所示：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tree = &#123;</span><br><span class="line">  id: <span class="number">74</span>,</span><br><span class="line">  parentId: <span class="literal">null</span>,</span><br><span class="line">  children: [</span><br><span class="line">    &#123;</span><br><span class="line">      id: <span class="number">62</span>,</span><br><span class="line">      parentId: <span class="number">74</span></span><br><span class="line">      children: [</span><br><span class="line">      	...</span><br><span class="line">      ]</span><br><span class="line">	  &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findParentEl</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (data[i].id === id) &#123;</span><br><span class="line">      <span class="keyword">return</span> data[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data.forEach(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!el.parentId) &#123;</span><br><span class="line">    root = el;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> parentEl = findParentEl(el.parentId);</span><br><span class="line">  parentEl.children = [...(parentEl.children || []), el];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(root);</span><br></pre></td></tr></table></figure><p>以空间换时间，可将上面的算法时间复杂度由 O(n^2) 优化到 O(n)。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> idMap = data.reduce(<span class="function">(<span class="params">acc, el, i</span>) =&gt;</span> &#123;</span><br><span class="line">  acc[el.id] = i;</span><br><span class="line">  <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">data.forEach(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!el.parentId) &#123;</span><br><span class="line">    root = el;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> parentEl = data[idMap[el.parentId]];</span><br><span class="line">  parentEl.children = [...(parentEl.children || []), el]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="算法面试题"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>算法面试题 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/05/10/Interview-Algorithms/">
+                算法面试题
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-05-10</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/interview/">interview</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>写一个函数，列出一个整数所有的分解类型，比如对于数字4，可以做拆分得到下列字符串</p>
+<p>1111<br>112<br>121<br>13<br>211<br>22<br>31<br>4</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//Decrease-and-conquer</span><br><span class="line">// f(1) = 0^f(1)=[[1]]</span><br><span class="line">// f(2) = 1^f(1) U 0^f(2) = [[1,1],[2]]</span><br><span class="line">// f(3) = 2^f(1) U 1^f(2) U 0^(3) = [[2,1],[1,1,1],[1,2],[3]]</span><br><span class="line">var resolve = (function ()&#123;</span><br><span class="line">    var table = [[],[[1]]];</span><br><span class="line">    //closure for cache</span><br><span class="line">    return function (number)&#123;</span><br><span class="line">        //recursion function</span><br><span class="line">        var callee = arguments.callee;</span><br><span class="line">        if (!table[number])&#123;</span><br><span class="line">            var arr = [];</span><br><span class="line">            for (var i=1;i&lt;number ;i++ )&#123;</span><br><span class="line">                //recursion for sub result</span><br><span class="line">                var subs = callee(number-i);</span><br><span class="line">                subs.forEach(function (sub)&#123;</span><br><span class="line">                    arr.push(sub.concat([i]));</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            arr.push([number]);</span><br><span class="line">            //cache result</span><br><span class="line">            table[number] = arr;</span><br><span class="line">        &#125;</span><br><span class="line">        return table[number];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>递归求和</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) &#123; <span class="comment">// n &lt;= 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> n + <span class="title function_">add</span>(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">add</span>(<span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>斐波那契数列</li>
+</ul>
+<p>斐波那契数列以兔子繁殖为例子而引入，也称为兔子数列，在种子数字 0 和 1 之后，后续的每一个数字都是前面两个数字之和，数列的当前数字与前一个数字的比值无限趋近于黄金分割数 1.61803398875…，故又称为黄金分割数列，<code>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987</code>。在数学上，斐波那契数列是以递归的方法来定义：<code>F0=0，F1=1，Fn=F(n-1)+F(n-2)（n&gt;=2，n∈N*）</code>。</p>
+<p>斐波那契数列 F(n) 值（第 n + 1 项）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">0</span> || n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">fibonacci</span>(n - <span class="number">2</span>) + <span class="title function_">fibonacci</span>(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fibonacci</span>(<span class="number">6</span>); <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> c;</span><br><span class="line">  <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    c = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = c; <span class="comment">// 可简写为 [a, b] = [b, a + b];</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fibonacci</span>(<span class="number">6</span>); <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+
+<p>斐波那契数列 Sn 和（前 n + 1 项和）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> c;</span><br><span class="line">  <span class="keyword">let</span> s = a + b;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    c = a + b;</span><br><span class="line">    s = s + c;</span><br><span class="line">    a = b;</span><br><span class="line">    b = c;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fibonacci</span>(<span class="number">9</span>); <span class="comment">// 88</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>杨辉三角</li>
+</ul>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul>
+<li>按时间从小到大排序输出每个分数大于 60 分的人的姓名和对应分数。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">A</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;aaa&#x27;</span>,</span><br><span class="line">    <span class="attr">score</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">time</span>: <span class="string">&#x27;Mon May 16 2016 18:48:34 GMT+0800 (中国标准时间)&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">B</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;bbb&#x27;</span>,</span><br><span class="line">    <span class="attr">score</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="attr">time</span>: <span class="string">&#x27;Mon May 16 2017 18:48:34 GMT+0800 (中国标准时间)&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">C</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;ccc&#x27;</span>,</span><br><span class="line">    <span class="attr">score</span>: <span class="number">90</span>,</span><br><span class="line">    <span class="attr">time</span>: <span class="string">&#x27;Mon May 16 2018 18:48:34 GMT+0800 (中国标准时间)&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">D</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;ddd&#x27;</span>,</span><br><span class="line">    <span class="attr">score</span>: <span class="number">80</span>,</span><br><span class="line">    <span class="attr">time</span>: <span class="string">&#x27;Mon May 16 2014 18:48:34 GMT+0800 (中国标准时间)&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">E</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;eee&#x27;</span>,</span><br><span class="line">    <span class="attr">score</span>: <span class="number">81</span>,</span><br><span class="line">    <span class="attr">time</span>: <span class="string">&#x27;Mon May 15 2014 18:48:34 GMT+0800 (中国标准时间)&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res = <span class="title class_">Object</span>.<span class="title function_">values</span>(obj)</span><br><span class="line">  .<span class="title function_">filter</span>(<span class="function">(<span class="params">&#123; score &#125;</span>) =&gt;</span> score &gt; <span class="number">60</span>)</span><br><span class="line">  .<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> <span class="keyword">new</span> <span class="title class_">Date</span>(a.<span class="property">time</span>).<span class="title function_">getTime</span>() -<span class="keyword">new</span> <span class="title class_">Date</span>(b.<span class="property">time</span>).<span class="title function_">getTime</span>());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>已知后台返回树形数据如下所示，将其处理为一个树形结构。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">56</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">81</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">74</span>, <span class="attr">parentId</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">76</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">63</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">80</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">87</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">62</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">86</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>树形结构如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tree = &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">74</span>,</span><br><span class="line">  <span class="attr">parentId</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">62</span>,</span><br><span class="line">      <span class="attr">parentId</span>: <span class="number">74</span></span><br><span class="line">      <span class="attr">children</span>: [</span><br><span class="line">      	...</span><br><span class="line">      ]</span><br><span class="line">	  &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findParentEl</span>(<span class="params">id</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.<span class="property">length</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (data[i].<span class="property">id</span> === id) &#123;</span><br><span class="line">      <span class="keyword">return</span> data[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!el.<span class="property">parentId</span>) &#123;</span><br><span class="line">    root = el;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> parentEl = <span class="title function_">findParentEl</span>(el.<span class="property">parentId</span>);</span><br><span class="line">  parentEl.<span class="property">children</span> = [...(parentEl.<span class="property">children</span> || []), el];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(root);</span><br></pre></td></tr></table></figure>
+
+<p>以空间换时间，可将上面的算法时间复杂度由 O(n^2) 优化到 O(n)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> idMap = data.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, el, i</span>) =&gt;</span> &#123;</span><br><span class="line">  acc[el.<span class="property">id</span>] = i;</span><br><span class="line">  <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!el.<span class="property">parentId</span>) &#123;</span><br><span class="line">    root = el;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> parentEl = data[idMap[el.<span class="property">parentId</span>]];</span><br><span class="line">  parentEl.<span class="property">children</span> = [...(parentEl.<span class="property">children</span> || []), el]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

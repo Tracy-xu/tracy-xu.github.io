@@ -1,1 +1,589 @@
-<!-- build time:Wed Aug 17 2022 14:44:54 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="Tracy-xu&#39;Blog"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><title>page - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a><h1 id="main-title" class="title">Tracy-xu'Blog</h1></div></header><section class="main"><div class="post"><div class="post-header index"><h1 class="title"><a href="/2021/12/27/UI-Design-Specification/">Untitled</a></h1><div class="post-info"><span class="date">2021-12-27</span></div></div><div class="content"><p>UI 设计规范。</p><h2 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h2><ul><li>颜色</li><li>文字：字体、字号、行高</li><li>icon</li></ul><h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>组件化是标准化中最重要的部分，组件化的目的是复用。表单、表格、分页、弹框…是 GUI 软件最基本组成，UI 容易组件化，特别是风格比较固定的后台系统，而前台由于展示的多样性，前台一般都不太容易完全组件化</p><ul><li>表单</li></ul><p>表单验证：对表单各字段进行验证(必填、类型[数值型]、格式[密码、手机号、邮箱])，是前后端都要做的，前端做的目的是为了更好的交互，而后端做的目的是为了保证数据安全</p><p>输入限制：现有的 type 不但受浏览器的实现，而且不好用，比如 type=”number” 不能限制整数、正整数的需求</p><ul><li>表格</li></ul><p>合并单元格，多级表头，斜线表头，固定行和列</p><ul><li>图片</li></ul><p>缺省：onerror 处理缺省图片时，需要卸载 error 来处理缺省图片 404 时引起的死循环，但 error 不太好卸载，所以最好的解决方案是用 new Img</p><p>图片预览</p><p>轮播</p><p>压缩和EXIF 信息处理</p><ul><li>弹框</li></ul><p>原生、vue visible.sync</p><ul><li>图表</li></ul><p>维度、指标</p><ul><li><p>树</p></li><li><p>分页</p></li></ul><p>移动端分页，pc 分页，点击加载更多<br>pageSize、curPage、total<br>列表项的删除</p><ul><li>面包屑</li></ul><p>面包屑用来表示当前页面或页面中资源的路径（比如页面层级，资源查询参数层级），描述页面或资源的位置</p></div></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2021/12/01/PWA/">PWA</a></h1><div class="post-info"><span class="date">2021-12-01</span> <span class="category"><a href="/categories/javascript/">javascript</a></span></div></div><div class="content"><p>Web App Manifest<br>Service Worker<br>…</p></div></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2021/07/26/JavaScript-Type-System/">JavaScript 类型系统</a></h1><div class="post-info"><span class="date">2021-07-26</span> <span class="category"><a href="/categories/javascript/">javascript</a></span></div></div><div class="content"><p>类型动静态（静态类型检测），类型强弱（类型转换）。</p><p>JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let foo = 42; // foo is now a number</span><br><span class="line">foo = &apos;hello&apos;; // foo is now a string</span><br><span class="line">foo = true;  // foo is now a boolean</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 + &apos;&apos;;</span><br><span class="line">!!1; // 这个算隐式还是显式</span><br></pre></td></tr></table></figure></div><a href="/2021/07/26/JavaScript-Type-System/" class="read-more">Read More</a></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2021/01/22/React/">React</a></h1><div class="post-info"><span class="date">2021-01-22</span> <span class="category"><a href="/categories/javascript/">javascript</a></span></div></div><div class="content"><p>为什么 React 需要 Immutable？<br><a href="https://blog.csdn.net/KlausLily/article/details/117137249" target="_blank" rel="noopener">https://blog.csdn.net/KlausLily/article/details/117137249</a><br><a href="https://zhuanlan.zhihu.com/p/20295971" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20295971</a><br><a href="https://www.zhihu.com/question/446377023" target="_blank" rel="noopener">https://www.zhihu.com/question/446377023</a></p></div><a href="/2021/01/22/React/" class="read-more">Read More</a></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2020/12/02/Currying/">科里化</a></h1><div class="post-info"><span class="date">2020-12-02</span> <span class="category"><a href="/categories/javascript/">javascript</a></span></div></div><div class="content"><ul><li>版本 1</li></ul><p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.length === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> fn(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> currying(fn.bind(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = currying(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure><ul><li>版本 2</li></ul><p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p><p>有闭包的 bug</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = []; <span class="comment">// 搜集参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">...arg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;  <span class="comment">// 递归的中断条件，改为 arg.length === 0 更合适</span></span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, args); <span class="comment">// 改为 fn(...args) 更合适</span></span><br><span class="line">    &#125;</span><br><span class="line">    args = args.concat(arg);  <span class="comment">// ?</span></span><br><span class="line">    <span class="keyword">return</span> foo;  <span class="comment">// ?</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = currying(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure><ul><li>版本 3</li></ul><p>这个版本中，被科里化的函数的形参必须要有长度</p><p><a href="https://zhuanlan.zhihu.com/p/296852112" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/296852112</a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">_fn</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (args.length &gt;= fn.length) &#123; <span class="comment">// 这里通过型参长度来判断是否要调用，所以add的参数不能...</span></span><br><span class="line">      <span class="keyword">return</span> fn(...args) <span class="comment">// 不需要 call，fn.call(this, ...args)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...remain</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> _fn(...args, ...remain); <span class="comment">// 不需要 call，_fn.call(this, ...args, ...remain);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个版本中，被科里化函数的形参长度必须固定</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b, c, d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c +d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = currying(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure><p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用</p><p>判断收集结束有很多办法：对比实参和形参的长度（这样被科里化的函数形参不能使用…）；判断实参的个数是否为 0（不传）；</p><p>call、apply、bind 的主要作用是绑定this上下文，另外 apply 还可以用来传 spread 数组，不过已经被 es6 spread 代替</p><p>数组求和。。。</p><p>var arr = [1, 2, 3];<br>eval(arr.join(‘+’));</p></div></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2020/10/15/Vue/">Vue 技术要点</a></h1><div class="post-info"><span class="date">2020-10-15</span> <span class="category"><a href="/categories/project/">project</a></span></div></div><div class="content"><h2 id="Vue-简介"><a href="#Vue-简介" class="headerlink" title="Vue 简介"></a>Vue 简介</h2><ul><li>优点</li></ul><p>渐进式：框架设计（可以直接引入使用，仅使用核心渲染功能，也可以配合构建工具，集成路由和数据管理，采用单文件组件的开发模式）<br>声明式渲染：响应式（数据驱动视图，当数据改变后，会通知视图，不是指响应式编程 Reactive Programming），不需要传统那样命令式的操作 DOM<br>组件化：<br>工程化：Vue-cli<br>全家桶？：vuex、vue-router 集中式数据管理和客户端路由</p><p>声明式渲染（Declarative View）与之相对应的是命令式渲染（Imperative View）</p></div><a href="/2020/10/15/Vue/" class="read-more">Read More</a></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2020/10/01/Interact-Live-Class/">互动直播课堂前端技术设计</a></h1><div class="post-info"><span class="date">2020-10-01</span> <span class="category"><a href="/categories/project/">project</a></span></div></div><div class="content"><p>按同屏的技术实现方式来划分，课堂分为<strong>录屏课堂</strong>和<strong>指令课堂</strong>。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。</p><p>指令同屏中可以选择同屏的内容，这样可以保护隐私。</p></div><a href="/2020/10/01/Interact-Live-Class/" class="read-more">Read More</a></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2020/06/15/K12/">K12 需求概要</a></h1><div class="post-info"><span class="date">2020-06-15</span> <span class="category"><a href="/categories/project/">project</a></span></div></div><div class="content"><p>用户：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">个人老师</span><br><span class="line">机构学校</span><br><span class="line">培训中心</span><br></pre></td></tr></table></figure></div><a href="/2020/06/15/K12/" class="read-more">Read More</a></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2020/06/01/Interview-Node/">Node 面试题</a></h1><div class="post-info"><span class="date">2020-06-01</span> <span class="category"><a href="/categories/interview/">interview</a></span></div></div><div class="content"></div></div><div class="post"><div class="post-header index"><h1 class="title"><a href="/2020/05/10/Interview-Algorithms/">算法面试题</a></h1><div class="post-info"><span class="date">2020-05-10</span> <span class="category"><a href="/categories/interview/">interview</a></span></div></div><div class="content"><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>写一个函数，列出一个整数所有的分解类型，比如对于数字4，可以做拆分得到下列字符串</p><p>1111<br>112<br>121<br>13<br>211<br>22<br>31<br>4</p></div><a href="/2020/05/10/Interview-Algorithms/" class="read-more">Read More</a></div></section></div></div><div class="row"><div class="col-sm-12"><div class="wrap-pagination"><a href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i> </a><a href="/page/3/"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></div></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Tracy-xu&#39;Blog"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="website" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>page - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">Tracy-xu'Blog</h1>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2022/02/08/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
+                前端工程化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-02-08</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/engineering/">engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>如果一门原生语言的抽象能力不足（比如，CSS 的表达能力不足，JS 没有类型），我们可以再抽象设计一层，比如 Sass、TypsScript<br>经过编译，再将源码编译为供实际环境执行可原生代码。</p>
+<p>只能维护源代码。</p>
+        </div>
+        <a href="/2022/02/08/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2021/12/01/PWA/">
+                PWA
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-12-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Web App Manifest<br>Service Worker<br>…</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2021/07/26/JavaScript-Type-System/">
+                JavaScript 类型系统
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-07-26</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>类型动静态（静态类型检测），类型强弱（类型转换）。</p>
+<p>JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let foo = 42; // foo is now a number</span><br><span class="line">foo = &#x27;hello&#x27;; // foo is now a string</span><br><span class="line">foo = true;  // foo is now a boolean</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 + &#x27;&#x27;;</span><br><span class="line">!!1; // 这个算隐式还是显式</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2021/07/26/JavaScript-Type-System/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2021/01/22/React/">
+                React
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-01-22</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>为什么 React 需要 Immutable？<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/KlausLily/article/details/117137249">https://blog.csdn.net/KlausLily/article/details/117137249</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20295971">https://zhuanlan.zhihu.com/p/20295971</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/446377023">https://www.zhihu.com/question/446377023</a></p>
+        </div>
+        <a href="/2021/01/22/React/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/12/02/Currying/">
+                科里化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-12-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <ul>
+<li>版本 1</li>
+</ul>
+<p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>版本 2</li>
+</ul>
+<p>这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用</p>
+<p>有闭包的 bug</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> args = []; <span class="comment">// 搜集参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">...arg</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">arguments</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;  <span class="comment">// 递归的中断条件，改为 arg.length === 0 更合适</span></span><br><span class="line">      <span class="keyword">return</span> fn.<span class="title function_">apply</span>(<span class="literal">null</span>, args); <span class="comment">// 改为 fn(...args) 更合适</span></span><br><span class="line">    &#125;</span><br><span class="line">    args = args.<span class="title function_">concat</span>(arg);  <span class="comment">// ?</span></span><br><span class="line">    <span class="keyword">return</span> foo;  <span class="comment">// ?</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>版本 3</li>
+</ul>
+<p>这个版本中，被科里化的函数的形参必须要有长度</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/296852112">https://zhuanlan.zhihu.com/p/296852112</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">_fn</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> &gt;= fn.<span class="property">length</span>) &#123; <span class="comment">// 这里通过型参长度来判断是否要调用，所以add的参数不能...</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args) <span class="comment">// 不需要 call，fn.call(this, ...args)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...remain</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">_fn</span>(...args, ...remain); <span class="comment">// 不需要 call，_fn.call(this, ...args, ...remain);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个版本中，被科里化函数的形参长度必须固定</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a, b, c, d</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c +d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+
+<p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用</p>
+<p>判断收集结束有很多办法：对比实参和形参的长度（这样被科里化的函数形参不能使用…）；判断实参的个数是否为 0（不传）；</p>
+<p>call、apply、bind 的主要作用是绑定this上下文，另外 apply 还可以用来传 spread 数组，不过已经被 es6 spread 代替</p>
+<p>数组求和。。。</p>
+<p>var arr &#x3D; [1, 2, 3];<br>eval(arr.join(‘+’));</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/10/15/Vue/">
+                Vue 技术要点
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-10-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/project/">project</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="Vue-简介"><a href="#Vue-简介" class="headerlink" title="Vue 简介"></a>Vue 简介</h2><ul>
+<li>优点</li>
+</ul>
+<p>渐进式：框架设计（可以直接引入使用，仅使用核心渲染功能，也可以配合构建工具，集成路由和数据管理，采用单文件组件的开发模式）<br>声明式渲染：响应式（数据驱动视图，当数据改变后，会通知视图，不是指响应式编程 Reactive Programming），不需要传统那样命令式的操作 DOM<br>组件化：<br>工程化：Vue-cli<br>全家桶？：vuex、vue-router  集中式数据管理和客户端路由</p>
+<p>声明式渲染（Declarative View）与之相对应的是命令式渲染（Imperative View）</p>
+        </div>
+        <a href="/2020/10/15/Vue/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/10/01/Interact-Live-Class/">
+                互动直播课堂前端技术设计
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-10-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/project/">project</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>按同屏的技术实现方式来划分，课堂分为<strong>录屏课堂</strong>和<strong>指令课堂</strong>。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。</p>
+<p>指令同屏中可以选择同屏的内容，这样可以保护隐私。</p>
+        </div>
+        <a href="/2020/10/01/Interact-Live-Class/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/06/15/K12/">
+                K12 需求概要
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-06-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/project/">project</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>用户：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">个人老师</span><br><span class="line">机构学校</span><br><span class="line">培训中心</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2020/06/15/K12/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/06/01/Interview-Node/">
+                Node 面试题
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-06-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/interview/">interview</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/05/10/Interview-Algorithms/">
+                算法面试题
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-05-10</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/interview/">interview</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>写一个函数，列出一个整数所有的分解类型，比如对于数字4，可以做拆分得到下列字符串</p>
+<p>1111<br>112<br>121<br>13<br>211<br>22<br>31<br>4</p>
+        </div>
+        <a href="/2020/05/10/Interview-Algorithms/" class="read-more">Read More</a>
+    
+
+</div>
+            
+        </section>
+    </div>
+</div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="" href="/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="" href="/page/3/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,1 +1,339 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="CSS 精粹"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>CSS 精粹 - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2016/01/02/CSS 精粹/">CSS 精粹</a></h1><div class="post-info"><span class="date">2016-01-02</span> <span class="category"><a href="/categories/css/">css</a></span></div></div><div class="content"><h2 id="CSS-的构成"><a href="#CSS-的构成" class="headerlink" title="CSS 的构成"></a>CSS 的构成</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 选择器</span><br><span class="line">* 文字处理</span><br><span class="line">* 背景图像处理</span><br><span class="line">* 布局</span><br><span class="line">* 动画</span><br></pre></td></tr></table></figure><h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><h3 id="W3C-标准"><a href="#W3C-标准" class="headerlink" title="W3C 标准"></a>W3C 标准</h3><p>W3C 的标准化进程为：<code>WD --&gt; LC --&gt; CR --&gt; PR --&gt; REC</code>。</p><ul><li>关于前缀</li></ul><p>CSS 规范一般由 W3C 组织先制定草案（WD），然后浏览器厂商各自实现，稳定后再进入标准（推荐 REC）。从 WD 到 REC 有一个过程，如果浏览器厂商提前支持，会存在风险，可能会导致未来的不兼容。</p><p>有一个经典的案例，IE6 在 <code>inline-block</code> 未进入标准前就已对其支持了，当标准出来后含义却不一样。未防止这种情况的出现，于是通过加前缀私有的方式来实现未进入标准的特性。</p><p>浏览器前缀可以加在属性上，也可以加在属性值上：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-transform</span>: <span class="selector-tag">rotate</span>(180<span class="selector-tag">deg</span>);</span><br><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-flex</span>;</span><br></pre></td></tr></table></figure><h3 id="可视化格式模型"><a href="#可视化格式模型" class="headerlink" title="可视化格式模型"></a>可视化格式模型</h3><ul><li>BFC</li></ul><p>注：overflow非visible都会激活BFC（不光光只有平时所用hidden），html根元素默认overflow:auto，所以默认下就已经是一个BFC环境，所有的block level元素在BFC中被格式化，呈纵向排布。</p><ul><li>IFC</li></ul><h3 id="CSS-Specificity"><a href="#CSS-Specificity" class="headerlink" title="CSS Specificity"></a>CSS Specificity</h3><h2 id="方法论和工具"><a href="#方法论和工具" class="headerlink" title="方法论和工具"></a>方法论和工具</h2><p>掌握几套方法论和一些常用工具，比如方法论：<code>OOCSS、BEM、SMACCSS、CSS Module…</code>；工具里面：<code>LESS、SASS、CSSLint、PostCSS…</code>。</p><p>CSS Modules</p><p>CSS in JS</p><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><ul><li>css 在逐渐改变存在的问题</li></ul><p>表达能力变强(css3 也支持了变量)<br>父选择器</p><ul><li>sass</li></ul><p>理论上计算机中所有问题都可以通过加一个中间层来解决，sass 就可以看为一个中间层(和 ts 一样)，目的是为了提高 css 的表达能力，要是在浏览器上加入 sass 引擎，浏览器也就原生支持 sass 了。</p><ul><li>模块化</li></ul><p>模块化/组件化的目的: 复用、分治(所以说并不是只有复用才会去做模块化,有些组件只是单纯的为了分治，不具备复用的能力，比如一些子组件，SidebarItem 就不能脱离子组件单纯拿出来用)。用到的方法是抽象。</p><p>css 命名: c 强调的是分治，m 强调的是复用</p><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>布局的传统解决方案，基于盒模型（margin、padding），依赖 display 属性 + position 属性 + float 属性。</p><ul><li>圣杯</li></ul><p>左右固定宽度，中间自适应，且中间放在文档流前面以优先渲染。</p><p>负 margin 的应用。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;<span class="attribute">overflow</span>: hidden; <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">200px</span>;&#125;</span><br><span class="line"><span class="selector-class">.left</span>, <span class="selector-class">.main</span>, <span class="selector-class">.right</span> &#123;<span class="attribute">position</span>: relative; <span class="attribute">float</span>: left; <span class="attribute">height</span>: <span class="number">130px</span>;&#125;</span><br><span class="line"><span class="selector-class">.main</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">background</span>: <span class="number">#008000</span>;&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">left</span>: -<span class="number">200px</span>; <span class="attribute">margin-left</span>: -<span class="number">100%</span>; <span class="attribute">background</span>: <span class="number">#ccc</span>;&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">right</span>: -<span class="number">200px</span>; <span class="attribute">margin-left</span>: -<span class="number">200px</span>; <span class="attribute">background</span>: <span class="number">#333</span>;&#125;</span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><p>注：这种布局的解法办法有很多，负 margin 的圣杯和双飞翼是其中一种，我认为最简洁的办法是绝对定位：<code>.center {margin: 0 200px;} .left .right 绝对定位</code>。</p><ul><li>双飞翼</li></ul><p>圣杯布局、双飞翼布局，解决的问题是一样的：左右固定宽度，中间自适应，且中间放在文档流前面以优先渲染。在解决问题的方案上，圣杯布局和双飞翼布局前一半是相同的，也就是三栏全部float浮动，但左右两栏加上负margin让其跟中间栏div并排，以形成三栏布局。不同在于解决“中间栏内容不被遮挡”问题的思路不一样。</p><p>-margin 的应用。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.main</span>, <span class="selector-class">.left</span>, <span class="selector-class">.right</span> &#123;<span class="attribute">float</span>: left; <span class="attribute">height</span>: <span class="number">130px</span>;&#125;</span><br><span class="line"><span class="selector-class">.main</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-class">.main-inner</span> &#123;<span class="attribute">margin</span>: <span class="number">0</span> <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">130px</span>; <span class="attribute">background</span>: <span class="number">#008000</span>;&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;<span class="attribute">margin-left</span>: -<span class="number">100%</span>; <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">background</span>: <span class="number">#ccc</span>;&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;<span class="attribute">margin-left</span>: -<span class="number">200px</span>; <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">background</span>: <span class="number">#333</span>;&#125;</span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-inner"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li>瀑布流</li></ul><p><code>float: left</code> 或 <code>position: absolute</code> 的应用。</p><ul><li>两栏等高布局</li></ul><p>Equal height columns 的解法有很多中，除负 margin 正 padding 障眼法外，table、flex、JS 也可解。</p><p>JS 的缺点是异步html数据，padding margin在firefox和ie上对正负抵消有滚动。</p><ul><li>全屏布局</li></ul><p>poition: absolute的应用。</p><ul><li>九宫格</li></ul><p>负 margin的应用。</p><ul><li>视差滚动</li></ul></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="CSS 精粹"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>CSS 精粹 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/01/02/CSS%20%E7%B2%BE%E7%B2%B9/">
+                CSS 精粹
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-01-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="CSS-的构成"><a href="#CSS-的构成" class="headerlink" title="CSS 的构成"></a>CSS 的构成</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 选择器</span><br><span class="line">* 文字处理</span><br><span class="line">* 背景图像处理</span><br><span class="line">* 布局</span><br><span class="line">* 动画</span><br></pre></td></tr></table></figure>
+
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><h3 id="W3C-标准"><a href="#W3C-标准" class="headerlink" title="W3C 标准"></a>W3C 标准</h3><p>W3C 的标准化进程为：<code>WD --&gt; LC --&gt; CR --&gt; PR --&gt; REC</code>。</p>
+<ul>
+<li>关于前缀</li>
+</ul>
+<p>CSS 规范一般由 W3C 组织先制定草案（WD），然后浏览器厂商各自实现，稳定后再进入标准（推荐 REC）。从 WD 到 REC 有一个过程，如果浏览器厂商提前支持，会存在风险，可能会导致未来的不兼容。</p>
+<p>有一个经典的案例，IE6 在 <code>inline-block</code> 未进入标准前就已对其支持了，当标准出来后含义却不一样。未防止这种情况的出现，于是通过加前缀私有的方式来实现未进入标准的特性。</p>
+<p>浏览器前缀可以加在属性上，也可以加在属性值上：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">180deg</span>);</span><br><span class="line"><span class="attribute">display</span>: -webkit-flex;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="可视化格式模型"><a href="#可视化格式模型" class="headerlink" title="可视化格式模型"></a>可视化格式模型</h3><ul>
+<li>BFC</li>
+</ul>
+<p>注：overflow非visible都会激活BFC（不光光只有平时所用hidden），html根元素默认overflow:auto，所以默认下就已经是一个BFC环境，所有的block level元素在BFC中被格式化，呈纵向排布。</p>
+<ul>
+<li>IFC</li>
+</ul>
+<h3 id="CSS-Specificity"><a href="#CSS-Specificity" class="headerlink" title="CSS Specificity"></a>CSS Specificity</h3><h2 id="方法论和工具"><a href="#方法论和工具" class="headerlink" title="方法论和工具"></a>方法论和工具</h2><p>掌握几套方法论和一些常用工具，比如方法论：<code>OOCSS、BEM、SMACCSS、CSS Module…</code>；工具里面：<code>LESS、SASS、CSSLint、PostCSS…</code>。</p>
+<p>CSS Modules</p>
+<p>CSS in JS</p>
+<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><ul>
+<li>css 在逐渐改变存在的问题</li>
+</ul>
+<p>表达能力变强(css3 也支持了变量)<br>父选择器</p>
+<ul>
+<li>sass</li>
+</ul>
+<p>理论上计算机中所有问题都可以通过加一个中间层来解决，sass 就可以看为一个中间层(和 ts 一样)，目的是为了提高 css 的表达能力，要是在浏览器上加入 sass 引擎，浏览器也就原生支持 sass 了。</p>
+<ul>
+<li>模块化</li>
+</ul>
+<p>模块化&#x2F;组件化的目的: 复用、分治(所以说并不是只有复用才会去做模块化,有些组件只是单纯的为了分治，不具备复用的能力，比如一些子组件，SidebarItem 就不能脱离子组件单纯拿出来用)。用到的方法是抽象。</p>
+<p>css 命名: c 强调的是分治，m 强调的是复用</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>布局的传统解决方案，基于盒模型（margin、padding），依赖 display 属性 + position 属性 + float 属性。</p>
+<ul>
+<li>圣杯</li>
+</ul>
+<p>左右固定宽度，中间自适应，且中间放在文档流前面以优先渲染。</p>
+<p>负 margin 的应用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;<span class="attribute">overflow</span>: hidden; <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">200px</span>;&#125;</span><br><span class="line"><span class="selector-class">.left</span>, <span class="selector-class">.main</span>, <span class="selector-class">.right</span> &#123;<span class="attribute">position</span>: relative; <span class="attribute">float</span>: left; <span class="attribute">height</span>: <span class="number">130px</span>;&#125;</span><br><span class="line"><span class="selector-class">.main</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">background</span>: <span class="number">#008000</span>;&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">left</span>: -<span class="number">200px</span>; <span class="attribute">margin-left</span>: -<span class="number">100%</span>; <span class="attribute">background</span>: <span class="number">#ccc</span>;&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">right</span>: -<span class="number">200px</span>; <span class="attribute">margin-left</span>: -<span class="number">200px</span>; <span class="attribute">background</span>: <span class="number">#333</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注：这种布局的解法办法有很多，负 margin 的圣杯和双飞翼是其中一种，我认为最简洁的办法是绝对定位：<code>.center &#123;margin: 0 200px;&#125; .left .right 绝对定位</code>。</p>
+<ul>
+<li>双飞翼</li>
+</ul>
+<p>圣杯布局、双飞翼布局，解决的问题是一样的：左右固定宽度，中间自适应，且中间放在文档流前面以优先渲染。在解决问题的方案上，圣杯布局和双飞翼布局前一半是相同的，也就是三栏全部float浮动，但左右两栏加上负margin让其跟中间栏div并排，以形成三栏布局。不同在于解决“中间栏内容不被遮挡”问题的思路不一样。</p>
+<p>-margin 的应用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.main</span>, <span class="selector-class">.left</span>, <span class="selector-class">.right</span> &#123;<span class="attribute">float</span>: left; <span class="attribute">height</span>: <span class="number">130px</span>;&#125;</span><br><span class="line"><span class="selector-class">.main</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-class">.main-inner</span> &#123;<span class="attribute">margin</span>: <span class="number">0</span> <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">130px</span>; <span class="attribute">background</span>: <span class="number">#008000</span>;&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;<span class="attribute">margin-left</span>: -<span class="number">100%</span>; <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">background</span>: <span class="number">#ccc</span>;&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;<span class="attribute">margin-left</span>: -<span class="number">200px</span>; <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">background</span>: <span class="number">#333</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main-inner&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>瀑布流</li>
+</ul>
+<p><code>float: left</code> 或 <code>position: absolute</code> 的应用。</p>
+<ul>
+<li>两栏等高布局</li>
+</ul>
+<p>Equal height columns 的解法有很多中，除负 margin 正 padding 障眼法外，table、flex、JS 也可解。</p>
+<p>JS 的缺点是异步html数据，padding margin在firefox和ie上对正负抵消有滚动。</p>
+<ul>
+<li>全屏布局</li>
+</ul>
+<p>poition: absolute的应用。</p>
+<ul>
+<li>九宫格</li>
+</ul>
+<p>负 margin的应用。</p>
+<ul>
+<li>视差滚动</li>
+</ul>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

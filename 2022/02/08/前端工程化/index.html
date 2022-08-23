@@ -1,1 +1,287 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="前端工程化"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>前端工程化 - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2022/02/08/前端工程化/">前端工程化</a></h1><div class="post-info"><span class="date">2022-02-08</span> <span class="category"><a href="/categories/engineering/">engineering</a></span></div></div><div class="content"><p>如果一门原生语言的抽象能力不足（比如，CSS 的表达能力不足，JS 没有类型），我们可以再抽象设计一层，比如 Sass、TypsScript<br>经过编译，再将源码编译为供实际环境执行可原生代码。</p><p>只能维护源代码。</p><a id="more"></a><p>Web 工程化</p><p><a href="https://www.zhihu.com/question/433854153" target="_blank" rel="noopener">https://www.zhihu.com/question/433854153</a><br><a href="https://www.zhihu.com/question/24558375" target="_blank" rel="noopener">https://www.zhihu.com/question/24558375</a><br><a href="https://zhuanlan.zhihu.com/p/359734011" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/359734011</a></p><p>从 Browserify + Gulp 到 Parcel，从 Webpack 到 Rollup，Vite，工程化工具琳琅满目。但很多工具的实现和设计非常复杂，甚至出现了「面向 webpack 编程」的调侃。</p><p>工程化：</p><p>静态资源(JS/Sass/Less/HTML/Image/SVG/Font/CSS/JSX/TS/Vue SFC…)的检查<br>模块加载、编译、压缩、合并、打包（顾名思义）<br>浏览器自动刷新、文件监听</p><p>Node 催生了一批自动化构建工具，像 Bower，Yeoman，Grunt 等（类似于 Java 世界中的Ant或者Maven），他们都是构建在 Nodejs 之上。</p><p>自动化是工程化的特点，模块化是工程化的功能之一。</p><p>前端自动化构建（build）工具</p><h3 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h3><p>前端工程化中，常见的任务有图片压缩和 Sprite 生成，CSS 压缩，Sass、Coffee、ES6、TS、JSX、Template… 编译，JS Module Loader 和 Minify Uglify，代码 Lint，文件替换监听和版本管理，自动刷新，测试、部署…。在早期，需要手工一步步处理这些任务，Gulp 的出现就是为了将这一系列任务流程自动化。</p><p>Gulp 是 Task Runner（任务执行器），通过执行一些列由 Plugin 定义的任务，来处理完成自动化。常见的 Plugins 有：gulp-webpack、gulp-css、gulp-babel 等。</p><h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><p>Webpack 是 Module Bundler（模块打包器）。</p><p>webpack 默认支持xxx</p><p>webpack 中一切皆模块，把所有的文件(css, image, js) 都用 js 来生成依赖，最后生成一个 bundle，所以 webpack 也叫做file bundler</p><ul><li>与 RequireJS Gulp 区别</li></ul><p><a href="https://survivejs.com/webpack/appendices/comparison/" target="_blank" rel="noopener">https://survivejs.com/webpack/appendices/comparison/</a></p><p>Webpack 和 RquireJS 都是模块解决方案，不同的是 RequireJS 只是一个运行时的 JavaScript Module（AMD） Loader，而 Webpack 则是 Module Bundler，不单单只进行模块加载，还会对模块进行处理（编译、压缩合并…），而且不止支持 JavaScript 模块。</p><p>Gulp 是 Task Runner，需要具体的 Plugin 才能实现 Task，比如模块加载要 gulp-browserify 或 gulp-webpack，SASS 编译要 gulp-sass…，而 Webpack 则是 Module Bundler，Module Bundler 只是众多前端工程化任务中之一。</p><p>通过 Webpack 提供的 Loader 和 Plugin 扩展，在模块打包时能实现诸如 compile、 minify、uglify… 等一系列功能，再结合 NPM Script，使得 Webpack 彻底的代替 了 Gulp。</p></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="前端工程化"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>前端工程化 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2022/02/08/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
+                前端工程化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-02-08</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/engineering/">engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>如果一门原生语言的抽象能力不足（比如，CSS 的表达能力不足，JS 没有类型），我们可以再抽象设计一层，比如 Sass、TypsScript<br>经过编译，再将源码编译为供实际环境执行可原生代码。</p>
+<p>只能维护源代码。</p>
+<span id="more"></span>
+
+<p>Web 工程化</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/433854153">https://www.zhihu.com/question/433854153</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24558375">https://www.zhihu.com/question/24558375</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/359734011">https://zhuanlan.zhihu.com/p/359734011</a></p>
+<p>从 Browserify + Gulp 到 Parcel，从 Webpack 到 Rollup，Vite，工程化工具琳琅满目。但很多工具的实现和设计非常复杂，甚至出现了「面向 webpack 编程」的调侃。</p>
+<p>工程化：</p>
+<p>静态资源(JS&#x2F;Sass&#x2F;Less&#x2F;HTML&#x2F;Image&#x2F;SVG&#x2F;Font&#x2F;CSS&#x2F;JSX&#x2F;TS&#x2F;Vue SFC…)的检查<br>模块加载、编译、压缩、合并、打包（顾名思义）<br>浏览器自动刷新、文件监听</p>
+<p>Node 催生了一批自动化构建工具，像 Bower，Yeoman，Grunt 等（类似于 Java 世界中的Ant或者Maven），他们都是构建在 Nodejs 之上。</p>
+<p>自动化是工程化的特点，模块化是工程化的功能之一。</p>
+<p>前端自动化构建（build）工具</p>
+<h3 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h3><p>前端工程化中，常见的任务有图片压缩和 Sprite 生成，CSS 压缩，Sass、Coffee、ES6、TS、JSX、Template… 编译，JS Module Loader 和 Minify Uglify，代码 Lint，文件替换监听和版本管理，自动刷新，测试、部署…。在早期，需要手工一步步处理这些任务，Gulp 的出现就是为了将这一系列任务流程自动化。</p>
+<p>Gulp 是 Task Runner（任务执行器），通过执行一些列由 Plugin 定义的任务，来处理完成自动化。常见的 Plugins 有：gulp-webpack、gulp-css、gulp-babel 等。</p>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><p>Webpack 是 Module Bundler（模块打包器）。</p>
+<p>webpack 默认支持xxx</p>
+<p>webpack 中一切皆模块，把所有的文件(css, image, js) 都用 js 来生成依赖，最后生成一个 bundle，所以 webpack 也叫做file bundler</p>
+<ul>
+<li>与 RequireJS Gulp 区别</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://survivejs.com/webpack/appendices/comparison/">https://survivejs.com/webpack/appendices/comparison/</a></p>
+<p>Webpack 和 RquireJS 都是模块解决方案，不同的是 RequireJS 只是一个运行时的 JavaScript Module（AMD） Loader，而 Webpack 则是 Module Bundler，不单单只进行模块加载，还会对模块进行处理（编译、压缩合并…），而且不止支持 JavaScript 模块。</p>
+<p>Gulp 是 Task Runner，需要具体的 Plugin 才能实现 Task，比如模块加载要 gulp-browserify 或 gulp-webpack，SASS 编译要 gulp-sass…，而 Webpack 则是 Module Bundler，Module Bundler 只是众多前端工程化任务中之一。</p>
+<p>通过 Webpack 提供的 Loader 和 Plugin 扩展，在模块打包时能实现诸如 compile、 minify、uglify… 等一系列功能，再结合 NPM Script，使得 Webpack 彻底的代替 了 Gulp。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

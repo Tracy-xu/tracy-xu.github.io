@@ -1,1 +1,287 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="CSS 预处理器 Sass"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>CSS 预处理器 Sass - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2016/11/20/CSS 预处理器 Sass/">CSS 预处理器 Sass</a></h1><div class="post-info"><span class="date">2016-11-20</span> <span class="category"><a href="/categories/css/">css</a></span></div></div><div class="content"><p>Sass 是一种 CSS 预处理语言。</p><h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>Sass 的编译器实现有 Ruby Sass、LibSass、Dart Sass，这 3 代编译器都不是 JavaScript 实现的（Less、Stylus 的编译器都是 JavaScript 实现的）。</p><p>Ruby Sass 是最早的 Sass 编译器，用 Ruby 实现的，因为不能被 Node 调用，社区出现了 C++ 实现的 LibSass，在前端工作流中通过 node-sass 这个 Node Bridge 来调用。node-sass 是一个 Nodejs 环境下提供的一个 Bridge，它提供了调用 LibSass 的能力。</p><p>因为 LibSass 的维护速度跟不上 CSS 和 Sass 标准，已被官方废弃，另外 node-sass 对 node 版本有要求，而且还难以安装。vue-cli 在 5.0 后也移除了 node-sass。</p><p>Dart Sass 是用 Dart 来写的 Sass 编译器，Dart 可以编译为 JavaScript，在 npm 上包名为 sass，这是编译后的纯 JavaScript 包，纯 JavaScript 版本虽然比 Dart 版本慢，但易于集成到现有的前端工作流程中。Dart Sass 代表着未来，是被官方推荐的 Sass 编译器。</p><h2 id="xxx"><a href="#xxx" class="headerlink" title="xxx"></a>xxx</h2><p>node-sass is a library that provides binding for Node.js to LibSass, the C version of the popular stylesheet preprocessor, Sass.</p><p><a href="https://www.jianshu.com/p/d3c577209eae" target="_blank" rel="noopener">https://www.jianshu.com/p/d3c577209eae</a></p><p><a href="https://blog.csdn.net/lzfengquan/article/details/122818098" target="_blank" rel="noopener">https://blog.csdn.net/lzfengquan/article/details/122818098</a></p><p><a href="https://blog.csdn.net/weixin_45847735/article/details/122084202" target="_blank" rel="noopener">https://blog.csdn.net/weixin_45847735/article/details/122084202</a></p><p><a href="https://developer.51cto.com/article/698854.html" target="_blank" rel="noopener">https://developer.51cto.com/article/698854.html</a></p><p><a href="https://www.jb51.net/article/180781.htm" target="_blank" rel="noopener">https://www.jb51.net/article/180781.htm</a></p><p><a href="https://blog.csdn.net/weixin_41196185/article/details/117341722" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41196185/article/details/117341722</a></p><p><a href="https://sass-lang.com/Dart" target="_blank" rel="noopener">https://sass-lang.com/Dart</a> Sass</p><p>用 Dart Sass 代替 node-sass</p><p><a href="https://blog.csdn.net/qq_36657291/article/details/121995360" target="_blank" rel="noopener">https://blog.csdn.net/qq_36657291/article/details/121995360</a></p><p>which python3<br>which node</p><h2 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h2><p>Less是一门CSS预处理语言，它扩充了CSS语言，增加了诸如<code>Variables(变量)</code>，<code>Mixins</code>(混合)、<code>Nested Rules(嵌套规则)</code>、<code>Functions &amp; Operations(函数和运算)</code>等功能，让 CSS 更易维护、方便制作主题、扩充。</p><p>Less可以运行在客户端(浏览器)和服务器(如Node.js)上，不过一般都是在本地预编译。Bootstrap3就是采用了Less作为CSS预处理器。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>###常用语法</p><p>略…</p><ul><li>Less中的一些注意事项：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+             # 只能用来计算，不能用于拼接字符串</span><br><span class="line">@import “”；  # 必须是双引号，必须要有分号</span><br><span class="line">.fun(@n - 1); # 运算符的前后一定要有空格，要不然会报错，当字符串使用</span><br><span class="line">.fun();       # 必须要有分号</span><br><span class="line">@&#123;name&#125;       # 变量可以用像这样的结构（类似ruby和php），嵌入到字符串中</span><br><span class="line">@icon-font-path: &quot;fonts/&quot;;  # Less定义变量不用加&quot;&quot;，如果加&quot;&quot;表示需要转义（防止编译的时候被编译）</span><br><span class="line">避免编译      # 有时候需要输出一些不正确的css语法，或者使用一些LESS不认识的专有语法（比如微软滤镜filter等），为了避免编译器报一些不必要的错误，帮我们做了一些不必要的事情。我们可以在字符串前加上一个~，加单引号/双引号，Eg:  width:~&apos;calc(100% - 35)&apos;不加的话，会被计算出结果的（其实你是想让浏览器来计算，而不是编译器来计算）。</span><br></pre></td></tr></table></figure></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="CSS 预处理器 Sass"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>CSS 预处理器 Sass - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/11/20/CSS%20%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%20Sass/">
+                CSS 预处理器 Sass
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-11-20</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>Sass 是一种 CSS 预处理语言。</p>
+<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>Sass 的编译器实现有 Ruby Sass、LibSass、Dart Sass，这 3 代编译器都不是 JavaScript 实现的（Less、Stylus 的编译器都是 JavaScript 实现的）。</p>
+<p>Ruby Sass 是最早的 Sass 编译器，用 Ruby 实现的，因为不能被 Node 调用，社区出现了 C++ 实现的 LibSass，在前端工作流中通过 node-sass 这个 Node Bridge 来调用。node-sass 是一个 Nodejs 环境下提供的一个 Bridge，它提供了调用 LibSass 的能力。</p>
+<p>因为 LibSass 的维护速度跟不上 CSS 和 Sass 标准，已被官方废弃，另外 node-sass 对 node 版本有要求，而且还难以安装。vue-cli 在 5.0 后也移除了 node-sass。</p>
+<p>Dart Sass 是用 Dart 来写的 Sass 编译器，Dart 可以编译为 JavaScript，在 npm 上包名为 sass，这是编译后的纯 JavaScript 包，纯 JavaScript 版本虽然比 Dart 版本慢，但易于集成到现有的前端工作流程中。Dart Sass 代表着未来，是被官方推荐的 Sass 编译器。</p>
+<h2 id="xxx"><a href="#xxx" class="headerlink" title="xxx"></a>xxx</h2><p>node-sass is a library that provides binding for Node.js to LibSass, the C version of the popular stylesheet preprocessor, Sass.</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d3c577209eae">https://www.jianshu.com/p/d3c577209eae</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lzfengquan/article/details/122818098">https://blog.csdn.net/lzfengquan/article/details/122818098</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45847735/article/details/122084202">https://blog.csdn.net/weixin_45847735/article/details/122084202</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.51cto.com/article/698854.html">https://developer.51cto.com/article/698854.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/180781.htm">https://www.jb51.net/article/180781.htm</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41196185/article/details/117341722">https://blog.csdn.net/weixin_41196185/article/details/117341722</a></p>
+<p><a target="_blank" rel="noopener" href="https://sass-lang.com/Dart">https://sass-lang.com/Dart</a> Sass</p>
+<p>用 Dart Sass 代替 node-sass</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36657291/article/details/121995360">https://blog.csdn.net/qq_36657291/article/details/121995360</a></p>
+<p>which python3<br>which node</p>
+<h2 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h2><p>Less是一门CSS预处理语言，它扩充了CSS语言，增加了诸如<code>Variables(变量)</code>，<code>Mixins</code>(混合)、<code>Nested Rules(嵌套规则)</code>、<code>Functions &amp; Operations(函数和运算)</code>等功能，让 CSS 更易维护、方便制作主题、扩充。</p>
+<p>Less可以运行在客户端(浏览器)和服务器(如Node.js)上，不过一般都是在本地预编译。Bootstrap3就是采用了Less作为CSS预处理器。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>###常用语法</p>
+<p>略…</p>
+<ul>
+<li>Less中的一些注意事项：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+             # 只能用来计算，不能用于拼接字符串</span><br><span class="line">@import “”；  # 必须是双引号，必须要有分号</span><br><span class="line">.fun(@n - 1); # 运算符的前后一定要有空格，要不然会报错，当字符串使用</span><br><span class="line">.fun();       # 必须要有分号</span><br><span class="line">@&#123;name&#125;       # 变量可以用像这样的结构（类似ruby和php），嵌入到字符串中</span><br><span class="line">@icon-font-path: &quot;fonts/&quot;;  # Less定义变量不用加&quot;&quot;，如果加&quot;&quot;表示需要转义（防止编译的时候被编译）</span><br><span class="line">避免编译      # 有时候需要输出一些不正确的css语法，或者使用一些LESS不认识的专有语法（比如微软滤镜filter等），为了避免编译器报一些不必要的错误，帮我们做了一些不必要的事情。我们可以在字符串前加上一个~，加单引号/双引号，Eg:  width:~&#x27;calc(100% - 35)&#x27;不加的话，会被计算出结果的（其实你是想让浏览器来计算，而不是编译器来计算）。</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

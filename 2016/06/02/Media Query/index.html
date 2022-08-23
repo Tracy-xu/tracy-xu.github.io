@@ -1,1 +1,405 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="Media Query"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>Media Query - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2016/06/02/Media Query/">Media Query</a></h1><div class="post-info"><span class="date">2016-06-02</span> <span class="category"><a href="/categories/css/">css</a></span></div></div><div class="content"><p>媒体查询在 CSS2 中就已经存在了，但是只能查询 meida type，CSS3 中除了能查询 media type 外，还加入了 media feature 的查询。</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>媒体查询包含一个“媒体类型（media type）”以及至少一个测试“媒体特性（media feature）”的表达式，表达式和媒体类型将根据实际情况计算的到 true 或者 false。如果指定的媒体类型符合当前设备并且媒体特性表达式都为真，那当前媒体查询为真，media query 为 true，对应的样式规则生效。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> [媒体类型] 媒体特性 &#123;&#125;    # 除非使用了 <span class="selector-tag">not</span> 或者 <span class="selector-tag">only</span> 操作符，否则 <span class="selector-tag">media</span> <span class="selector-tag">type</span> 是可选的，默认值为 <span class="selector-tag">all</span></span><br></pre></td></tr></table></figure><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><table><thead><tr><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>and</td><td>逻辑与，用于连接 media type、meidia feature 用于结合多个媒体特性或媒体类型</td></tr><tr><td>,</td><td>设备列表</td></tr><tr><td>not</td><td>排除某种设备</td></tr><tr><td>only</td><td>限定某种设备类型</td></tr></tbody></table><p><code>and</code> 用于结合多个媒体特性或媒体类型到一个 media query。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* media type 为 all 时 media feature 为 min-width 700 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">700px</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 可以使用 and 添加限制条件 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">700px</span>) <span class="keyword">and</span> (<span class="attribute">orientation:</span> landscape) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 使用 and 添加 media type，限制媒体类型为显示器 */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">700px</span>) <span class="keyword">and</span> (<span class="attribute">orientation:</span> landscape) &#123;&#125;</span><br></pre></td></tr></table></figure><p><code>,</code> 用于结合多个 media query ，任 一media query 为 true 时应用样式，相当于逻辑运算符中的 or。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 宽度大于 700px，或者宽度大于高度的显示器上 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">700px</span>), screen <span class="keyword">and</span> (<span class="attribute">orientation:</span> landscape) &#123;&#125;</span><br></pre></td></tr></table></figure><p><code>not</code> 用于对整个 media query 结果取反，必须位于一个 media query 的开头。另外，在逗号分隔的多个 media query 中，not 只对它作用的 media query 生效。not 不能对单个 media feature 取反，只能作用于整个 media query。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* not 将在最后求值 */</span></span><br><span class="line"><span class="comment">/* 等价于 @media not (print and (max-width:1024px))&#123;&#125; */</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> print <span class="keyword">and</span>(<span class="attribute">max-width:</span><span class="number">1024px</span>)&#123;...&#125;  # </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 多个 media query 求值 */</span></span><br><span class="line"><span class="comment">/* 求值顺序如下 @media (not (screen and (color))), print and (color) &#123;&#125; */</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> screen <span class="keyword">and</span> (color), print <span class="keyword">and</span> (color) &#123;&#125;</span><br></pre></td></tr></table></figure><p><code>only</code> 用于向早期浏览器隐藏媒体查询，only 必须位于 media query 的开头</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span><span class="number">400px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">600px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure><p>无法识别媒体查询的浏览器要求获得逗号分割的媒体类型列表，规范要求：它们应该在第一个不是连字符的非数字、字母之前截断每个值。所以上面的示例解释为：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> &#123;&#125;</span><br></pre></td></tr></table></figure><p>因为没有 <code>only</code> 这样的媒体类型，所以样式表被忽略。如果不加 only，下面的示例会被解析为 <code>@media screen {}</code> 这样一来即使浏览器不知道 media query 的真正含义，样式也会应用于所有屏幕设备。</p><p>尽管存在此行为，如果希望向其他不太常用的浏览器隐藏样式，任然建议在媒体查询前面添加 only。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span><span class="number">400px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">600px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure><h3 id="媒体类型（media-type）"><a href="#媒体类型（media-type）" class="headerlink" title="媒体类型（media type）"></a>媒体类型（media type）</h3><table><thead><tr><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>all</td><td>所有设备</td></tr><tr><td>print</td><td>文档打印或打印预览模式</td></tr><tr><td>screen</td><td>彩色电脑屏幕</td></tr><tr><td>speech</td><td>阅读器</td></tr></tbody></table><p>注意：在 CSS2.1 和 CSS3 media query 中定义的 media type：tty、tv、projection、handheld、braille、embossed、aural，在<a href="https://www.w3.org/TR/mediaqueries-4/" target="_blank" rel="noopener">media queries level 4</a> 中都废弃了，不推荐使用。</p><h3 id="媒体特性（media-feature）"><a href="#媒体特性（media-feature）" class="headerlink" title="媒体特性（media feature）"></a>媒体特性（media feature）</h3><table><thead><tr><th>媒体特性</th><th>说明</th></tr></thead><tbody><tr><td>width</td><td>viewport width</td></tr><tr><td>height</td><td>viewport height</td></tr><tr><td>device-width 、 device-height</td><td>设备的宽度、高度</td></tr><tr><td>aspect-ratio</td><td>viewport 的宽高比如：16/9</td></tr><tr><td>device-aspect-ratio</td><td>设备宽高比</td></tr><tr><td>orientation</td><td>宽度和高度的大小关系。landscape（横屏）、portrait（竖屏）</td></tr><tr><td>resolution</td><td>设备的分辨率</td></tr></tbody></table><p>上面是一些常见的 media feature，不是全部，media feature 的维度很多，但是最常用的是 viewport 的 width 和 height。</p><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>在 CSS2 中，媒体查询只使用于 <code>&lt;style&gt;</code> 和 <code>&lt;link&gt;</code> 标签中，以 media 属性来查询，CSS3 中可以用 @media 来查询。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/reset.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/style.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"all"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/print.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"print"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/style.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen and (min-width:600px) and (max-width:900px)"</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="keyword">@import</span> url(<span class="string">"css/style.css"</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">"css/reset.css"</span>) screen;</span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen &#123;</span><br><span class="line">  选择器 &#123;</span><br><span class="line">    属性: 属性值;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Media-Query-常用方法"><a href="#Media-Query-常用方法" class="headerlink" title="Media Query 常用方法"></a>Media Query 常用方法</h2><ul><li>排他（exclusive）</li></ul><p>为确保在某一个条件下只有一个样式表生效，将查询条件严格划分。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width:</span> <span class="number">400px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">401px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">800px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">801px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: blue;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>覆盖（overriding）</li></ul><p>可以对元素设置相同优先级，使用样式顺序，通过覆盖，避免排他。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">400px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">800px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: blue;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>移动优先（Mobile first）</li></ul><p>默认样式假设为移动设备宽度，然后通过 min-width 控制扩展样式。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>BootStrap 移动优先，断点分别为 768、992、1200，这三个断点的区间对应手机、平板、桌面、大桌面。</p><ul><li>PC 优先（desktop first）</li></ul><p>默认以宽屏进行样式设置，通过 max-width 控制样式覆盖。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width:</span> <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Media Query"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Media Query - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/06/02/Media%20Query/">
+                Media Query
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-06-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>媒体查询在 CSS2 中就已经存在了，但是只能查询 meida type，CSS3 中除了能查询 media type 外，还加入了 media feature 的查询。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>媒体查询包含一个“媒体类型（media type）”以及至少一个测试“媒体特性（media feature）”的表达式，表达式和媒体类型将根据实际情况计算的到 true 或者 false。如果指定的媒体类型符合当前设备并且媒体特性表达式都为真，那当前媒体查询为真，media query 为 true，对应的样式规则生效。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> [媒体类型] 媒体特性 &#123;&#125;    # 除非使用了 not 或者 only 操作符，否则 media type 是可选的，默认值为 <span class="attribute">all</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and</td>
+<td>逻辑与，用于连接 media type、meidia feature 用于结合多个媒体特性或媒体类型</td>
+</tr>
+<tr>
+<td>,</td>
+<td>设备列表</td>
+</tr>
+<tr>
+<td>not</td>
+<td>排除某种设备</td>
+</tr>
+<tr>
+<td>only</td>
+<td>限定某种设备类型</td>
+</tr>
+</tbody></table>
+<p><code>and</code> 用于结合多个媒体特性或媒体类型到一个 media query。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* media type 为 all 时 media feature 为 min-width 700 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">700px</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 可以使用 and 添加限制条件 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">700px</span>) <span class="keyword">and</span> (<span class="attribute">orientation</span>: landscape) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 使用 and 添加 media type，限制媒体类型为显示器 */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">700px</span>) <span class="keyword">and</span> (<span class="attribute">orientation</span>: landscape) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>,</code> 用于结合多个 media query ，任 一media query 为 true 时应用样式，相当于逻辑运算符中的 or。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 宽度大于 700px，或者宽度大于高度的显示器上 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">700px</span>), screen <span class="keyword">and</span> (<span class="attribute">orientation</span>: landscape) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>not</code> 用于对整个 media query 结果取反，必须位于一个 media query 的开头。另外，在逗号分隔的多个 media query 中，not 只对它作用的 media query 生效。not 不能对单个 media feature 取反，只能作用于整个 media query。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* not 将在最后求值 */</span></span><br><span class="line"><span class="comment">/* 等价于 @media not (print and (max-width:1024px))&#123;&#125; */</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> print <span class="keyword">and</span>(<span class="attribute">max-width</span>:<span class="number">1024px</span>)&#123;...&#125;  # </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 多个 media query 求值 */</span></span><br><span class="line"><span class="comment">/* 求值顺序如下 @media (not (screen and (color))), print and (color) &#123;&#125; */</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> screen <span class="keyword">and</span> (<span class="attribute">color</span>), print <span class="keyword">and</span> (<span class="attribute">color</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>only</code> 用于向早期浏览器隐藏媒体查询，only 必须位于 media query 的开头</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">400px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">600px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无法识别媒体查询的浏览器要求获得逗号分割的媒体类型列表，规范要求：它们应该在第一个不是连字符的非数字、字母之前截断每个值。所以上面的示例解释为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为没有 <code>only</code> 这样的媒体类型，所以样式表被忽略。如果不加 only，下面的示例会被解析为 <code>@media screen &#123;&#125;</code> 这样一来即使浏览器不知道 media query 的真正含义，样式也会应用于所有屏幕设备。</p>
+<p>尽管存在此行为，如果希望向其他不太常用的浏览器隐藏样式，任然建议在媒体查询前面添加 only。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">400px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">600px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="媒体类型（media-type）"><a href="#媒体类型（media-type）" class="headerlink" title="媒体类型（media type）"></a>媒体类型（media type）</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>all</td>
+<td>所有设备</td>
+</tr>
+<tr>
+<td>print</td>
+<td>文档打印或打印预览模式</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>彩色电脑屏幕</td>
+</tr>
+<tr>
+<td>speech</td>
+<td>阅读器</td>
+</tr>
+</tbody></table>
+<p>注意：在 CSS2.1 和 CSS3 media query 中定义的 media type：tty、tv、projection、handheld、braille、embossed、aural，在<a target="_blank" rel="noopener" href="https://www.w3.org/TR/mediaqueries-4/">media queries level 4</a> 中都废弃了，不推荐使用。</p>
+<h3 id="媒体特性（media-feature）"><a href="#媒体特性（media-feature）" class="headerlink" title="媒体特性（media feature）"></a>媒体特性（media feature）</h3><table>
+<thead>
+<tr>
+<th>媒体特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width</td>
+<td>viewport width</td>
+</tr>
+<tr>
+<td>height</td>
+<td>viewport height</td>
+</tr>
+<tr>
+<td>device-width 、 device-height</td>
+<td>设备的宽度、高度</td>
+</tr>
+<tr>
+<td>aspect-ratio</td>
+<td>viewport 的宽高比如：16&#x2F;9</td>
+</tr>
+<tr>
+<td>device-aspect-ratio</td>
+<td>设备宽高比</td>
+</tr>
+<tr>
+<td>orientation</td>
+<td>宽度和高度的大小关系。landscape（横屏）、portrait（竖屏）</td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>设备的分辨率</td>
+</tr>
+</tbody></table>
+<p>上面是一些常见的 media feature，不是全部，media feature 的维度很多，但是最常用的是 viewport 的 width 和 height。</p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>在 CSS2 中，媒体查询只使用于 <code>&lt;style&gt;</code> 和 <code>&lt;link&gt;</code> 标签中，以 media 属性来查询，CSS3 中可以用 @media 来查询。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/reset.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/style.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;all&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/print.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;print&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/style.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (min-width:600px) and (max-width:900px)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="keyword">@import</span> url(<span class="string">&quot;css/style.css&quot;</span>);</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">&quot;css/reset.css&quot;</span>) screen;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen &#123;</span><br><span class="line">  选择器 &#123;</span><br><span class="line">    属性: 属性值;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Media-Query-常用方法"><a href="#Media-Query-常用方法" class="headerlink" title="Media Query 常用方法"></a>Media Query 常用方法</h2><ul>
+<li>排他（exclusive）</li>
+</ul>
+<p>为确保在某一个条件下只有一个样式表生效，将查询条件严格划分。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="number">400px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">401px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">800px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">801px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: blue;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>覆盖（overriding）</li>
+</ul>
+<p>可以对元素设置相同优先级，使用样式顺序，通过覆盖，避免排他。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">400px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">800px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: blue;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>移动优先（Mobile first）</li>
+</ul>
+<p>默认样式假设为移动设备宽度，然后通过 min-width 控制扩展样式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>BootStrap 移动优先，断点分别为 768、992、1200，这三个断点的区间对应手机、平板、桌面、大桌面。</p>
+<ul>
+<li>PC 优先（desktop first）</li>
+</ul>
+<p>默认以宽屏进行样式设置，通过 max-width 控制样式覆盖。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;<span class="attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

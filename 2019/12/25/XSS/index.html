@@ -1,1 +1,297 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="XSS 和 CSRF"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>XSS 和 CSRF - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2019/12/25/XSS/">XSS 和 CSRF</a></h1><div class="post-info"><span class="date">2019-12-25</span> <span class="category"><a href="/categories/network/">network</a></span></div></div><div class="content"><p>Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p><a id="more"></a><p>XSS，即 cross site script，跨站脚本攻击，缩写原本为 CSS，但为了和层叠样式表（Cascading Style Sheet）区分，所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p><p>XSS 攻击是指攻击者在网站上注入恶意脚本，使用户在浏览使用网页时进行恶意操作，注入脚本除了 JavaScript，还会有 CSS、HTML 等等。</p><p><a href="https://www.zhihu.com/question/34445731" target="_blank" rel="noopener">https://www.zhihu.com/question/34445731</a><br><a href="https://www.cnblogs.com/guolao/p/10530536.html" target="_blank" rel="noopener">https://www.cnblogs.com/guolao/p/10530536.html</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting</a><br><a href="https://www.zhihu.com/question/34445731" target="_blank" rel="noopener">https://www.zhihu.com/question/34445731</a><br><a href="https://www.zhihu.com/question/20142673" target="_blank" rel="noopener">https://www.zhihu.com/question/20142673</a></p><p><a href="https://blog.csdn.net/qq_41783309/article/details/80615909" target="_blank" rel="noopener">https://blog.csdn.net/qq_41783309/article/details/80615909</a><br><a href="https://www.cnblogs.com/zhang293/p/7868744.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhang293/p/7868744.html</a><br><a href="https://bbs.ichunqiu.com/thread-18129-1-1.html" target="_blank" rel="noopener">https://bbs.ichunqiu.com/thread-18129-1-1.html</a><br><a href="https://www.zhihu.com/question/26628342" target="_blank" rel="noopener">https://www.zhihu.com/question/26628342</a><br><a href="https://netsecurity.51cto.com/article/591271.html?pc" target="_blank" rel="noopener">https://netsecurity.51cto.com/article/591271.html?pc</a><br><a href="https://www.jianshu.com/p/a1aac8acb940" target="_blank" rel="noopener">https://www.jianshu.com/p/a1aac8acb940</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS</a><br><a href="http://niliu.me/articles/518.html#more-518" target="_blank" rel="noopener">http://niliu.me/articles/518.html#more-518</a><br><a href="https://coolshell.cn/articles/4914.html#comments" target="_blank" rel="noopener">https://coolshell.cn/articles/4914.html#comments</a></p><p><a href="https://www.secpulse.com/archives/63801.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/63801.html</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a></p><p>注入有很多方法，比如：表单提交，URL 参数，图片上传等等。</p><p>蚂蚁森林 self xss</p><p>因为HTTP是无状态的协议，所以，几乎所有的网站都会在你的浏览器上设置cookie来记录状态，以便在其多个网页切换中检查你的登录状态。而现在的浏览器的运行方式是多页面或多窗口运行，也就是说，你在同一个父进程下开的多个页面或窗口里都可以无偿和共享使用你登录状态的。</p><ul><li>反射型</li></ul><p>反射型 XSS，非持久化，需要欺骗用户自己去点击链接才能触发 XSS 代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">domain.com?kw=alert(&apos;xss&apos;)</span><br><span class="line">domain.com?kw=&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">domain.com?kw=&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;</span><br><span class="line">domain.com?kw=xss&gt;&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;?= $kw ?&gt;&lt;/div&gt;</span><br><span class="line">&lt;input value=&quot;&lt;?= $kw ?&gt;&quot;&gt;</span><br></pre></td></tr></table></figure><p>反射型 XSS 常见位置如搜索栏、用户登录入口等。</p><ul><li>存储型</li></ul><p>存储型 XSS，XSS 代码是存储在服务器中持久化的，比如 IM、留言、文章、个人信息…，这种 XSS 比较危险。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=# onerror=&quot;alert(&apos;xss&apos;)&quot;&gt;</span><br></pre></td></tr></table></figure><p>注：innerHTML 中的 script 不会被执行。</p><ul><li>DOM Base</li></ul><p>这种 XSS 攻击的实现是通过对DOM树的修改而实现的</p><p>DOM XSS 是由于浏览器解析机制导致的漏洞，服务器不参与，而存储型与反射型都需要服务器响应参与</p><p>存储型 XSS 也好，反射型 XSS 也罢，XSS 的本质问题就是让对方浏览器执行你插入的 JS。</p><h3 id="XSS-和-CSRF-区别"><a href="#XSS-和-CSRF-区别" class="headerlink" title="XSS 和 CSRF 区别"></a>XSS 和 CSRF 区别</h3><p>xss 强调的是 html、javascript 注入(innerHTML 的 script、img…，eval new Function 的 javascript)，而 csrf 只会实施一个请求某资源（接口）的操作</p><p>具体表现上：xss 是盗 cookie 干坏事，而 csrf 是借 cookie 干坏事</p><p>一般情况下，CSRF 需要服务端程序员来防范，XSS 需要客户端程序员来防范（如果 View 由服务端渲染则由服务端程序员防范）</p></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="XSS 和 CSRF"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>XSS 和 CSRF - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/25/XSS/">
+                XSS 和 CSRF
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-25</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/network/">network</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p>
+<span id="more"></span>
+
+<p>XSS，即 cross site script，跨站脚本攻击，缩写原本为 CSS，但为了和层叠样式表（Cascading Style Sheet）区分，所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p>
+<p>XSS 攻击是指攻击者在网站上注入恶意脚本，使用户在浏览使用网页时进行恶意操作，注入脚本除了 JavaScript，还会有 CSS、HTML 等等。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34445731">https://www.zhihu.com/question/34445731</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guolao/p/10530536.html">https://www.cnblogs.com/guolao/p/10530536.html</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting">https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34445731">https://www.zhihu.com/question/34445731</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20142673">https://www.zhihu.com/question/20142673</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41783309/article/details/80615909">https://blog.csdn.net/qq_41783309/article/details/80615909</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhang293/p/7868744.html">https://www.cnblogs.com/zhang293/p/7868744.html</a><br><a target="_blank" rel="noopener" href="https://bbs.ichunqiu.com/thread-18129-1-1.html">https://bbs.ichunqiu.com/thread-18129-1-1.html</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26628342">https://www.zhihu.com/question/26628342</a><br><a target="_blank" rel="noopener" href="https://netsecurity.51cto.com/article/591271.html?pc">https://netsecurity.51cto.com/article/591271.html?pc</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a1aac8acb940">https://www.jianshu.com/p/a1aac8acb940</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting">https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS</a><br><a target="_blank" rel="noopener" href="http://niliu.me/articles/518.html#more-518">http://niliu.me/articles/518.html#more-518</a><br><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/4914.html#comments">https://coolshell.cn/articles/4914.html#comments</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/63801.html">https://www.secpulse.com/archives/63801.html</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a></p>
+<p>注入有很多方法，比如：表单提交，URL 参数，图片上传等等。</p>
+<p>蚂蚁森林 self xss</p>
+<p>因为HTTP是无状态的协议，所以，几乎所有的网站都会在你的浏览器上设置cookie来记录状态，以便在其多个网页切换中检查你的登录状态。而现在的浏览器的运行方式是多页面或多窗口运行，也就是说，你在同一个父进程下开的多个页面或窗口里都可以无偿和共享使用你登录状态的。</p>
+<ul>
+<li>反射型</li>
+</ul>
+<p>反射型 XSS，非持久化，需要欺骗用户自己去点击链接才能触发 XSS 代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">domain.com?kw=alert(&#x27;xss&#x27;)</span><br><span class="line">domain.com?kw=&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">domain.com?kw=&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;</span><br><span class="line">domain.com?kw=xss&gt;&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;?= $kw ?&gt;&lt;/div&gt;</span><br><span class="line">&lt;input value=&quot;&lt;?= $kw ?&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>反射型 XSS 常见位置如搜索栏、用户登录入口等。</p>
+<ul>
+<li>存储型</li>
+</ul>
+<p>存储型 XSS，XSS 代码是存储在服务器中持久化的，比如 IM、留言、文章、个人信息…，这种 XSS 比较危险。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=# onerror=&quot;alert(&#x27;xss&#x27;)&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注：innerHTML 中的 script 不会被执行。</p>
+<ul>
+<li>DOM Base</li>
+</ul>
+<p>这种 XSS 攻击的实现是通过对DOM树的修改而实现的</p>
+<p>DOM XSS 是由于浏览器解析机制导致的漏洞，服务器不参与，而存储型与反射型都需要服务器响应参与</p>
+<p>存储型 XSS 也好，反射型 XSS 也罢，XSS 的本质问题就是让对方浏览器执行你插入的 JS。</p>
+<h3 id="XSS-和-CSRF-区别"><a href="#XSS-和-CSRF-区别" class="headerlink" title="XSS 和 CSRF 区别"></a>XSS 和 CSRF 区别</h3><p>xss 强调的是 html、javascript 注入(innerHTML 的 script、img…，eval new Function 的 javascript)，而 csrf 只会实施一个请求某资源（接口）的操作</p>
+<p>具体表现上：xss 是盗 cookie 干坏事，而 csrf 是借 cookie 干坏事</p>
+<p>一般情况下，CSRF 需要服务端程序员来防范，XSS 需要客户端程序员来防范（如果 View 由服务端渲染则由服务端程序员防范）</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

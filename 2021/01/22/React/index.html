@@ -1,1 +1,329 @@
-<!-- build time:Wed Aug 17 2022 14:44:45 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracy-xu&#39;Blog"><meta name="author" content="Tracy Xu"><meta property="og:title" content="React"><meta property="og:description" content="Tracy-xu&#39;Blog"><meta property="og:site_name" content="Tracy-xu&#39;Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><title>React - Tracy-xu&#39;Blog</title><link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css"><link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"><link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"></head><body><div class="bg-gradient"></div><div class="bg-pattern"></div><div class="menu-bg"><div class="menu-container"><ul><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about.html">关于我</a></li></ul></div></div><nav><a href="#menu"></a></nav><div class="container"><div class="row"><div class="col-sm-12"><header><div class="logo"><a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a></div></header><section class="main"><div class="post"><div class="post-header"><h1 class="title"><a href="/2021/01/22/React/">React</a></h1><div class="post-info"><span class="date">2021-01-22</span> <span class="category"><a href="/categories/javascript/">javascript</a></span></div></div><div class="content"><p>为什么 React 需要 Immutable？<br><a href="https://blog.csdn.net/KlausLily/article/details/117137249" target="_blank" rel="noopener">https://blog.csdn.net/KlausLily/article/details/117137249</a><br><a href="https://zhuanlan.zhihu.com/p/20295971" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20295971</a><br><a href="https://www.zhihu.com/question/446377023" target="_blank" rel="noopener">https://www.zhihu.com/question/446377023</a></p><a id="more"></a><p><a href="https://www.cnblogs.com/sexintercourse/p/15690013.html" target="_blank" rel="noopener">https://www.cnblogs.com/sexintercourse/p/15690013.html</a></p><p><a href="https://www.zhihu.com/question/440916294/answer/1748044978" target="_blank" rel="noopener">https://www.zhihu.com/question/440916294/answer/1748044978</a><br><a href="https://www.zhihu.com/question/475858982/answer/2029148759" target="_blank" rel="noopener">https://www.zhihu.com/question/475858982/answer/2029148759</a><br><a href="https://zhuanlan.zhihu.com/p/279600842" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/279600842</a></p><p>react 还要 immutable.js 吗</p><p>vue是否需要immutability</p><p><a href="https://www.zhihu.com/question/47171917" target="_blank" rel="noopener">https://www.zhihu.com/question/47171917</a></p><p>mobx</p><p>mobx6 开始不支持装饰器</p><p>mobx6: <a href="https://mobx.js.org/enabling-decorators.html" target="_blank" rel="noopener">https://mobx.js.org/enabling-decorators.html</a><br><a href="https://zhuanlan.zhihu.com/p/342648174" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/342648174</a></p><p>mobx4/5: <a href="https://cn.mobx.js.org/intro/overview.html" target="_blank" rel="noopener">https://cn.mobx.js.org/intro/overview.html</a><br><a href="https://www.cnblogs.com/xiaozhumaopao/p/14422260.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaozhumaopao/p/14422260.html</a></p><p>React 天然和 mobx mutable 设计相违背: <a href="https://www.zhihu.com/question/328612405/answer/2073843986" target="_blank" rel="noopener">https://www.zhihu.com/question/328612405/answer/2073843986</a></p><ul><li>重要版本号</li></ul><p>react 在<br>0.13.0 加入了 ES6 classes components 支持<br>0.14.0 加入了对 Stateless functional components 支持<br>15.6.0 开始不再推荐 createClass，并在 16 开始废弃了对 createClass 的支持（如果想继续使用 createClass 方法创建组件,需要引入create-react-class<br>）<br>在 16.8 加入了 hook</p><p>0.14.8 一下升到了 15.0.0，<a href="https://reactjs.org/blog/2016/02/19/new-versioning-scheme.html" target="_blank" rel="noopener">new-versioning-scheme</a></p><p>主要目的是为了表明对稳定性的承诺（15.0.0 比 1.0.0 更适合），另外也是为了更好的利用<a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">semver 语义化版本规范</a>灵活地在次要版本中添加新的向后兼容功能。</p><p>JSX 其实是一个 JavaScript 对象，JSX 被编译后，是一个函数调用，返回值为 JS 对象。可以用 Babel 编译 <a href="https://babeljs.io/repl" target="_blank" rel="noopener">Babel 在线编译</a>后的结果：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;div&gt;</span><br><span class="line">  &lt;h1&gt;Title&lt;/h1&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;img src=&quot;xxx.png&quot; /&gt;</span><br><span class="line">    &lt;p&gt;Content&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123; true ? 1 : 2 &#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><p><a href="https://zhuanlan.zhihu.com/p/29711902" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29711902</a></p><p>createClass 和 es6 class<br><a href="https://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes" target="_blank" rel="noopener">https://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes</a><br><a href="https://www.w3cplus.com/react/react-es5-createclass-vs-es6-classes.html" target="_blank" rel="noopener">https://www.w3cplus.com/react/react-es5-createclass-vs-es6-classes.html</a><br><a href="https://www.cnblogs.com/aivnfjgj/p/6507344.html" target="_blank" rel="noopener">https://www.cnblogs.com/aivnfjgj/p/6507344.html</a><br><a href="https://daveceddia.com/react-es5-createclass-vs-es6-classes/" target="_blank" rel="noopener">https://daveceddia.com/react-es5-createclass-vs-es6-classes/</a></p><p>dan 的 github<br><a href="https://github.com/gaearon" target="_blank" rel="noopener">https://github.com/gaearon</a></p><p>react 为什么要推崇函数式组件<br><a href="https://www.zhihu.com/question/343314784/answer/937174224" target="_blank" rel="noopener">https://www.zhihu.com/question/343314784/answer/937174224</a></p><ul><li>setState</li></ul><ul><li>React 全家桶搭建</li></ul><p><a href="https://juejin.cn/post/6844904055840440334" target="_blank" rel="noopener">https://juejin.cn/post/6844904055840440334</a></p><p><a href="https://umijs.org/zh-CN/docs/use-umi-ui" target="_blank" rel="noopener">https://umijs.org/zh-CN/docs/use-umi-ui</a></p><p><a href="https://juejin.cn/post/6926359111126908936" target="_blank" rel="noopener">https://juejin.cn/post/6926359111126908936</a></p><h2 id="CRA"><a href="#CRA" class="headerlink" title="CRA"></a>CRA</h2><p>cra 怎么选择 react 版本</p><h2 id="react-devtools"><a href="#react-devtools" class="headerlink" title="react-devtools"></a>react-devtools</h2><p>灰色、蓝色、红色</p><p>Edge 和 FireFox 应用商店不需要翻墙，Chrome 应用商店则需要翻墙，如果不能翻墙也可在本地打包编译。</p><ul><li>v3.3.2</li></ul><p>github 中下载 <a href="https://github.com/facebook/react-devtools/tree/v3.3.2" target="_blank" rel="noopener">v3.3.2</a> 版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/facebook/react-devtools.git</span><br><span class="line">npm install --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure><p>打包编译</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:extension:chrome</span><br></pre></td></tr></table></figure><p>编译成功后，会在项目的项目根目录下生成文件夹 ./shells/chrome/build/unpacked</p><p>在 chrome://extensions/ 中点击“加载已解压的扩展程序”，指定到这个目录安装即可。</p><p>注意：react-devtools v3 不支持 react 17+，报错 <code>Uncaught TypeError: Cannot read properties of undefined (reading &#39;forEach&#39;)</code></p><ul><li>v4</li></ul><p>从 v4 开始，react devtools 被合并到 <a href="https://github.com/facebook/react" target="_blank" rel="noopener">react</a> 主项目中。项目根目录 packages 目录下两个文件夹：react-devtools 和 react-devtools-extensions，前者是基于 electron 版，不但能调试 React DOM，还能调试 React Native，后者是 react-devtools 浏览器插件版。</p><p>本地编译安装，需要下载整个 react 仓库，具体操作流程如下。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/facebook/react.git</span><br><span class="line">yarn</span><br></pre></td></tr></table></figure><p>注意：如果报这种错 <code>@typescript-eslint/parser-v5@5.0.0-alpha.25: The engine &quot;node&quot; is incompatible</code> ，执行一下 <code>yarn config set ignore-engines true</code> 即可。</p><p>项目根目录下执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn build-for-devtools</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd packages/react-devtools-extensions/</span><br><span class="line">yarn build:chrome</span><br></pre></td></tr></table></figure><p>编译成功后，会在 packages/react-devtools-extensions/chrome 下生成 packages/react-devtools-extensions/chrome/build/unpacked 文件，浏览器插件管理中指定 unpacked 目录安装即可。</p></div></div></section></div></div></div><div class="push"></div><footer class="footer-content"><div class="container"><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about"><h2>About</h2><p>享受编程和技术所带来的快乐</p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories"><h2>Categories</h2><p><a class="footer-post" href="/categories/html/">html</a> <a class="footer-post" href="/categories/scratch/">scratch</a> <a class="footer-post" href="/categories/jotting/">jotting</a> <a class="footer-post" href="/categories/pl/">pl</a></p></div><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search"><h2>Search</h2><form class="site-search-form"><input type="text" id="local-search-input" class="st-search-input"></form><div id="local-search-result" class="local-search-result-cls"></div></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ul class="list-inline footer-social-icons"></ul></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="footer-copyright">Copyright©Tracy-xu'Blog. All Rights Reserved.</div></div></div></div></footer><script src="/plugins/jquery-2.1.4.min.js"></script><script src="/plugins/TweenMax.min.js"></script><script src="/plugins/featherlight/featherlight.min.js"></script><script src="/js/main.js"></script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="React"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>React - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2021/01/22/React/">
+                React
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-01-22</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>为什么 React 需要 Immutable？<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/KlausLily/article/details/117137249">https://blog.csdn.net/KlausLily/article/details/117137249</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20295971">https://zhuanlan.zhihu.com/p/20295971</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/446377023">https://www.zhihu.com/question/446377023</a></p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sexintercourse/p/15690013.html">https://www.cnblogs.com/sexintercourse/p/15690013.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/440916294/answer/1748044978">https://www.zhihu.com/question/440916294/answer/1748044978</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/475858982/answer/2029148759">https://www.zhihu.com/question/475858982/answer/2029148759</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/279600842">https://zhuanlan.zhihu.com/p/279600842</a></p>
+<p>react 还要 immutable.js 吗</p>
+<p>vue是否需要immutability</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/47171917">https://www.zhihu.com/question/47171917</a></p>
+<p>mobx</p>
+<p>mobx6 开始不支持装饰器</p>
+<p>mobx6: <a target="_blank" rel="noopener" href="https://mobx.js.org/enabling-decorators.html">https://mobx.js.org/enabling-decorators.html</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/342648174">https://zhuanlan.zhihu.com/p/342648174</a></p>
+<p>mobx4&#x2F;5: <a target="_blank" rel="noopener" href="https://cn.mobx.js.org/intro/overview.html">https://cn.mobx.js.org/intro/overview.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaozhumaopao/p/14422260.html">https://www.cnblogs.com/xiaozhumaopao/p/14422260.html</a></p>
+<p>React 天然和 mobx mutable 设计相违背: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/328612405/answer/2073843986">https://www.zhihu.com/question/328612405/answer/2073843986</a></p>
+<ul>
+<li>重要版本号</li>
+</ul>
+<p>react 在<br>0.13.0 加入了 ES6 classes components 支持<br>0.14.0 加入了对 Stateless functional components 支持<br>15.6.0 开始不再推荐 createClass，并在 16 开始废弃了对 createClass 的支持（如果想继续使用 createClass 方法创建组件,需要引入create-react-class<br>）<br>在 16.8 加入了 hook</p>
+<p>0.14.8 一下升到了 15.0.0，<a target="_blank" rel="noopener" href="https://reactjs.org/blog/2016/02/19/new-versioning-scheme.html">new-versioning-scheme</a></p>
+<p>主要目的是为了表明对稳定性的承诺（15.0.0 比 1.0.0 更适合），另外也是为了更好的利用<a target="_blank" rel="noopener" href="https://semver.org/lang/zh-CN/">semver 语义化版本规范</a>灵活地在次要版本中添加新的向后兼容功能。</p>
+<p>JSX 其实是一个 JavaScript 对象，JSX 被编译后，是一个函数调用，返回值为 JS 对象。可以用 Babel 编译 <a target="_blank" rel="noopener" href="https://babeljs.io/repl">Babel 在线编译</a>后的结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;div&gt;</span><br><span class="line">  &lt;h1&gt;Title&lt;/h1&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;img src=&quot;xxx.png&quot; /&gt;</span><br><span class="line">    &lt;p&gt;Content&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123; true ? 1 : 2 &#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29711902">https://zhuanlan.zhihu.com/p/29711902</a></p>
+<p>createClass 和 es6 class<br><a target="_blank" rel="noopener" href="https://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes">https://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes</a><br><a target="_blank" rel="noopener" href="https://www.w3cplus.com/react/react-es5-createclass-vs-es6-classes.html">https://www.w3cplus.com/react/react-es5-createclass-vs-es6-classes.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/aivnfjgj/p/6507344.html">https://www.cnblogs.com/aivnfjgj/p/6507344.html</a><br><a target="_blank" rel="noopener" href="https://daveceddia.com/react-es5-createclass-vs-es6-classes/">https://daveceddia.com/react-es5-createclass-vs-es6-classes/</a></p>
+<p>dan 的 github<br><a target="_blank" rel="noopener" href="https://github.com/gaearon">https://github.com/gaearon</a></p>
+<p>react 为什么要推崇函数式组件<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/343314784/answer/937174224">https://www.zhihu.com/question/343314784/answer/937174224</a></p>
+<ul>
+<li><p>setState</p>
+</li>
+<li><p>React 全家桶搭建</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904055840440334">https://juejin.cn/post/6844904055840440334</a></p>
+<p><a target="_blank" rel="noopener" href="https://umijs.org/zh-CN/docs/use-umi-ui">https://umijs.org/zh-CN/docs/use-umi-ui</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6926359111126908936">https://juejin.cn/post/6926359111126908936</a></p>
+<h2 id="CRA"><a href="#CRA" class="headerlink" title="CRA"></a>CRA</h2><p>cra 怎么选择 react 版本</p>
+<h2 id="react-devtools"><a href="#react-devtools" class="headerlink" title="react-devtools"></a>react-devtools</h2><p>灰色、蓝色、红色</p>
+<p>Edge 和 FireFox 应用商店不需要翻墙，Chrome 应用商店则需要翻墙，如果不能翻墙也可在本地打包编译。</p>
+<ul>
+<li>v3.3.2</li>
+</ul>
+<p>github 中下载 <a target="_blank" rel="noopener" href="https://github.com/facebook/react-devtools/tree/v3.3.2">v3.3.2</a> 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/facebook/react-devtools.git</span><br><span class="line">npm install --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>打包编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:extension:chrome </span><br></pre></td></tr></table></figure>
+
+<p>编译成功后，会在项目的项目根目录下生成文件夹 .&#x2F;shells&#x2F;chrome&#x2F;build&#x2F;unpacked</p>
+<p>在 chrome:&#x2F;&#x2F;extensions&#x2F; 中点击“加载已解压的扩展程序”，指定到这个目录安装即可。</p>
+<p>注意：react-devtools v3 不支持 react 17+，报错 <code>Uncaught TypeError: Cannot read properties of undefined (reading &#39;forEach&#39;)</code></p>
+<ul>
+<li>v4</li>
+</ul>
+<p>从 v4 开始，react devtools 被合并到 <a target="_blank" rel="noopener" href="https://github.com/facebook/react">react</a> 主项目中。项目根目录 packages 目录下两个文件夹：react-devtools 和 react-devtools-extensions，前者是基于 electron 版，不但能调试 React DOM，还能调试 React Native，后者是 react-devtools 浏览器插件版。</p>
+<p>本地编译安装，需要下载整个 react 仓库，具体操作流程如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/facebook/react.git</span><br><span class="line">yarn</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果报这种错 <code>@typescript-eslint/parser-v5@5.0.0-alpha.25: The engine &quot;node&quot; is incompatible</code> ，执行一下 <code>yarn config set ignore-engines true</code> 即可。</p>
+<p>项目根目录下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn build-for-devtools</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd packages/react-devtools-extensions/</span><br><span class="line">yarn build:chrome</span><br></pre></td></tr></table></figure>
+
+<p>编译成功后，会在 packages&#x2F;react-devtools-extensions&#x2F;chrome 下生成 packages&#x2F;react-devtools-extensions&#x2F;chrome&#x2F;build&#x2F;unpacked 文件，浏览器插件管理中指定 unpacked 目录安装即可。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+        <a class="footer-post" href="/categories/html/">html</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
