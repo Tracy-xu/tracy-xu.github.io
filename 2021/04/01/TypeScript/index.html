@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="TypeScript"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>TypeScript - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2021/04/01/TypeScript/">
+                TypeScript
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-04-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>类型标注&#x2F;注解：变量、函数、对象、类的类型（有些类型可通过类型推断出来，不用手动标注）</p>
+<p>静态类型的好处：</p>
+<span id="more"></span>
+
+<ul>
+<li>编译时类型检测</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">fibonacci</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line">fibonacci.<span class="title function_">push</span>(<span class="string">&#x27;8&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>可防止开发中的一些语法错误</p>
+<ul>
+<li>接口提示、代码补全</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> copyFields&lt;T <span class="keyword">extends</span> U, U&gt;(<span class="attr">target</span>: T, <span class="attr">source</span>: U): T &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> id <span class="keyword">in</span> source) &#123;</span><br><span class="line">    target[id] = (&lt;T&gt;source)[id];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> x = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">copyFields</span>(x, &#123; <span class="attr">b</span>: <span class="number">10</span>, <span class="attr">d</span>: <span class="number">20</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h2><p>作为 JS 的超集，TS 支持所有的 JS 数据类型，并新增了几种类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Built-in types: void、any、never</span><br><span class="line">User-defined types: enum、tuple、interface、class、array</span><br></pre></td></tr></table></figure>
+
+<p>在 TS 中，string 和 String 是不同的两种类型，前者是原始类型，后者是对象类型</p>
+<p>(window as any).foo &#x3D; 1;</p>
+<p>(window as any).foo</p>
+<p>&#x2F;&#x2F; 声明全局变量的”类型“</p>
+<p>&#x2F;&#x2F; 什么要字面量</p>
+<p>&#x2F;&#x2F; 枚举名和枚举值是相互映射的</p>
+<p>&#x2F;&#x2F; 类型断言、声明文件、枚举</p>
+<p>declare enum Directions {<br>    Up,<br>    Down,<br>    Left,<br>    Right<br>}</p>
+<p><T>source 就是 source as T，把 source 断言成 T 类型</p>
+<p>function createArray<T>(length: number, value: T): Array<T> {<br>    let result: T[] &#x3D; [];<br>    for (let i &#x3D; 0; i &lt; length; i++) {<br>        result[i] &#x3D; value;<br>    }<br>    return result;<br>}</p>
+<p>createArray<string>(3, ‘x’); &#x2F;&#x2F; [‘x’, ‘x’, ‘x’]</p>
+<p>第一个 T 是形参，后面的是使用 T</p>
+<p>函数类型不写，也可被推导出来<br>interface SearchFunc {<br>  (source: string, subString: string): boolean;<br>}</p>
+<p>let mySearch: SearchFunc;<br>mySearch &#x3D; function(source: string, subString: string) {<br>    return source.search(subString) !&#x3D;&#x3D; -1;<br>}</p>
+<p>泛型函数、泛型接口、泛型类<br>声明全局变量的”类型“<br>什么要字面量<br>枚举名和枚举值是相互映射的</p>
+<p>&#x2F;&#x2F; 类型断言、声明文件、枚举、泛型</p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>TypeScript 能进行类型检测，对于代码风格的检查则需要用到 ESlint。</p>
+<p>TypeScript 和 ESlint 没有可比性，一个是语言，一个是代码检测工具，要比也是 TSlint。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/network/">network</a>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/tools/">tools</a>
+        
+        <a class="footer-post" href="/categories/project/">project</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

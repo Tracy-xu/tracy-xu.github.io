@@ -2,7 +2,187 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tracyxu.cn/404.html</loc>
+    <loc>https://tracyxu.cn/2016/02/01/Markdown-Standard/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2016/06/02/Media%20Query/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2022/03/02/Scratch-Share/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2018/12/15/Vue/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2016/12/02/Currying/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2019/07/26/JavaScript-Type-System/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2021/10/02/Interact-Live-Class/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2021/04/01/TypeScript/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2019/06/20/Git-Pages/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2013/06/22/CSS%20%E5%8D%95%E4%BD%8D/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2013/05/07/CSS%20%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2013/05/02/CSS%20%E7%B2%BE%E7%B2%B9/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2013/03/15/HTML%20%E7%B2%BE%E7%B2%B9/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2015/07/01/Git-Guide/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/categories/index.html</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2019/04/20/Git-Commit-Message-Style-Guide/</loc>
+    
+    <lastmod>2022-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/rep/leetcode/valid-parentheses.html</loc>
     
     <lastmod>2022-08-23</lastmod>
     
@@ -11,7 +191,25 @@
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/categories/index.html</loc>
+    <loc>https://tracyxu.cn/rep/leetcode/two-sum.html</loc>
+    
+    <lastmod>2022-08-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/</loc>
+    
+    <lastmod>2022-08-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/404.html</loc>
     
     <lastmod>2022-08-23</lastmod>
     
@@ -29,123 +227,6 @@
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/2022/08/23/%E9%80%9A%E7%94%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/08/23/%E8%BD%AF%E9%94%AE%E7%9B%98/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/04/15/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/08/23/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/07/19/%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/08/23/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/02/08/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2018/02/03/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2019/04/06/xxsd/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2013/12/26/jQuery%20%E7%B2%BE%E7%B2%B9/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tracyxu.cn/2019/12/25/XSS/</loc>
     
     <lastmod>2022-08-23</lastmod>
@@ -155,70 +236,7 @@
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/2019/10/02/Web-Design-Rule/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/10/15/Vue/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/08/23/UI-Design-Specification/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/04/01/TypeScript/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tracyxu.cn/2019/07/01/Sinopia/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/03/02/Scratch/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2021/01/22/React/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/02/06/PossCSS/</loc>
     
     <lastmod>2022-08-23</lastmod>
     
@@ -245,142 +263,7 @@
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/2021/12/01/PWA/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/06/02/Media%20Query/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/02/01/Markdown/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2017/10/01/LeetCode%20JavaScript%20Solutions/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/06/15/K12/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tracyxu.cn/2019/04/01/Javascript-Date-Something/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2021/07/26/JavaScript-Type-System/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/03/22/Interview-Web/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/03/02/Interview-Open/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/06/01/Interview-Node/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/03/01/Interview-Javascript/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/03/03/Interview-HTML-CSS/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/05/10/Interview-Algorithms/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/10/01/Interact-Live-Class/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/07/21/HTTP/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2014/05/15/HTML%20%E7%B2%BE%E7%B2%B9/</loc>
     
     <lastmod>2022-08-23</lastmod>
     
@@ -398,34 +281,7 @@
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/2015/07/01/Git-Guide/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tracyxu.cn/2019/04/25/Git-Flow/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2019/04/20/Git-Commit-Message-Style-Guide/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2019/07/01/Express/</loc>
     
     <lastmod>2022-08-23</lastmod>
     
@@ -443,79 +299,7 @@
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/2019/07/01/Data/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2020/12/02/Currying/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tracyxu.cn/2016/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/11/20/CSS%20%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%20Sass/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/01/19/CSS%20%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/01/02/CSS%20%E7%B2%BE%E7%B2%B9/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2016/01/20/CSS%20%E5%8D%95%E4%BD%8D/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/2022/08/23/Axios/</loc>
     
     <lastmod>2022-08-23</lastmod>
     
@@ -535,7 +319,7 @@
 
   <url>
     <loc>https://tracyxu.cn/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -545,77 +329,63 @@
   
   <url>
     <loc>https://tracyxu.cn/categories/css/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://tracyxu.cn/categories/javascript/</loc>
-    <lastmod>2022-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/categories/engineering/</loc>
-    <lastmod>2022-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/categories/html/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://tracyxu.cn/categories/network/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://tracyxu.cn/categories/project/</loc>
-    <lastmod>2022-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/categories/interview/</loc>
-    <lastmod>2022-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tracyxu.cn/categories/algorithms/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://tracyxu.cn/categories/scratch/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/categories/jotting/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <loc>https://tracyxu.cn/categories/engineering/</loc>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tracyxu.cn/categories/pl/</loc>
-    <lastmod>2022-08-23</lastmod>
+    <loc>https://tracyxu.cn/categories/tools/</loc>
+    <lastmod>2022-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/categories/html/</loc>
+    <lastmod>2022-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tracyxu.cn/categories/algorithms/</loc>
+    <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

@@ -135,18 +135,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2020/03/22/Interview-Web/">
-                Web 面试题
+            <a href="/2016/06/10/Pixel-Viewport-1/">
+                两个像素三个视口(上) -- 像素
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-03-22</span>
+                <span class="date">2016-06-10</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/interview/">interview</a>
+                    <a href="/categories/css/">css</a>
                 </span>
             
         </div>
@@ -154,41 +154,10 @@
 
     
         <div class="content">
-            <ul>
-<li>Tab</li>
-</ul>
-<p>Tab效果的实现以及插件封装</p>
-<ul>
-<li><p>拖拽</p>
-</li>
-<li><p>轮播</p>
-</li>
-<li><p>对一个接口进行连续的 Ajax 请求时（比如 input 事件），怎么保证最后一次请求的有效性（不会被前面返回慢的请求覆盖）。（input 举例有问题，因为这个场景下用 debounce 就可以规避这个 bug）</p>
-</li>
-<li><p>怎么往后端提交数据格式为 queryString、JSON、JPG 的数据。</p>
-</li>
-<li><p>前后端分离</p>
-</li>
-</ul>
-<p>会话保持、权限认证（会话校验）<br>前端数据管理</p>
-<p>有一个场景：移动端单页应用中，有 A、B、C 三个页面，A 和 B 分别是带分页的列表页（滑动分页），C 是 A 的详情页。C 回 A，要求保存 A 的分页状态，A 与 B 切换不保存状态。</p>
-<ul>
-<li><p>实现 getElementsByClassName</p>
-</li>
-<li><p>如何实现仅加载可视区域内的图片</p>
-</li>
-</ul>
-<ol>
-<li>一个淘宝页面，你如何取得这个页面用到哪几种标签？</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tags = [];</span><br><span class="line"><span class="keyword">const</span> labelType = &#123;&#125;;</span><br><span class="line">tags.<span class="property">push</span>.<span class="title function_">apply</span>(tags, <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;*&#x27;</span>));</span><br><span class="line">tags.<span class="title function_">forEach</span>(<span class="function">(<span class="params">tag</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (tag.<span class="property">nodeType</span> == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (labelType[tag.<span class="property">nodeName</span>] == <span class="literal">undefined</span>) &#123;</span><br><span class="line">      labelType[tag.<span class="property">nodeName</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      labelType[tag.<span class="property">nodeName</span>] += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(labelType);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看一个网页的层次结构</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[].<span class="property">forEach</span>.<span class="title function_">call</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;*&#x27;</span>), <span class="keyword">function</span>(<span class="params">item</span>) &#123; <span class="comment">// 可 Array.from 或 spread 先转为数组</span></span><br><span class="line">  item.<span class="property">style</span>.<span class="property">outline</span> = <span class="string">`1px solid #<span class="subst">$&#123;(~~(<span class="built_in">Math</span>.random() * (<span class="number">1</span> &lt;&lt; <span class="number">24</span>))).toString(<span class="number">16</span>)&#125;</span>`</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+            <p>像素是影像显示的基本单位，其表现为一个个小方格。在 GUI 客户端软件开发中，像素是布局的基础，对于一个客户端开发者来说理解它很重要。其实存在两种像素，<a target="_blank" rel="noopener" href="https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html">此像素非彼像素</a>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 设备像素</span><br><span class="line">* 设备独立像素</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2020/03/22/Interview-Web/" class="read-more">Read More</a>
+        <a href="/2016/06/10/Pixel-Viewport-1/" class="read-more">Read More</a>
     
 
 </div>
@@ -198,18 +167,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2020/03/03/Interview-HTML-CSS/">
-                HTML、CSS 面试题
+            <a href="/2016/06/02/Media%20Query/">
+                Media Query
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-03-03</span>
+                <span class="date">2016-06-02</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/interview/">interview</a>
+                    <a href="/categories/css/">css</a>
                 </span>
             
         </div>
@@ -217,10 +186,11 @@
 
     
         <div class="content">
-            <p>通过 translate 来移动元素和用 left top 移动元素有何区别？分别有何优劣？<br>一个未知宽高的块元素如何在屏幕中水平垂直居中？说明原理</p>
-<p>三列布局，中间宽度固定，两侧宽度自适应屏幕？说明原理<br>三列布局，中间自适应屏幕，两侧固定宽度，要求至少两种方式完成</p>
+            <p>媒体查询在 CSS2 中就已经存在了，但是只能查询 meida type，CSS3 中除了能查询 media type 外，还加入了 media feature 的查询。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>媒体查询包含一个“媒体类型（media type）”以及至少一个测试“媒体特性（media feature）”的表达式，表达式和媒体类型将根据实际情况计算的到 true 或者 false。如果指定的媒体类型符合当前设备并且媒体特性表达式都为真，那当前媒体查询为真，media query 为 true，对应的样式规则生效。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> [媒体类型] 媒体特性 &#123;&#125;    # 除非使用了 not 或者 only 操作符，否则 media type 是可选的，默认值为 <span class="attribute">all</span></span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2020/03/03/Interview-HTML-CSS/" class="read-more">Read More</a>
+        <a href="/2016/06/02/Media%20Query/" class="read-more">Read More</a>
     
 
 </div>
@@ -230,18 +200,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2020/03/02/Interview-Open/">
-                开放性面试题
+            <a href="/2016/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
+                CSS3 过渡与动画
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-03-02</span>
+                <span class="date">2016-05-18</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/interview/">interview</a>
+                    <a href="/categories/css/">css</a>
                 </span>
             
         </div>
@@ -249,49 +219,12 @@
 
     
         <div class="content">
-            <p>前端面试</p>
-<ul>
-<li><p>计算机网络：HTTP</p>
-</li>
-<li><p>数据结构与算法：</p>
-</li>
-<li><p>编程语言：JS、Node、CSS、HTML</p>
-</li>
-<li><p>Web：Web API、安全</p>
-</li>
-<li><p>经验：input 频繁发送请求、button 重复发送请求</p>
-</li>
-<li><p>工程化：构建, 规范, 模块化(这个其实算语言中，只是早期 js 不支持由工具支持了)</p>
-</li>
-<li><p>优化：</p>
-</li>
-<li><p>运维：linux、docker、nginx</p>
-</li>
-<li><p>项目管理：Git</p>
-</li>
-<li><p>产品、需求、业务：</p>
-</li>
-<li><p>自我介绍 工作经历 项目经历</p>
-</li>
-<li><p>介绍一下现在做的产品，前端在这个项目中的职责，有什么亮点和缺点需要优化的地方，碰到最难的问题是什么。</p>
-</li>
-<li><p>聊一聊 你觉得做的最有挑战性的(最自豪、最失败)的项目?</p>
-</li>
-</ul>
-<p>Tips:</p>
-<p>可以从以下几个方面回答</p>
-<p>是什么项目<br>这个项目做的是什么, 能线上预览更好<br>涉及的技术栈<br>中间遇到了哪些问题，你是如何解决的<br>项目收益或者通过项目学到了什么</p>
-<ul>
-<li>简述如何设计一个能创建流程图的页面（类似visio，xmind）</li>
-</ul>
-<p>来自华为面试</p>
-<p>有没有做过类似功能的页面，有的话，怎么改进？没有的话，讲讲思路。（我没有做过，因此接着问下面的问题）<br>基本功能（拖拽，连线）如何实现？<br>怎样变成可复用的插件？<br>如何实现扩展（考官未细指扩展的方向）？</p>
-<p>对于一个大型网站静态页面的制作，谈谈你对HTML结构的设计、CSS样式表规划及重用性的思考。</p>
-<ul>
-<li>Web 前端技术的展望</li>
-</ul>
+            <h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: [property duration timing-function delay]</span><br></pre></td></tr></table></figure>
 
+<p>property 默认值 all，duration 和 delay 默认值 0，timing-function 默认值 ease。可使用 <code>,</code> 分割，实现多个动画，配合 duration，还可实现队列动画。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;<span class="attribute">display</span>: flex; <span class="attribute">width</span>: <span class="number">65px</span>; <span class="attribute">height</span>: <span class="number">40px</span>; <span class="attribute">align-items</span>: center; <span class="attribute">justify-content</span>: center; <span class="attribute">background</span>: <span class="number">#92B901</span>; <span class="attribute">font-size</span>: <span class="number">12px</span>; <span class="attribute">opacity</span>: <span class="number">0.4</span>; <span class="attribute">transition</span>: transform <span class="number">1s</span>, opacity <span class="number">1s</span>, background <span class="number">1s</span>, width <span class="number">1s</span>, height <span class="number">1s</span>, font-size <span class="number">1s</span>;&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">width</span>: <span class="number">90px</span>; <span class="attribute">height</span>: <span class="number">60px</span>; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>); <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">background</span>: <span class="number">#1ec7e6</span>;&#125;</span><br></pre></td></tr></table></figure>
         </div>
+        <a href="/2016/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/" class="read-more">Read More</a>
     
 
 </div>
@@ -301,18 +234,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2020/03/01/Interview-Javascript/">
-                JavaScript 面试题
+            <a href="/2016/02/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/">
+                HTML 标签嵌套规则
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-03-01</span>
+                <span class="date">2016-02-15</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/interview/">interview</a>
+                    <a href="/categories/html/">html</a>
                 </span>
             
         </div>
@@ -320,20 +253,18 @@
 
     
         <div class="content">
-            <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ul>
-<li>算术运算符</li>
+            <h2 id="HTML4-x2F-XHTML-嵌套规则"><a href="#HTML4-x2F-XHTML-嵌套规则" class="headerlink" title="HTML4&#x2F;XHTML 嵌套规则"></a>HTML4&#x2F;XHTML 嵌套规则</h2><p>在 HTML4&#x2F;XHTML DTD 中，将元素的分为 inline level (行内级) 和 block level (块级) 两类。</p>
+<ul>
+<li>inline level</li>
 </ul>
-<p>计算器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">calculator</span>(<span class="params">operator, value1, value2</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="title function_">isNumber</span>(value1) || !<span class="title function_">isNumber</span>(value2)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请输入数字！&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// return eval(`$&#123;value1&#125; $&#123;operator&#125; $&#123;value2&#125;`) 更简单</span></span><br><span class="line">  <span class="keyword">switch</span> (operator) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> value1 + value2;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> value1 - value2;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> value1 * value2;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>:</span><br><span class="line">      <span class="keyword">if</span> (value2 != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value1 / value2;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isNumber</span>(<span class="params">num</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="regexp">/^\d+(\.\d+)?$/</span>.<span class="title function_">test</span>(num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">span、a、dfn、abbr、cite、img、label、q、u、em、i、strong、b、big、small、sub、sup、表单类；计算机输出类(tt、kbd、code、var、samp)</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>位运算符</li>
+<li>block level</li>
 </ul>
-<p><code>~</code>的作用是什么? <code>~4</code>的结果是多少？为什么?</p>
-<p><code>~</code>操作符 转换成二进制后 取反数。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 转成二进制</span><br><span class="line">00000000000000000000000000000100</span><br><span class="line">`~` 按位取反</span><br><span class="line">11111111111111111111111111111011</span><br><span class="line">-5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div、h1-h6、hr、ul、ol、dl、li、fieldset、address、from、table、html5 中新增的结构化语义标签、pre、blockquote、dir、menu</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2020/03/01/Interview-Javascript/" class="read-more">Read More</a>
+        <a href="/2016/02/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/" class="read-more">Read More</a>
     
 
 </div>
@@ -343,116 +274,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/12/25/XSS/">
-                XSS 和 CSRF
+            <a href="/2016/02/01/Markdown-Standard/">
+                Markdown 技术文档写作规范
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-12-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/network/">network</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p>
-        </div>
-        <a href="/2019/12/25/XSS/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/11/10/EditorConfig-ESlint-Prettier/">
-                EditorConfig-ESlint-Prettier
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-11-10</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/engineering/">engineering</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="EditorConfig"><a href="#EditorConfig" class="headerlink" title="EditorConfig"></a>EditorConfig</h2><p><a target="_blank" rel="noopener" href="https://editorconfig.org/">EditorConfig</a> 是编辑器&#x2F;IDE 配置工具，需要编辑器&#x2F;IDE 支持，在 VSCode 上可通过 EditorConfig for VS Code 插件支持。</p>
-        </div>
-        <a href="/2019/11/10/EditorConfig-ESlint-Prettier/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">
-                前端开发规范
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/engineering/">engineering</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <ul>
-<li>代码规范</li>
-</ul>
-<p>代码规范的可通过文档约定和 CodeRevice，但这主观性太强，不容易落地，最理想的方式还是在工程化层面，借助灵活配置的工具，工程化自动化的解决。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ESLint + Prettier: JavaScript/TypeScript/VUE/React 代码规范</span><br><span class="line">Stylelint: CSS 代码规范</span><br><span class="line">Editorconfig: 编辑器配置工具</span><br><span class="line">Prettier: 代码格式化工具</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Yellow-ice/p/15346883.html">https://www.cnblogs.com/Yellow-ice/p/15346883.html</a></p>
-<ul>
-<li>Git 规范</li>
-</ul>
-<p>Git 工作流规范（Husky + Commitlint + Lint-staged），提交规范（Commitizen）</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/10/02/Web-Design-Rule/">
-                Web 设计规范
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-02</span>
+                <span class="date">2016-02-01</span>
             
             
             
@@ -465,15 +293,25 @@
 
     
         <div class="content">
-            <p>其实有了 user-scalable&#x3D;no，无需设置 minimum-scale 和 maximum-scale</p>
-<h2 id="设计尺寸"><a href="#设计尺寸" class="headerlink" title="设计尺寸"></a>设计尺寸</h2><p>需要考虑，设计师设计视觉稿时使用什么样的宽度，才能既满足设计本身的需求又能让前端方便的还原与适配。</p>
-<p>ui 设计稿按目标屏幕的分辨率做</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># PC</span><br><span class="line">固定尺寸（1200）</span><br><span class="line">全屏尺寸</span><br><span class="line">  1440 中后台全屏设计，这样既可以向上照顾 1920，又可以向下照顾到 1366</span><br><span class="line">  1920 可视化全屏设计尺寸</span><br><span class="line"></span><br><span class="line"># 手机</span><br><span class="line">全屏尺寸</span><br><span class="line">  640</span><br><span class="line">  375（兼容流体？）</span><br><span class="line">  320</span><br><span class="line"></span><br><span class="line"># Pad</span><br><span class="line">2048</span><br><span class="line">1920</span><br></pre></td></tr></table></figure>
-
-<h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><ul>
-<li>颜色</li>
-<li>字号</li>
+            <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>一级、二级、三级、四级…</p>
+<p>不要超过三级标题</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
+<li>引用</li>
 </ul>
+<blockquote>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<pre><code>
+* 列表
+
+纯列表使用 使用 *，且用用 ``` 包裹，带描述的列表，列表名使用 *
+
+中英文混排时，英文中使用半角符号，连接处空格
+
+专有英文名词中单词首字母大写，句子中只需要第一个单词首字母大写。
+</code></pre>
 
         </div>
     
@@ -485,18 +323,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/07/01/Data/">
-                数据
+            <a href="/2015/07/01/Git-Guide/">
+                Git Guide
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-07-01</span>
+                <span class="date">2015-07-01</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/engineering/">engineering</a>
                 </span>
             
         </div>
@@ -504,24 +342,20 @@
 
     
         <div class="content">
-            <p>主要讲 GUI 程序中数据的流程：数据采集–》数据处理–》数据应用（数据结构、数据类型，数据有哪些，另讲，DOM 算不算数据？不算吧，HTML 是一种标记语言，JS 和 HTML 的关系，只是两种语言间的关系，只是 JS 的 Web API 能操作 HTML，跟 NodeJS 能操作数据库关系一样）</p>
-<p>注：JS 标准库其实也只能处理数据，应用于平台上才具有平台能力，JS 在浏览器中有操作 DOM 和 BOM 的能力（Web API），JS 在 Node 中有操作数据库和操作系统的能力。</p>
-<p>跟人类大脑一样，计算机是用来处理数据的，数据是计算机的核心。处理需要用算法（广义），这也正好对应了程序 &#x3D; 数据结构 + 算法之说。</p>
-<h2 id="数据的消费和生产"><a href="#数据的消费和生产" class="headerlink" title="数据的消费和生产"></a>数据的消费和生产</h2><p>计算机数据的输入&#x2F;采集设备，可通过键盘鼠标麦克风显示器，也可通过传感器和机械臂（机器人）</p>
-<p>在 GUI 程序中（比如 Web），产生数据的两种方式：交互(click、input、change、mousemove…)生成，或接口返回</p>
-<p>原生交互元素：form（包括 button、input…）、video、audio、canvas，当然也可以自定义交互组件，比如下拉按钮</p>
-<p>数据生产时，生产的数据需要校验</p>
-<p>关于数据的校验: 如果数据是由表单产生，由表单校验即可，如果是其他方式产生，一般提交时 toast 校验即可</p>
-<p>生产数据很多时候都需要提前消费数据，比如选择学生，比如创建模板</p>
-<p>数据消费时，如果接口返回的格式不能满足消费需求时，需要处理数据，生产同理</p>
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>数据构造<br>数据转换(forEach、map、reduce)：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020221170">https://segmentfault.com/a/1190000020221170</a><br>后端数据结构转为前端数据结构，前端数据结构转为后端数据结构<br>空数据(缺省设置)，某个字段为空<br>排序、去重</p>
-<p>数据的初始化不能用有业务意义的数据，比如分页数据的初始化不能使用 []（代表无数据），而应使用 null，否则会造成缺省提示的闪烁。</p>
-<p>map、reduce 用来构造数据，every、some 用来验证数据</p>
-<h2 id="数据应用"><a href="#数据应用" class="headerlink" title="数据应用"></a>数据应用</h2><p>电脑和手机中数据以文本、图片、音视频…的形式通过屏幕显示的方式来使用，供人类使用，机器人则通过机械臂。</p>
-<p>计算机数据的输入&#x2F;采集和输出设备，可通过键盘鼠标麦克风显示器，也可通过传感器和机械臂（机器人）</p>
-<h2 id="最懂业务的人"><a href="#最懂业务的人" class="headerlink" title="最懂业务的人"></a>最懂业务的人</h2><p>数据库里数据是对业务（产品、需求）的最高抽象，所以服务端是最了解业务的人。</p>
-
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>分布式</li>
+</ul>
+<p>Git 是分布式版本控制系统，这不同于 SVN 这类集中式版本控制系统，可以完全去中心化工作，不用和中央服务器 (remote server) 进行通信，在本地即可进行全部版本控制操作，包括 commit、log、diff…，即便是离线下。</p>
+<ul>
+<li>快照</li>
+</ul>
+<p>分支在SVN中实际上是版本库中的一份copy，而git一个仓库是一个快照，所以git 切换、合并分支等操作更快速。</p>
+<ul>
+<li>指针</li>
+</ul>
+<p>Git 分支是指针指向某次提交，而 SVN 分支是拷贝的目录。这个特性使 Git 的分支切换非常迅速，且创建成本非常低。</p>
         </div>
+        <a href="/2015/07/01/Git-Guide/" class="read-more">Read More</a>
     
 
 </div>
@@ -531,18 +365,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/07/01/Express/">
-                Express
+            <a href="/2013/06/22/CSS%20%E5%8D%95%E4%BD%8D/">
+                CSS 单位
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-07-01</span>
+                <span class="date">2013-06-22</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/css/">css</a>
                 </span>
             
         </div>
@@ -550,10 +384,107 @@
 
     
         <div class="content">
-            <p>Express</p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904023380721678">https://juejin.cn/post/6844904023380721678</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904198551666701">https://juejin.cn/post/6844904198551666701</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6914891222884564999">https://juejin.cn/post/6914891222884564999</a></p>
+            <h2 id="px"><a href="#px" class="headerlink" title="px"></a>px</h2><p>px 是一个<a target="_blank" rel="noopener" href="https://www.w3.org/TR/css3-values/#lengths">绝对单位</a>，不相对于谁，只受平台 dpi 影响。cm、pt 之类的也都是绝对长度，但与 px 这个抽象单位不同的是它们都是物理单位，1pt 则是 1&#x2F;72 英寸，而 1 英寸换算到公制是 2.54cm，在 CSS 中所有的物理单位会直接映射到像素，在 96dpi 下 <code>1in = 2.54cm = 96px</code> <code>1cm = 37.8px</code>。</p>
         </div>
-        <a href="/2019/07/01/Express/" class="read-more">Read More</a>
+        <a href="/2013/06/22/CSS%20%E5%8D%95%E4%BD%8D/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2013/05/07/CSS%20%E9%80%89%E6%8B%A9%E5%99%A8/">
+                CSS 选择器
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2013-05-07</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="选择器分类"><a href="#选择器分类" class="headerlink" title="选择器分类"></a>选择器分类</h2><ul>
+<li>简单选择器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 通配符选择器</span><br><span class="line">E 标签选择器</span><br><span class="line">类选择器</span><br><span class="line">ID 选择器</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2013/05/07/CSS%20%E9%80%89%E6%8B%A9%E5%99%A8/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2013/05/02/CSS%20%E7%B2%BE%E7%B2%B9/">
+                CSS 精粹
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2013-05-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="CSS-的构成"><a href="#CSS-的构成" class="headerlink" title="CSS 的构成"></a>CSS 的构成</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 选择器</span><br><span class="line">* 文字处理</span><br><span class="line">* 背景图像处理</span><br><span class="line">* 布局</span><br><span class="line">* 动画</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2013/05/02/CSS%20%E7%B2%BE%E7%B2%B9/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2013/03/15/HTML%20%E7%B2%BE%E7%B2%B9/">
+                HTML 精粹
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2013-03-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/html/">html</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p><code>&lt;!DOCTYPE&gt;</code> 标签位于文档中的最前面的位置，作用相当于一个标识符，此标签可告知 Parser（排版引擎）使用哪种 <code>HTML</code> 或 <code>XHTML</code> 解析规则，和使用哪种渲染模式。</p>
+<p>DOCTYPE 的基本结构：<code>&lt;!DOCTYPE Element-name DTD-type DTD-name DTD-url&gt;</code>，HTML5 <code>&lt;!DOCTYPE Element-name&gt;</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &lt;!DOCTYPE&gt; 是关键字，表示声明 DTD</span><br><span class="line">* Element-name 指定该 DTD 的根元素名称</span><br><span class="line">* DTD-type 指定该 DTD 是属于标准公用的还是私人定制的。若是 PUBLIC 则表示该 DTD 是标准公用的，如果设为 SYSTEM 则表示是私人定制的</span><br><span class="line">* DTD-name 指定该 DTD 的文件名称</span><br><span class="line">* DTD-url 指定该 DTD 文件所在的 URL 网址</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2013/03/15/HTML%20%E7%B2%BE%E7%B2%B9/" class="read-more">Read More</a>
     
 
 </div>
@@ -570,7 +501,7 @@
                 <a class="" href="/page/2/">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 </a>
-                <a class="" href="/page/4/">
+                <a class="disabled" href="/">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </a>
             </div>
@@ -599,13 +530,13 @@
     <h2>Categories</h2>
     <p>
         
+        <a class="footer-post" href="/categories/network/">network</a>
+        
         <a class="footer-post" href="/categories/scratch/">scratch</a>
         
-        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        <a class="footer-post" href="/categories/tools/">tools</a>
         
-        <a class="footer-post" href="/categories/pl/">pl</a>
-        
-        <a class="footer-post" href="/categories/html/">html</a>
+        <a class="footer-post" href="/categories/project/">project</a>
         
     </p>
 </div>

@@ -116,6 +116,7 @@ var searchFunc = function (path, search_id, content_id) {
   var $input = document.getElementById(search_id);
   var $resultContent = document.getElementById(content_id);
   $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+  $resultContent.style.display = 'none';
   $.ajax({
     // 0x01. load xml file
     url: path,
@@ -132,6 +133,8 @@ var searchFunc = function (path, search_id, content_id) {
       $resultContent.innerHTML = "";
 
       $input.addEventListener('input', function () {
+        console.log($resultContent, 2323);
+        $resultContent.style.display = 'block';
         // 0x03. parse query to keywords list
         var str = '<ul class=\"search-result-list\">';
         var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);

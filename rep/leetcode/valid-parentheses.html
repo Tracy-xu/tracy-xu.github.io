@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="valid-parentheses"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>valid-parentheses - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        
+            <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+            <section class="main">
+                
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/rep/leetcode/valid-parentheses.html">
+                valid-parentheses
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-10-01</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>匹配法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">isValid</span> = (<span class="params">s</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> len = s.<span class="property">length</span>;</span><br><span class="line">    <span class="comment">// 将字符串按照匹配对，挨个替换为 &#x27;&#x27;</span></span><br><span class="line">    s = s.<span class="title function_">replace</span>(<span class="string">&#x27;&#123;&#125;&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;[]&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;()&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="comment">// 有两种情况 s.length 会等于 len</span></span><br><span class="line">    <span class="comment">// 1. s 匹配完了，变成了空字符串</span></span><br><span class="line">    <span class="comment">// 2. s 无法继续匹配，匹配后的长度和和匹配前的长度一样（比如 &quot;(&#123;]&quot;,一开始 len 是 3，匹配后还是 3，说明不用继续匹配了）</span></span><br><span class="line">    <span class="keyword">if</span> (s.<span class="property">length</span> === len) &#123;</span><br><span class="line">      <span class="keyword">return</span> len === <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = <span class="string">&#x27;&#123;[()]&#125;&#x27;</span>;</span><br><span class="line"><span class="title function_">isValid</span>(s);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">isValid</span> = (<span class="params">s</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">while</span> (s.<span class="title function_">includes</span>(<span class="string">&#x27;&#123;&#125;&#x27;</span>) || s.<span class="title function_">includes</span>(<span class="string">&#x27;[]&#x27;</span>) || s.<span class="title function_">includes</span>(<span class="string">&#x27;()&#x27;</span>)) &#123;</span><br><span class="line">    s = s.<span class="title function_">replace</span>(<span class="string">&#x27;&#123;&#125;&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;[]&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;()&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>栈解法</li>
+</ul>
+<p>解题信息中强调对称性，而栈（先入后出）入栈和出栈恰好是反着来，形成了鲜明的对称性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">isValid</span> = (<span class="params">s</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 空字符串符合条件</span></span><br><span class="line">  <span class="keyword">if</span> (!s) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> leftToRight = &#123;</span><br><span class="line">    <span class="string">&#x27;(&#x27;</span>: <span class="string">&#x27;)&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;[&#x27;</span>: <span class="string">&#x27;]&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;&#123;&#x27;</span>: <span class="string">&#x27;&#125;&#x27;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> stack = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = s.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> ch = s[i];</span><br><span class="line">    <span class="comment">// 左括号</span></span><br><span class="line">    <span class="keyword">if</span> (leftToRight[ch]) &#123;</span><br><span class="line">      stack.<span class="title function_">push</span>(ch);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 右括号开始匹配</span></span><br><span class="line">      <span class="comment">// 1. 如果栈内没有左括号，直接 false</span></span><br><span class="line">      <span class="comment">// 2. 有数据但是栈顶元素不是当前的右括号</span></span><br><span class="line">      <span class="keyword">if</span> (!stack.<span class="property">length</span> || leftToRight[ stack.<span class="title function_">pop</span>() ] !== ch) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 最后检查栈内还有没有元素，有说明还有未匹配则不符合</span></span><br><span class="line">  <span class="keyword">return</span> !stack.<span class="property">length</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+            </section>
+        
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/network/">network</a>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/tools/">tools</a>
+        
+        <a class="footer-post" href="/categories/project/">project</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

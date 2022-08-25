@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2022-08-23T02:53:00.013Z</updated>
+  <updated>2022-08-25T09:03:23.969Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,144 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://tracyxu.cn/2022/08/23/%E9%80%9A%E7%94%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF/"/>
-    <id>https://tracyxu.cn/2022/08/23/%E9%80%9A%E7%94%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF/</id>
-    <published>2022-08-23T02:53:00.012Z</published>
-    <updated>2022-08-23T02:53:00.013Z</updated>
+    <title>Scratch 助教</title>
+    <link href="https://tracyxu.cn/2022/03/02/Scratch-Share/"/>
+    <id>https://tracyxu.cn/2022/03/02/Scratch-Share/</id>
+    <published>2022-03-01T16:00:00.000Z</published>
+    <updated>2022-08-25T09:03:23.969Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;场景经验&lt;/p&gt;
-&lt;h3 id=&quot;业务&quot;&gt;&lt;a href=&quot;#业务&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;在这春暖花开，万物复苏之季，非常荣幸受邀参加家长助教活动，我非常赞成这项活动，也非常感谢那些助教的家长，这也是家园共育中重要的活动。&lt;/p&gt;
+&lt;p&gt;我准备的课程主题为《少儿编程》，希望通过这节课可以让孩子们对计算机、人工智能、编程有一个轮廓上的概念，知道计算机的用途，知道现阶段的人工智能和真正的人工智能区别，知道编程中最基本的流程控制 – 循环和条件判断。&lt;/p&gt;
+&lt;p&gt;本次课程分三部分，分别是：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* 计算机科普&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Scratch 编程&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 游戏“见缝插针”&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://tracyxu.cn/2022/08/23/%E8%BD%AF%E9%94%AE%E7%9B%98/"/>
-    <id>https://tracyxu.cn/2022/08/23/%E8%BD%AF%E9%94%AE%E7%9B%98/</id>
-    <published>2022-08-23T02:53:00.011Z</published>
-    <updated>2022-08-23T02:53:00.012Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
+    <category term="scratch" scheme="https://tracyxu.cn/categories/scratch/"/>
     
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://tracyxu.cn/2022/08/23/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    <id>https://tracyxu.cn/2022/08/23/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</id>
-    <published>2022-08-23T02:53:00.007Z</published>
-    <updated>2022-08-23T02:53:00.007Z</updated>
+    <title>互动直播课堂前端设计方案</title>
+    <link href="https://tracyxu.cn/2021/10/02/Interact-Live-Class/"/>
+    <id>https://tracyxu.cn/2021/10/02/Interact-Live-Class/</id>
+    <published>2021-10-01T16:00:00.000Z</published>
+    <updated>2022-08-25T07:27:38.728Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;前端优化（提高网页的加载速度）&lt;/p&gt;
-&lt;p&gt;1、使用css</summary>
-        
-      
+    <summary type="html">&lt;p&gt;按同屏技术实现方式来分，课堂可分为&lt;strong&gt;录屏课堂&lt;/strong&gt;和&lt;strong&gt;指令课堂&lt;/strong&gt;。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。&lt;/p&gt;
+&lt;p&gt;相比于录屏，指令同屏实现复杂，但是可以选择同屏的内容，起到保护隐私的作用。&lt;/p&gt;</summary>
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://tracyxu.cn/2022/08/23/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/"/>
-    <id>https://tracyxu.cn/2022/08/23/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/</id>
-    <published>2022-08-23T02:53:00.003Z</published>
-    <updated>2022-08-23T02:53:00.004Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.secpulse.com/archives/63801.html&quot;&gt;https://www.secpulse.com/archives/63801.html&lt;/a&gt;&lt;br&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://tracyxu.cn/2022/08/23/UI-Design-Specification/"/>
-    <id>https://tracyxu.cn/2022/08/23/UI-Design-Specification/</id>
-    <published>2022-08-23T02:52:59.981Z</published>
-    <updated>2022-08-23T02:52:59.981Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;UI 设计规范。&lt;/p&gt;
-&lt;h2 id=&quot;标准化&quot;&gt;&lt;a href=&quot;#标准化&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://tracyxu.cn/2022/08/23/Axios/"/>
-    <id>https://tracyxu.cn/2022/08/23/Axios/</id>
-    <published>2022-08-23T02:52:59.909Z</published>
-    <updated>2022-08-23T02:52:59.909Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Axios&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;params&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;config 中 params 字段是与请求一起发送的 URL 参数，支持对象或 URLSearchParams 对象，Axios 会自动序列化为 QueryString，不需要手动序列化</summary>
-        
-      
-    
-    
+    <category term="project" scheme="https://tracyxu.cn/categories/project/"/>
     
     
   </entry>
   
   <entry>
     <title>函数参数的求值策略</title>
-    <link href="https://tracyxu.cn/2022/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
-    <id>https://tracyxu.cn/2022/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
-    <published>2022-07-31T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.997Z</updated>
+    <link href="https://tracyxu.cn/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
+    <id>https://tracyxu.cn/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
+    <published>2021-07-31T16:00:00.000Z</published>
+    <updated>2022-08-25T07:25:51.337Z</updated>
     
     
     <summary type="html">&lt;p&gt;函数参数的&lt;a href=&quot;https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085&quot;&gt;求值策略 Evaluation Strategy&lt;/a&gt; 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。&lt;/p&gt;</summary>
@@ -167,32 +72,11 @@
   </entry>
   
   <entry>
-    <title>编程范式</title>
-    <link href="https://tracyxu.cn/2022/04/15/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"/>
-    <id>https://tracyxu.cn/2022/04/15/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/</id>
-    <published>2022-04-14T16:00:00.000Z</published>
-    <updated>2022-08-23T02:53:00.010Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;正交（orthogonal）&lt;/p&gt;
-&lt;p&gt;React的设计贯彻了声明式编程&lt;/p&gt;
-&lt;p&gt;编程范式：programming paradigm&lt;/p&gt;
-&lt;p&gt;命令式（Imperative），声明式（declarative programming）），这两个是对立的。&lt;/p&gt;
-&lt;p&gt;面向过程，面向对象（Object-oriented Programming 简称 OOP），函数式（functional programming 简称 FP）&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="pl" scheme="https://tracyxu.cn/categories/pl/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>TypeScript</title>
-    <link href="https://tracyxu.cn/2022/04/01/TypeScript/"/>
-    <id>https://tracyxu.cn/2022/04/01/TypeScript/</id>
-    <published>2022-03-31T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.980Z</updated>
+    <link href="https://tracyxu.cn/2021/04/01/TypeScript/"/>
+    <id>https://tracyxu.cn/2021/04/01/TypeScript/</id>
+    <published>2021-03-31T16:00:00.000Z</published>
+    <updated>2022-08-25T07:26:10.522Z</updated>
     
     
     <summary type="html">&lt;p&gt;类型标注&amp;#x2F;注解：变量、函数、对象、类的类型（有些类型可通过类型推断出来，不用手动标注）&lt;/p&gt;
@@ -206,38 +90,31 @@
   </entry>
   
   <entry>
-    <title>Scratch 入门</title>
-    <link href="https://tracyxu.cn/2022/03/02/Scratch/"/>
-    <id>https://tracyxu.cn/2022/03/02/Scratch/</id>
-    <published>2022-03-01T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.974Z</updated>
+    <title>XSS 和 CSRF</title>
+    <link href="https://tracyxu.cn/2019/12/25/XSS/"/>
+    <id>https://tracyxu.cn/2019/12/25/XSS/</id>
+    <published>2019-12-24T16:00:00.000Z</published>
+    <updated>2022-08-23T05:52:07.304Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a</summary>
-        
-      
+    <summary type="html">&lt;p&gt;Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。&lt;/p&gt;</summary>
     
     
     
-    <category term="scratch" scheme="https://tracyxu.cn/categories/scratch/"/>
+    <category term="network" scheme="https://tracyxu.cn/categories/network/"/>
     
     
   </entry>
   
   <entry>
-    <title>前端工程化</title>
-    <link href="https://tracyxu.cn/2022/02/08/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    <id>https://tracyxu.cn/2022/02/08/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/</id>
-    <published>2022-02-07T16:00:00.000Z</published>
-    <updated>2022-08-23T02:53:00.001Z</updated>
+    <title>EditorConfig-ESlint-Prettier</title>
+    <link href="https://tracyxu.cn/2019/11/10/EditorConfig-ESlint-Prettier/"/>
+    <id>https://tracyxu.cn/2019/11/10/EditorConfig-ESlint-Prettier/</id>
+    <published>2019-11-09T16:00:00.000Z</published>
+    <updated>2022-08-23T05:52:07.265Z</updated>
     
     
-    <summary type="html">&lt;p&gt;如果一门原生语言的抽象能力不足（比如，CSS 的表达能力不足，JS 没有类型），我们可以再抽象设计一层，比如 Sass、TypsScript&lt;br&gt;经过编译，再将源码编译为供实际环境执行可原生代码。&lt;/p&gt;
-&lt;p&gt;只能维护源代码。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;EditorConfig&quot;&gt;&lt;a href=&quot;#EditorConfig&quot; class=&quot;headerlink&quot; title=&quot;EditorConfig&quot;&gt;&lt;/a&gt;EditorConfig&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://editorconfig.org/&quot;&gt;EditorConfig&lt;/a&gt; 是编辑器&amp;#x2F;IDE 配置工具，需要编辑器&amp;#x2F;IDE 支持，在 VSCode 上可通过 EditorConfig for VS Code 插件支持。&lt;/p&gt;</summary>
     
     
     
@@ -247,34 +124,29 @@
   </entry>
   
   <entry>
-    <title>PWA</title>
-    <link href="https://tracyxu.cn/2021/12/01/PWA/"/>
-    <id>https://tracyxu.cn/2021/12/01/PWA/</id>
-    <published>2021-11-30T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.965Z</updated>
+    <title>前端开发规范</title>
+    <link href="https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"/>
+    <id>https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</id>
+    <published>2019-10-04T16:00:00.000Z</published>
+    <updated>2022-08-25T06:34:31.324Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Web App Manifest&lt;br&gt;Service</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;代码规范&quot;&gt;&lt;a href=&quot;#代码规范&quot; class=&quot;headerlink&quot; title=&quot;代码规范&quot;&gt;&lt;/a&gt;代码规范&lt;/h2&gt;&lt;p&gt;代码规范的可通过文档约定和 CodeRevice，但这主观性太强，不容易落地，最理想的方式还是在工程化层面，借助灵活配置的工具，工程化自动化的解决。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ESLint + Prettier: JavaScript/TypeScript/VUE/React 代码规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Stylelint: CSS 代码规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Editorconfig: 编辑器配置工具&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Prettier: 代码格式化工具&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
     
     
   </entry>
   
   <entry>
     <title>JavaScript 类型系统</title>
-    <link href="https://tracyxu.cn/2021/07/26/JavaScript-Type-System/"/>
-    <id>https://tracyxu.cn/2021/07/26/JavaScript-Type-System/</id>
-    <published>2021-07-25T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.954Z</updated>
+    <link href="https://tracyxu.cn/2019/07/26/JavaScript-Type-System/"/>
+    <id>https://tracyxu.cn/2019/07/26/JavaScript-Type-System/</id>
+    <published>2019-07-25T16:00:00.000Z</published>
+    <updated>2022-08-25T07:28:13.130Z</updated>
     
     
     <summary type="html">&lt;p&gt;类型动静态（静态类型检测），类型强弱（类型转换）。&lt;/p&gt;
@@ -291,41 +163,87 @@
   </entry>
   
   <entry>
-    <title>React</title>
-    <link href="https://tracyxu.cn/2021/01/22/React/"/>
-    <id>https://tracyxu.cn/2021/01/22/React/</id>
-    <published>2021-01-21T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.972Z</updated>
+    <title>NPM 私仓</title>
+    <link href="https://tracyxu.cn/2019/07/01/Sinopia/"/>
+    <id>https://tracyxu.cn/2019/07/01/Sinopia/</id>
+    <published>2019-06-30T16:00:00.000Z</published>
+    <updated>2022-08-23T05:52:07.299Z</updated>
     
     
-    <summary type="html">&lt;p&gt;为什么 React 需要 Immutable？&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/KlausLily/article/details/117137249&quot;&gt;https://blog.csdn.net/KlausLily/article/details/117137249&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/20295971&quot;&gt;https://zhuanlan.zhihu.com/p/20295971&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.zhihu.com/question/446377023&quot;&gt;https://www.zhihu.com/question/446377023&lt;/a&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;npm 私仓可用于提高包的下载速度和保护内部代码，常见的 npm 私仓技术方案有以下几种：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* npm on-site  # 缺点是收费，而且 npm 在国内访问慢&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Git + SSH 直接引用到 GitHub 项目地址 # 缺点是不能更新（npm update），不能使用 Semver（语义化版本规范），而且 URL 不美观&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* cnpm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Sinopia/Verdaccio&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Nexus&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
     
     
   </entry>
   
   <entry>
-    <title>科里化</title>
-    <link href="https://tracyxu.cn/2020/12/02/Currying/"/>
-    <id>https://tracyxu.cn/2020/12/02/Currying/</id>
-    <published>2020-12-01T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.920Z</updated>
+    <title>Git Pages</title>
+    <link href="https://tracyxu.cn/2019/06/20/Git-Pages/"/>
+    <id>https://tracyxu.cn/2019/06/20/Git-Pages/</id>
+    <published>2019-06-19T16:00:00.000Z</published>
+    <updated>2022-08-25T07:23:10.506Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;版本 1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这个版本中，对被科里化的函数没要求，缺点是需要手动结束调用&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
+    <summary type="html">&lt;p&gt;GitHub Pages 用于介绍用户个人和托管在 GitHub 中的项目的，免费，虽然&lt;a href=&quot;https://help.github.com/en/articles/what-is-github-pages#usage-limits&quot;&gt;空间和流量有限制&lt;/a&gt;（空间上限 1G、月流量上限 100G、每小时更新不超过 10 次），但绝对够用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="tools" scheme="https://tracyxu.cn/categories/tools/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git Flow</title>
+    <link href="https://tracyxu.cn/2019/04/25/Git-Flow/"/>
+    <id>https://tracyxu.cn/2019/04/25/Git-Flow/</id>
+    <published>2019-04-24T16:00:00.000Z</published>
+    <updated>2022-08-23T05:52:07.269Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git Commit Message Style Guide</title>
+    <link href="https://tracyxu.cn/2019/04/20/Git-Commit-Message-Style-Guide/"/>
+    <id>https://tracyxu.cn/2019/04/20/Git-Commit-Message-Style-Guide/</id>
+    <published>2019-04-20T08:44:35.000Z</published>
+    <updated>2022-08-25T05:36:48.847Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在 Git 中，我们使用 &lt;code&gt;git commit -m &amp;quot;xxx&amp;quot;&lt;/code&gt; 来提交代码，参数 &lt;code&gt;-m&lt;/code&gt; 用来指定 Commit Message（提交说明），直接执行 &lt;code&gt;git commit&lt;/code&gt; 会进入编辑器模式，可提交多行说明。Commit Message 应规范化，规范化的 Commit Message 能带来很多好处：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记录 Date 中的两个坑</title>
+    <link href="https://tracyxu.cn/2019/04/01/Javascript-Date-Something/"/>
+    <id>https://tracyxu.cn/2019/04/01/Javascript-Date-Something/</id>
+    <published>2019-04-01T13:23:57.000Z</published>
+    <updated>2022-08-23T05:52:07.288Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;new-Date-参数-dataString-格式问题&quot;&gt;&lt;a href=&quot;#new-Date-参数-dataString-格式问题&quot; class=&quot;headerlink&quot; title=&quot;new Date 参数 dataString 格式问题&quot;&gt;&lt;/a&gt;new Date 参数 dataString 格式问题&lt;/h2&gt;&lt;p&gt;new Date(dataString) 中，参数 dataString 必须符合 ISO 8601 标准或者 RFC 2822 标准，现代主流浏览器这两个标准都支持（IE8 只支持 RFC 2822，不支持 ISO 8601）。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;new Date(&amp;#x27;2019-01-25T09:14:10.099+00:00&amp;#x27;).getTime();    // ISO 8601 标准。返回 1548407650099&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;new Date(&amp;#x27;2019/01/25 09:14:10+0000&amp;#x27;).getTime();         // RFC 2822 标准。返回 1548407650000&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;然而，在实际工作中，后台（Java）返回的是格式既不是标准的 ISO 8601 也不是标准的 RFC 2822 格式，而是 ISO 8601 和 RFC 2822 混合格式，时区使用的是 RFC 2822 格式，比如，2019-01-25T09:14:10.099+0000，这个格式只有 Chrome 支持，其他浏览器都不支持（比如 iOS WebView、IE），执行 getTime 操作会返回 NaN：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;new Date(&amp;#x27;2019-01-25T09:14:10.099+0000&amp;#x27;).getTime();     // NaN&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -336,10 +254,10 @@
   
   <entry>
     <title>Vue 技术要点</title>
-    <link href="https://tracyxu.cn/2020/10/15/Vue/"/>
-    <id>https://tracyxu.cn/2020/10/15/Vue/</id>
-    <published>2020-10-14T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.984Z</updated>
+    <link href="https://tracyxu.cn/2018/12/15/Vue/"/>
+    <id>https://tracyxu.cn/2018/12/15/Vue/</id>
+    <published>2018-12-14T16:00:00.000Z</published>
+    <updated>2022-08-25T09:01:53.733Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Vue-简介&quot;&gt;&lt;a href=&quot;#Vue-简介&quot; class=&quot;headerlink&quot; title=&quot;Vue 简介&quot;&gt;&lt;/a&gt;Vue 简介&lt;/h2&gt;&lt;ul&gt;
@@ -350,76 +268,121 @@
     
     
     
-    <category term="project" scheme="https://tracyxu.cn/categories/project/"/>
+    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
     
     
   </entry>
   
   <entry>
-    <title>互动直播课堂前端技术设计</title>
-    <link href="https://tracyxu.cn/2020/10/01/Interact-Live-Class/"/>
-    <id>https://tracyxu.cn/2020/10/01/Interact-Live-Class/</id>
-    <published>2020-09-30T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.936Z</updated>
+    <title>LeetCode JavaScript Solutions</title>
+    <link href="https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/"/>
+    <id>https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/</id>
+    <published>2017-09-30T16:00:00.000Z</published>
+    <updated>2022-08-23T07:32:38.012Z</updated>
     
     
-    <summary type="html">&lt;p&gt;按同屏的技术实现方式来划分，课堂分为&lt;strong&gt;录屏课堂&lt;/strong&gt;和&lt;strong&gt;指令课堂&lt;/strong&gt;。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。&lt;/p&gt;
-&lt;p&gt;指令同屏中可以选择同屏的内容，这样可以保护隐私。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="project" scheme="https://tracyxu.cn/categories/project/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>K12 需求概要</title>
-    <link href="https://tracyxu.cn/2020/06/15/K12/"/>
-    <id>https://tracyxu.cn/2020/06/15/K12/</id>
-    <published>2020-06-14T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.958Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;用户：&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;个人老师&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;机构学校&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;培训中心&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;/rep/leetcode/two-sum.html&quot;&gt;两数之和&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
     
     
     
-    <category term="project" scheme="https://tracyxu.cn/categories/project/"/>
+    <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
     
     
   </entry>
   
   <entry>
-    <title>Node 面试题</title>
-    <link href="https://tracyxu.cn/2020/06/01/Interview-Node/"/>
-    <id>https://tracyxu.cn/2020/06/01/Interview-Node/</id>
-    <published>2020-05-31T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.946Z</updated>
+    <title>CSS 设计模式</title>
+    <link href="https://tracyxu.cn/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://tracyxu.cn/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
+    <published>2016-12-01T16:00:00.000Z</published>
+    <updated>2022-08-25T06:35:24.208Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。&lt;/p&gt;</summary>
     
     
     
-    
-    <category term="interview" scheme="https://tracyxu.cn/categories/interview/"/>
+    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
     
     
   </entry>
   
   <entry>
-    <title>算法面试题</title>
-    <link href="https://tracyxu.cn/2020/05/10/Interview-Algorithms/"/>
-    <id>https://tracyxu.cn/2020/05/10/Interview-Algorithms/</id>
-    <published>2020-05-09T16:00:00.000Z</published>
-    <updated>2022-08-23T02:52:59.938Z</updated>
+    <title>科里化函数</title>
+    <link href="https://tracyxu.cn/2016/12/02/Currying/"/>
+    <id>https://tracyxu.cn/2016/12/02/Currying/</id>
+    <published>2016-12-01T16:00:00.000Z</published>
+    <updated>2022-08-25T08:59:28.566Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;&lt;p&gt;写一个函数，列出一个整数所有的分解类型，比如对于数字4，可以做拆分得到下列字符串&lt;/p&gt;
-&lt;p&gt;1111&lt;br&gt;112&lt;br&gt;121&lt;br&gt;13&lt;br&gt;211&lt;br&gt;22&lt;br&gt;31&lt;br&gt;4&lt;/p&gt;</summary>
+    <summary type="html">&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;fn&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (args.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt; === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 通过手动调用的方式（即不传参数）来判断收集结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;fn&lt;/span&gt;(...args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(fn.&lt;span class=&quot;title function_&quot;&gt;bind&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, ...args));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; args.&lt;span class=&quot;title function_&quot;&gt;reduce&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;total, num&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; total + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;add = &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(add);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 须手动结束调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(result);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
-    <category term="interview" scheme="https://tracyxu.cn/categories/interview/"/>
+    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>排序算法</title>
+    <link href="https://tracyxu.cn/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>https://tracyxu.cn/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
+    <published>2016-09-04T16:00:00.000Z</published>
+    <updated>2022-08-25T06:51:54.832Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7073640285904830471#heading-22&quot;&gt;https://juejin.cn/post/7073640285904830471#heading-22&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h2&gt;&lt;p&gt;外循环，几轮冒泡&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;bubbleSort&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;arr&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; len = arr.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 共进行 arr.length 轮冒泡&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; len; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 冒泡&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 俩俩对比，最后一个元素后面没有元素了，所以减 1，已冒泡上去的元素无需再参与，所以减 i&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; j = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; j &amp;lt; len - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; - i; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[j] &amp;gt; arr[j + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [arr[j], arr[j + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]] = [arr[j + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], arr[j]]; &lt;span class=&quot;comment&quot;&gt;// distribute 交换数组位置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; arr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;title function_&quot;&gt;bubbleSort&lt;/span&gt;([&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;44&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;36&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;46&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;48&lt;/span&gt;]));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>移动端适配方案</title>
+    <link href="https://tracyxu.cn/2016/07/02/Adaptation-Rule/"/>
+    <id>https://tracyxu.cn/2016/07/02/Adaptation-Rule/</id>
+    <published>2016-07-01T16:00:00.000Z</published>
+    <updated>2022-08-23T05:52:07.250Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在 PC 端，除了数据可视化和中后台这样一些全屏设计场景需要适配，绝大多数的网页采用的都是固定尺寸设计，由于 1366+ 的屏幕尺寸大于常用的固定设计尺寸，网页按设计尺寸 1:1 还原即可，不需要考虑适配。而在移动端，由于屏幕尺寸大小不一，且采用全屏的设计风格，则需要做适配。&lt;/p&gt;
+&lt;p&gt;目前移动端端内主流适配方案有：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* 流体式/弹性式；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Layout Viewport Scale；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* VW + Rem；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>两个像素三个视口(下) -- 视口</title>
+    <link href="https://tracyxu.cn/2016/06/15/Pixel-Viewport-2/"/>
+    <id>https://tracyxu.cn/2016/06/15/Pixel-Viewport-2/</id>
+    <published>2016-06-14T16:00:00.000Z</published>
+    <updated>2022-08-23T05:52:07.295Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;视口（viewport）代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI（菜单栏等）。一般我们所说的视口共包括三种：布局视口、视觉视口和理想视口，它们在屏幕适配中起着非常重要的作用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
     
     
   </entry>

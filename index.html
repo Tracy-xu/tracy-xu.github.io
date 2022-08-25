@@ -135,390 +135,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2022/08/23/%E9%80%9A%E7%94%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-23</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>场景经验</p>
-<h3 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h3><ul>
-<li>登录</li>
-</ul>
-<p>登录，会话保持、刷新、过期处理</p>
-<ul>
-<li>ajax</li>
-</ul>
-<p>请求拦截和响应拦截</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/08/23/%E8%BD%AF%E9%94%AE%E7%9B%98/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-23</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/focusout_event">https://developer.mozilla.org/zh-CN/docs/Web/API/Element/focusout_event</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ralapgao/p/10815237.html">https://www.cnblogs.com/ralapgao/p/10815237.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3d590c84e284">https://www.jianshu.com/p/3d590c84e284</a></p>
-<p>ios 原生的 webview 在软件盘弹起时窗口会缩小（微信 x5 特殊处理过），而 android 下窗口会顶上去</p>
-<p>如果用到了 vh 这样的单位，在软件盘弹起时会导致页面变形，还需特殊处理，focusout 时重新计算</p>
-<p>这个地方的是不是在进来设置一次就行了，不处理软件盘弹起来回设置？，如果要需要来回设置，ios 有不支持 resize，用 focusout 和 focusin 啊</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/08/23/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-23</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>前端优化（提高网页的加载速度）</p>
-<p>1、使用css sprites，可以有效的减少http请求数<br>2、使用缓存<br>3、压缩js，css文件，减小文件体积<br>4、使用cdn，减小服务器负担<br>5、懒加载图片<br>6、预加载css，js文件<br>7、避免dom结构的深层次嵌套<br>8、给DOM元素添加样式时，把样式放到类中，直接给元素添加类，减少重构，回流</p>
-<p>更多详细的前端优化请看前端优化：雅虎35条或者前端性能优化—-yahoo前端性能团队总结的35条黄金定律</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/08/23/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-23</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/63801.html">https://www.secpulse.com/archives/63801.html</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28773159/article/details/104834167">https://blog.csdn.net/qq_28773159/article/details/104834167</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20138568">https://www.zhihu.com/question/20138568</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuyongyin/archive/2021/06/12/14817142.html">https://www.cnblogs.com/wuyongyin/archive/2021/06/12/14817142.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42394911/article/details/119895911">https://blog.csdn.net/weixin_42394911/article/details/119895911</a></p>
-<p>同源策略</p>
-<p>同源策略（Same-origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，它用于限制一个源加载的文档或脚本如何与另一个源加载的资源进行交互。如果缺少了同源策略，浏览器很容易受到 XSS、CSRF 的攻击。</p>
-<ul>
-<li>同源</li>
-</ul>
-<p>所谓同源是指”协议（protocol） + 域名（host） + 端口（port）”三者相同。</p>
-<ul>
-<li>源的继承</li>
-</ul>
-<p>在页面中通过 about:blank 或 javascript: URL 执行的脚本会继承打开该 URL 的文档的源。</p>
-<ul>
-<li>源的更改</li>
-</ul>
-<p>满足某些限制条件的情况下，页面可以通过 document.domain 来修改源（修改为当前域或其当前域的父域）。可用来处理 iframe 跨子域问题。</p>
-<p>浏览器会根据同源策略允许或拒绝请求某些资源</p>
-<p>页面跨域的行为主要会分为三类，分别是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cross-origin embedding 跨域资源嵌入</span><br><span class="line">Cross-origin writes 跨域写操作</span><br><span class="line">Cross-origin reads 跨域读操作</span><br></pre></td></tr></table></figure>
-
-
-<p>跨域资源嵌入，比如 script、link、image、video、audio、object、embed、applet、iframe、@font-face（也有浏览器不允许跨域字体）。这些请求都不带 cookie，所以是安全的。<br>跨域写操作，比如 links，重定向以及 form 表单提交。<br>跨域读操作，比如 BOM（DOM，cookie，localStorage，indexDB）、资源（Ajax，drawImage）。</p>
-<p>在这三种行为之中，通常情况下只有 Cross-origin read 是不被允许跨域的，其余的两种是允许的。</p>
-<p>跨域的几种形式：跨主域、跨子域、跨端口、跨协议</p>
-<h3 id="禁止跨域"><a href="#禁止跨域" class="headerlink" title="禁止跨域"></a>禁止跨域</h3><p>其实跨域请求本身并没有任何的安全隐患， 有安全隐患的是请求 X 网站的时候会顺便带上 X 网站的 cookie</p>
-<p>Ajax 的同源策略主要用来防止 CSRF 攻击的，<br>BOM 的同源策略第一是为了防止父或子页面内容被串改，最重要的还是安全。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p>CORS (跨源资源共享) 要服务器和浏览器同时支</p>
-<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><h3 id="反代"><a href="#反代" class="headerlink" title="反代"></a>反代</h3><p>proxy</p>
-<h3 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h3><p>用来解决 iframe 跨子域时的 BOM 访问。</p>
-<p>利用 document.domain 实现跨域，前提条件是这两个域名必须属于同一个基础域名，而且所用的协议，端口都要一致。</p>
-<p>否则任何域名的子级域名地址都可以对父级发起xss攻击。</p>
-<p>只有父子级都通过显示得设置 document.domain 才能达到跨域访问资源的目的。</p>
-<!-- 另外，父子域名都要设置才行。 -->
-
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767226351623">https://juejin.cn/post/6844903767226351623</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/nlznlz/article/details/79506655">https://blog.csdn.net/nlznlz/article/details/79506655</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.chromestatus.com/feature/5428079583297536">https://www.chromestatus.com/feature/5428079583297536</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/domain">https://developer.mozilla.org/en-US/docs/Web/API/Document/domain</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904135569965064">https://juejin.cn/post/6844904135569965064</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tE2anhs0bZJv-9IWoFSphw">https://mp.weixin.qq.com/s/tE2anhs0bZJv-9IWoFSphw</a></p>
-<p>注：某一页面的 domain 默认等于 window.location.hostname。</p>
-<h3 id="postmessage"><a href="#postmessage" class="headerlink" title="postmessage"></a>postmessage</h3><p>用来解决 iframe 跨域时数据通信。</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/08/23/UI-Design-Specification/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-23</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>UI 设计规范。</p>
-<h2 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h2><ul>
-<li>颜色</li>
-<li>文字：字体、字号、行高</li>
-<li>icon</li>
-</ul>
-<h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>组件化是标准化中最重要的部分，组件化的目的是复用。表单、表格、分页、弹框…是 GUI 软件最基本组成，UI 容易组件化，特别是风格比较固定的后台系统，而前台由于展示的多样性，前台一般都不太容易完全组件化</p>
-<ul>
-<li>表单</li>
-</ul>
-<p>表单验证：对表单各字段进行验证(必填、类型[数值型]、格式[密码、手机号、邮箱])，是前后端都要做的，前端做的目的是为了更好的交互，而后端做的目的是为了保证数据安全</p>
-<p>输入限制：现有的 type 不但受浏览器的实现，而且不好用，比如 type&#x3D;”number” 不能限制整数、正整数的需求</p>
-<ul>
-<li>表格</li>
-</ul>
-<p>合并单元格，多级表头，斜线表头，固定行和列</p>
-<ul>
-<li>图片</li>
-</ul>
-<p>缺省：onerror 处理缺省图片时，需要卸载 error 来处理缺省图片 404 时引起的死循环，但 error 不太好卸载，所以最好的解决方案是用 new Img</p>
-<p>图片预览</p>
-<p>轮播</p>
-<p>压缩和EXIF 信息处理</p>
-<ul>
-<li>弹框</li>
-</ul>
-<p>原生、vue visible.sync</p>
-<ul>
-<li>图表</li>
-</ul>
-<p>维度、指标</p>
-<ul>
-<li><p>树</p>
-</li>
-<li><p>分页</p>
-</li>
-</ul>
-<p>移动端分页，pc 分页，点击加载更多<br>pageSize、curPage、total<br>列表项的删除</p>
-<ul>
-<li>面包屑</li>
-</ul>
-<p>面包屑用来表示当前页面或页面中资源的路径（比如页面层级，资源查询参数层级），描述页面或资源的位置</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/08/23/Axios/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-23</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Axios</p>
-<ul>
-<li>params</li>
-</ul>
-<p>config 中 params 字段是与请求一起发送的 URL 参数，支持对象或 URLSearchParams 对象，Axios 会自动序列化为 QueryString，不需要手动序列化 <code>new URLSearchParams(param).toString()</code>，对于 Get 请求，就可直接传 JSON 格式参数，Axios 会处理成 QueryString。</p>
-<p>支持 get 参数的序列化，不需要自己手动序列化，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export function getTemplateList(query) &#123;</span><br><span class="line">  return axios.get(&#x27;/ces/perf/tpl&#x27;, &#123;</span><br><span class="line">    params: query,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>responseType 一般默认设为 JSON，因为服务端大部分情况下返回的数据都是 JSON，如果需要（比如文件或者文本格式）也可在单个请求中设置返回数据的格式。</p>
-<p>export function getFileCover(path) {<br>  return axios.get(<code>/file/cover?path=$&#123;path&#125;</code>, {<br>    responseType: ‘text’,<br>  });<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">exportClazzReport(examId, clazzId) &#123;</span><br><span class="line">  return axios.get(`/goals/$&#123;examId&#125;/clazz/$&#123;clazzId&#125;/export`, &#123;</span><br><span class="line">    responseType: &#x27;blob&#x27;,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      &#x27;Content-Type&#x27;: &#x27;application/octet-stream&#x27;, // 请求头不用吧</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>paramsSerializer</li>
-</ul>
-<p>URL 传数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cateIds=1&amp;cateIds=2</span><br><span class="line">quizIds[]=x&amp;quizIds[]=x</span><br></pre></td></tr></table></figure>
-
-<p>自定义 axios 序列化即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getCourseList(query) &#123;</span><br><span class="line">  return axios.get(&#x27;/mall/shop/courses&#x27;, &#123;</span><br><span class="line">    params: query,</span><br><span class="line">    paramsSerializer(params) &#123;</span><br><span class="line">      return qs.stringify(params, &#123; arrayFormat: &#x27;repeat&#x27; &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<p>也可直接作为默认序列化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Axios = axios.create(&#123;</span><br><span class="line">  timeout: 60000,</span><br><span class="line">  responseType: &#x27;json&#x27;,</span><br><span class="line">  withCredentials: false,</span><br><span class="line">  paramsSerializer(params) &#123;</span><br><span class="line">    return Qs.stringify(params, &#123; arrayFormat: &#x27;repeat&#x27; &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export function getReply(userId, quizIds) &#123;</span><br><span class="line">  const quizIdsQueryParams = quizIds.map(item =&gt; `$&#123;encodeURIComponent(&#x27;quizIds[]&#x27;)&#125;=$&#123;item&#125;`).join(&#x27;&amp;&#x27;);</span><br><span class="line">  return axios.get(`/live/quiz/user/reply?userId=$&#123;userId&#125;&amp;$&#123;quizIdsQueryParams&#125;`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a target="_blank" rel="noopener" href="https://meiyike.cn/api/user/pfm/affiches/current">https://meiyike.cn/api/user/pfm/affiches/current</a> site 是不是这个接口 redirect 的？？</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/">
-                函数参数的求值策略
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-08-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>函数参数的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085">求值策略 Evaluation Strategy</a> 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。</p>
-        </div>
-        <a href="/2022/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/04/15/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/">
-                编程范式
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-04-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/pl/">pl</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>正交（orthogonal）</p>
-<p>React的设计贯彻了声明式编程</p>
-<p>编程范式：programming paradigm</p>
-<p>命令式（Imperative），声明式（declarative programming）），这两个是对立的。</p>
-<p>面向过程，面向对象（Object-oriented Programming 简称 OOP），函数式（functional programming 简称 FP）</p>
-        </div>
-        <a href="/2022/04/15/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/04/01/TypeScript/">
-                TypeScript
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-04-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>类型标注&#x2F;注解：变量、函数、对象、类的类型（有些类型可通过类型推断出来，不用手动标注）</p>
-<p>静态类型的好处：</p>
-        </div>
-        <a href="/2022/04/01/TypeScript/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/03/02/Scratch/">
-                Scratch 入门
+            <a href="/2022/03/02/Scratch-Share/">
+                Scratch 助教
             </a>
         </h1>
         <div class="post-info">
@@ -536,16 +154,299 @@
 
     
         <div class="content">
-            <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43405101/article/details/102314032">https://blog.csdn.net/weixin_43405101/article/details/102314032</a></p>
-<p>角色的中心点（中心点是针对角色的，每个角色都有中心点，跟位置不同，中心点一般用来描述运动的基点）和角色的位置</p>
-<p>调整造型中心点也能改变角色在舞台中的位置</p>
-<p><a target="_blank" rel="noopener" href="https://www.jbhdq.com/jiaocheng/tuwen/45555.html">https://www.jbhdq.com/jiaocheng/tuwen/45555.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.huihua8.com/a/jbhjc/237634.html">https://www.huihua8.com/a/jbhjc/237634.html</a></p>
-<p>小绿旗子是运行（运行程序）</p>
-<p>对角色或舞台进行编程，脚本必须在角色或舞台下</p>
-<p>脚本可不可以应用到多个角色，对多个角色进行编程</p>
-
+            <p>在这春暖花开，万物复苏之季，非常荣幸受邀参加家长助教活动，我非常赞成这项活动，也非常感谢那些助教的家长，这也是家园共育中重要的活动。</p>
+<p>我准备的课程主题为《少儿编程》，希望通过这节课可以让孩子们对计算机、人工智能、编程有一个轮廓上的概念，知道计算机的用途，知道现阶段的人工智能和真正的人工智能区别，知道编程中最基本的流程控制 – 循环和条件判断。</p>
+<p>本次课程分三部分，分别是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 计算机科普</span><br><span class="line">* Scratch 编程</span><br><span class="line">* 游戏“见缝插针”</span><br></pre></td></tr></table></figure>
         </div>
+        <a href="/2022/03/02/Scratch-Share/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2021/10/02/Interact-Live-Class/">
+                互动直播课堂前端设计方案
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-10-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/project/">project</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>按同屏技术实现方式来分，课堂可分为<strong>录屏课堂</strong>和<strong>指令课堂</strong>。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。</p>
+<p>相比于录屏，指令同屏实现复杂，但是可以选择同屏的内容，起到保护隐私的作用。</p>
+        </div>
+        <a href="/2021/10/02/Interact-Live-Class/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/">
+                函数参数的求值策略
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-08-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>函数参数的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085">求值策略 Evaluation Strategy</a> 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。</p>
+        </div>
+        <a href="/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2021/04/01/TypeScript/">
+                TypeScript
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-04-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>类型标注&#x2F;注解：变量、函数、对象、类的类型（有些类型可通过类型推断出来，不用手动标注）</p>
+<p>静态类型的好处：</p>
+        </div>
+        <a href="/2021/04/01/TypeScript/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/25/XSS/">
+                XSS 和 CSRF
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-25</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/network/">network</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p>
+        </div>
+        <a href="/2019/12/25/XSS/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/11/10/EditorConfig-ESlint-Prettier/">
+                EditorConfig-ESlint-Prettier
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-11-10</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/engineering/">engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="EditorConfig"><a href="#EditorConfig" class="headerlink" title="EditorConfig"></a>EditorConfig</h2><p><a target="_blank" rel="noopener" href="https://editorconfig.org/">EditorConfig</a> 是编辑器&#x2F;IDE 配置工具，需要编辑器&#x2F;IDE 支持，在 VSCode 上可通过 EditorConfig for VS Code 插件支持。</p>
+        </div>
+        <a href="/2019/11/10/EditorConfig-ESlint-Prettier/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">
+                前端开发规范
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-10-05</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/engineering/">engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h2><p>代码规范的可通过文档约定和 CodeRevice，但这主观性太强，不容易落地，最理想的方式还是在工程化层面，借助灵活配置的工具，工程化自动化的解决。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ESLint + Prettier: JavaScript/TypeScript/VUE/React 代码规范</span><br><span class="line">Stylelint: CSS 代码规范</span><br><span class="line">Editorconfig: 编辑器配置工具</span><br><span class="line">Prettier: 代码格式化工具</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/07/26/JavaScript-Type-System/">
+                JavaScript 类型系统
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-07-26</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/javascript/">javascript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>类型动静态（静态类型检测），类型强弱（类型转换）。</p>
+<p>JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let foo = 42; // foo is now a number</span><br><span class="line">foo = &#x27;hello&#x27;; // foo is now a string</span><br><span class="line">foo = true;  // foo is now a boolean</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 + &#x27;&#x27;;</span><br><span class="line">!!1; // 这个算隐式还是显式</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2019/07/26/JavaScript-Type-System/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/07/01/Sinopia/">
+                NPM 私仓
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-07-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/engineering/">engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>npm 私仓可用于提高包的下载速度和保护内部代码，常见的 npm 私仓技术方案有以下几种：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* npm on-site  # 缺点是收费，而且 npm 在国内访问慢</span><br><span class="line">* Git + SSH 直接引用到 GitHub 项目地址 # 缺点是不能更新（npm update），不能使用 Semver（语义化版本规范），而且 URL 不美观</span><br><span class="line">* cnpm</span><br><span class="line">* Sinopia/Verdaccio</span><br><span class="line">* Nexus</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2019/07/01/Sinopia/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/06/20/Git-Pages/">
+                Git Pages
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-06-20</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/tools/">tools</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>GitHub Pages 用于介绍用户个人和托管在 GitHub 中的项目的，免费，虽然<a target="_blank" rel="noopener" href="https://help.github.com/en/articles/what-is-github-pages#usage-limits">空间和流量有限制</a>（空间上限 1G、月流量上限 100G、每小时更新不超过 10 次），但绝对够用。</p>
+        </div>
+        <a href="/2019/06/20/Git-Pages/" class="read-more">Read More</a>
     
 
 </div>
@@ -591,13 +492,13 @@
     <h2>Categories</h2>
     <p>
         
+        <a class="footer-post" href="/categories/network/">network</a>
+        
         <a class="footer-post" href="/categories/scratch/">scratch</a>
         
-        <a class="footer-post" href="/categories/jotting/">jotting</a>
+        <a class="footer-post" href="/categories/tools/">tools</a>
         
-        <a class="footer-post" href="/categories/pl/">pl</a>
-        
-        <a class="footer-post" href="/categories/html/">html</a>
+        <a class="footer-post" href="/categories/project/">project</a>
         
     </p>
 </div>
