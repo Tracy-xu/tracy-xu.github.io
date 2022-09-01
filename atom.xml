@@ -110,7 +110,7 @@
     <link href="https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"/>
     <id>https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</id>
     <published>2019-10-04T16:00:00.000Z</published>
-    <updated>2022-08-25T06:34:31.324Z</updated>
+    <updated>2022-09-01T04:05:03.831Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;代码规范&quot;&gt;&lt;a href=&quot;#代码规范&quot; class=&quot;headerlink&quot; title=&quot;代码规范&quot;&gt;&lt;/a&gt;代码规范&lt;/h2&gt;&lt;p&gt;代码规范的可通过文档约定和 CodeRevice，但这主观性太强，不容易落地，最理想的方式还是在工程化层面，借助灵活配置的工具，工程化自动化的解决。&lt;/p&gt;
