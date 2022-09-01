@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="指针和引用"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>指针和引用 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/01/15/Pointer-Reference/">
+                指针和引用
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/pl/">pl</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>指针是一个变量，只不过这个变量存储的是一个地址，指向内存的一个存储单元。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="type">int</span> *p1;</span><br><span class="line">  <span class="type">int</span> **p2;</span><br><span class="line"></span><br><span class="line">  p1 = &amp;a; <span class="comment">// 指针 p1 指向 a</span></span><br><span class="line">  p2 = &amp;p1; <span class="comment">// 指针 p2 指向指针 p1，即 p2 的内容为 p1 的地址</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p1); <span class="comment">// 10</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, **p2); <span class="comment">// 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>注：定义指针时，<code>*</code> 两边的空格可以选择，<code>int* ptr</code> 与 <code>int *ptr</code> <code>int*ptr</code> 意义一样，另外，<code>int</code> 整型，<code>int*</code> 表示指向「整型」的指针，<code>int**</code> 表示指向「指向整型的指针」的指针。</p>
+<p>指针与引用的区别：指针指向一块内存，它的内容是所指内存的地址，而引用是某块内存的别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">1</span>; </span><br><span class="line">  <span class="type">int</span> *p = &amp;a;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;p); <span class="comment">// 0x7ff7b2a82920</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%p %p\n&quot;</span>, p, &amp;a); <span class="comment">// 0x7ff7b2a82928 0x7ff7b2a82928</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p); <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">1</span>; </span><br><span class="line">  <span class="type">int</span> &amp;b = a;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%p %p\n&quot;</span>, &amp;a, &amp;b); <span class="comment">// 0x7ff7b2e77928 0x7ff7b2e77928</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, b); <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：由于 C 不支持引用传递，上述代码需以 C++ 编译运行。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/project/">project</a>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/tools/">tools</a>
+        
+        <a class="footer-post" href="/categories/pl/">pl</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

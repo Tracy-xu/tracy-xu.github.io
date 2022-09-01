@@ -37,15 +37,14 @@
   </entry>
   
   <entry>
-    <title>互动直播课堂前端设计方案</title>
+    <title>互动直播课堂前端设计</title>
     <link href="https://tracyxu.cn/2021/10/02/Interact-Live-Class/"/>
     <id>https://tracyxu.cn/2021/10/02/Interact-Live-Class/</id>
     <published>2021-10-01T16:00:00.000Z</published>
-    <updated>2022-08-25T07:27:38.728Z</updated>
+    <updated>2022-08-26T07:31:21.699Z</updated>
     
     
-    <summary type="html">&lt;p&gt;按同屏技术实现方式来分，课堂可分为&lt;strong&gt;录屏课堂&lt;/strong&gt;和&lt;strong&gt;指令课堂&lt;/strong&gt;。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。&lt;/p&gt;
-&lt;p&gt;相比于录屏，指令同屏实现复杂，但是可以选择同屏的内容，起到保护隐私的作用。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;作为在线教育的核心产品，课堂既要满足&lt;strong&gt;面对面&lt;/strong&gt;场景，又要满足&lt;strong&gt;远程&lt;/strong&gt;场景，面对面课堂作为线下课堂的补充，而远程课堂可用来替代线下课堂。&lt;/p&gt;</summary>
     
     
     
@@ -56,52 +55,35 @@
   
   <entry>
     <title>函数参数的求值策略</title>
-    <link href="https://tracyxu.cn/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
-    <id>https://tracyxu.cn/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
-    <published>2021-07-31T16:00:00.000Z</published>
-    <updated>2022-08-25T07:25:51.337Z</updated>
+    <link href="https://tracyxu.cn/2020/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
+    <id>https://tracyxu.cn/2020/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
+    <published>2020-07-31T16:00:00.000Z</published>
+    <updated>2022-08-27T04:13:02.778Z</updated>
     
     
     <summary type="html">&lt;p&gt;函数参数的&lt;a href=&quot;https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085&quot;&gt;求值策略 Evaluation Strategy&lt;/a&gt; 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。&lt;/p&gt;</summary>
     
     
     
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    <category term="pl" scheme="https://tracyxu.cn/categories/pl/"/>
     
     
   </entry>
   
   <entry>
-    <title>TypeScript</title>
-    <link href="https://tracyxu.cn/2021/04/01/TypeScript/"/>
-    <id>https://tracyxu.cn/2021/04/01/TypeScript/</id>
-    <published>2021-03-31T16:00:00.000Z</published>
-    <updated>2022-08-25T07:26:10.522Z</updated>
+    <title>指针和引用</title>
+    <link href="https://tracyxu.cn/2020/01/15/Pointer-Reference/"/>
+    <id>https://tracyxu.cn/2020/01/15/Pointer-Reference/</id>
+    <published>2020-01-14T16:00:00.000Z</published>
+    <updated>2022-08-27T08:07:17.050Z</updated>
     
     
-    <summary type="html">&lt;p&gt;类型标注&amp;#x2F;注解：变量、函数、对象、类的类型（有些类型可通过类型推断出来，不用手动标注）&lt;/p&gt;
-&lt;p&gt;静态类型的好处：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>XSS 和 CSRF</title>
-    <link href="https://tracyxu.cn/2019/12/25/XSS/"/>
-    <id>https://tracyxu.cn/2019/12/25/XSS/</id>
-    <published>2019-12-24T16:00:00.000Z</published>
-    <updated>2022-08-23T05:52:07.304Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;指针是一个变量，只不过这个变量存储的是一个地址，指向内存的一个存储单元。&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;keyword&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; *p1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; **p2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  p1 = &amp;amp;a; &lt;span class=&quot;comment&quot;&gt;// 指针 p1 指向 a&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  p2 = &amp;amp;p1; &lt;span class=&quot;comment&quot;&gt;// 指针 p2 指向指针 p1，即 p2 的内容为 p1 的地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;quot;%d\n&amp;quot;&lt;/span&gt;, *p1); &lt;span class=&quot;comment&quot;&gt;// 10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;quot;%d\n&amp;quot;&lt;/span&gt;, **p2); &lt;span class=&quot;comment&quot;&gt;// 10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
-    <category term="network" scheme="https://tracyxu.cn/categories/network/"/>
+    <category term="pl" scheme="https://tracyxu.cn/categories/pl/"/>
     
     
   </entry>
@@ -146,14 +128,13 @@
     <link href="https://tracyxu.cn/2019/07/26/JavaScript-Type-System/"/>
     <id>https://tracyxu.cn/2019/07/26/JavaScript-Type-System/</id>
     <published>2019-07-25T16:00:00.000Z</published>
-    <updated>2022-08-25T07:28:13.130Z</updated>
+    <updated>2022-08-26T07:14:29.063Z</updated>
     
     
-    <summary type="html">&lt;p&gt;类型动静态（静态类型检测），类型强弱（类型转换）。&lt;/p&gt;
-&lt;p&gt;JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let foo = 42; // foo is now a number&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo = &amp;#x27;hello&amp;#x27;; // foo is now a string&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo = true;  // foo is now a boolean&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <summary type="html">&lt;p&gt;类型动静态强调的是静态类型检测，类型强弱强调的是隐式类型转换，JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; foo = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// foo 是 number&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo = &lt;span class=&quot;string&quot;&gt;&amp;#x27;hello&amp;#x27;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// foo 是 string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;  &lt;span class=&quot;comment&quot;&gt;// foo 是 boolean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;10 + &amp;#x27;&amp;#x27;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;!!1; // 这个算隐式还是显式&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// number 转成了 string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;!!&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// number 转成了 boolean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -253,22 +234,36 @@
   </entry>
   
   <entry>
-    <title>Vue 技术要点</title>
-    <link href="https://tracyxu.cn/2018/12/15/Vue/"/>
-    <id>https://tracyxu.cn/2018/12/15/Vue/</id>
-    <published>2018-12-14T16:00:00.000Z</published>
-    <updated>2022-08-25T09:01:53.733Z</updated>
+    <title>自定义字体</title>
+    <link href="https://tracyxu.cn/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/"/>
+    <id>https://tracyxu.cn/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/</id>
+    <published>2018-07-18T16:00:00.000Z</published>
+    <updated>2022-08-26T03:52:36.688Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;Vue-简介&quot;&gt;&lt;a href=&quot;#Vue-简介&quot; class=&quot;headerlink&quot; title=&quot;Vue 简介&quot;&gt;&lt;/a&gt;Vue 简介&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;优点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;渐进式：框架设计（可以直接引入使用，仅使用核心渲染功能，也可以配合构建工具，集成路由和数据管理，采用单文件组件的开发模式）&lt;br&gt;声明式渲染：响应式（数据驱动视图，当数据改变后，会通知视图，不是指响应式编程 Reactive Programming），不需要传统那样命令式的操作 DOM&lt;br&gt;组件化：&lt;br&gt;工程化：Vue-cli&lt;br&gt;全家桶？：vuex、vue-router  集中式数据管理和客户端路由&lt;/p&gt;
-&lt;p&gt;声明式渲染（Declarative View）与之相对应的是命令式渲染（Imperative View）&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;字体文件其实就是一个以 Unicode 作为索引的字形表。用 FontCreator 打开系统安装中的某个字体文件，双击里面的某个字形，你可以对它进行编辑，也能猜得出来每个字形其实就是一个矢量图，因此 ttf 文件所表示的字库也叫矢量字库，说到这个再稍微提及一下另一种字库——点阵字库，两者最大的区别就是点阵字库可以在 Console Mode（命令行模式）下被渲染出来，而矢量字库必须在 Graphics Mode（图形模式）中被渲染。比如早期没有图形接口的 DOS 系统或者某些 Linux 终端，这些字体的索引需要靠固化到硬件驱动上点阵字库，因为早期的计算机只支持英文，这也是后来“汉卡”的由来。&lt;/p&gt;</summary>
     
     
     
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>树形结构的生成</title>
+    <link href="https://tracyxu.cn/2017/12/24/Tree-Structure/"/>
+    <id>https://tracyxu.cn/2017/12/24/Tree-Structure/</id>
+    <published>2017-12-23T16:00:00.000Z</published>
+    <updated>2022-08-26T07:58:48.194Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;后台返回树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的场景。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;56&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;81&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;76&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;63&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;87&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
     
     
   </entry>
@@ -278,7 +273,7 @@
     <link href="https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/"/>
     <id>https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/</id>
     <published>2017-09-30T16:00:00.000Z</published>
-    <updated>2022-08-23T07:32:38.012Z</updated>
+    <updated>2022-08-25T10:03:09.107Z</updated>
     
     
       
@@ -287,6 +282,7 @@
         
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;/rep/leetcode/two-sum.html&quot;&gt;两数之和&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/rep/leetcode/palindrome-number.html&quot;&gt;回文数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a</summary>
         
       
@@ -294,6 +290,59 @@
     
     
     <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Base 64 编码</title>
+    <link href="https://tracyxu.cn/2017/05/10/Base-64/"/>
+    <id>https://tracyxu.cn/2017/05/10/Base-64/</id>
+    <published>2017-05-09T16:00:00.000Z</published>
+    <updated>2022-08-25T10:37:58.986Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。&lt;/p&gt;
+&lt;p&gt;Base64 最初是用在电子邮件中，为了满足电子邮件中不能直接使用非 ASCII 码字符的规定，用来传输二进制文件的。除此之外，它还可将任意不可打印的二进制数据，转化为可打印的文本编码，使用文本软件进行编辑（二进制流中有很多都是无法显示和打印的，比如 ASCII 中的控制字符，二进制文件 jpg、pad、exe 等，如果用记事本打开这些文件，会看到一堆乱码）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="foundations" scheme="https://tracyxu.cn/categories/foundations/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Emoji</title>
+    <link href="https://tracyxu.cn/2017/02/13/Emoji/"/>
+    <id>https://tracyxu.cn/2017/02/13/Emoji/</id>
+    <published>2017-02-12T16:00:00.000Z</published>
+    <updated>2022-08-25T10:33:06.634Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Emoji 它是一个日语词，e 表示”絵”，moji 表示”文字”，连在一起，就是”絵文字”，是由日本人发明的，最早用于在短消息之中插入表情，2007年，iPhone 在 iOS 5 的输入法中加入 Emoji后，导致它在全世界范围的流行。&lt;/p&gt;
+&lt;p&gt;早期的 Emoji 是将一些特定的符号组合替换成图片，比如将 :) 替换成具体的表情图片。这种方法很难标准化，能够表达的范围也有限。2010年，Unicode 开始&lt;a href=&quot;http://www.unicode.org/emoji/charts/full-emoji-list.html&quot;&gt;为 Emoji 分配码点&lt;/a&gt;，将其标准化。也就是说，现在的 Emoji 符号就是一个文字，它会被渲染为图形。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="foundations" scheme="https://tracyxu.cn/categories/foundations/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符编码</title>
+    <link href="https://tracyxu.cn/2017/02/01/Character-Encoding/"/>
+    <id>https://tracyxu.cn/2017/02/01/Character-Encoding/</id>
+    <published>2017-01-31T16:00:00.000Z</published>
+    <updated>2022-08-25T11:10:06.604Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="foundations" scheme="https://tracyxu.cn/categories/foundations/"/>
     
     
   </entry>
@@ -320,69 +369,15 @@
     <link href="https://tracyxu.cn/2016/12/02/Currying/"/>
     <id>https://tracyxu.cn/2016/12/02/Currying/</id>
     <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2022-08-25T08:59:28.566Z</updated>
+    <updated>2022-08-26T08:33:07.141Z</updated>
     
     
-    <summary type="html">&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;fn&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (args.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt; === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 通过手动调用的方式（即不传参数）来判断收集结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;fn&lt;/span&gt;(...args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(fn.&lt;span class=&quot;title function_&quot;&gt;bind&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, ...args));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; args.&lt;span class=&quot;title function_&quot;&gt;reduce&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;total, num&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; total + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;add = &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(add);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 须手动结束调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(result);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;p&gt;科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;fn&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (args.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt; === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 通过手动调用的方式（即不传参数）来判断收集结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;fn&lt;/span&gt;(...args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(fn.&lt;span class=&quot;title function_&quot;&gt;bind&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, ...args));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; args.&lt;span class=&quot;title function_&quot;&gt;reduce&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;total, num&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; total + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;add = &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(add);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 须手动结束调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(result);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
     <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>排序算法</title>
-    <link href="https://tracyxu.cn/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    <id>https://tracyxu.cn/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
-    <published>2016-09-04T16:00:00.000Z</published>
-    <updated>2022-08-25T06:51:54.832Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7073640285904830471#heading-22&quot;&gt;https://juejin.cn/post/7073640285904830471#heading-22&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h2&gt;&lt;p&gt;外循环，几轮冒泡&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;bubbleSort&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;arr&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; len = arr.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 共进行 arr.length 轮冒泡&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; len; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 冒泡&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 俩俩对比，最后一个元素后面没有元素了，所以减 1，已冒泡上去的元素无需再参与，所以减 i&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; j = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; j &amp;lt; len - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; - i; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[j] &amp;gt; arr[j + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [arr[j], arr[j + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]] = [arr[j + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], arr[j]]; &lt;span class=&quot;comment&quot;&gt;// distribute 交换数组位置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; arr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;title function_&quot;&gt;bubbleSort&lt;/span&gt;([&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;44&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;36&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;46&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;48&lt;/span&gt;]));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>移动端适配方案</title>
-    <link href="https://tracyxu.cn/2016/07/02/Adaptation-Rule/"/>
-    <id>https://tracyxu.cn/2016/07/02/Adaptation-Rule/</id>
-    <published>2016-07-01T16:00:00.000Z</published>
-    <updated>2022-08-23T05:52:07.250Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在 PC 端，除了数据可视化和中后台这样一些全屏设计场景需要适配，绝大多数的网页采用的都是固定尺寸设计，由于 1366+ 的屏幕尺寸大于常用的固定设计尺寸，网页按设计尺寸 1:1 还原即可，不需要考虑适配。而在移动端，由于屏幕尺寸大小不一，且采用全屏的设计风格，则需要做适配。&lt;/p&gt;
-&lt;p&gt;目前移动端端内主流适配方案有：&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* 流体式/弹性式；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Layout Viewport Scale；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* VW + Rem；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>两个像素三个视口(下) -- 视口</title>
-    <link href="https://tracyxu.cn/2016/06/15/Pixel-Viewport-2/"/>
-    <id>https://tracyxu.cn/2016/06/15/Pixel-Viewport-2/</id>
-    <published>2016-06-14T16:00:00.000Z</published>
-    <updated>2022-08-23T05:52:07.295Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;视口（viewport）代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI（菜单栏等）。一般我们所说的视口共包括三种：布局视口、视觉视口和理想视口，它们在屏幕适配中起着非常重要的作用。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
     
     
   </entry>

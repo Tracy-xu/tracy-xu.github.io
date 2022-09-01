@@ -170,7 +170,7 @@
     <div class="post-header index">
         <h1 class="title">
             <a href="/2021/10/02/Interact-Live-Class/">
-                互动直播课堂前端设计方案
+                互动直播课堂前端设计
             </a>
         </h1>
         <div class="post-info">
@@ -188,8 +188,7 @@
 
     
         <div class="content">
-            <p>按同屏技术实现方式来分，课堂可分为<strong>录屏课堂</strong>和<strong>指令课堂</strong>。指令课堂的操作状态需要恢复，录屏课堂中不是必须的，不管是录屏课堂还是指令课堂，互动操作（比如，聊天、点名、授权、问答…）都要通过指令实现。指令课堂适用于面对面课堂，录屏课堂适用于远程课堂。</p>
-<p>相比于录屏，指令同屏实现复杂，但是可以选择同屏的内容，起到保护隐私的作用。</p>
+            <p>作为在线教育的核心产品，课堂既要满足<strong>面对面</strong>场景，又要满足<strong>远程</strong>场景，面对面课堂作为线下课堂的补充，而远程课堂可用来替代线下课堂。</p>
         </div>
         <a href="/2021/10/02/Interact-Live-Class/" class="read-more">Read More</a>
     
@@ -201,18 +200,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/">
+            <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/">
                 函数参数的求值策略
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2021-08-01</span>
+                <span class="date">2020-08-01</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/pl/">pl</a>
                 </span>
             
         </div>
@@ -222,7 +221,7 @@
         <div class="content">
             <p>函数参数的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085">求值策略 Evaluation Strategy</a> 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。</p>
         </div>
-        <a href="/2021/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/" class="read-more">Read More</a>
+        <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/" class="read-more">Read More</a>
     
 
 </div>
@@ -232,18 +231,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2021/04/01/TypeScript/">
-                TypeScript
+            <a href="/2020/01/15/Pointer-Reference/">
+                指针和引用
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2021-04-01</span>
+                <span class="date">2020-01-15</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/pl/">pl</a>
                 </span>
             
         </div>
@@ -251,41 +250,10 @@
 
     
         <div class="content">
-            <p>类型标注&#x2F;注解：变量、函数、对象、类的类型（有些类型可通过类型推断出来，不用手动标注）</p>
-<p>静态类型的好处：</p>
+            <p>指针是一个变量，只不过这个变量存储的是一个地址，指向内存的一个存储单元。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="type">int</span> *p1;</span><br><span class="line">  <span class="type">int</span> **p2;</span><br><span class="line"></span><br><span class="line">  p1 = &amp;a; <span class="comment">// 指针 p1 指向 a</span></span><br><span class="line">  p2 = &amp;p1; <span class="comment">// 指针 p2 指向指针 p1，即 p2 的内容为 p1 的地址</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p1); <span class="comment">// 10</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, **p2); <span class="comment">// 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2021/04/01/TypeScript/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/12/25/XSS/">
-                XSS 和 CSRF
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-12-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/network/">network</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Cross-site scripting 的英文首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将 Cross（意为“交叉”）改以交叉形的 X 做为缩写。</p>
-        </div>
-        <a href="/2019/12/25/XSS/" class="read-more">Read More</a>
+        <a href="/2020/01/15/Pointer-Reference/" class="read-more">Read More</a>
     
 
 </div>
@@ -377,11 +345,10 @@
 
     
         <div class="content">
-            <p>类型动静态（静态类型检测），类型强弱（类型转换）。</p>
-<p>JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let foo = 42; // foo is now a number</span><br><span class="line">foo = &#x27;hello&#x27;; // foo is now a string</span><br><span class="line">foo = true;  // foo is now a boolean</span><br></pre></td></tr></table></figure>
+            <p>类型动静态强调的是静态类型检测，类型强弱强调的是隐式类型转换，JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="number">42</span>; <span class="comment">// foo 是 number</span></span><br><span class="line">foo = <span class="string">&#x27;hello&#x27;</span>; <span class="comment">// foo 是 string</span></span><br><span class="line">foo = <span class="literal">true</span>;  <span class="comment">// foo 是 boolean</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 + &#x27;&#x27;;</span><br><span class="line">!!1; // 这个算隐式还是显式</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> + <span class="string">&#x27;&#x27;</span>; <span class="comment">// number 转成了 string</span></span><br><span class="line">!!<span class="number">1</span>; <span class="comment">// number 转成了 boolean</span></span><br></pre></td></tr></table></figure>
         </div>
         <a href="/2019/07/26/JavaScript-Type-System/" class="read-more">Read More</a>
     
@@ -451,6 +418,37 @@
 
 </div>
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/04/25/Git-Flow/">
+                Git Flow
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-25</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/engineering/">engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。</p>
+        </div>
+        <a href="/2019/04/25/Git-Flow/" class="read-more">Read More</a>
+    
+
+</div>
+            
         </section>
     </div>
 </div>
@@ -492,13 +490,13 @@
     <h2>Categories</h2>
     <p>
         
-        <a class="footer-post" href="/categories/network/">network</a>
+        <a class="footer-post" href="/categories/project/">project</a>
         
         <a class="footer-post" href="/categories/scratch/">scratch</a>
         
         <a class="footer-post" href="/categories/tools/">tools</a>
         
-        <a class="footer-post" href="/categories/project/">project</a>
+        <a class="footer-post" href="/categories/pl/">pl</a>
         
     </p>
 </div>

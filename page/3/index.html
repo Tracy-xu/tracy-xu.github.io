@@ -135,6 +135,102 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                排序算法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-09-05</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/algorithms/">algorithms</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>外循环，几轮冒泡</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bubbleSort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = arr.<span class="property">length</span>;</span><br><span class="line">  <span class="comment">// 共进行 arr.length 轮冒泡</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 冒泡</span></span><br><span class="line">    <span class="comment">// 俩俩对比，最后一个元素后面没有元素了，所以减 1，已冒泡上去的元素无需再参与，所以减 i</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]]; <span class="comment">// distribute 交换数组位置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">bubbleSort</span>([<span class="number">3</span>, <span class="number">44</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>]));</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/07/02/Adaptation-Rule/">
+                移动端适配方案
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-07-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>在 PC 端，除了数据可视化和中后台这样一些全屏设计场景需要适配，绝大多数的网页采用的都是固定尺寸设计，由于 1366+ 的屏幕尺寸大于常用的固定设计尺寸，网页按设计尺寸 1:1 还原即可，不需要考虑适配。而在移动端，由于屏幕尺寸大小不一，且采用全屏的设计风格，则需要做适配。</p>
+<p>目前移动端端内主流适配方案有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 流体式/弹性式；</span><br><span class="line">* Layout Viewport Scale；</span><br><span class="line">* VW + Rem；</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2016/07/02/Adaptation-Rule/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/06/15/Pixel-Viewport-2/">
+                两个像素三个视口(下) -- 视口
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-06-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>视口（viewport）代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI（菜单栏等）。一般我们所说的视口共包括三种：布局视口、视觉视口和理想视口，它们在屏幕适配中起着非常重要的作用。</p>
+        </div>
+        <a href="/2016/06/15/Pixel-Viewport-2/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/06/10/Pixel-Viewport-1/">
                 两个像素三个视口(上) -- 像素
             </a>
@@ -158,162 +254,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 设备像素</span><br><span class="line">* 设备独立像素</span><br></pre></td></tr></table></figure>
         </div>
         <a href="/2016/06/10/Pixel-Viewport-1/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/06/02/Media%20Query/">
-                Media Query
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-06-02</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>媒体查询在 CSS2 中就已经存在了，但是只能查询 meida type，CSS3 中除了能查询 media type 外，还加入了 media feature 的查询。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>媒体查询包含一个“媒体类型（media type）”以及至少一个测试“媒体特性（media feature）”的表达式，表达式和媒体类型将根据实际情况计算的到 true 或者 false。如果指定的媒体类型符合当前设备并且媒体特性表达式都为真，那当前媒体查询为真，media query 为 true，对应的样式规则生效。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> [媒体类型] 媒体特性 &#123;&#125;    # 除非使用了 not 或者 only 操作符，否则 media type 是可选的，默认值为 <span class="attribute">all</span></span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2016/06/02/Media%20Query/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
-                CSS3 过渡与动画
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-05-18</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: [property duration timing-function delay]</span><br></pre></td></tr></table></figure>
-
-<p>property 默认值 all，duration 和 delay 默认值 0，timing-function 默认值 ease。可使用 <code>,</code> 分割，实现多个动画，配合 duration，还可实现队列动画。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;<span class="attribute">display</span>: flex; <span class="attribute">width</span>: <span class="number">65px</span>; <span class="attribute">height</span>: <span class="number">40px</span>; <span class="attribute">align-items</span>: center; <span class="attribute">justify-content</span>: center; <span class="attribute">background</span>: <span class="number">#92B901</span>; <span class="attribute">font-size</span>: <span class="number">12px</span>; <span class="attribute">opacity</span>: <span class="number">0.4</span>; <span class="attribute">transition</span>: transform <span class="number">1s</span>, opacity <span class="number">1s</span>, background <span class="number">1s</span>, width <span class="number">1s</span>, height <span class="number">1s</span>, font-size <span class="number">1s</span>;&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">width</span>: <span class="number">90px</span>; <span class="attribute">height</span>: <span class="number">60px</span>; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>); <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">background</span>: <span class="number">#1ec7e6</span>;&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2016/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/02/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/">
-                HTML 标签嵌套规则
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-02-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/html/">html</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="HTML4-x2F-XHTML-嵌套规则"><a href="#HTML4-x2F-XHTML-嵌套规则" class="headerlink" title="HTML4&#x2F;XHTML 嵌套规则"></a>HTML4&#x2F;XHTML 嵌套规则</h2><p>在 HTML4&#x2F;XHTML DTD 中，将元素的分为 inline level (行内级) 和 block level (块级) 两类。</p>
-<ul>
-<li>inline level</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">span、a、dfn、abbr、cite、img、label、q、u、em、i、strong、b、big、small、sub、sup、表单类；计算机输出类(tt、kbd、code、var、samp)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>block level</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div、h1-h6、hr、ul、ol、dl、li、fieldset、address、from、table、html5 中新增的结构化语义标签、pre、blockquote、dir、menu</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2016/02/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/02/01/Markdown-Standard/">
-                Markdown 技术文档写作规范
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-02-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/project/">project</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>一级、二级、三级、四级…</p>
-<p>不要超过三级标题</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
-<li>引用</li>
-</ul>
-<blockquote>
-</blockquote>
-<ul>
-<li>代码</li>
-</ul>
-<pre><code>
-* 列表
-
-纯列表使用 使用 *，且用用 ``` 包裹，带描述的列表，列表名使用 *
-
-中英文混排时，英文中使用半角符号，连接处空格
-
-专有英文名词中单词首字母大写，句子中只需要第一个单词首字母大写。
-</code></pre>
-
-        </div>
     
 
 </div>
@@ -356,6 +296,113 @@
 <p>Git 分支是指针指向某次提交，而 SVN 分支是拷贝的目录。这个特性使 Git 的分支切换非常迅速，且创建成本非常低。</p>
         </div>
         <a href="/2015/07/01/Git-Guide/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/06/02/Media%20Query/">
+                Media Query
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015-06-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>媒体查询在 CSS2 中就已经存在了，但是只能查询 meida type，CSS3 中除了能查询 media type 外，还加入了 media feature 的查询。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>媒体查询包含一个“媒体类型（media type）”以及至少一个测试“媒体特性（media feature）”的表达式，表达式和媒体类型将根据实际情况计算的到 true 或者 false。如果指定的媒体类型符合当前设备并且媒体特性表达式都为真，那当前媒体查询为真，media query 为 true，对应的样式规则生效。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> [媒体类型] 媒体特性 &#123;&#125;    # 除非使用了 not 或者 only 操作符，否则 media type 是可选的，默认值为 <span class="attribute">all</span></span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2015/06/02/Media%20Query/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2014/06/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/">
+                HTML 标签嵌套规则
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2014-06-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/html/">html</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="HTML4-x2F-XHTML-嵌套规则"><a href="#HTML4-x2F-XHTML-嵌套规则" class="headerlink" title="HTML4&#x2F;XHTML 嵌套规则"></a>HTML4&#x2F;XHTML 嵌套规则</h2><p>在 HTML4&#x2F;XHTML DTD 中，将元素的分为 inline level (行内级) 和 block level (块级) 两类。</p>
+<ul>
+<li>inline level</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">span、a、dfn、abbr、cite、img、label、q、u、em、i、strong、b、big、small、sub、sup、表单类；计算机输出类(tt、kbd、code、var、samp)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>block level</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div、h1-h6、hr、ul、ol、dl、li、fieldset、address、from、table、html5 中新增的结构化语义标签、pre、blockquote、dir、menu</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2014/06/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2014/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
+                CSS3 过渡与动画
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2014-05-18</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/css/">css</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: [property duration timing-function delay]</span><br></pre></td></tr></table></figure>
+
+<p>property 默认值 all，duration 和 delay 默认值 0，timing-function 默认值 ease。可使用 <code>,</code> 分割，实现多个动画，配合 duration，还可实现队列动画。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;<span class="attribute">display</span>: flex; <span class="attribute">width</span>: <span class="number">65px</span>; <span class="attribute">height</span>: <span class="number">40px</span>; <span class="attribute">align-items</span>: center; <span class="attribute">justify-content</span>: center; <span class="attribute">background</span>: <span class="number">#92B901</span>; <span class="attribute">font-size</span>: <span class="number">12px</span>; <span class="attribute">opacity</span>: <span class="number">0.4</span>; <span class="attribute">transition</span>: transform <span class="number">1s</span>, opacity <span class="number">1s</span>, background <span class="number">1s</span>, width <span class="number">1s</span>, height <span class="number">1s</span>, font-size <span class="number">1s</span>;&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">width</span>: <span class="number">90px</span>; <span class="attribute">height</span>: <span class="number">60px</span>; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>); <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">background</span>: <span class="number">#1ec7e6</span>;&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2014/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/" class="read-more">Read More</a>
     
 
 </div>
@@ -425,70 +472,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2013/05/02/CSS%20%E7%B2%BE%E7%B2%B9/">
-                CSS 精粹
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2013-05-02</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="CSS-的构成"><a href="#CSS-的构成" class="headerlink" title="CSS 的构成"></a>CSS 的构成</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 选择器</span><br><span class="line">* 文字处理</span><br><span class="line">* 背景图像处理</span><br><span class="line">* 布局</span><br><span class="line">* 动画</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2013/05/02/CSS%20%E7%B2%BE%E7%B2%B9/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2013/03/15/HTML%20%E7%B2%BE%E7%B2%B9/">
-                HTML 精粹
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2013-03-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/html/">html</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p><code>&lt;!DOCTYPE&gt;</code> 标签位于文档中的最前面的位置，作用相当于一个标识符，此标签可告知 Parser（排版引擎）使用哪种 <code>HTML</code> 或 <code>XHTML</code> 解析规则，和使用哪种渲染模式。</p>
-<p>DOCTYPE 的基本结构：<code>&lt;!DOCTYPE Element-name DTD-type DTD-name DTD-url&gt;</code>，HTML5 <code>&lt;!DOCTYPE Element-name&gt;</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &lt;!DOCTYPE&gt; 是关键字，表示声明 DTD</span><br><span class="line">* Element-name 指定该 DTD 的根元素名称</span><br><span class="line">* DTD-type 指定该 DTD 是属于标准公用的还是私人定制的。若是 PUBLIC 则表示该 DTD 是标准公用的，如果设为 SYSTEM 则表示是私人定制的</span><br><span class="line">* DTD-name 指定该 DTD 的文件名称</span><br><span class="line">* DTD-url 指定该 DTD 文件所在的 URL 网址</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2013/03/15/HTML%20%E7%B2%BE%E7%B2%B9/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -501,7 +484,7 @@
                 <a class="" href="/page/2/">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 </a>
-                <a class="disabled" href="/">
+                <a class="" href="/page/4/">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </a>
             </div>
@@ -530,13 +513,13 @@
     <h2>Categories</h2>
     <p>
         
-        <a class="footer-post" href="/categories/network/">network</a>
+        <a class="footer-post" href="/categories/project/">project</a>
         
         <a class="footer-post" href="/categories/scratch/">scratch</a>
         
         <a class="footer-post" href="/categories/tools/">tools</a>
         
-        <a class="footer-post" href="/categories/project/">project</a>
+        <a class="footer-post" href="/categories/pl/">pl</a>
         
     </p>
 </div>

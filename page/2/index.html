@@ -135,37 +135,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/25/Git-Flow/">
-                Git Flow
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-04-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/engineering/">engineering</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。</p>
-        </div>
-        <a href="/2019/04/25/Git-Flow/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2019/04/20/Git-Commit-Message-Style-Guide/">
                 Git Commit Message Style Guide
             </a>
@@ -232,18 +201,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/12/15/Vue/">
-                Vue 技术要点
+            <a href="/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/">
+                自定义字体
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-12-15</span>
+                <span class="date">2018-07-19</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/css/">css</a>
                 </span>
             
         </div>
@@ -251,13 +220,41 @@
 
     
         <div class="content">
-            <h2 id="Vue-简介"><a href="#Vue-简介" class="headerlink" title="Vue 简介"></a>Vue 简介</h2><ul>
-<li>优点</li>
-</ul>
-<p>渐进式：框架设计（可以直接引入使用，仅使用核心渲染功能，也可以配合构建工具，集成路由和数据管理，采用单文件组件的开发模式）<br>声明式渲染：响应式（数据驱动视图，当数据改变后，会通知视图，不是指响应式编程 Reactive Programming），不需要传统那样命令式的操作 DOM<br>组件化：<br>工程化：Vue-cli<br>全家桶？：vuex、vue-router  集中式数据管理和客户端路由</p>
-<p>声明式渲染（Declarative View）与之相对应的是命令式渲染（Imperative View）</p>
+            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>字体文件其实就是一个以 Unicode 作为索引的字形表。用 FontCreator 打开系统安装中的某个字体文件，双击里面的某个字形，你可以对它进行编辑，也能猜得出来每个字形其实就是一个矢量图，因此 ttf 文件所表示的字库也叫矢量字库，说到这个再稍微提及一下另一种字库——点阵字库，两者最大的区别就是点阵字库可以在 Console Mode（命令行模式）下被渲染出来，而矢量字库必须在 Graphics Mode（图形模式）中被渲染。比如早期没有图形接口的 DOS 系统或者某些 Linux 终端，这些字体的索引需要靠固化到硬件驱动上点阵字库，因为早期的计算机只支持英文，这也是后来“汉卡”的由来。</p>
         </div>
-        <a href="/2018/12/15/Vue/" class="read-more">Read More</a>
+        <a href="/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/12/24/Tree-Structure/">
+                树形结构的生成
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-12-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/algorithms/">algorithms</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>后台返回树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的场景。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">56</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">81</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">74</span>, <span class="attr">parentId</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">76</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">63</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">80</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">87</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">62</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">86</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2017/12/24/Tree-Structure/" class="read-more">Read More</a>
     
 
 </div>
@@ -288,10 +285,106 @@
         <div class="content">
             <ol>
 <li><a href="/rep/leetcode/two-sum.html">两数之和</a></li>
+<li><a href="/rep/leetcode/palindrome-number.html">回文数</a></li>
 <li><a href="/rep/leetcode/valid-parentheses.html">有效的括号</a></li>
 </ol>
 
         </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/05/10/Base-64/">
+                Base 64 编码
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-05-10</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/foundations/">foundations</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。</p>
+<p>Base64 最初是用在电子邮件中，为了满足电子邮件中不能直接使用非 ASCII 码字符的规定，用来传输二进制文件的。除此之外，它还可将任意不可打印的二进制数据，转化为可打印的文本编码，使用文本软件进行编辑（二进制流中有很多都是无法显示和打印的，比如 ASCII 中的控制字符，二进制文件 jpg、pad、exe 等，如果用记事本打开这些文件，会看到一堆乱码）。</p>
+        </div>
+        <a href="/2017/05/10/Base-64/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/02/13/Emoji/">
+                Emoji
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-02-13</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/foundations/">foundations</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Emoji 它是一个日语词，e 表示”絵”，moji 表示”文字”，连在一起，就是”絵文字”，是由日本人发明的，最早用于在短消息之中插入表情，2007年，iPhone 在 iOS 5 的输入法中加入 Emoji后，导致它在全世界范围的流行。</p>
+<p>早期的 Emoji 是将一些特定的符号组合替换成图片，比如将 :) 替换成具体的表情图片。这种方法很难标准化，能够表达的范围也有限。2010年，Unicode 开始<a target="_blank" rel="noopener" href="http://www.unicode.org/emoji/charts/full-emoji-list.html">为 Emoji 分配码点</a>，将其标准化。也就是说，现在的 Emoji 符号就是一个文字，它会被渲染为图形。</p>
+        </div>
+        <a href="/2017/02/13/Emoji/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/02/01/Character-Encoding/">
+                字符编码
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-02-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/foundations/">foundations</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。</p>
+        </div>
+        <a href="/2017/02/01/Character-Encoding/" class="read-more">Read More</a>
     
 
 </div>
@@ -351,106 +444,10 @@
 
     
         <div class="content">
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+            <p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
         </div>
         <a href="/2016/12/02/Currying/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
-                排序算法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-09-05</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/algorithms/">algorithms</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7073640285904830471#heading-22">https://juejin.cn/post/7073640285904830471#heading-22</a></p>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>外循环，几轮冒泡</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bubbleSort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = arr.<span class="property">length</span>;</span><br><span class="line">  <span class="comment">// 共进行 arr.length 轮冒泡</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 冒泡</span></span><br><span class="line">    <span class="comment">// 俩俩对比，最后一个元素后面没有元素了，所以减 1，已冒泡上去的元素无需再参与，所以减 i</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]]; <span class="comment">// distribute 交换数组位置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">bubbleSort</span>([<span class="number">3</span>, <span class="number">44</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>]));</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/07/02/Adaptation-Rule/">
-                移动端适配方案
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-07-02</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>在 PC 端，除了数据可视化和中后台这样一些全屏设计场景需要适配，绝大多数的网页采用的都是固定尺寸设计，由于 1366+ 的屏幕尺寸大于常用的固定设计尺寸，网页按设计尺寸 1:1 还原即可，不需要考虑适配。而在移动端，由于屏幕尺寸大小不一，且采用全屏的设计风格，则需要做适配。</p>
-<p>目前移动端端内主流适配方案有：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 流体式/弹性式；</span><br><span class="line">* Layout Viewport Scale；</span><br><span class="line">* VW + Rem；</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2016/07/02/Adaptation-Rule/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/06/15/Pixel-Viewport-2/">
-                两个像素三个视口(下) -- 视口
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-06-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>视口（viewport）代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI（菜单栏等）。一般我们所说的视口共包括三种：布局视口、视觉视口和理想视口，它们在屏幕适配中起着非常重要的作用。</p>
-        </div>
-        <a href="/2016/06/15/Pixel-Viewport-2/" class="read-more">Read More</a>
     
 
 </div>
@@ -496,13 +493,13 @@
     <h2>Categories</h2>
     <p>
         
-        <a class="footer-post" href="/categories/network/">network</a>
+        <a class="footer-post" href="/categories/project/">project</a>
         
         <a class="footer-post" href="/categories/scratch/">scratch</a>
         
         <a class="footer-post" href="/categories/tools/">tools</a>
         
-        <a class="footer-post" href="/categories/project/">project</a>
+        <a class="footer-post" href="/categories/pl/">pl</a>
         
     </p>
 </div>
