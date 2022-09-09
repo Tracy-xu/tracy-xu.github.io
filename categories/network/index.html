@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Emoji"/>
+        <meta property="og:title" content="Tracy-xu&#39;Blog"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>Emoji - Tracy-xu&#39;Blog</title>
+    <title>network - Tracy-xu&#39;Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -115,7 +115,9 @@
 <div class="container">
 
     <!-- Main Content -->
-    <div class="row">
+    
+
+<div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -123,72 +125,25 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
+            <h1 id="main-title" class="title">network</h1>
+        
     </div>
 </header>
 
-        <section class="main">
+        <section class="main archive-container">
             
-<div class="post">
-
-    <div class="post-header">
-        <h1 class="title">
-            <a href="/2017/02/13/Emoji/">
-                Emoji
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-02-13</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/foundations/">foundations</a>
-                </span>
-            
-        </div>
-    </div>
-
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-        <p>Emoji 它是一个日语词，e 表示”絵”，moji 表示”文字”，连在一起，就是”絵文字”，是由日本人发明的，最早用于在短消息之中插入表情，2007年，iPhone 在 iOS 5 的输入法中加入 Emoji后，导致它在全世界范围的流行。</p>
-<p>早期的 Emoji 是将一些特定的符号组合替换成图片，比如将 :) 替换成具体的表情图片。这种方法很难标准化，能够表达的范围也有限。2010年，Unicode 开始<a target="_blank" rel="noopener" href="http://www.unicode.org/emoji/charts/full-emoji-list.html">为 Emoji 分配码点</a>，将其标准化。也就是说，现在的 Emoji 符号就是一个文字，它会被渲染为图形。</p>
-<span id="more"></span>
-
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h3><p>移动端软键盘上自带 emoji 输入功能，输入的是标准的 Unicode 字符，能够在 textarea 中正确的插入和删除，输出时浏览器也能正确解析，前端无需实现。不过需要注意的是，标准 emoji 在 Mysql 中存储时需要注意字符编码。</p>
-<ul>
-<li>Mysql 存储</li>
-</ul>
-<p>在 Unicode 中 Emoji 的码点在 SMP 这个平面（具体在 U+1F601-U+1F64F 这个区段），这在 UTF-8 中需要 4 个字节来存储。</p>
-<p>Mysql 的 utf8 不是我们常说的那个变长 UTF-8 编码，它是一个 3 个字节定长的编码（数据库要分配空间，所以必须定长？BMP 中 2 个字节的 UTF-8 高位补 0？），如果遇到 4 字节的宽字符就会插入异常（比如 Emoji），三个字节的 utf8 最大能编码的 Unicode 字符是 0xFFFF（BMP），任何不在 BMP 内的字符，都无法使用 Mysql 的 utf8 存储。</p>
-<p>解决办法有两种：</p>
-<p>方法一：是将 Mysql 的 utf8 改为 utf8mb4（4 个定长的字节），缺点就是空间会增加 1&#x2F;4（那些原本 3 个字节就能存下来的字符，现在要用 4 个字节。其实可以修改某个字段为 mb4，而不是将整个 Mysql 都设为 mb4）。</p>
-<p>方法二：遍历输入的文本，把四字节长度的字符用自定义的字符（比如替换为 Emoji 字符本身的码点，这样复杂度会小点，恢复时可直接恢复）替换掉，渲染时再替换回。</p>
-<h3 id="PC-端"><a href="#PC-端" class="headerlink" title="PC 端"></a>PC 端</h3><p>可以通过图片来实现，插入时是图片，保存时也是图片。不过需要注意的是要想在富文本中实现图片的插入和删除需要使用 contenteditable 的 div。参考百度贴吧的表情插入。</p>
-<h3 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h3><p>要想在 Markdown 中实现 Emoji，可以自定义语法规则（<a target="_blank" rel="noopener" href="https://github.com/muan/emoji">Find the emoji</a>），比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:+1:</span><br><span class="line">:-1:</span><br><span class="line">:rainbow:</span><br></pre></td></tr></table></figure>
-
-<p>渲染解析时，再将上面语法结构替换为图片即可。参考 GitHub Issues 里面的 Markdown 实现。</p>
-
-    </div>
-
-    
-
-    
-
-    <!-- Comments -->
-    
-
+                <div class="archive-post">
+    <a href="/2020/04/25/XSS-CSRF/">
+        <span class="archive-date">
+            Apr 2020
+        </span>
+        XSS 和 CSRF
+    </a>
 </div>
+            
         </section>
-
     </div>
 </div>
-
 
 </div>
 
