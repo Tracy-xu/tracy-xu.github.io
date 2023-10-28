@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2022-08-25T09:03:23.969Z</updated>
+  <updated>2023-09-17T13:48:25.470Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,21 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Scratch 助教</title>
-    <link href="https://tracyxu.cn/2022/03/02/Scratch-Share/"/>
-    <id>https://tracyxu.cn/2022/03/02/Scratch-Share/</id>
+    <title>WSL</title>
+    <link href="https://tracyxu.cn/2022/09/24/tools/windows/WSL/"/>
+    <id>https://tracyxu.cn/2022/09/24/tools/windows/WSL/</id>
+    <published>2022-09-23T16:00:00.000Z</published>
+    <updated>2023-09-17T13:48:25.470Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://learn.microsoft.com/zh-cn/windows/wsl/&quot;&gt;https://learn.microsoft.com/zh-cn/windows/wsl/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;WSL-安装&quot;&gt;&lt;a href=&quot;#WSL-安装&quot; class=&quot;headerlink&quot; title=&quot;WSL 安装&quot;&gt;&lt;/a&gt;WSL 安装&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;命令行安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wsl --install &lt;span class=&quot;comment&quot;&gt;# 安装默认发行版（Ubuntu），可选择发行版 --distribution &amp;lt;Distribution Name&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://tracyxu.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Scratch 编程</title>
+    <link href="https://tracyxu.cn/2022/03/02/Scratch/"/>
+    <id>https://tracyxu.cn/2022/03/02/Scratch/</id>
     <published>2022-03-01T16:00:00.000Z</published>
-    <updated>2022-08-25T09:03:23.969Z</updated>
+    <updated>2023-10-27T08:02:46.410Z</updated>
     
     
-    <summary type="html">&lt;p&gt;在这春暖花开，万物复苏之季，非常荣幸受邀参加家长助教活动，我非常赞成这项活动，也非常感谢那些助教的家长，这也是家园共育中重要的活动。&lt;/p&gt;
-&lt;p&gt;我准备的课程主题为《少儿编程》，希望通过这节课可以让孩子们对计算机、人工智能、编程有一个轮廓上的概念，知道计算机的用途，知道现阶段的人工智能和真正的人工智能区别，知道编程中最基本的流程控制 – 循环和条件判断。&lt;/p&gt;
-&lt;p&gt;本次课程分三部分，分别是：&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* 计算机科普&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Scratch 编程&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 游戏“见缝插针”&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/scratch.jpg&quot; alt=&quot;Scratch&quot;&gt;&lt;/p&gt;</summary>
     
     
     
-    <category term="scratch" scheme="https://tracyxu.cn/categories/scratch/"/>
+    <category term="少儿编程" scheme="https://tracyxu.cn/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/"/>
     
     
   </entry>
@@ -41,31 +59,31 @@
     <link href="https://tracyxu.cn/2021/10/02/Interact-Live-Class/"/>
     <id>https://tracyxu.cn/2021/10/02/Interact-Live-Class/</id>
     <published>2021-10-01T16:00:00.000Z</published>
-    <updated>2022-08-26T07:31:21.699Z</updated>
+    <updated>2023-09-17T13:48:25.447Z</updated>
     
     
     <summary type="html">&lt;p&gt;作为在线教育的核心产品，课堂既要满足&lt;strong&gt;面对面&lt;/strong&gt;场景，又要满足&lt;strong&gt;远程&lt;/strong&gt;场景，面对面课堂作为线下课堂的补充，而远程课堂可用来替代线下课堂。&lt;/p&gt;</summary>
     
     
     
-    <category term="project" scheme="https://tracyxu.cn/categories/project/"/>
+    <category term="项目设计" scheme="https://tracyxu.cn/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/"/>
     
     
   </entry>
   
   <entry>
     <title>函数参数的求值策略</title>
-    <link href="https://tracyxu.cn/2020/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
-    <id>https://tracyxu.cn/2020/08/01/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
+    <link href="https://tracyxu.cn/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
+    <id>https://tracyxu.cn/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
     <published>2020-07-31T16:00:00.000Z</published>
-    <updated>2022-08-27T04:13:02.778Z</updated>
+    <updated>2023-09-17T13:48:25.470Z</updated>
     
     
     <summary type="html">&lt;p&gt;函数参数的&lt;a href=&quot;https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085&quot;&gt;求值策略 Evaluation Strategy&lt;/a&gt; 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。&lt;/p&gt;</summary>
     
     
     
-    <category term="pl" scheme="https://tracyxu.cn/categories/pl/"/>
+    <category term="编程语言" scheme="https://tracyxu.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
   </entry>
@@ -75,24 +93,41 @@
     <link href="https://tracyxu.cn/2020/04/25/XSS-CSRF/"/>
     <id>https://tracyxu.cn/2020/04/25/XSS-CSRF/</id>
     <published>2020-04-24T16:00:00.000Z</published>
-    <updated>2022-09-09T02:31:34.396Z</updated>
+    <updated>2023-09-17T13:48:25.449Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;XSS&quot;&gt;&lt;a href=&quot;#XSS&quot; class=&quot;headerlink&quot; title=&quot;XSS&quot;&gt;&lt;/a&gt;XSS&lt;/h2&gt;&lt;p&gt;XSS (Cross-site scripting) 跨站脚本攻击，首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将意为“交叉”的 Cross 改以交叉形的 X 做为缩写。&lt;/p&gt;</summary>
     
     
     
-    <category term="network" scheme="https://tracyxu.cn/categories/network/"/>
+    <category term="计算机网络" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SSH</title>
+    <link href="https://tracyxu.cn/2020/04/22/linux/SSH/"/>
+    <id>https://tracyxu.cn/2020/04/22/linux/SSH/</id>
+    <published>2020-04-21T16:00:00.000Z</published>
+    <updated>2023-09-17T13:48:25.470Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Linux" scheme="https://tracyxu.cn/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>指针和引用</title>
-    <link href="https://tracyxu.cn/2020/01/15/Pointer-Reference/"/>
-    <id>https://tracyxu.cn/2020/01/15/Pointer-Reference/</id>
+    <link href="https://tracyxu.cn/2020/01/15/pl/Pointer-Reference/"/>
+    <id>https://tracyxu.cn/2020/01/15/pl/Pointer-Reference/</id>
     <published>2020-01-14T16:00:00.000Z</published>
-    <updated>2022-09-09T02:49:13.766Z</updated>
+    <updated>2023-09-17T13:48:25.470Z</updated>
     
     
     <summary type="html">&lt;p&gt;指针是内存地址，指针变量是用来存放内存地址的变量，指向内存的一个存储单元。&lt;/p&gt;
@@ -100,52 +135,34 @@
     
     
     
-    <category term="pl" scheme="https://tracyxu.cn/categories/pl/"/>
+    <category term="编程语言" scheme="https://tracyxu.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
   </entry>
   
   <entry>
     <title>EditorConfig-ESlint-Prettier</title>
-    <link href="https://tracyxu.cn/2019/11/10/EditorConfig-ESlint-Prettier/"/>
-    <id>https://tracyxu.cn/2019/11/10/EditorConfig-ESlint-Prettier/</id>
+    <link href="https://tracyxu.cn/2019/11/10/engineering/EditorConfig-ESlint-Prettier/"/>
+    <id>https://tracyxu.cn/2019/11/10/engineering/EditorConfig-ESlint-Prettier/</id>
     <published>2019-11-09T16:00:00.000Z</published>
-    <updated>2022-08-23T05:52:07.265Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;EditorConfig&quot;&gt;&lt;a href=&quot;#EditorConfig&quot; class=&quot;headerlink&quot; title=&quot;EditorConfig&quot;&gt;&lt;/a&gt;EditorConfig&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://editorconfig.org/&quot;&gt;EditorConfig&lt;/a&gt; 是编辑器&amp;#x2F;IDE 配置工具，需要编辑器&amp;#x2F;IDE 支持，在 VSCode 上可通过 EditorConfig for VS Code 插件支持。&lt;/p&gt;</summary>
     
     
     
-    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>前端开发规范</title>
-    <link href="https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"/>
-    <id>https://tracyxu.cn/2019/10/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</id>
-    <published>2019-10-04T16:00:00.000Z</published>
-    <updated>2022-09-01T04:05:03.831Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;代码规范&quot;&gt;&lt;a href=&quot;#代码规范&quot; class=&quot;headerlink&quot; title=&quot;代码规范&quot;&gt;&lt;/a&gt;代码规范&lt;/h2&gt;&lt;p&gt;代码规范的可通过文档约定和 CodeRevice，但这主观性太强，不容易落地，最理想的方式还是在工程化层面，借助灵活配置的工具，工程化自动化的解决。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ESLint + Prettier: JavaScript/TypeScript/VUE/React 代码规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Stylelint: CSS 代码规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Editorconfig: 编辑器配置工具&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Prettier: 代码格式化工具&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
   
   <entry>
     <title>JavaScript 类型系统</title>
-    <link href="https://tracyxu.cn/2019/07/26/JavaScript-Type-System/"/>
-    <id>https://tracyxu.cn/2019/07/26/JavaScript-Type-System/</id>
+    <link href="https://tracyxu.cn/2019/07/26/javascript/JavaScript-Type-System/"/>
+    <id>https://tracyxu.cn/2019/07/26/javascript/JavaScript-Type-System/</id>
     <published>2019-07-25T16:00:00.000Z</published>
-    <updated>2022-08-26T07:14:29.063Z</updated>
+    <updated>2023-09-17T13:48:25.470Z</updated>
     
     
     <summary type="html">&lt;p&gt;类型动静态强调的是静态类型检测，类型强弱强调的是隐式类型转换，JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。&lt;/p&gt;
@@ -155,17 +172,17 @@
     
     
     
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
     
     
   </entry>
   
   <entry>
     <title>NPM 私仓</title>
-    <link href="https://tracyxu.cn/2019/07/01/Sinopia/"/>
-    <id>https://tracyxu.cn/2019/07/01/Sinopia/</id>
+    <link href="https://tracyxu.cn/2019/07/01/engineering/Sinopia/"/>
+    <id>https://tracyxu.cn/2019/07/01/engineering/Sinopia/</id>
     <published>2019-06-30T16:00:00.000Z</published>
-    <updated>2022-08-23T05:52:07.299Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;p&gt;npm 私仓可用于提高包的下载速度和保护内部代码，常见的 npm 私仓技术方案有以下几种：&lt;/p&gt;
@@ -173,124 +190,120 @@
     
     
     
-    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
   
   <entry>
     <title>Git Pages</title>
-    <link href="https://tracyxu.cn/2019/06/20/Git-Pages/"/>
-    <id>https://tracyxu.cn/2019/06/20/Git-Pages/</id>
+    <link href="https://tracyxu.cn/2019/06/20/engineering/Git-Pages/"/>
+    <id>https://tracyxu.cn/2019/06/20/engineering/Git-Pages/</id>
     <published>2019-06-19T16:00:00.000Z</published>
-    <updated>2022-08-25T07:23:10.506Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;p&gt;GitHub Pages 用于介绍用户个人和托管在 GitHub 中的项目的，免费，虽然&lt;a href=&quot;https://help.github.com/en/articles/what-is-github-pages#usage-limits&quot;&gt;空间和流量有限制&lt;/a&gt;（空间上限 1G、月流量上限 100G、每小时更新不超过 10 次），但绝对够用。&lt;/p&gt;</summary>
     
     
     
-    <category term="tools" scheme="https://tracyxu.cn/categories/tools/"/>
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
   
   <entry>
     <title>Git Flow</title>
-    <link href="https://tracyxu.cn/2019/04/25/Git-Flow/"/>
-    <id>https://tracyxu.cn/2019/04/25/Git-Flow/</id>
+    <link href="https://tracyxu.cn/2019/04/25/engineering/Git-Flow/"/>
+    <id>https://tracyxu.cn/2019/04/25/engineering/Git-Flow/</id>
     <published>2019-04-24T16:00:00.000Z</published>
-    <updated>2022-08-23T05:52:07.269Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;p&gt;Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。&lt;/p&gt;</summary>
     
     
     
-    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
   
   <entry>
     <title>Git Commit Message Style Guide</title>
-    <link href="https://tracyxu.cn/2019/04/20/Git-Commit-Message-Style-Guide/"/>
-    <id>https://tracyxu.cn/2019/04/20/Git-Commit-Message-Style-Guide/</id>
+    <link href="https://tracyxu.cn/2019/04/20/engineering/Git-Commit-Message-Style-Guide/"/>
+    <id>https://tracyxu.cn/2019/04/20/engineering/Git-Commit-Message-Style-Guide/</id>
     <published>2019-04-20T08:44:35.000Z</published>
-    <updated>2022-08-25T05:36:48.847Z</updated>
+    <updated>2023-09-19T14:17:56.489Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 Git 中，我们使用 &lt;code&gt;git commit -m &amp;quot;xxx&amp;quot;&lt;/code&gt; 来提交代码，参数 &lt;code&gt;-m&lt;/code&gt; 用来指定 Commit Message（提交说明），直接执行 &lt;code&gt;git commit&lt;/code&gt; 会进入编辑器模式，可提交多行说明。Commit Message 应规范化，规范化的 Commit Message 能带来很多好处：&lt;/p&gt;</summary>
     
     
     
-    <category term="engineering" scheme="https://tracyxu.cn/categories/engineering/"/>
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
   
   <entry>
-    <title>记录 Date 中的两个坑</title>
-    <link href="https://tracyxu.cn/2019/04/01/Javascript-Date-Something/"/>
-    <id>https://tracyxu.cn/2019/04/01/Javascript-Date-Something/</id>
-    <published>2019-04-01T13:23:57.000Z</published>
-    <updated>2022-08-23T05:52:07.288Z</updated>
+    <title>SFTP</title>
+    <link href="https://tracyxu.cn/2019/01/08/linux/SFTP/"/>
+    <id>https://tracyxu.cn/2019/01/08/linux/SFTP/</id>
+    <published>2019-01-07T16:00:00.000Z</published>
+    <updated>2023-09-17T13:48:25.470Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;new-Date-参数-dataString-格式问题&quot;&gt;&lt;a href=&quot;#new-Date-参数-dataString-格式问题&quot; class=&quot;headerlink&quot; title=&quot;new Date 参数 dataString 格式问题&quot;&gt;&lt;/a&gt;new Date 参数 dataString 格式问题&lt;/h2&gt;&lt;p&gt;new Date(dataString) 中，参数 dataString 必须符合 ISO 8601 标准或者 RFC 2822 标准，现代主流浏览器这两个标准都支持（IE8 只支持 RFC 2822，不支持 ISO 8601）。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;new Date(&amp;#x27;2019-01-25T09:14:10.099+00:00&amp;#x27;).getTime();    // ISO 8601 标准。返回 1548407650099&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;new Date(&amp;#x27;2019/01/25 09:14:10+0000&amp;#x27;).getTime();         // RFC 2822 标准。返回 1548407650000&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;然而，在实际工作中，后台（Java）返回的是格式既不是标准的 ISO 8601 也不是标准的 RFC 2822 格式，而是 ISO 8601 和 RFC 2822 混合格式，时区使用的是 RFC 2822 格式，比如，2019-01-25T09:14:10.099+0000，这个格式只有 Chrome 支持，其他浏览器都不支持（比如 iOS WebView、IE），执行 getTime 操作会返回 NaN：&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;new Date(&amp;#x27;2019-01-25T09:14:10.099+0000&amp;#x27;).getTime();     // NaN&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;p&gt;SFTP 是 Secure File Transfer Protocol 的缩写，安全文件传送协议。可以为传输文件提供一种安全的网络的加密方法。SFTP 与 FTP 有着几乎一样的语法和功能。&lt;/p&gt;</summary>
     
     
     
-    <category term="javascript" scheme="https://tracyxu.cn/categories/javascript/"/>
+    <category term="Linux" scheme="https://tracyxu.cn/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>自定义字体</title>
-    <link href="https://tracyxu.cn/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/"/>
-    <id>https://tracyxu.cn/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/</id>
+    <link href="https://tracyxu.cn/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/"/>
+    <id>https://tracyxu.cn/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/</id>
     <published>2018-07-18T16:00:00.000Z</published>
-    <updated>2022-08-26T03:52:36.688Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;字体文件其实就是一个以 Unicode 作为索引的字形表。用 FontCreator 打开系统安装中的某个字体文件，双击里面的某个字形，你可以对它进行编辑，也能猜得出来每个字形其实就是一个矢量图，因此 ttf 文件所表示的字库也叫矢量字库，说到这个再稍微提及一下另一种字库——点阵字库，两者最大的区别就是点阵字库可以在 Console Mode（命令行模式）下被渲染出来，而矢量字库必须在 Graphics Mode（图形模式）中被渲染。比如早期没有图形接口的 DOS 系统或者某些 Linux 终端，这些字体的索引需要靠固化到硬件驱动上点阵字库，因为早期的计算机只支持英文，这也是后来“汉卡”的由来。&lt;/p&gt;</summary>
     
     
     
-    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
+    <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
     
     
   </entry>
   
   <entry>
     <title>树形结构的生成</title>
-    <link href="https://tracyxu.cn/2017/12/24/Tree-Structure/"/>
-    <id>https://tracyxu.cn/2017/12/24/Tree-Structure/</id>
+    <link href="https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/"/>
+    <id>https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/</id>
     <published>2017-12-23T16:00:00.000Z</published>
-    <updated>2022-09-07T05:39:36.827Z</updated>
+    <updated>2023-09-17T13:48:25.450Z</updated>
     
     
-    <summary type="html">&lt;p&gt;后台返回树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的场景。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;后端返回扁平的树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的一种场景。&lt;/p&gt;
 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;56&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;81&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;76&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;63&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;87&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
-    <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
+    <category term="数据结构与算法" scheme="https://tracyxu.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
   </entry>
   
   <entry>
     <title>LeetCode JavaScript Solutions</title>
-    <link href="https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/"/>
-    <id>https://tracyxu.cn/2017/10/01/LeetCode-JavaScript-Solutions/</id>
+    <link href="https://tracyxu.cn/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/"/>
+    <id>https://tracyxu.cn/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/</id>
     <published>2017-09-30T16:00:00.000Z</published>
-    <updated>2022-09-09T03:13:50.746Z</updated>
+    <updated>2023-09-17T13:48:25.449Z</updated>
     
     
       
@@ -306,17 +319,17 @@
     
     
     
-    <category term="algorithms" scheme="https://tracyxu.cn/categories/algorithms/"/>
+    <category term="数据结构与算法" scheme="https://tracyxu.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
   </entry>
   
   <entry>
     <title>Base 64 编码</title>
-    <link href="https://tracyxu.cn/2017/05/10/Base-64/"/>
-    <id>https://tracyxu.cn/2017/05/10/Base-64/</id>
+    <link href="https://tracyxu.cn/2017/05/10/foundation/Base-64/"/>
+    <id>https://tracyxu.cn/2017/05/10/foundation/Base-64/</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2022-08-25T10:37:58.986Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;p&gt;Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。&lt;/p&gt;
@@ -324,17 +337,17 @@
     
     
     
-    <category term="foundations" scheme="https://tracyxu.cn/categories/foundations/"/>
+    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
     
   </entry>
   
   <entry>
     <title>Emoji</title>
-    <link href="https://tracyxu.cn/2017/02/13/Emoji/"/>
-    <id>https://tracyxu.cn/2017/02/13/Emoji/</id>
+    <link href="https://tracyxu.cn/2017/02/13/foundation/Emoji/"/>
+    <id>https://tracyxu.cn/2017/02/13/foundation/Emoji/</id>
     <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2022-08-25T10:33:06.634Z</updated>
+    <updated>2023-09-17T13:48:25.466Z</updated>
     
     
     <summary type="html">&lt;p&gt;Emoji 它是一个日语词，e 表示”絵”，moji 表示”文字”，连在一起，就是”絵文字”，是由日本人发明的，最早用于在短消息之中插入表情，2007年，iPhone 在 iOS 5 的输入法中加入 Emoji后，导致它在全世界范围的流行。&lt;/p&gt;
@@ -342,41 +355,24 @@
     
     
     
-    <category term="foundations" scheme="https://tracyxu.cn/categories/foundations/"/>
+    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
     
   </entry>
   
   <entry>
     <title>字符编码</title>
-    <link href="https://tracyxu.cn/2017/02/01/Character-Encoding/"/>
-    <id>https://tracyxu.cn/2017/02/01/Character-Encoding/</id>
+    <link href="https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/"/>
+    <id>https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/</id>
     <published>2017-01-31T16:00:00.000Z</published>
-    <updated>2022-08-25T11:10:06.604Z</updated>
+    <updated>2023-09-17T13:48:25.455Z</updated>
     
     
     <summary type="html">&lt;p&gt;计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。&lt;/p&gt;</summary>
     
     
     
-    <category term="foundations" scheme="https://tracyxu.cn/categories/foundations/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CSS 设计模式</title>
-    <link href="https://tracyxu.cn/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://tracyxu.cn/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
-    <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2022-08-25T06:35:24.208Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="css" scheme="https://tracyxu.cn/categories/css/"/>
+    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
     
   </entry>

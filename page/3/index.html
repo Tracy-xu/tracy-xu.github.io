@@ -63,7 +63,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
 </head>
 
 
@@ -107,8 +111,8 @@
 </div>
 
 <!--Hamburger Icon-->
-<nav>
-    <a href="#menu"></a>
+<nav class="menu-bar">
+    <a></a>
 </nav>
 
 
@@ -135,7 +139,38 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/12/02/Currying/">
+            <a href="/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                CSS 设计模式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-12-02</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Web/">Web</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。</p>
+        </div>
+        <a href="/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/12/02/javascript/Currying/">
                 科里化函数
             </a>
         </h1>
@@ -146,7 +181,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/JavaScript/">JavaScript</a>
                 </span>
             
         </div>
@@ -157,7 +192,7 @@
             <p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2016/12/02/Currying/" class="read-more">Read More</a>
+        <a href="/2016/12/02/javascript/Currying/" class="read-more">Read More</a>
     
 
 </div>
@@ -167,7 +202,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+            <a href="/2016/09/05/algorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
                 排序算法
             </a>
         </h1>
@@ -178,7 +213,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/algorithms/">algorithms</a>
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
                 </span>
             
         </div>
@@ -189,7 +224,7 @@
             <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>外循环，几轮冒泡</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bubbleSort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = arr.<span class="property">length</span>;</span><br><span class="line">  <span class="comment">// 共进行 arr.length 轮冒泡</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 冒泡</span></span><br><span class="line">    <span class="comment">// 俩俩对比，最后一个元素后面没有元素了，所以减 1，已冒泡上去的元素无需再参与，所以减 i</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]]; <span class="comment">// distribute 交换数组位置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">bubbleSort</span>([<span class="number">3</span>, <span class="number">44</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>]));</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2016/09/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="read-more">Read More</a>
+        <a href="/2016/09/05/algorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="read-more">Read More</a>
     
 
 </div>
@@ -199,7 +234,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/07/02/Adaptation-Rule/">
+            <a href="/2016/07/02/css/Adaptation-Rule/">
                 移动端适配方案
             </a>
         </h1>
@@ -210,7 +245,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/css/">css</a>
+                    <a href="/categories/Web/">Web</a>
                 </span>
             
         </div>
@@ -222,7 +257,7 @@
 <p>目前移动端端内主流适配方案有：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 流体式/弹性式；</span><br><span class="line">* Layout Viewport Scale；</span><br><span class="line">* VW + Rem；</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2016/07/02/Adaptation-Rule/" class="read-more">Read More</a>
+        <a href="/2016/07/02/css/Adaptation-Rule/" class="read-more">Read More</a>
     
 
 </div>
@@ -232,7 +267,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/06/15/Pixel-Viewport-2/">
+            <a href="/2016/06/15/css/Pixel-Viewport-2/">
                 两个像素三个视口(下) -- 视口
             </a>
         </h1>
@@ -243,7 +278,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/css/">css</a>
+                    <a href="/categories/Web/">Web</a>
                 </span>
             
         </div>
@@ -253,7 +288,7 @@
         <div class="content">
             <p>视口（viewport）代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI（菜单栏等）。一般我们所说的视口共包括三种：布局视口、视觉视口和理想视口，它们在屏幕适配中起着非常重要的作用。</p>
         </div>
-        <a href="/2016/06/15/Pixel-Viewport-2/" class="read-more">Read More</a>
+        <a href="/2016/06/15/css/Pixel-Viewport-2/" class="read-more">Read More</a>
     
 
 </div>
@@ -263,7 +298,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/06/10/Pixel-Viewport-1/">
+            <a href="/2016/06/10/css/Pixel-Viewport-1/">
                 两个像素三个视口(上) -- 像素
             </a>
         </h1>
@@ -274,7 +309,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/css/">css</a>
+                    <a href="/categories/Web/">Web</a>
                 </span>
             
         </div>
@@ -285,7 +320,7 @@
             <p>像素是影像显示的基本单位，其表现为一个个小方格。在 GUI 客户端软件开发中，像素是布局的基础，对于一个客户端开发者来说理解它很重要。其实存在两种像素，<a target="_blank" rel="noopener" href="https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html">此像素非彼像素</a>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 设备像素</span><br><span class="line">* 设备独立像素</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2016/06/10/Pixel-Viewport-1/" class="read-more">Read More</a>
+        <a href="/2016/06/10/css/Pixel-Viewport-1/" class="read-more">Read More</a>
     
 
 </div>
@@ -295,7 +330,67 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2015/07/01/Git-Guide/">
+            <a href="/2016/01/11/algorithm/%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC/">
+                鸡兔同笼
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-01-11</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>《孙子算经》：今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？</p>
+<h2 id="穷举法"><a href="#穷举法" class="headerlink" title="穷举法"></a>穷举法</h2><p>穷举是一种暴力搜索方法，通过检查每一个可能来寻找问题的解，实现方法有循环和递归。不要把穷举等同于循环，前者是计算机解决问题的一种方法，后者是一种编程结构。</p>
+<ul>
+<li>递归</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solveChickenRabbitProblem</span>(<span class="params">totalHeaders, totalFoots, rabbits = <span class="number">0</span></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> chickens = totalHeaders - rabbits</span><br><span class="line">    <span class="keyword">if</span> (rabbits &gt;= <span class="number">0</span> &amp;&amp; chickens &gt;= <span class="number">0</span> &amp;&amp; rabbits + chickens === totalHeaders &amp;&amp; <span class="number">4</span> * rabbits + <span class="number">2</span> * chickens === totalFoots) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        rabbits,</span><br><span class="line">        chickens</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 增加兔子的数量，检查下一个可能的解（从 totalFoots 开始减少一样）</span></span><br><span class="line">    <span class="keyword">if</span> (rabbits &lt; totalFoots) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">solveChickenRabbitProblem</span>(totalHeaders, totalFoots, rabbits + <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 无解</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solveChickenRabbitProblem</span>(<span class="number">35</span>, <span class="number">94</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solveChickenRabbitProblem</span>(<span class="params">totalHeaders, totalFoots</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> rabbits = <span class="number">0</span>; rabbits &lt;= totalHeaders; rabbits++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> chickens = <span class="number">0</span>; chickens &lt;= totalHeaders - rabbits; chickens++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (rabbits + chickens === totalHeaders &amp;&amp; <span class="number">4</span> * rabbits + <span class="number">2</span> * chickens === totalFoots) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          rabbits,</span><br><span class="line">          chickens</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代数法"><a href="#代数法" class="headerlink" title="代数法"></a>代数法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solveChickenRabbitProblem</span>(<span class="params">totalHeads, totalFoots</span>) &#123;</span><br><span class="line">    <span class="comment">// 假设鸡的数量为 x，兔的数量为 y</span></span><br><span class="line">    <span class="comment">// 构建方程组</span></span><br><span class="line">    <span class="comment">// x + y = totalHeads</span></span><br><span class="line">    <span class="comment">// 2x + 4y = totalFoots</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">0</span>; x &lt;= totalHeads; x++) &#123;</span><br><span class="line">      <span class="keyword">let</span> y = totalHeads - x</span><br><span class="line">      <span class="keyword">if</span> (<span class="number">2</span> * x + <span class="number">4</span> * y === totalFoots) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; </span><br><span class="line">          <span class="attr">chickens</span>: x,</span><br><span class="line">          <span class="attr">rabbits</span>: y</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span> <span class="comment">// 无解</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="逻辑法"><a href="#逻辑法" class="headerlink" title="逻辑法"></a>逻辑法</h2><ul>
+<li>抬脚法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solveChickenRabbitProblem</span>(<span class="params">totalHeads, totalFoots</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> restFoots = totalFoots / <span class="number">2</span> <span class="comment">// 第一次抬脚</span></span><br><span class="line">  <span class="keyword">const</span> rabbits = restFoots - totalHeads <span class="comment">// 第二次抬脚</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rabbits,</span><br><span class="line">    <span class="attr">chickens</span>: totalHeads - rabbits</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solveChickenRabbitProblem</span>(<span class="number">35</span>, <span class="number">94</span>)</span><br></pre></td></tr></table></figure>
+
+<p>解法思路：第一次抬脚，兔子抬 2 只，鸡抬 1 只，第二次抬脚，兔和鸡都抬 1 只，这时候兔子还站着，鸡已经坐下来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solveChickenRabbitProblem</span>(<span class="params">totalHeads, totalFoots</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> restFoots = totalFoots - totalHeads * <span class="number">2</span></span><br><span class="line">  <span class="keyword">const</span> rabbits = restFoots / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rabbits,</span><br><span class="line">    <span class="attr">chickens</span>: totalHeads - rabbits</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解法思路：第一次抬脚，鸡和兔都抬 1 只，第二次抬脚，鸡和兔再都抬 1 只，这时兔子还剩下 2 只脚站着，鸡已经坐下来。</p>
+<ul>
+<li>假设法</li>
+</ul>
+<p>假设兔子只有两只脚。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solveChickenRabbitProblem</span>(<span class="params">totalHeads, totalFoots</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> rabbits = (totalFoots - <span class="number">2</span> * totalHeads) / <span class="number">2</span></span><br><span class="line">  <span class="keyword">const</span> chickens = totalHeads - rabbits</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    chickens,</span><br><span class="line">    rabbits</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solveChickenRabbitProblem</span>(<span class="number">35</span>, <span class="number">94</span>)</span><br></pre></td></tr></table></figure>
+
+<p>解法思路：假设兔子只有两条腿，那么一共有 <code>k</code> 个头就一共有 <code>2k</code> 只脚，<code>totalFoots-2k</code> 就是剩下的脚，而这些脚应该是兔子多出来的脚，每个兔子多两只脚，所以兔子就有 <code>(totalFoots-2k)/2</code> 只，鸡就不言而喻了。</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/07/01/engineering/Git-Guide/">
                 Git Guide
             </a>
         </h1>
@@ -306,7 +401,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/engineering/">engineering</a>
+                    <a href="/categories/Engineering/">Engineering</a>
                 </span>
             
         </div>
@@ -314,20 +409,30 @@
 
     
         <div class="content">
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+            <p>已完成：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yibushao/article/details/117353943">https://blog.csdn.net/yibushao/article/details/117353943</a></p>
+<p>未完成：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/53750883">https://zhuanlan.zhihu.com/p/53750883</a></p>
+<p>前三个回答：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19946553/answer/29033220">https://www.zhihu.com/question/19946553/answer/29033220</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96631135">https://zhuanlan.zhihu.com/p/96631135</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98679880">https://zhuanlan.zhihu.com/p/98679880</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1251731749.cos-website.ap-guangzhou.myqcloud.com/tech/git-internal/">https://blog-1251731749.cos-website.ap-guangzhou.myqcloud.com/tech/git-internal/</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66506485/">https://zhuanlan.zhihu.com/p/66506485/</a></p>
+<p><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN">https://learngitbranching.js.org/?locale=zh_CN</a></p>
+<h2 id="内部原理"><a href="#内部原理" class="headerlink" title="内部原理"></a>内部原理</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>分布式</li>
 </ul>
-<p>Git 是分布式版本控制系统，这不同于 SVN 这类集中式版本控制系统，可以完全去中心化工作，不用和中央服务器 (remote server) 进行通信，在本地即可进行全部版本控制操作，包括 commit、log、diff…，即便是离线下。</p>
-<ul>
-<li>快照</li>
-</ul>
-<p>分支在SVN中实际上是版本库中的一份copy，而git一个仓库是一个快照，所以git 切换、合并分支等操作更快速。</p>
+<p>Git 是分布式版本控制系统，这不同于 SVN 这类集中式版本控制系统，可以完全去中心化工作，不用和中央服务器 (remote server) 进行通信，在本地即可进行全部版本控制操作，即便是离线。</p>
 <ul>
 <li>指针</li>
 </ul>
-<p>Git 分支是指针指向某次提交，而 SVN 分支是拷贝的目录。这个特性使 Git 的分支切换非常迅速，且创建成本非常低。</p>
+<p>Git 分支是指针指向某次提交，而 SVN 分支是拷贝的目录，这个特性使 Git 拥有强大的分支管理，分支切换、合并和删除都非常迅速。</p>
+<ul>
+<li>快照</li>
+</ul>
+<p>Git 的提交使用快照机制来存储文件的状态，快照存储相对于 SVN 的差异存储，不需要重新计算差异或补丁，这在进行提交、分支或版本切换时都非常的高效。</p>
         </div>
-        <a href="/2015/07/01/Git-Guide/" class="read-more">Read More</a>
+        <a href="/2015/07/01/engineering/Git-Guide/" class="read-more">Read More</a>
     
 
 </div>
@@ -337,7 +442,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2015/06/02/Media%20Query/">
+            <a href="/2015/06/02/css/Media%20Query/">
                 Media Query
             </a>
         </h1>
@@ -348,7 +453,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/css/">css</a>
+                    <a href="/categories/Web/">Web</a>
                 </span>
             
         </div>
@@ -360,7 +465,7 @@
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>媒体查询包含一个“媒体类型（media type）”以及至少一个测试“媒体特性（media feature）”的表达式，表达式和媒体类型将根据实际情况计算的到 true 或者 false。如果指定的媒体类型符合当前设备并且媒体特性表达式都为真，那当前媒体查询为真，media query 为 true，对应的样式规则生效。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> [媒体类型] 媒体特性 &#123;&#125;    # 除非使用了 not 或者 only 操作符，否则 media type 是可选的，默认值为 <span class="attribute">all</span></span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2015/06/02/Media%20Query/" class="read-more">Read More</a>
+        <a href="/2015/06/02/css/Media%20Query/" class="read-more">Read More</a>
     
 
 </div>
@@ -370,18 +475,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2014/06/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/">
-                HTML 标签嵌套规则
+            <a href="/2014/08/01/html/Emmet/">
+                Emmet
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2014-06-15</span>
+                <span class="date">2014-08-01</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/html/">html</a>
+                    <a href="/categories/Web/">Web</a>
                 </span>
             
         </div>
@@ -389,83 +494,11 @@
 
     
         <div class="content">
-            <h2 id="HTML4-x2F-XHTML-嵌套规则"><a href="#HTML4-x2F-XHTML-嵌套规则" class="headerlink" title="HTML4&#x2F;XHTML 嵌套规则"></a>HTML4&#x2F;XHTML 嵌套规则</h2><p>在 HTML4&#x2F;XHTML DTD 中，将元素的分为 inline level (行内级) 和 block level (块级) 两类。</p>
-<ul>
-<li>inline level</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">span、a、dfn、abbr、cite、img、label、q、u、em、i、strong、b、big、small、sub、sup、表单类；计算机输出类(tt、kbd、code、var、samp)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>block level</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div、h1-h6、hr、ul、ol、dl、li、fieldset、address、from、table、html5 中新增的结构化语义标签、pre、blockquote、dir、menu</span><br></pre></td></tr></table></figure>
+            <p>在前端开发的过程中，一大部分的工作是写 HTML、CSS 代码。特别是手动编写 HTML 代码的时候，效率会特别低下，于是，就有了 Emmet，它可以极大的提高代码编写的效率。它提供了一种非常简练的语法规则，然后立刻生成对应的 HTML 结构或者 CSS 代码，同时还有多种实用的功能帮助进行前端开发。</p>
+<p>展开缩写为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#page&gt;div.logo+ul#navigation&gt;li*5&gt;a&#123;Item $&#125;</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2014/06/15/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2014/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
-                CSS3 过渡与动画
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2014-05-18</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: [property duration timing-function delay]</span><br></pre></td></tr></table></figure>
-
-<p>property 默认值 all，duration 和 delay 默认值 0，timing-function 默认值 ease。可使用 <code>,</code> 分割，实现多个动画，配合 duration，还可实现队列动画。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;<span class="attribute">display</span>: flex; <span class="attribute">width</span>: <span class="number">65px</span>; <span class="attribute">height</span>: <span class="number">40px</span>; <span class="attribute">align-items</span>: center; <span class="attribute">justify-content</span>: center; <span class="attribute">background</span>: <span class="number">#92B901</span>; <span class="attribute">font-size</span>: <span class="number">12px</span>; <span class="attribute">opacity</span>: <span class="number">0.4</span>; <span class="attribute">transition</span>: transform <span class="number">1s</span>, opacity <span class="number">1s</span>, background <span class="number">1s</span>, width <span class="number">1s</span>, height <span class="number">1s</span>, font-size <span class="number">1s</span>;&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">width</span>: <span class="number">90px</span>; <span class="attribute">height</span>: <span class="number">60px</span>; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>); <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">background</span>: <span class="number">#1ec7e6</span>;&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2014/05/18/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2013/06/22/CSS%20%E5%8D%95%E4%BD%8D/">
-                CSS 单位
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2013-06-22</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="px"><a href="#px" class="headerlink" title="px"></a>px</h2><p>px 是一个<a target="_blank" rel="noopener" href="https://www.w3.org/TR/css3-values/#lengths">绝对单位</a>，不相对于谁，只受平台 dpi 影响。cm、pt 之类的也都是绝对长度，但与 px 这个抽象单位不同的是它们都是物理单位，1pt 则是 1&#x2F;72 英寸，而 1 英寸换算到公制是 2.54cm，在 CSS 中所有的物理单位会直接映射到像素，在 96dpi 下 <code>1in = 2.54cm = 96px</code> <code>1cm = 37.8px</code>。</p>
-        </div>
-        <a href="/2013/06/22/CSS%20%E5%8D%95%E4%BD%8D/" class="read-more">Read More</a>
+        <a href="/2014/08/01/html/Emmet/" class="read-more">Read More</a>
     
 
 </div>
@@ -503,7 +536,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
                 <h2>About</h2>
                 <p>
-                    享受编程和技术所带来的快乐
+                    愿你走出半生，归来仍是少年
                 </p>
             </div>
             
@@ -511,13 +544,13 @@
     <h2>Categories</h2>
     <p>
         
-        <a class="footer-post" href="/categories/network/">network</a>
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/project/">project</a>
+        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
         
-        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        <a class="footer-post" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
         
-        <a class="footer-post" href="/categories/tools/">tools</a>
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         
     </p>
 </div>

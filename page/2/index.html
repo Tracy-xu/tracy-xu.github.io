@@ -63,7 +63,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
 </head>
 
 
@@ -107,8 +111,8 @@
 </div>
 
 <!--Hamburger Icon-->
-<nav>
-    <a href="#menu"></a>
+<nav class="menu-bar">
+    <a></a>
 </nav>
 
 
@@ -135,7 +139,38 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/25/Git-Flow/">
+            <a href="/2019/06/20/engineering/Git-Pages/">
+                Git Pages
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-06-20</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Engineering/">Engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>GitHub Pages 用于介绍用户个人和托管在 GitHub 中的项目的，免费，虽然<a target="_blank" rel="noopener" href="https://help.github.com/en/articles/what-is-github-pages#usage-limits">空间和流量有限制</a>（空间上限 1G、月流量上限 100G、每小时更新不超过 10 次），但绝对够用。</p>
+        </div>
+        <a href="/2019/06/20/engineering/Git-Pages/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/04/25/engineering/Git-Flow/">
                 Git Flow
             </a>
         </h1>
@@ -146,7 +181,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/engineering/">engineering</a>
+                    <a href="/categories/Engineering/">Engineering</a>
                 </span>
             
         </div>
@@ -156,7 +191,7 @@
         <div class="content">
             <p>Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。</p>
         </div>
-        <a href="/2019/04/25/Git-Flow/" class="read-more">Read More</a>
+        <a href="/2019/04/25/engineering/Git-Flow/" class="read-more">Read More</a>
     
 
 </div>
@@ -166,7 +201,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/20/Git-Commit-Message-Style-Guide/">
+            <a href="/2019/04/20/engineering/Git-Commit-Message-Style-Guide/">
                 Git Commit Message Style Guide
             </a>
         </h1>
@@ -177,7 +212,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/engineering/">engineering</a>
+                    <a href="/categories/Engineering/">Engineering</a>
                 </span>
             
         </div>
@@ -187,7 +222,7 @@
         <div class="content">
             <p>在 Git 中，我们使用 <code>git commit -m &quot;xxx&quot;</code> 来提交代码，参数 <code>-m</code> 用来指定 Commit Message（提交说明），直接执行 <code>git commit</code> 会进入编辑器模式，可提交多行说明。Commit Message 应规范化，规范化的 Commit Message 能带来很多好处：</p>
         </div>
-        <a href="/2019/04/20/Git-Commit-Message-Style-Guide/" class="read-more">Read More</a>
+        <a href="/2019/04/20/engineering/Git-Commit-Message-Style-Guide/" class="read-more">Read More</a>
     
 
 </div>
@@ -197,18 +232,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/01/Javascript-Date-Something/">
-                记录 Date 中的两个坑
+            <a href="/2019/01/08/linux/SFTP/">
+                SFTP
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-04-01</span>
+                <span class="date">2019-01-08</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/javascript/">javascript</a>
+                    <a href="/categories/Linux/">Linux</a>
                 </span>
             
         </div>
@@ -216,13 +251,9 @@
 
     
         <div class="content">
-            <h2 id="new-Date-参数-dataString-格式问题"><a href="#new-Date-参数-dataString-格式问题" class="headerlink" title="new Date 参数 dataString 格式问题"></a>new Date 参数 dataString 格式问题</h2><p>new Date(dataString) 中，参数 dataString 必须符合 ISO 8601 标准或者 RFC 2822 标准，现代主流浏览器这两个标准都支持（IE8 只支持 RFC 2822，不支持 ISO 8601）。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new Date(&#x27;2019-01-25T09:14:10.099+00:00&#x27;).getTime();    // ISO 8601 标准。返回 1548407650099</span><br><span class="line">new Date(&#x27;2019/01/25 09:14:10+0000&#x27;).getTime();         // RFC 2822 标准。返回 1548407650000</span><br></pre></td></tr></table></figure>
-
-<p>然而，在实际工作中，后台（Java）返回的是格式既不是标准的 ISO 8601 也不是标准的 RFC 2822 格式，而是 ISO 8601 和 RFC 2822 混合格式，时区使用的是 RFC 2822 格式，比如，2019-01-25T09:14:10.099+0000，这个格式只有 Chrome 支持，其他浏览器都不支持（比如 iOS WebView、IE），执行 getTime 操作会返回 NaN：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Date(&#x27;2019-01-25T09:14:10.099+0000&#x27;).getTime();     // NaN</span><br></pre></td></tr></table></figure>
+            <p>SFTP 是 Secure File Transfer Protocol 的缩写，安全文件传送协议。可以为传输文件提供一种安全的网络的加密方法。SFTP 与 FTP 有着几乎一样的语法和功能。</p>
         </div>
-        <a href="/2019/04/01/Javascript-Date-Something/" class="read-more">Read More</a>
+        <a href="/2019/01/08/linux/SFTP/" class="read-more">Read More</a>
     
 
 </div>
@@ -232,7 +263,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/">
+            <a href="/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/">
                 自定义字体
             </a>
         </h1>
@@ -243,7 +274,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/css/">css</a>
+                    <a href="/categories/Web/">Web</a>
                 </span>
             
         </div>
@@ -253,7 +284,7 @@
         <div class="content">
             <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>字体文件其实就是一个以 Unicode 作为索引的字形表。用 FontCreator 打开系统安装中的某个字体文件，双击里面的某个字形，你可以对它进行编辑，也能猜得出来每个字形其实就是一个矢量图，因此 ttf 文件所表示的字库也叫矢量字库，说到这个再稍微提及一下另一种字库——点阵字库，两者最大的区别就是点阵字库可以在 Console Mode（命令行模式）下被渲染出来，而矢量字库必须在 Graphics Mode（图形模式）中被渲染。比如早期没有图形接口的 DOS 系统或者某些 Linux 终端，这些字体的索引需要靠固化到硬件驱动上点阵字库，因为早期的计算机只支持英文，这也是后来“汉卡”的由来。</p>
         </div>
-        <a href="/2018/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/" class="read-more">Read More</a>
+        <a href="/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/" class="read-more">Read More</a>
     
 
 </div>
@@ -263,7 +294,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/12/24/Tree-Structure/">
+            <a href="/2017/12/24/algorithm/Tree-Structure/">
                 树形结构的生成
             </a>
         </h1>
@@ -274,7 +305,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/algorithms/">algorithms</a>
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
                 </span>
             
         </div>
@@ -282,10 +313,10 @@
 
     
         <div class="content">
-            <p>后台返回树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的场景。</p>
+            <p>后端返回扁平的树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的一种场景。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">56</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">81</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">74</span>, <span class="attr">parentId</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">76</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">63</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">80</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">87</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">62</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">86</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2017/12/24/Tree-Structure/" class="read-more">Read More</a>
+        <a href="/2017/12/24/algorithm/Tree-Structure/" class="read-more">Read More</a>
     
 
 </div>
@@ -295,7 +326,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/10/01/LeetCode-JavaScript-Solutions/">
+            <a href="/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/">
                 LeetCode JavaScript Solutions
             </a>
         </h1>
@@ -306,7 +337,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/algorithms/">algorithms</a>
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
                 </span>
             
         </div>
@@ -332,7 +363,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/05/10/Base-64/">
+            <a href="/2017/05/10/foundation/Base-64/">
                 Base 64 编码
             </a>
         </h1>
@@ -343,7 +374,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/foundations/">foundations</a>
+                    <a href="/categories/计算机组成原理/">计算机组成原理</a>
                 </span>
             
         </div>
@@ -354,7 +385,7 @@
             <p>Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。</p>
 <p>Base64 最初是用在电子邮件中，为了满足电子邮件中不能直接使用非 ASCII 码字符的规定，用来传输二进制文件的。除此之外，它还可将任意不可打印的二进制数据，转化为可打印的文本编码，使用文本软件进行编辑（二进制流中有很多都是无法显示和打印的，比如 ASCII 中的控制字符，二进制文件 jpg、pad、exe 等，如果用记事本打开这些文件，会看到一堆乱码）。</p>
         </div>
-        <a href="/2017/05/10/Base-64/" class="read-more">Read More</a>
+        <a href="/2017/05/10/foundation/Base-64/" class="read-more">Read More</a>
     
 
 </div>
@@ -364,7 +395,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/02/13/Emoji/">
+            <a href="/2017/02/13/foundation/Emoji/">
                 Emoji
             </a>
         </h1>
@@ -375,7 +406,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/foundations/">foundations</a>
+                    <a href="/categories/计算机组成原理/">计算机组成原理</a>
                 </span>
             
         </div>
@@ -386,7 +417,7 @@
             <p>Emoji 它是一个日语词，e 表示”絵”，moji 表示”文字”，连在一起，就是”絵文字”，是由日本人发明的，最早用于在短消息之中插入表情，2007年，iPhone 在 iOS 5 的输入法中加入 Emoji后，导致它在全世界范围的流行。</p>
 <p>早期的 Emoji 是将一些特定的符号组合替换成图片，比如将 :) 替换成具体的表情图片。这种方法很难标准化，能够表达的范围也有限。2010年，Unicode 开始<a target="_blank" rel="noopener" href="http://www.unicode.org/emoji/charts/full-emoji-list.html">为 Emoji 分配码点</a>，将其标准化。也就是说，现在的 Emoji 符号就是一个文字，它会被渲染为图形。</p>
         </div>
-        <a href="/2017/02/13/Emoji/" class="read-more">Read More</a>
+        <a href="/2017/02/13/foundation/Emoji/" class="read-more">Read More</a>
     
 
 </div>
@@ -396,7 +427,7 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/02/01/Character-Encoding/">
+            <a href="/2017/02/01/foundation/Character-Encoding/">
                 字符编码
             </a>
         </h1>
@@ -407,7 +438,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/foundations/">foundations</a>
+                    <a href="/categories/计算机组成原理/">计算机组成原理</a>
                 </span>
             
         </div>
@@ -417,38 +448,7 @@
         <div class="content">
             <p>计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。</p>
         </div>
-        <a href="/2017/02/01/Character-Encoding/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                CSS 设计模式
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016-12-02</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/css/">css</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。</p>
-        </div>
-        <a href="/2016/12/02/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="read-more">Read More</a>
+        <a href="/2017/02/01/foundation/Character-Encoding/" class="read-more">Read More</a>
     
 
 </div>
@@ -486,7 +486,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
                 <h2>About</h2>
                 <p>
-                    享受编程和技术所带来的快乐
+                    愿你走出半生，归来仍是少年
                 </p>
             </div>
             
@@ -494,13 +494,13 @@
     <h2>Categories</h2>
     <p>
         
-        <a class="footer-post" href="/categories/network/">network</a>
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/project/">project</a>
+        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
         
-        <a class="footer-post" href="/categories/scratch/">scratch</a>
+        <a class="footer-post" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
         
-        <a class="footer-post" href="/categories/tools/">tools</a>
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         
     </p>
 </div>

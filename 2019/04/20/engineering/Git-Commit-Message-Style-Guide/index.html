@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Git Commit Message Style Guide"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Git Commit Message Style Guide - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/04/20/engineering/Git-Commit-Message-Style-Guide/">
+                Git Commit Message Style Guide
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-20</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Engineering/">Engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>在 Git 中，我们使用 <code>git commit -m &quot;xxx&quot;</code> 来提交代码，参数 <code>-m</code> 用来指定 Commit Message（提交说明），直接执行 <code>git commit</code> 会进入编辑器模式，可提交多行说明。Commit Message 应规范化，规范化的 Commit Message 能带来很多好处：</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 提交说明明确，方便快速浏览和查找，比如 git log --pretty=format:%s, git log HEAD --grep feature</span><br><span class="line">* 可以直接从 Commit Message 生成 Change Log</span><br></pre></td></tr></table></figure>
+
+<p>目前，社区中有很多 Commit Message 规范，本文介绍 Conventional Commits 规范，因其合理、系统，且有配套工具，在社区中得到来广泛的应用。</p>
+<h2 id="Conventional-Commits-提交规范"><a href="#Conventional-Commits-提交规范" class="headerlink" title="Conventional Commits 提交规范"></a>Conventional Commits 提交规范</h2><p><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/">Conventional Commits</a> 中将 Commit message 分为三个部分：Header，Body 和 Footer。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中，Header 是必需的，Body 和 Footer 可选。<code>&lt;BLANK LINE&gt;</code> 指空行，各个部分必须由空行分割。为了避免自动换行影响美观，不管是哪一个部分，任何一行都不得超过 72 个字符（或 100 个字符）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docs(changelog): update changelog to beta.5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fix(ivy): prevent templateOverrides from causing infinite loop (#29402)</span><br><span class="line"></span><br><span class="line">Previously, the transitive scope calculation could lead into re-compiling</span><br><span class="line">the same module multiple times. This fix ensures we cannot get into this loop.</span><br><span class="line">It should be fixed more completely (e.g. more cases) once FW-1178 is resolved.</span><br><span class="line"></span><br><span class="line">PR Close #29402</span><br></pre></td></tr></table></figure>
+
+<p>注：<a target="_blank" rel="noopener" href="https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit">Angular commit message guidelines</a> 采用同样的提交规范。</p>
+<h3 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h3><p>Header 部分只有一行，包括三个字段：type（必需）、scope（可选）和 subject（必需）。</p>
+<ul>
+<li>type</li>
+</ul>
+<p>type 用于说明 Commit 的类别，只允许使用下面 9 个标识。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">* feat       # 新功能（Feature）</span><br><span class="line">* fix        # 修复 Bug</span><br><span class="line">* perf      # 性能（提高性能的代码更改，比如，提升性能、体验）</span><br><span class="line">* refactor   # 重构（即不是新增功能，也不是修改 bug 的代码变动）</span><br><span class="line">* style      # 格式（不影响代码运行的变动，比如：空白、换行、分号等）</span><br><span class="line">* build      # 构建过程或辅助工具的变动。影响构建系统或外部依赖关系的更改（比如：Gulp、Broccoli、NPM）</span><br><span class="line">* chore      # 其他修改，比如改变构建流程，或增加依赖库、工具等</span><br><span class="line">* ci         # 持续集成相关修改（对 CI 配置文件和脚本的更改，比如：k8s、docker）</span><br><span class="line">* docs       # 文档（Documentation，比如 Readme、Changelog、Contribute 等等）</span><br><span class="line">* test       # 测试（增加测试或更正现有测试）</span><br><span class="line">* revert     # 回滚（回滚到某一个版本，带上版本号）</span><br></pre></td></tr></table></figure>
+
+<p>如果 type 为 feat 和 fix，则该 Commit 将肯定出现在 Change Log 之中。其他情况（docs、chore、style、refactor、test）建议不要放入 Change Log。</p>
+<ul>
+<li>scope</li>
+</ul>
+<p>scope 用于说明 Commit 影响的范围，比如框架中的数据层、控制层、视图层，或业务中某个业务模块，视具体项目的不同而不同，比如：user 用户、pay 支付、product 产品、article 文章、core 核心、router 路由、api 接口、doc 文档…</p>
+<ul>
+<li>subject</li>
+</ul>
+<p>subject 是 Commit 目的的简短描述，不超过 50 个字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 以动词开头，使用第一人称现在时，比如 change，而不是 changed 或 changes</span><br><span class="line">* 第一个字母小写</span><br><span class="line">* 结尾不加句号（.）</span><br></pre></td></tr></table></figure>
+
+<p>常用表述语有：add、change、update、remove、delete。</p>
+<h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><p>Body 部分是对本次 Commit 的详细描述，可以分成多行。有两个注意点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 使用第一人称现在时，比如使用 change 而不是 changed 或 changes</span><br><span class="line">* 应该说明代码变动的动机，以及与以前行为的对比</span><br></pre></td></tr></table></figure>
+
+<h3 id="Footer"><a href="#Footer" class="headerlink" title="Footer"></a>Footer</h3><p>Footer 部分只用于两种情况。</p>
+<ul>
+<li>不兼容变动</li>
+</ul>
+<p>如果当前代码与上一个版本不兼容，则 Footer 部分以 BREAKING CHANGE 开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BREAKING CHANGE: isolate scope bindings definition has changed.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭 Issue 或 Pull requests</li>
+</ul>
+<p>在开源的项目中，如果当前 commit 针对某个 issue 或 pr，那么可以在 Footer 部分关闭这个 issue 或 pr。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Fixes #21388</span><br><span class="line">PR Closes #234</span><br></pre></td></tr></table></figure>
+
+<p>常用的表述语有 sclose、fix、resolve。</p>
+<h3 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h3><p>还有一种特殊情况，如果当前 Commit 用于撤销以前的 Commit，则必须以 <code>revert:</code> 开头，后面跟着被撤销 Commit 的 Header。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">revert: feat(pencil): add &#x27;graphiteWidth&#x27; option</span><br><span class="line"></span><br><span class="line">This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</span><br></pre></td></tr></table></figure>
+
+<p>Body 部分的格式是固定的，必须写成 This reverts commit <hash>.，其中的 Hash 是被撤销 Commit 的 SHA 标识符。</p>
+<p>如果当前 Commit 与被撤销的 Commit 在同一个发布（Release）里面，那么它们都不会出现在 Change Log 里面。如果两者在不同的发布，那么当前 Commit，会出现在 Change Log 的 Reverts 小标题下面。</p>
+<h2 id="为-git-commit-添加表情"><a href="#为-git-commit-添加表情" class="headerlink" title="为 git commit 添加表情"></a>为 git commit 添加表情</h2><p>为 commit message 添加 Emoji 不仅有趣，也可表达当前提交的类型。Emoji <a target="_blank" rel="noopener" href="https://unicode.org/emoji/charts/full-emoji-list.html">CLDR Short Name</a> 被 GitHub (<a target="_blank" rel="noopener" href="https://github.com/ikatyang/emoji-cheat-sheet">emoji-cheat-sheet</a> <a target="_blank" rel="noopener" href="https://api.github.com/emojis">github-emoji-api</a>)、Gitlab、GitBucket 所支持，提交信息中可通过短名的方式使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;:apple: i have a apple&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>Git 中常用的 Emoji CLDR Short Name 列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>Emoji</th>
+<th>Emoji 代码</th>
+<th>Commit 说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:tada: (庆祝)</td>
+<td>:tada:</td>
+<td>初次提交</td>
+</tr>
+<tr>
+<td>:sparkles: (火花)</td>
+<td>:sparkles:</td>
+<td>引入新功能</td>
+</tr>
+<tr>
+<td>:bug: (虫子)</td>
+<td>:bug:</td>
+<td>修复 bug</td>
+</tr>
+<tr>
+<td>:lipstick: (口红)</td>
+<td>:lipstick:</td>
+<td>更新 UI 和样式文件</td>
+</tr>
+<tr>
+<td>:art: (调色板)</td>
+<td>:art:</td>
+<td>改进代码结构&#x2F;代码格式</td>
+</tr>
+<tr>
+<td>:hammer: (锤子)</td>
+<td>:hammer:</td>
+<td>重大重构</td>
+</tr>
+<tr>
+<td>:zap: (闪电) <br> :racehorse: (赛马)</td>
+<td>:zap: <br> :racehorse:</td>
+<td>提升性能</td>
+</tr>
+<tr>
+<td>:fire: (火焰)</td>
+<td>:fire:</td>
+<td>移除代码或文件</td>
+</tr>
+<tr>
+<td>:wrench: (扳手)</td>
+<td>:wrench:</td>
+<td>修改配置文件</td>
+</tr>
+<tr>
+<td>:construction_worker: (工人)</td>
+<td>:construction_worker:</td>
+<td>添加 CI 构建系统</td>
+</tr>
+<tr>
+<td>:green_heart: (绿心)</td>
+<td>:green_heart:</td>
+<td>修复 CI 构建问题</td>
+</tr>
+<tr>
+<td>:heavy_minus_sign: (减号)</td>
+<td>:heavy_minus_sign:</td>
+<td>减少一个依赖</td>
+</tr>
+<tr>
+<td>:heavy_plus_sign: (加号)</td>
+<td>:heavy_plus_sign:</td>
+<td>增加一个依赖</td>
+</tr>
+<tr>
+<td>:ambulance: (急救车)</td>
+<td>:ambulance:</td>
+<td>重要补丁</td>
+</tr>
+<tr>
+<td>:rotating_light: (警车灯)</td>
+<td>:rotating_light:</td>
+<td>移除 linter 警告</td>
+</tr>
+<tr>
+<td>:memo: (备忘录)</td>
+<td>:memo:</td>
+<td>撰写文档</td>
+</tr>
+<tr>
+<td>:rocket: (火箭)</td>
+<td>:rocket:</td>
+<td>部署功能</td>
+</tr>
+<tr>
+<td>:white_check_mark: (白色复选框)</td>
+<td>:white_check_mark:</td>
+<td>增加测试</td>
+</tr>
+<tr>
+<td>:lock: (锁)</td>
+<td>:lock:</td>
+<td>修复安全问题</td>
+</tr>
+<tr>
+<td>:globe_with_meridians: (地球)</td>
+<td>:globe_with_meridians:</td>
+<td>国际化与本地化</td>
+</tr>
+<tr>
+<td>:apple: (苹果)</td>
+<td>:apple:</td>
+<td>修复 macOS 下的问题</td>
+</tr>
+<tr>
+<td>:penguin: (企鹅)</td>
+<td>:penguin:</td>
+<td>修复 Linux 下的问题</td>
+</tr>
+<tr>
+<td>:checkered_flag: (旗帜)</td>
+<td>:checked_flag:</td>
+<td>修复 Windows 下的问题</td>
+</tr>
+<tr>
+<td>:bookmark: (书签)</td>
+<td>:bookmark:</td>
+<td>发行&#x2F;版本标签</td>
+</tr>
+<tr>
+<td>:construction: (施工)</td>
+<td>:construction:</td>
+<td>工作进行中</td>
+</tr>
+<tr>
+<td>:arrow_down: (下降箭头)</td>
+<td>:arrow_down:</td>
+<td>降级依赖</td>
+</tr>
+<tr>
+<td>:arrow_up: (上升箭头)</td>
+<td>:arrow_up:</td>
+<td>升级依赖</td>
+</tr>
+<tr>
+<td>:chart_with_upwards_trend: (上升趋势图)</td>
+<td>:chart_with_upwards_trend:</td>
+<td>添加分析或跟踪代码</td>
+</tr>
+<tr>
+<td>:whale: (鲸鱼)</td>
+<td>:whale:</td>
+<td>Docker 相关工作</td>
+</tr>
+<tr>
+<td>:pencil2: (铅笔)</td>
+<td>:pencil2:</td>
+<td>修复 typo</td>
+</tr>
+</tbody></table>
+<p>Emoji 还可对单个 commit type 再次进行细分，比如 <code>feat</code> 下 <code>:tada: feat</code> 表示初始化项目，<code>:sparkles: feat</code> 引入新功能（默认），<code>:lipstick: feat</code> 修改样式。</p>
+<p>这套 Emoji 规范的使用，需要配合编辑器插件、Git Commit 交互式工具（比如 gitmoji）或着 Git Commit Template，否则一个个查找难以使用。</p>
+<p>注：除了使用 Emoji 短名，也可以直接在 commit message 中使用 Emoji code，VSCode 中可通过 git-commit-plugin 插件（但是这个插件所使用的 Emoji 语义与上面通用的不一致）。</p>
+<h2 id="设置-Commit-Message-Template"><a href="#设置-Commit-Message-Template" class="headerlink" title="设置 Commit Message Template"></a>设置 Commit Message Template</h2><p>通过设置全局 .gitconfig 来指定 Commit Message 模板。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global commit.template C:/Users/CCH/commit-template</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;:tada: :sparkles: :lipstick: feat | :bug: :ambulance: fix | :hammer: refactor | :zap: :racehorse: perf | :art: style | :memo: docs | :wrench: ci | :wrench: :heavy_plus_sign: :heavy_minus_sign: chore&gt;: &lt;subject&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure>
+
+<p>TortoiseGit 中可通过依次点击 <code>settings -&gt; Git -&gt; Edit global .gitconfig</code>，然后编辑这个全局 .gitconfig 文件，在其末尾加入 commit 字段配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">    email = xxxxxx@qq.com</span><br><span class="line">    name = Tracy</span><br><span class="line">[winUpdater]</span><br><span class="line">    recentlySeenVersion = 2.17.0.windows.1</span><br><span class="line">[credential]</span><br><span class="line">    helper = manager</span><br><span class="line">[commit]</span><br><span class="line">  template = d:/commit-template</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        
+        <a class="footer-post" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
