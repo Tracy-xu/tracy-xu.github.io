@@ -349,8 +349,8 @@
 <td></td>
 </tr>
 </tbody></table>
-<p>还可以自己定义 64 个字符的排列顺序，这样就可以自定义 Base64 编码，不过，通常情况下完全没有必要。Base64 是一种通过查表的编码方法，不能用于加密，即使使用自定义的编码表也不行。</p>
-<p>注意：由于 Base64 编码用了 8 位字符来表示信息中的 6 个位，所以 Base64 编码字符串大约比原始值增加了 33%，(8 - 6) &#x2F; 6 &#x3D; 1&#x2F;3，好处是编码后的文本数据可以在邮件正文、网页等直接显示。</p>
+<p>还可以自己定义 64 个字符的排列顺序，这样就可以自定义 Base64 编码，不过，通常情况下没有必要。</p>
+<p>注意：由于 Base64 编码用了 8 位字符来表示信息中的 6 个位，所以 Base64 编码字符串大约比原始值增加了 33%，(8 - 6) &#x2F; 6 &#x3D; 1&#x2F;3，选择 Base64 编码时要考虑一下文件的 size。另外，Base64 是一种通过查表的数据编码方法，目的是让数据符合传输协议的要求，不能将其误用于数据加密或数据校验，即使使用自定义的编码表也不行。</p>
 <h3 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h3><p>下面是一个简单的 Base64 编码实例。在这里，三个字符组成的输入值 “Ow!” 是 Base64 编码的，得到的是 4 个字符的 Base64 编码值 “T3ch”。它是按以下方式工作的。</p>
 <table>
 <thead>
@@ -457,47 +457,35 @@
 <p>‘O’ 的填充实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x27;O&#x27;.charCodeAt().toString(2);</span><br><span class="line">得到二进制（位数不够 8 位时，需要在高位补码）</span><br><span class="line">1001111 --&gt; 01001111</span><br><span class="line">-----------------------------------------</span><br><span class="line">按 6 位拆分二进制（位数不是 24 的倍数时，需要低位补码）</span><br><span class="line">010011, 11xxxx, xxxxxx, xxxxxx</span><br><span class="line">-----------------------------------------</span><br><span class="line">转为十进制</span><br><span class="line">19, 48</span><br><span class="line">-----------------------------------------</span><br><span class="line">Base64 查表结果</span><br><span class="line">Tw==</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="JavaScript-中（前端）Base64-编码实现"><a href="#JavaScript-中（前端）Base64-编码实现" class="headerlink" title="JavaScript 中（前端）Base64 编码实现"></a>JavaScript 中（前端）Base64 编码实现</h2><h3 id="字符的编码"><a href="#字符的编码" class="headerlink" title="字符的编码"></a>字符的编码</h3><p>对于字符串来说，在 Web API 中，有两个函数分别用来 Base64 编码和解码的：atob 和 btoa。btoa 函数能够将二进制的字节数据（binary bytes）编码成 ASCII 字符串；相反地，atob 函数能够解码通过 Base64 编码的字符串数据。</p>
+<h2 id="浏览器中-Base64-编码生成"><a href="#浏览器中-Base64-编码生成" class="headerlink" title="浏览器中 Base64 编码生成"></a>浏览器中 Base64 编码生成</h2><h3 id="字符的编码"><a href="#字符的编码" class="headerlink" title="字符的编码"></a>字符的编码</h3><p>Web API 中 <code>atob</code> 和 <code>btoa</code> 用来对字符进行 Base64 编码和解码。<code>btoa</code> 将二进制的字节数据（binary bytes）编码成 ASCII 字符串，<code>atob</code> 解码通过 Base64 编码的字符串数据。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">btoa</span>(<span class="string">&#x27;a:a&#x27;</span>); <span class="comment">// YTph</span></span><br><span class="line"><span class="title function_">atob</span>(<span class="string">&#x27;YTph&#x27;</span>); <span class="comment">// a:a</span></span><br></pre></td></tr></table></figure>
 
-<p>注：btoa 和 atob 分别是 Binary to ASCII 和 ASCII to binary 的缩写。b 不是 Base64 的缩写，计算机中的所有数据的本质都是二进制，我们所看到的文字、符号、图片、语音视频…，都是二进制数据在具体编码（字符编码、图像编码…）下的表现。</p>
+<p>注：<code>btoa</code> 和 <code>atob</code> 分别是 Binary to ASCII 和 ASCII to binary 的缩写。b 不是 Base64 的缩写，计算机中的所有数据的本质都是二进制，我们所看到的文字、符号、图片、语音视频…，都是二进制数据在具体编码（字符编码、图像编码…）下的表现。</p>
+<p>IE9 不支持 <code>atob</code> 和 <code>btoa</code>，可手动实现 Base64 编解码函数：<a target="_blank" rel="noopener" href="https://github.com/dankogai/js-base64">js-base64</a>、<a target="_blank" rel="noopener" href="https://github.com/mathiasbynens/base64">base64</a>。</p>
 <ul>
-<li>Unicode 字符</li>
+<li>编码 Unicode 字符</li>
 </ul>
-<p>btoa 仅仅支持 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ISO-8859-1">Latin1</a> 范围的字符（其编码范围是 0x00-0xFF，0x00-0x7F 之间完全和 ASCII 一致，0x80-0x9F 之间是控制字符，0xA0-0xFF 之间是文字符号），不能编码 Unicode 字符，对 Unicode 字符串进行编码都会触发字符越界的异常。</p>
+<p><code>btoa</code> 仅仅支持 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ISO-8859-1">Latin1</a> 范围的字符（其编码范围是 <code>0x00-0xFF</code>，<code>0x00-0x7F</code> 之间完全和 ASCII 一致，<code>0x80-0x9F</code> 之间是控制字符，<code>0xA0-0xFF</code> 之间是文字符号），不能编码 Unicode 字符，对 Unicode 字符串进行编码都会触发字符越界的异常。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;Hello, 中国！&#x27;</span>;</span><br><span class="line"><span class="title function_">btoa</span>(str); <span class="comment">// Uncaught DOMException: ...The string to be encoded contains characters outside of the Latin1 range.</span></span><br></pre></td></tr></table></figure>
 
-<p>原因是，由于这个函数将每个字符视为二进制数据的字节，而不管实际组成字符的字节数是多少，所以如果任何字符的码位超出 0x00 ~ 0xFF 范围，则会引发 InvalidCharacterError 异常。这只是 btoa 这个方法的局限，并不是 Base64 的局限，Base64 可以编码所有的二进制数据。</p>
-<p>解决办法是，先把 Unicode 字符串转换为 UTF-8 编码。这里我们可以先将带有非 的串先用 encodeURIComponent 编码：</p>
+<p>原因是这个函数将每个字符视为二进制数据的字节，而不管实际组成字符的字节数是多少，所以如果任何字符的码位超出 <code>0x00 ~ 0xFF</code> 范围，则会引发 InvalidCharacterError 异常。这只是 <code>btoa</code> 这个方法的局限，并不是 Base64 的局限，Base64 可以编码所有的二进制数据。</p>
+<p>解决办法是先把 Unicode 字符串转换为 UTF-8 编码。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">btoa</span>(<span class="built_in">encodeURIComponent</span>(<span class="string">&#x27;Hello, 中国！&#x27;</span>)); <span class="comment">// SGVsbG8lMkMlMjAlRTQlQjglQUQlRTUlOUIlQkQlRUYlQkMlODE=</span></span><br><span class="line"><span class="built_in">decodeURIComponent</span>(<span class="title function_">atob</span>(<span class="string">&#x27;SGVsbG8lMkMlMjAlRTQlQjglQUQlRTUlOUIlQkQlRUYlQkMlODE=&#x27;</span>)); <span class="comment">// Hello, 中国！</span></span><br></pre></td></tr></table></figure>
 
-<p>注意，编码的过程是先 encodeURI，再编码，那么解码的过程应该是先解码，再 decodeURI。</p>
+<h3 id="文件的编码"><a href="#文件的编码" class="headerlink" title="文件的编码"></a>文件的编码</h3><p>dataURL 是 data 类型的 URL，指含有 Base64 数据的 URL，用于在 URL 中使用二进制数据，在 <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc2397">RFC2397</a> 中提出，完整的格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data:文件类型;编码方式,编码后的文件内容</span><br><span class="line">data: [ mediatype ] [ &quot;;base64&quot; ] &quot;,&quot; data</span><br></pre></td></tr></table></figure>
+
+<p>比如，文本和图片的 dataURL 表示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data:text/plain;charset=UTF-8;base64,5L2g5aW977yM5Lit5paH77yB</span><br><span class="line">data:image/gif;base64,xxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p>dataURL 在 <code>img src</code>、<code>background url</code>、<code>link href</code>、<code>script src</code>… 中使用。</p>
 <ul>
-<li>兼容</li>
+<li>dataURL 生成</li>
 </ul>
-<p>另外，IE9 不支持 atob 和 btoa，解决方案是手动实现 Base64 编解码函数：<a target="_blank" rel="noopener" href="https://github.com/dankogai/js-base64">js-base64</a>、<a target="_blank" rel="noopener" href="https://github.com/mathiasbynens/base64">base64</a>。</p>
-<h3 id="文件的编码"><a href="#文件的编码" class="headerlink" title="文件的编码"></a>文件的编码</h3><p>dataURL 是 data 类型的 URL，指的是含有 Base64 数据的 URL，目的是在 URL 中使用二进制数据，是在 <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc2397">RFC2397</a> 中提出的，其完整的语法定义如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataurl := &quot;data:&quot; [ mediatype ] [ &quot;;base64&quot; ] &quot;,&quot; data      # data:文件类型;编码方式,编码后的文件内容</span><br><span class="line">mediatype := [ type &quot;/&quot; subtype ] *( &quot;;&quot; parameter )</span><br><span class="line">data := *urlchar</span><br><span class="line">parameter := attribute &quot;=&quot; value</span><br></pre></td></tr></table></figure>
+<p>Web API 中的 <code>FileReader.readAsDataURL</code> 可以将一个文件转为 dataURL，图片还可以使用 canvas 的 <code>canvas.toDataURL</code> 生成。将一个 dataURL 转为 <code>Blob</code> 或者 <code>File</code>，<a href="/rep/foundation/base64.js">dataURLtoBlob</a>、<a href="/rep/foundation/base64.js">dataURLtoFile</a>。</p>
+<h2 id="URL-Safe"><a href="#URL-Safe" class="headerlink" title="URL Safe"></a>URL Safe</h2><p>由于标准的 Base64 编码可能会出现 <code>+</code>、<code>/</code>、<code>=</code> 字符，这在 URL、Cookie 中不能直接作为参数，会造成歧义，所以又有一种 “URL Safe” 的 Base64 编码，其实就是把字符 <code>+</code> 和 <code>/</code> 分别变成 <code>-</code> 和 <code>_</code>，把 <code>=</code> 去掉。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">base64.b64encode(<span class="string">&#x27;i\xb7\x1d\xfb\xef\xff&#x27;</span>) <span class="comment"># abcd++//</span></span><br><span class="line">base64.urlsafe_b64encode(<span class="string">&#x27;i\xb7\x1d\xfb\xef\xff&#x27;</span>) <span class="comment"># abcd--__ </span></span><br><span class="line">base64.urlsafe_b64decode(<span class="string">&#x27;abcd--__&#x27;</span>) <span class="comment"># i\xb7\x1d\xfb\xef\xff</span></span><br><span class="line"></span><br><span class="line">base64.b64decode(<span class="string">&#x27;YWJjZA==&#x27;</span>) <span class="comment"># abcd</span></span><br><span class="line">base64.b64decode(<span class="string">&#x27;YWJjZA&#x27;</span>) <span class="comment"># 出错</span></span><br><span class="line"></span><br><span class="line">safe_b64decode(<span class="string">&#x27;YWJjZA&#x27;</span>) <span class="comment"># abcd</span></span><br></pre></td></tr></table></figure>
 
-<p>比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 文本</span><br><span class="line">data:text/plain;charset=UTF-8;base64,5L2g5aW977yM5Lit5paH77yB</span><br><span class="line"></span><br><span class="line"># 图片</span><br><span class="line">data:image/gif;base64,xxxxxxxxxx</span><br></pre></td></tr></table></figure>
-
-<p>dataURL 可用在：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img src</span><br><span class="line">background url</span><br><span class="line">link href</span><br><span class="line">script src</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>FileReader</li>
-</ul>
-<p>Web API 中的 FileReader.readAsDataURL 可以将一个文件转为 dataURL。</p>
-<ul>
-<li>将一个 dataURL 转为 Blob 或者 File</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dataURLtoBlob</span>(<span class="params">dataURL</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> arr = dataURL.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> mime = arr[<span class="number">0</span>].<span class="title function_">match</span>(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> binaryString = <span class="title function_">atob</span>(arr[<span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">let</span> n = binaryString.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">let</span> u8arr = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(n);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">    u8arr[n] = binaryString.<span class="title function_">charCodeAt</span>(n);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Blob</span>([u8arr], &#123;<span class="attr">type</span>: mime&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dataURLtoFile</span>(<span class="params">dataURL, fileName</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> arr = dataURL.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> mime = arr[<span class="number">0</span>].<span class="title function_">match</span>(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> binaryString = <span class="title function_">atob</span>(arr[<span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">let</span> n = binaryString.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">let</span> u8arr = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(n);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">    u8arr[n] = binaryString.<span class="title function_">charCodeAt</span>(n);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">File</span>([u8arr], fileName, &#123;<span class="attr">type</span>:mime&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果是图片的话，其实还可以将图片放在 canvas 中，利用 canvas.toBlob 来转（img.onload 导致速度没有上面的方式快）。</p>
 <h2 id="Base64-的应用"><a href="#Base64-的应用" class="headerlink" title="Base64 的应用"></a>Base64 的应用</h2><h3 id="网络传输协议中"><a href="#网络传输协议中" class="headerlink" title="网络传输协议中"></a>网络传输协议中</h3><p>Base64 的用途之一就是便于用文本或二进制文件数据的传送。 在网络传输中，Base64 一般适合以下场合的使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 传输信道只支持 ASCII 字符，不方便传输二进制流的场合；</span><br><span class="line">* 含有非 ASCII 字符（127 位以后字符），容易出现编码问题的场合；</span><br></pre></td></tr></table></figure>
 
@@ -522,35 +510,6 @@
 </ul>
 <p>注：图片预览和上传这个需求用 Blob 更合理，Blob 通过 URL.createObjectURL 也能预览。</p>
 <h3 id="X-509-公钥证书、HTTP-基本认证和摘要认证"><a href="#X-509-公钥证书、HTTP-基本认证和摘要认证" class="headerlink" title="X.509 公钥证书、HTTP 基本认证和摘要认证"></a>X.509 公钥证书、HTTP 基本认证和摘要认证</h3><p>在<a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaohuochai/p/6184913.html">基本认证</a>、<a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaohuochai/p/6189065.html">摘要认证</a></p>
-<p>详情参考 HTTP 中认证相关章节。</p>
-<p>数字证书签名</p>
-<p>TODO。。。此节由于知识有限，没有完成，待完成。</p>
-<h3 id="掩人耳目"><a href="#掩人耳目" class="headerlink" title="掩人耳目"></a>掩人耳目</h3><p>简易的掩人耳目，至少非开发人一眼看不出来。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">btoa</span>(<span class="string">&#x27;xwblearn2008@126.com&#x27;</span>); <span class="comment">// eHdibGVhcm4yMDA4QDEyNi5jb20=</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="不能用于数据加密或数据校验"><a href="#不能用于数据加密或数据校验" class="headerlink" title="不能用于数据加密或数据校验"></a>不能用于数据加密或数据校验</h3><p>Base64 是一种数据编码方式，目的是让数据符合传输协议的要求，不能将其误用于数据加密或数据校验。标准 Base64 编码解码无需额外信息即完全可逆，即使自定义字符集设计一种类 Base64 的编码方式用于数据加密，在多数场景下也较容易破解。</p>
-<p>对于数据加密应该使用专门的目前还没有有效方式快速破解的加密算法。比如：对称加密算法 AES-128-CBC，对称加密需要密钥，只要密钥没有泄露，通常难以破解。也可以使用非对称加密算法，如 RSA，利用极大整数因数分解的计算量极大这一特点，使得使用公钥加密的数据，只有使用私钥才能快速解密。</p>
-<p>对于数据校验，也应该使用专门的消息认证码生成算法，如 HMAC 一种使用单向散列函数构造消息认证码的方法，其过程是不可逆的、唯一确定的，并且使用密钥来生成认证码，其目的是防止数据在传输过程中被篡改或伪造。将原始数据与认证码一起传输，数据接收端将原始数据使用相同密钥和相同算法再次生成认证码，与原有认证码进行比对，校验数据的合法性。</p>
-<ul>
-<li>扩展</li>
-</ul>
-<p>针对各大网站被脱库的问题，请问应该怎么存储用户的登录密码？</p>
-<p>答案是：在注册时，根据用户设置的登录密码，生成其消息认证码，然后存储用户名和消息认证码，不存储原始密码。每次用户登录时，根据登录密码，生成消息认证码，与数据库中存储的消息认证码进行比对，以确认是否为有效用户，这样即使网站被脱库，用户的原始密码也不会泄露，不会为用户使用的其他网站带来账号风险。</p>
-<p>当然，使用的消息认证码算法其哈希碰撞的概率应该极低才行，目前一般在 HMAC 算法中使用 SHA256。对于这种方式需要注意一点：防止用户使用弱密码，否则也可能会被暴力破解。现在的网站一般要求用户密码6个字符以上，并且同时有数字和大小写字母，甚至要求有特殊字符。</p>
-<p>另外，也可以使用加入随机 salt 的哈希算法来存储校验用户密码。这里暂不细述。</p>
-<h3 id="Size"><a href="#Size" class="headerlink" title="Size"></a>Size</h3><p>Base64 编码字符串大约比原始值扩大了33%。所以，选择 Base64 编码时要考虑一下文件的 size。另外有个小技巧，在 Chrom 中，把要转化的图片直接拖入，使用控制台中的 Source 选项，可直接查看图片的 Base64 编码。</p>
-<h3 id="Data-URL-不会被浏览器缓存"><a href="#Data-URL-不会被浏览器缓存" class="headerlink" title="Data URL 不会被浏览器缓存"></a>Data URL 不会被浏览器缓存</h3><p>Data URL 不会被浏览器缓存，每次访问都被下载一次。这是一个使用效率方面的问题——尤其当这个文件被整个网站大量使用的时候。</p>
-<h3 id="编码-URL-参数"><a href="#编码-URL-参数" class="headerlink" title="编码 URL 参数"></a>编码 URL 参数</h3><p>由于标准的 Base64 编码后可能出现字符 + 和 &#x2F;，在 URL 中就不能直接作为参数，所以又有一种 “url safe” 的 Base64 编码，其实就是把字符 + 和 &#x2F; 分别变成 - 和 _：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python</span></span><br><span class="line">base64.b64encode(<span class="string">&#x27;i\xb7\x1d\xfb\xef\xff&#x27;</span>) <span class="comment"># abcd++//</span></span><br><span class="line">base64.urlsafe_b64encode(<span class="string">&#x27;i\xb7\x1d\xfb\xef\xff&#x27;</span>) <span class="comment"># abcd--__ </span></span><br><span class="line">base64.urlsafe_b64decode(<span class="string">&#x27;abcd--__&#x27;</span>) <span class="comment"># i\xb7\x1d\xfb\xef\xff</span></span><br></pre></td></tr></table></figure>
-
-<p>由于 &#x3D; 字符也可能出现在 Base64 编码中，但 &#x3D; 用在 URL、Cookie 里面会造成歧义，所以，很多 Base64 编码后会把 &#x3D; 去掉：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27;abcd&#x27; -&gt; &#x27;YWJjZA==&#x27;     # 标准 Base64</span><br><span class="line">&#x27;abcd&#x27; -&gt; &#x27;YWJjZA&#x27;       # 自动去掉 =</span><br></pre></td></tr></table></figure>
-
-<p>去掉 &#x3D; 后怎么解码呢？因为 Base64 是把 3 个字节变为 4 个字节，所以，Base64 编码的长度永远是 4 的倍数，因此，需要加上 &#x3D; 把 Base64 字符串的长度变为 4 的倍数，就可以正常解码了。去掉 &#x3D; 的 Base64 解码函数需要手动实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pyhone</span></span><br><span class="line">base64.b64decode(<span class="string">&#x27;YWJjZA==&#x27;</span>) <span class="comment"># abcd</span></span><br><span class="line">base64.b64decode(<span class="string">&#x27;YWJjZA&#x27;</span>) <span class="comment"># 出错</span></span><br><span class="line"></span><br><span class="line">safe_b64decode(<span class="string">&#x27;YWJjZA&#x27;</span>) <span class="comment"># abcd</span></span><br></pre></td></tr></table></figure>
-
-<p>注：NodeJS 中没有原生的支持，<a target="_blank" rel="noopener" href="https://github.com/joaquimserafim/base64-url">需要手动处理</a>。</p>
 
     </div>
 
@@ -591,9 +550,9 @@
         
         <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
         
-        <a class="footer-post" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-        
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
         
     </p>
 </div>

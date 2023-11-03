@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2023-09-17T13:48:25.470Z</updated>
+  <updated>2023-11-01T02:10:57.251Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,32 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>WSL</title>
-    <link href="https://tracyxu.cn/2022/09/24/tools/windows/WSL/"/>
-    <id>https://tracyxu.cn/2022/09/24/tools/windows/WSL/</id>
-    <published>2022-09-23T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.470Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://learn.microsoft.com/zh-cn/windows/wsl/&quot;&gt;https://learn.microsoft.com/zh-cn/windows/wsl/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;WSL-安装&quot;&gt;&lt;a href=&quot;#WSL-安装&quot; class=&quot;headerlink&quot; title=&quot;WSL 安装&quot;&gt;&lt;/a&gt;WSL 安装&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;命令行安装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wsl --install &lt;span class=&quot;comment&quot;&gt;# 安装默认发行版（Ubuntu），可选择发行版 --distribution &amp;lt;Distribution Name&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="工具" scheme="https://tracyxu.cn/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Scratch 编程</title>
-    <link href="https://tracyxu.cn/2022/03/02/Scratch/"/>
-    <id>https://tracyxu.cn/2022/03/02/Scratch/</id>
+    <link href="https://tracyxu.cn/2022/03/02/scratch/Scratch/"/>
+    <id>https://tracyxu.cn/2022/03/02/scratch/Scratch/</id>
     <published>2022-03-01T16:00:00.000Z</published>
-    <updated>2023-10-27T08:02:46.410Z</updated>
+    <updated>2023-11-01T02:10:57.251Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/scratch.jpg&quot; alt=&quot;Scratch&quot;&gt;&lt;/p&gt;</summary>
@@ -56,8 +35,8 @@
   
   <entry>
     <title>互动直播课堂前端设计</title>
-    <link href="https://tracyxu.cn/2021/10/02/Interact-Live-Class/"/>
-    <id>https://tracyxu.cn/2021/10/02/Interact-Live-Class/</id>
+    <link href="https://tracyxu.cn/2021/10/02/project/Interact-Live-Class/"/>
+    <id>https://tracyxu.cn/2021/10/02/project/Interact-Live-Class/</id>
     <published>2021-10-01T16:00:00.000Z</published>
     <updated>2023-09-17T13:48:25.447Z</updated>
     
@@ -90,8 +69,8 @@
   
   <entry>
     <title>XSS 和 CSRF</title>
-    <link href="https://tracyxu.cn/2020/04/25/XSS-CSRF/"/>
-    <id>https://tracyxu.cn/2020/04/25/XSS-CSRF/</id>
+    <link href="https://tracyxu.cn/2020/04/25/network/XSS-CSRF/"/>
+    <id>https://tracyxu.cn/2020/04/25/network/XSS-CSRF/</id>
     <published>2020-04-24T16:00:00.000Z</published>
     <updated>2023-09-17T13:48:25.449Z</updated>
     
@@ -110,7 +89,7 @@
     <link href="https://tracyxu.cn/2020/04/22/linux/SSH/"/>
     <id>https://tracyxu.cn/2020/04/22/linux/SSH/</id>
     <published>2020-04-21T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.470Z</updated>
+    <updated>2023-10-31T01:57:08.100Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。&lt;/p&gt;</summary>
@@ -136,23 +115,6 @@
     
     
     <category term="编程语言" scheme="https://tracyxu.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>EditorConfig-ESlint-Prettier</title>
-    <link href="https://tracyxu.cn/2019/11/10/engineering/EditorConfig-ESlint-Prettier/"/>
-    <id>https://tracyxu.cn/2019/11/10/engineering/EditorConfig-ESlint-Prettier/</id>
-    <published>2019-11-09T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;EditorConfig&quot;&gt;&lt;a href=&quot;#EditorConfig&quot; class=&quot;headerlink&quot; title=&quot;EditorConfig&quot;&gt;&lt;/a&gt;EditorConfig&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://editorconfig.org/&quot;&gt;EditorConfig&lt;/a&gt; 是编辑器&amp;#x2F;IDE 配置工具，需要编辑器&amp;#x2F;IDE 支持，在 VSCode 上可通过 EditorConfig for VS Code 插件支持。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
@@ -251,7 +213,7 @@
     <link href="https://tracyxu.cn/2019/01/08/linux/SFTP/"/>
     <id>https://tracyxu.cn/2019/01/08/linux/SFTP/</id>
     <published>2019-01-07T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.470Z</updated>
+    <updated>2023-10-31T01:56:07.510Z</updated>
     
     
     <summary type="html">&lt;p&gt;SFTP 是 Secure File Transfer Protocol 的缩写，安全文件传送协议。可以为传输文件提供一种安全的网络的加密方法。SFTP 与 FTP 有着几乎一样的语法和功能。&lt;/p&gt;</summary>
@@ -329,7 +291,7 @@
     <link href="https://tracyxu.cn/2017/05/10/foundation/Base-64/"/>
     <id>https://tracyxu.cn/2017/05/10/foundation/Base-64/</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
+    <updated>2023-10-30T02:09:06.825Z</updated>
     
     
     <summary type="html">&lt;p&gt;Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。&lt;/p&gt;
@@ -343,19 +305,19 @@
   </entry>
   
   <entry>
-    <title>Emoji</title>
-    <link href="https://tracyxu.cn/2017/02/13/foundation/Emoji/"/>
-    <id>https://tracyxu.cn/2017/02/13/foundation/Emoji/</id>
-    <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.466Z</updated>
+    <title>异步编程</title>
+    <link href="https://tracyxu.cn/2017/04/02/javascript/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://tracyxu.cn/2017/04/02/javascript/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2017-04-01T16:00:00.000Z</published>
+    <updated>2023-11-02T02:13:21.949Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Emoji 它是一个日语词，e 表示”絵”，moji 表示”文字”，连在一起，就是”絵文字”，是由日本人发明的，最早用于在短消息之中插入表情，2007年，iPhone 在 iOS 5 的输入法中加入 Emoji后，导致它在全世界范围的流行。&lt;/p&gt;
-&lt;p&gt;早期的 Emoji 是将一些特定的符号组合替换成图片，比如将 :) 替换成具体的表情图片。这种方法很难标准化，能够表达的范围也有限。2010年，Unicode 开始&lt;a href=&quot;http://www.unicode.org/emoji/charts/full-emoji-list.html&quot;&gt;为 Emoji 分配码点&lt;/a&gt;，将其标准化。也就是说，现在的 Emoji 符号就是一个文字，它会被渲染为图形。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;异步、事件驱动使 JavaScript 这个单线程语言在不阻塞的情况下可以并行的执行多任务，这带来了性能的极大提升，然而异步风格也给流程控制，错误处理带来了更多的麻烦。&lt;/p&gt;
+&lt;p&gt;处理异步的 5 种方式，Callback、Event&amp;#x2F;发布订阅、Promise、Generator、Async&amp;#x2F;Await。&lt;/p&gt;</summary>
     
     
     
-    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
     
     
   </entry>
@@ -373,6 +335,41 @@
     
     
     <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS 设计模式</title>
+    <link href="https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
+    <published>2016-12-01T16:00:00.000Z</published>
+    <updated>2023-09-17T13:48:25.454Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>科里化函数</title>
+    <link href="https://tracyxu.cn/2016/12/02/javascript/Currying/"/>
+    <id>https://tracyxu.cn/2016/12/02/javascript/Currying/</id>
+    <published>2016-12-01T16:00:00.000Z</published>
+    <updated>2023-09-17T13:48:25.466Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;fn&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (args.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt; === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 通过手动调用的方式（即不传参数）来判断收集结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;fn&lt;/span&gt;(...args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(fn.&lt;span class=&quot;title function_&quot;&gt;bind&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, ...args));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; args.&lt;span class=&quot;title function_&quot;&gt;reduce&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;total, num&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; total + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;add = &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(add);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 须手动结束调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(result);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
     
     
   </entry>
