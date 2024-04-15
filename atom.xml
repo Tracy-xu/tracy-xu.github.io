@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2023-11-01T02:10:57.251Z</updated>
+  <updated>2024-04-15T05:40:44.834Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,14 +17,80 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>WebSocket 连接共享</title>
+    <link href="https://tracyxu.cn/2024/03/26/project/WebSocket%20%E8%BF%9E%E6%8E%A5%E5%85%B1%E4%BA%AB/"/>
+    <id>https://tracyxu.cn/2024/03/26/project/WebSocket%20%E8%BF%9E%E6%8E%A5%E5%85%B1%E4%BA%AB/</id>
+    <published>2024-03-25T16:00:00.000Z</published>
+    <updated>2024-04-15T05:40:44.834Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近项目中遇到了一个问题，1000 多个用户同时在线，却创建了 140000 个 WS 连接，最终导致服务奔溃。通过分析发现之所以有这么多连接，是由于用户多开页面，每个页面都会创建一个 WS 连接所致。为了让所有页面共用一个 WS 连接，于是使用到了 SharedWorker。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目设计" scheme="https://tracyxu.cn/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Typescript 类型编程</title>
+    <link href="https://tracyxu.cn/2022/06/01/javascript/Typescript%20%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A8%8B/"/>
+    <id>https://tracyxu.cn/2022/06/01/javascript/Typescript%20%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A8%8B/</id>
+    <published>2022-05-31T16:00:00.000Z</published>
+    <updated>2024-04-15T05:45:58.869Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;泛型编程&quot;&gt;&lt;a href=&quot;#泛型编程&quot; class=&quot;headerlink&quot; title=&quot;泛型编程&quot;&gt;&lt;/a&gt;泛型编程&lt;/h2&gt;&lt;p&gt;泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性，主要作用是对不特定数据类型的支持，以实现函数、接口（Interface）、类的复用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript 全解</title>
+    <link href="https://tracyxu.cn/2022/06/01/javascript/Typescript%20%E5%85%A8%E8%A7%A3/"/>
+    <id>https://tracyxu.cn/2022/06/01/javascript/Typescript%20%E5%85%A8%E8%A7%A3/</id>
+    <published>2022-05-31T16:00:00.000Z</published>
+    <updated>2024-04-15T05:45:17.253Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/136254808&quot;&gt;https://zhuanlan.zhihu.com/p/136254808&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/542379032?utm_id=0&quot;&gt;https://zhuanlan.zhihu.com/p/542379032?utm_id=0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://ts.nodejs.cn/docs/handbook/type-compatibility.html&quot;&gt;https://ts.nodejs.cn/docs/handbook/type-compatibility.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cntofu.com/book/2/doc/handbook/JSX.md&quot;&gt;https://cntofu.com/book/2/doc/handbook/JSX.md&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/620451796?utm_id=0&quot;&gt;https://zhuanlan.zhihu.com/p/620451796?utm_id=0&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/626110313&quot;&gt;https://zhuanlan.zhihu.com/p/626110313&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/58123993?utm_id=0&quot;&gt;https://zhuanlan.zhihu.com/p/58123993?utm_id=0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/384172236&quot;&gt;https://zhuanlan.zhihu.com/p/384172236&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;泛型：&lt;a href=&quot;https://blog.csdn.net/weixin_64210950/article/details/128088432&quot;&gt;https://blog.csdn.net/weixin_64210950/article/details/128088432&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/hellolol/p/13371902.html&quot;&gt;https://www.cnblogs.com/hellolol/p/13371902.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649133674&amp;idx=2&amp;sn=43fc5573ff99565fc127d0807423e9a1&amp;chksm=be58b5c7892f3cd1852ec7e1fbdea1bc33bbae104f70c2f513a637f338453711e2e8c653c963&amp;scene=27&quot;&gt;https://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;amp;mid=2649133674&amp;amp;idx=2&amp;amp;sn=43fc5573ff99565fc127d0807423e9a1&amp;amp;chksm=be58b5c7892f3cd1852ec7e1fbdea1bc33bbae104f70c2f513a637f338453711e2e8c653c963&amp;amp;scene=27&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://ts.xcatliu.com/basics/union-types.html&quot;&gt;https://ts.xcatliu.com/basics/union-types.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wangdoc/typescript-tutorial&quot;&gt;https://github.com/wangdoc/typescript-tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://wangdoc.com/typescript/operator#is-%E8%BF%90%E7%AE%97%E7%AC%A6&quot;&gt;https://wangdoc.com/typescript/operator#is-%E8%BF%90%E7%AE%97%E7%AC%A6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;wangdoc：泛型和模块（包含模块）以下没有处理&lt;/p&gt;
+&lt;p&gt;TypeScript 是一门静态类型、强类型的编程语言，它是 JavaScript 的超集，扩展了 JavaScript 的功能，引入了静态类型检查和新的语法特性。TypeScript 与 &lt;a href=&quot;https://tc39.es/process-document/&quot;&gt;ECMAScript 标准&lt;/a&gt;同步发展，进入 Stage 3 阶段的语法都会被实现。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;TS = JS + 类型&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Scratch 编程</title>
     <link href="https://tracyxu.cn/2022/03/02/scratch/Scratch/"/>
     <id>https://tracyxu.cn/2022/03/02/scratch/Scratch/</id>
     <published>2022-03-01T16:00:00.000Z</published>
-    <updated>2023-11-01T02:10:57.251Z</updated>
+    <updated>2024-01-08T07:09:05.549Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/scratch.jpg&quot; alt=&quot;Scratch&quot;&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/scratch/scratch.jpg&quot; alt=&quot;Scratch&quot;&gt;&lt;/p&gt;</summary>
     
     
     
@@ -34,18 +100,86 @@
   </entry>
   
   <entry>
-    <title>互动直播课堂前端设计</title>
-    <link href="https://tracyxu.cn/2021/10/02/project/Interact-Live-Class/"/>
-    <id>https://tracyxu.cn/2021/10/02/project/Interact-Live-Class/</id>
-    <published>2021-10-01T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.447Z</updated>
+    <title>用户角色权限设计</title>
+    <link href="https://tracyxu.cn/2022/01/06/project/%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/"/>
+    <id>https://tracyxu.cn/2022/01/06/project/%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/</id>
+    <published>2022-01-05T16:00:00.000Z</published>
+    <updated>2024-03-11T12:06:39.471Z</updated>
     
     
-    <summary type="html">&lt;p&gt;作为在线教育的核心产品，课堂既要满足&lt;strong&gt;面对面&lt;/strong&gt;场景，又要满足&lt;strong&gt;远程&lt;/strong&gt;场景，面对面课堂作为线下课堂的补充，而远程课堂可用来替代线下课堂。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;在多角色的系统中一般会给不同角色的用户分配不同的权限。权限一般有以下分类：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* 页面权限（路由权限）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 操作权限&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 数据权限&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* API 权限&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
     <category term="项目设计" scheme="https://tracyxu.cn/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用二进制设计课堂权限</title>
+    <link href="https://tracyxu.cn/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/"/>
+    <id>https://tracyxu.cn/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/</id>
+    <published>2021-10-05T16:00:00.000Z</published>
+    <updated>2024-04-14T14:55:42.938Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;使用二进制能很方便的表达和计算（组合、切换和校验）权限，以 Linux 文件权限为例。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;权限&lt;/th&gt;
+&lt;th&gt;字母表示&lt;/th&gt;
+&lt;th&gt;数字表示&lt;/th&gt;
+&lt;th&gt;二进制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;读&lt;/td&gt;
+&lt;td&gt;r&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;0b100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;写&lt;/td&gt;
+&lt;td&gt;w&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;0b010&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;执行&lt;/td&gt;
+&lt;td&gt;x&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0b001&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
+    
+    
+    
+    <category term="项目设计" scheme="https://tracyxu.cn/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>画板的爆点和抗锯齿</title>
+    <link href="https://tracyxu.cn/2021/10/01/canvas/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/"/>
+    <id>https://tracyxu.cn/2021/10/01/canvas/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/</id>
+    <published>2021-09-30T16:00:00.000Z</published>
+    <updated>2024-04-15T05:39:50.217Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/84020475&quot;&gt;https://zhuanlan.zhihu.com/p/84020475&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;初此，爆点和&lt;/p&gt;
+&lt;h2 id=&quot;爆点&quot;&gt;&lt;a href=&quot;#爆点&quot; class=&quot;headerlink&quot; title=&quot;爆点&quot;&gt;&lt;/a&gt;爆点&lt;/h2&gt;&lt;p&gt;在云谷的第一版课堂的黑板功能中，由于移动端 &lt;code&gt;touch&lt;/code&gt; 事件暴点不足，造成书写卡顿，最后通过 Native 暴点解决，这其实是一个折中方案。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;getNativePoints&lt;/span&gt; = (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) =&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Promise&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;resolve&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;variable language_&quot;&gt;window&lt;/span&gt;.&lt;span class=&quot;property&quot;&gt;nativeToJS&lt;/span&gt; = resolve&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;this&lt;/span&gt;.&lt;span class=&quot;property&quot;&gt;canvas&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;addEventListener&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;#x27;touchmove&amp;#x27;&lt;/span&gt;, &lt;span class=&quot;variable language_&quot;&gt;this&lt;/span&gt;.&lt;span class=&quot;property&quot;&gt;handleMove&lt;/span&gt;, &amp;#123; &lt;span class=&quot;attr&quot;&gt;passive&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="可视化" scheme="https://tracyxu.cn/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
     
   </entry>
@@ -89,10 +223,11 @@
     <link href="https://tracyxu.cn/2020/04/22/linux/SSH/"/>
     <id>https://tracyxu.cn/2020/04/22/linux/SSH/</id>
     <published>2020-04-21T16:00:00.000Z</published>
-    <updated>2023-10-31T01:57:08.100Z</updated>
+    <updated>2024-01-06T15:22:28.260Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。&lt;/p&gt;
+&lt;p&gt;除了可以代替 Telnet 做远程登录外（Telnet 因为采用明文传送报文，安全性不好，很多 Linux 服务器都不开放 Telnet 服务，要想使用 Telnet 需要安装），SSH 还可以为 FTP、PoP、甚至为 PPP 提供一个安全的”通道”（比如 SFTP）。&lt;/p&gt;</summary>
     
     
     
@@ -120,26 +255,6 @@
   </entry>
   
   <entry>
-    <title>JavaScript 类型系统</title>
-    <link href="https://tracyxu.cn/2019/07/26/javascript/JavaScript-Type-System/"/>
-    <id>https://tracyxu.cn/2019/07/26/javascript/JavaScript-Type-System/</id>
-    <published>2019-07-25T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.470Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;类型动静态强调的是静态类型检测，类型强弱强调的是隐式类型转换，JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; foo = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// foo 是 number&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo = &lt;span class=&quot;string&quot;&gt;&amp;#x27;hello&amp;#x27;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// foo 是 string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;  &lt;span class=&quot;comment&quot;&gt;// foo 是 boolean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// number 转成了 string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;!!&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// number 转成了 boolean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>NPM 私仓</title>
     <link href="https://tracyxu.cn/2019/07/01/engineering/Sinopia/"/>
     <id>https://tracyxu.cn/2019/07/01/engineering/Sinopia/</id>
@@ -162,7 +277,7 @@
     <link href="https://tracyxu.cn/2019/06/20/engineering/Git-Pages/"/>
     <id>https://tracyxu.cn/2019/06/20/engineering/Git-Pages/</id>
     <published>2019-06-19T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
+    <updated>2024-01-13T15:41:30.993Z</updated>
     
     
     <summary type="html">&lt;p&gt;GitHub Pages 用于介绍用户个人和托管在 GitHub 中的项目的，免费，虽然&lt;a href=&quot;https://help.github.com/en/articles/what-is-github-pages#usage-limits&quot;&gt;空间和流量有限制&lt;/a&gt;（空间上限 1G、月流量上限 100G、每小时更新不超过 10 次），但绝对够用。&lt;/p&gt;</summary>
@@ -226,32 +341,32 @@
   </entry>
   
   <entry>
-    <title>自定义字体</title>
-    <link href="https://tracyxu.cn/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/"/>
-    <id>https://tracyxu.cn/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/</id>
-    <published>2018-07-18T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
+    <title>造轮子</title>
+    <link href="https://tracyxu.cn/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/"/>
+    <id>https://tracyxu.cn/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/</id>
+    <published>2018-03-14T16:00:00.000Z</published>
+    <updated>2024-03-05T15:07:53.521Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;字体文件其实就是一个以 Unicode 作为索引的字形表。用 FontCreator 打开系统安装中的某个字体文件，双击里面的某个字形，你可以对它进行编辑，也能猜得出来每个字形其实就是一个矢量图，因此 ttf 文件所表示的字库也叫矢量字库，说到这个再稍微提及一下另一种字库——点阵字库，两者最大的区别就是点阵字库可以在 Console Mode（命令行模式）下被渲染出来，而矢量字库必须在 Graphics Mode（图形模式）中被渲染。比如早期没有图形接口的 DOS 系统或者某些 Linux 终端，这些字体的索引需要靠固化到硬件驱动上点阵字库，因为早期的计算机只支持英文，这也是后来“汉卡”的由来。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;不依赖任何框架、库，无需编译，用最原生的 JavaScript 造轮子。&lt;/p&gt;</summary>
     
     
     
-    <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
     
     
   </entry>
   
   <entry>
-    <title>树形结构的生成</title>
+    <title>树形结构</title>
     <link href="https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/"/>
     <id>https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/</id>
     <published>2017-12-23T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.450Z</updated>
+    <updated>2024-01-13T15:09:26.436Z</updated>
     
     
-    <summary type="html">&lt;p&gt;后端返回扁平的树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的一种场景。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;56&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;81&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;76&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;63&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;87&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;parentId&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;p&gt;树形结构是一种层次嵌套的结构。它提供了一种有序的组织方式，能够方便地表示层次关系和结构化数据，在文件系统、数据库索引、DOM 等场景中被广泛应用。树形结构的遍历、搜索和操作等算法也是计算机中常见的问题。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; tree = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&amp;quot;parentId&amp;quot;&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&amp;quot;children&amp;quot;&lt;/span&gt;: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;parentId&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;parentId&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -265,7 +380,7 @@
     <link href="https://tracyxu.cn/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/"/>
     <id>https://tracyxu.cn/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/</id>
     <published>2017-09-30T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.449Z</updated>
+    <updated>2024-01-13T15:46:35.235Z</updated>
     
     
       
@@ -291,7 +406,7 @@
     <link href="https://tracyxu.cn/2017/05/10/foundation/Base-64/"/>
     <id>https://tracyxu.cn/2017/05/10/foundation/Base-64/</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2023-10-30T02:09:06.825Z</updated>
+    <updated>2023-11-05T13:44:20.904Z</updated>
     
     
     <summary type="html">&lt;p&gt;Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。&lt;/p&gt;
@@ -300,76 +415,6 @@
     
     
     <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>异步编程</title>
-    <link href="https://tracyxu.cn/2017/04/02/javascript/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://tracyxu.cn/2017/04/02/javascript/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
-    <published>2017-04-01T16:00:00.000Z</published>
-    <updated>2023-11-02T02:13:21.949Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;异步、事件驱动使 JavaScript 这个单线程语言在不阻塞的情况下可以并行的执行多任务，这带来了性能的极大提升，然而异步风格也给流程控制，错误处理带来了更多的麻烦。&lt;/p&gt;
-&lt;p&gt;处理异步的 5 种方式，Callback、Event&amp;#x2F;发布订阅、Promise、Generator、Async&amp;#x2F;Await。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>字符编码</title>
-    <link href="https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/"/>
-    <id>https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/</id>
-    <published>2017-01-31T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CSS 设计模式</title>
-    <link href="https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
-    <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.454Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>科里化函数</title>
-    <link href="https://tracyxu.cn/2016/12/02/javascript/Currying/"/>
-    <id>https://tracyxu.cn/2016/12/02/javascript/Currying/</id>
-    <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.466Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;fn&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (args.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt; === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 通过手动调用的方式（即不传参数）来判断收集结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;fn&lt;/span&gt;(...args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(fn.&lt;span class=&quot;title function_&quot;&gt;bind&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, ...args));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; args.&lt;span class=&quot;title function_&quot;&gt;reduce&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;total, num&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; total + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;add = &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(add);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 须手动结束调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(result);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
     
     
   </entry>

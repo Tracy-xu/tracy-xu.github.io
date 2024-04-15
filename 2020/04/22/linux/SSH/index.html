@@ -159,15 +159,13 @@
         
 
         <!-- Post Content -->
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。</p>
+        <p>SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。</p>
+<p>除了可以代替 Telnet 做远程登录外（Telnet 因为采用明文传送报文，安全性不好，很多 Linux 服务器都不开放 Telnet 服务，要想使用 Telnet 需要安装），SSH 还可以为 FTP、PoP、甚至为 PPP 提供一个安全的”通道”（比如 SFTP）。</p>
 <span id="more"></span>
 
-<p>除了可以代替 Telnet 做远程登录外（Telnet 因为采用明文传送报文，安全性不好，很多 Linux 服务器都不开放 Telnet 服务，要想使用 Telnet 需要安装），SSH 还可以为 FTP、PoP、甚至为 PPP 提供一个安全的”通道”（比如 SFTP）。</p>
 <p>SSH 存在多种实现，既有商业实现，也有开源实现，其中 OpenSSH 是 Linux 下的开源实现，应用非常广泛。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -V    <span class="comment"># OpenSSH_5.3p1, OpenSSL 1.0.1e-fips 11 Feb 2013</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="安装-SSH"><a href="#安装-SSH" class="headerlink" title="安装 SSH"></a>安装 SSH</h3><p>SSH 已经成为 Linux 系统的标准配置，一般 Linux 系统都会自带 SSH（含 SSH Client 和 SSH Server）。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证 SSH Client</span></span><br><span class="line">ssh -V</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证 SSH Server</span></span><br><span class="line">ps -e | grep ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 SSH（如果返回结果有 sshd，则说明已经安装好 SSH，否则可以使用下面命令在线安装）</span></span><br><span class="line">sudo apt-get install ssh</span><br></pre></td></tr></table></figure>
+<h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>SSH 已经成为 Linux 系统的标准配置，一般 Linux 系统都会自带 SSH（含 SSH Client 和 SSH Server）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证 SSH Client</span></span><br><span class="line">ssh -V <span class="comment"># OpenSSH_8.2p1 Ubuntu-4ubuntu0.5, OpenSSL 1.1.1f  31 Mar 2020</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证 SSH Server</span></span><br><span class="line">ps -e | grep ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 SSH（如果返回结果有 sshd，则说明已经安装好 SSH，否则可以使用下面命令在线安装）</span></span><br><span class="line">sudo apt-get install ssh</span><br></pre></td></tr></table></figure>
 
 <p>注：Windows Git 自带 mingw，mingw 里面有 SSH Client 但是没有 Server，另外，Windows 10 中已默认安装 OpenSSH Client，通过<code>设置 --&gt; 应用 --&gt; 管理可选应用 --&gt; 添加功能</code>，还可以安装 OpenSSH Server。安装目录在 <code>C:\Windows\System32\OpenSSH</code>，里面的程序有有：scp.exe、sftp.exe、ssh.exe…。</p>
 <p>另外，Windows 下是通过 net start 和 net stop 来开启和停止某个服务。</p>
@@ -188,7 +186,6 @@
 
 <p>注：作为 SSH 客户端，<code>~/.ssh</code> 目录下，会有 3 个文件 id_rsa、id_rsa.pub、known_hosts，作为 SSH 服务端，也会有三个文件 id_rsa、id_rsa.pub、authorized_keys。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id_rsa              # 保存的是私钥</span><br><span class="line">id_rsa.pub          # 保存的是公钥</span><br><span class="line">known_hosts         # 保存的是 SSH 服务端公钥指纹</span><br><span class="line">authorized_keys     # 保存的是 SSH 客户端公钥</span><br></pre></td></tr></table></figure>
-
 
 <h2 id="口令登录"><a href="#口令登录" class="headerlink" title="口令登录"></a>口令登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本格式</span></span><br><span class="line">ssh username@host</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以远程 192.168.10.141 这台机器为例</span></span><br><span class="line">ssh root@192.168.10.141</span><br></pre></td></tr></table></figure>
 
@@ -290,7 +287,7 @@
         
         <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         

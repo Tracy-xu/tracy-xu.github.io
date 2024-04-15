@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Typescript 类型编程"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Typescript 类型编程 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2022/06/01/javascript/Typescript%20%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A8%8B/">
+                Typescript 类型编程
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-06-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/JavaScript/">JavaScript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="泛型编程"><a href="#泛型编程" class="headerlink" title="泛型编程"></a>泛型编程</h2><p>泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性，主要作用是对不特定数据类型的支持，以实现函数、接口（Interface）、类的复用。</p>
+<span id="more"></span>
+
+<p>泛型类似于函数，函数的本质是推后执行（调用），部分待定（函数参数）的代码，泛型的本质是推后执行（调用），部分待定（泛型参数）的类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> F&lt;A, B&gt; = A | B</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = F&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt; <span class="comment">// 调用</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">List</span>&lt;A&gt; &#123;</span><br><span class="line">  [<span class="attr">index</span>: <span class="built_in">number</span>]: A</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> X = <span class="title class_">List</span>&lt;<span class="built_in">string</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用代入法查看泛型调用后的具体类型</span></span><br><span class="line"><span class="keyword">type</span> X = &#123;</span><br><span class="line">  [<span class="attr">index</span>: <span class="built_in">number</span>]: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认类型</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Hash</span>&lt;V = <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">  [<span class="attr">key</span>: <span class="built_in">string</span>]: V</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>泛型中使用 <code>extends</code> 和三元运算符</li>
+</ul>
+<p>泛型中使用 <code>extends</code>，判断是否为子类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Person</span> = &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">LikeString</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">string</span> ? <span class="literal">true</span> : <span class="literal">false</span> <span class="comment">// 如果 T 继承/包含于 string（T 是 string 的子类型），那就返回 true </span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">LikeNumber</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">number</span> ? <span class="number">1</span> : <span class="number">2</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">LikePerson</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="title class_">Person</span> ? <span class="string">&#x27;yes&#x27;</span> : <span class="string">&#x27;no&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">LikeString</span>&lt;<span class="string">&#x27;a&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>若 <code>T</code> 为联合类型，则会使用泛型分配律，分开计算。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">ToArray</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">unknown</span> ? T[] : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">ToArray</span>&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt; <span class="comment">// 结果是 string[] | number[]，而不是 (string | number)[]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 代入法计算过程</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = (<span class="built_in">string</span> <span class="keyword">extends</span> <span class="built_in">unknown</span> ? <span class="built_in">string</span>[] : <span class="built_in">never</span>) | (<span class="built_in">number</span> <span class="keyword">extends</span> <span class="built_in">unknown</span> ? <span class="built_in">number</span>[] : <span class="built_in">never</span>)</span><br></pre></td></tr></table></figure>
+
+<p>若 <code>T</code> 为 <code>never</code>，则直接返回 <code>never</code>，不会进入条件运算。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">LikeString</span>&lt;<span class="built_in">never</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">ToArray</span>&lt;<span class="built_in">never</span>&gt; <span class="comment">// never</span></span><br></pre></td></tr></table></figure>
+
+<p>上述规则只对泛型有效，不在泛型中的联合类型和 <code>never</code>，按正常规则计算。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="built_in">never</span> <span class="keyword">extends</span> <span class="built_in">unknown</span> ? <span class="number">1</span> : <span class="number">2</span> <span class="comment">// never 空集属于 unknown 的子集，所以返回 1，不是 never</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>泛型中使用 <code>keyof</code></li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">GetKeys</span>&lt;T&gt; = keyof T <span class="comment">// keyof 返回的是联合类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">GetKeys</span>&lt;<span class="title class_">Person</span>&gt; <span class="comment">// id | age | name，注，无法直接调试 Result 结果，只能通过声明变量观察结果 const r: Result = &#x27;id&#x27; </span></span><br></pre></td></tr></table></figure>
+
+<p>在泛型中使用泛型约束 <code>extends keyof</code>。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 key 的类型</span></span><br><span class="line"><span class="comment">// 约束 K 的类型，只能从 keyof T 中取，不可以随意传</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">GetKeyType</span>&lt;T, K <span class="keyword">extends</span> keyof T&gt; = T[K] <span class="comment">// type X = Person[&#x27;age&#x27;]</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">GetKeyType</span>&lt;<span class="title class_">Person</span>, <span class="string">&#x27;age&#x27;</span>&gt; <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>映射类型</li>
+</ul>
+<p>映射类型（Mapped Types）将现有类型根据某种映射规则转换为一种新的类型。映射类型常通过 <code>keyof</code>、<code>in</code>、修饰符（<code>?</code>、<code>readonly</code>、<code>-readonly</code>、<code>-?</code>）和条件类型（Conditional Types）实现。以几种内置的工具类型 <code>Partial</code>、<code>Required</code>、<code>Record</code>、<code>Exclude</code>、<code>Extract</code>、<code>Pick</code>、<code>Omit</code> 为例，看其如何使用映射类型的。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Readonly 只读属性</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">X1</span> = <span class="title class_">Readonly</span>&lt;<span class="title class_">Person</span>&gt;</span><br><span class="line"><span class="comment">// Readonly 实现如下</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Readonly</span>&lt;T&gt; = &#123;</span><br><span class="line">  <span class="comment">// [K in keyof T] 表示对类型 T 的每个属性进行映射，并使用 readonly 关键字将其设为只读</span></span><br><span class="line">  <span class="comment">// 不能写成索引签名 [K: keyof T]: T[K]</span></span><br><span class="line">  <span class="keyword">readonly</span> [K <span class="keyword">in</span> keyof T]: T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除 readonly，可写属性</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Mutable</span>&lt;T&gt; = &#123;</span><br><span class="line">  -<span class="keyword">readonly</span> [K <span class="keyword">in</span> keyof T]: T[K]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Partial 给所有属性加上可选</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Partial</span>&lt;<span class="title class_">Person</span>&gt;</span><br><span class="line"><span class="comment">// Partial 实现如下</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Partial</span>&lt;T&gt; = &#123;</span><br><span class="line">  [K <span class="keyword">in</span> keyof T]?: T[K]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Required 必选属性</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Required</span>&lt;<span class="title class_">Person</span>&gt;</span><br><span class="line"><span class="comment">// Required 实现如下</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Required</span>&lt;T&gt; = &#123;</span><br><span class="line">  [K <span class="keyword">in</span> keyof T]-?: T[K]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Record 用于定义对象类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;</span><br><span class="line"><span class="comment">// Record 实现如下</span></span><br><span class="line"><span class="comment">// 对象的 Key，只能有 3 种类型，需要约束</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Record</span>&lt;<span class="title class_">Key</span> <span class="keyword">extends</span> <span class="built_in">string</span> | <span class="built_in">number</span> | <span class="built_in">symbol</span>, <span class="title class_">Val</span>&gt; = &#123;</span><br><span class="line">  [K <span class="keyword">in</span> <span class="title class_">Key</span>]: <span class="title class_">Val</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Exclude 从联合类型中排除指定类型（求差集）</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Exclude</span>&lt;<span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span>, <span class="number">1</span> | <span class="number">2</span>&gt; <span class="comment">// 3</span></span><br><span class="line"><span class="comment">// Exclude 实现如下</span></span><br><span class="line"><span class="comment">// 联合类型会分开计算 </span></span><br><span class="line"><span class="comment">// 1 | 2 | 3 extends 1 | 2 会分开为 type Result = (1 extends 1 | 2 ? never : 1) | (2 extends 1 | 2 ? never : 2) | (3 extends 1 | 2 ? never : 3)</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Exclude</span>&lt;A, B&gt; = A <span class="keyword">extends</span> B ? <span class="built_in">never</span> : A</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Extract 求交集</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Extract</span>&lt;<span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span>, <span class="number">2</span> | <span class="number">4</span>&gt; <span class="comment">// 2</span></span><br><span class="line"><span class="comment">// Extract 实现如下，为 Exclude 的反向操作</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Extract</span>&lt;A, B&gt; = A <span class="keyword">extends</span> B ? A : <span class="built_in">never</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pick 选择指定属性</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Pick</span>&lt;<span class="title class_">Person</span>, <span class="string">&#x27;name&#x27;</span> | <span class="string">&#x27;age&#x27;</span>&gt;</span><br><span class="line"><span class="comment">// Pick 实现如下</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Pick</span>&lt;T, <span class="title class_">Key</span> <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [K <span class="keyword">in</span> <span class="title class_">Key</span>]: T[K]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Omit 忽略指定属性</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Omit</span>&lt;<span class="title class_">Person</span>, <span class="string">&#x27;name&#x27;</span> | <span class="string">&#x27;age&#x27;</span>&gt;</span><br><span class="line"><span class="comment">// Omit 实现如下</span></span><br><span class="line"><span class="comment">// 核心是 as 后的 (K extends Key ? never : K)，当前 K 在 Key 中，则删除，否则保留</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Omit</span>&lt;T, <span class="title class_">Key</span>&gt; = &#123;</span><br><span class="line">  <span class="comment">// [K in keyof T as never]: T // 断言为 never，会删除所有</span></span><br><span class="line">  <span class="comment">// [K in keyof T as &#x27;id&#x27;]: T // 断言为 id，只会保留 id</span></span><br><span class="line">  [K <span class="keyword">in</span> keyof T <span class="keyword">as</span> (K <span class="keyword">extends</span> <span class="title class_">Key</span> ? <span class="built_in">never</span> : K)]: T</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TS 原码中通过 Pick 来实现 Omit（反向思路）</span></span><br><span class="line"><span class="comment">// Pick&lt;T, 不要的 Key&gt;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Omit</span>&lt;T, <span class="title class_">Key</span> <span class="keyword">extends</span> keyof T&gt; = <span class="title class_">Pick</span>&lt;T, <span class="title class_">Exclude</span>&lt;keyof T, <span class="title class_">Key</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型体操"><a href="#类型体操" class="headerlink" title="类型体操"></a>类型体操</h2><p>JavaScript 中可以对<strong>值</strong>进行各种运算（算术运算、逻辑运算、比较运算…）以及循环、判断流的程控制和函数、面向对象等高级特性，如果把 TypeScript 的类型系统当作一门语言，TypeScript 可以对<strong>类型</strong>进行各种运算以及循环、判断流程控制和泛型等高级特性。</p>
+<p>以计算斐波那契数列第 n 项值为例，使用 TypeScript 类型实现和 JavaScript 解释为以下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Fibonacci</span>&lt;</span><br><span class="line">  T <span class="keyword">extends</span> <span class="built_in">number</span>,</span><br><span class="line">  <span class="comment">// 循环下标（数组 length 表示）</span></span><br><span class="line">  <span class="title class_">TArray</span> <span class="keyword">extends</span> <span class="title class_">ReadonlyArray</span>&lt;<span class="built_in">unknown</span>&gt; = [<span class="built_in">unknown</span>, <span class="built_in">unknown</span>, <span class="built_in">unknown</span>],</span><br><span class="line">  <span class="comment">// 前前一项值（数组 length 表示）</span></span><br><span class="line">  <span class="title class_">PrePre</span> <span class="keyword">extends</span> <span class="title class_">ReadonlyArray</span>&lt;<span class="built_in">unknown</span>&gt; = [<span class="built_in">unknown</span>],</span><br><span class="line">  <span class="comment">// 前一项值（数组 length 表示）</span></span><br><span class="line">  <span class="title class_">Pre</span> <span class="keyword">extends</span> <span class="title class_">ReadonlyArray</span>&lt;<span class="built_in">unknown</span>&gt; = [<span class="built_in">unknown</span>],</span><br><span class="line">&gt; = T <span class="keyword">extends</span> <span class="number">1</span></span><br><span class="line">  ? <span class="number">1</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="number">2</span></span><br><span class="line">    ? <span class="number">1</span></span><br><span class="line">    : <span class="title class_">TArray</span>[<span class="string">&#x27;length&#x27;</span>] <span class="keyword">extends</span> T <span class="comment">// 如果已经循环了 T 次</span></span><br><span class="line">      ? [...<span class="title class_">Pre</span>, ...<span class="title class_">PrePre</span>][<span class="string">&#x27;length&#x27;</span>] <span class="comment">// 前两项相加</span></span><br><span class="line">      : <span class="title class_">Fibonacci</span>&lt;T, [...<span class="title class_">TArray</span>, <span class="built_in">unknown</span>], <span class="title class_">Pre</span>, [...<span class="title class_">Pre</span>, ...<span class="title class_">PrePre</span>]&gt;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Fibonacci</span>&lt;<span class="number">6</span>&gt; <span class="comment">// 8，(1 + 1 + 2 + 3 + 5 + 8)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">1</span> || n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> prePre = <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> pre = <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      result = pre + prePre</span><br><span class="line">      prePre = pre</span><br><span class="line">      pre = result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fibonacci</span>(<span class="number">6</span>) <span class="comment">// 结果是 8 (1 + 1 + 2 + 3 + 5 + 8)</span></span><br></pre></td></tr></table></figure>
+
+<p>注：TypeScript 类型体操是纯粹的函数式编程，函数式编程最基本原则是数据不可变，TypeScript 中类型一但声明就不能改变。</p>
+<h3 id="体操的基本原理"><a href="#体操的基本原理" class="headerlink" title="体操的基本原理"></a>体操的基本原理</h3><p>TypeScript 类型体操的本质是可以对类型进行循环、判断、交叉、联合、泛型等运算和操作。</p>
+<ul>
+<li>循环</li>
+</ul>
+<p>TypeScript 中除了可以通过递归实现循环外，还可以通过分布式条件类型或映射类型实现，但它们都不能传递类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分布式条件类型</span></span><br><span class="line"><span class="comment">// 当泛型参数 T 为联合类型时，条件类型即为分布式条件类型，会将 T 中的每一项分别分发给 extends 进行比对</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Example</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">number</span> ? T : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Example</span>&lt;<span class="string">&#x27;1&#x27;</span> | <span class="string">&#x27;2&#x27;</span> | <span class="number">3</span> | <span class="number">4</span>&gt; <span class="comment">// 3 | 4</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 映射类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Example</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span> | <span class="built_in">number</span>&gt; = &#123;</span><br><span class="line">  [<span class="title class_">Key</span> <span class="keyword">in</span> T]: <span class="title class_">Key</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Example</span>&lt;<span class="string">&#x27;1&#x27;</span> | <span class="string">&#x27;2&#x27;</span> | <span class="number">3</span> | <span class="number">4</span>&gt; <span class="comment">// &#123; 1: &#x27;1&#x27;; 2: &#x27;2&#x27;; 3: 3; 4: 4; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>判断</li>
+</ul>
+<p>使用三名运算实现条件判断。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if (A &lt;= B) true else false</span></span><br><span class="line"><span class="keyword">type</span> A = <span class="number">1</span></span><br><span class="line"><span class="keyword">type</span> B = <span class="number">1</span> | <span class="number">2</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = A <span class="keyword">extends</span> B ? <span class="literal">true</span> : <span class="literal">false</span> <span class="comment">// A 包含于 B，返回 true 否则 false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if (A &lt;= B) and (C &lt;= D) ...</span></span><br><span class="line"><span class="keyword">type</span> A = <span class="number">1</span></span><br><span class="line"><span class="keyword">type</span> B = <span class="number">1</span> | <span class="number">2</span></span><br><span class="line"><span class="keyword">type</span> C = <span class="number">3</span></span><br><span class="line"><span class="keyword">type</span> D = <span class="number">3</span> | <span class="number">4</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = A <span class="keyword">extends</span> B </span><br><span class="line">  ? C <span class="keyword">extends</span> D </span><br><span class="line">    ? <span class="string">&#x27;true, true&#x27;</span></span><br><span class="line">    : <span class="string">&#x27;true, false&#x27;</span></span><br><span class="line">  : C <span class="keyword">extends</span> D</span><br><span class="line">    ? <span class="string">&#x27;false, true&#x27;</span></span><br><span class="line">    : <span class="string">&#x27;false, false&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断空元组</span></span><br><span class="line"><span class="keyword">type</span> A = []</span><br><span class="line"><span class="comment">// 约束 Arr 必须是一个数组</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">IsEmptyArray</span>&lt;<span class="title class_">Arr</span> <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = <span class="title class_">Arr</span>[<span class="string">&#x27;length&#x27;</span>] <span class="keyword">extends</span> <span class="number">0</span> ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">IsEmptyArray</span>&lt;A&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断非空元组</span></span><br><span class="line"><span class="keyword">type</span> A = []</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">IsNotEmptyArray</span>&lt;<span class="title class_">Arr</span> <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = <span class="title class_">Arr</span>[<span class="string">&#x27;length&#x27;</span>] <span class="keyword">extends</span> <span class="number">0</span> ? <span class="literal">false</span> : <span class="literal">true</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">IsNotEmptyArray</span>&lt;A&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者这样写</span></span><br><span class="line"><span class="comment">// [...infer X, infer Y] 表示至少有一个，也可写为 [...unknown[], unknown]，X、Y 相当于类型变量，加 infer 表示引用类型变量，这样就可不用写实际类型</span></span><br><span class="line"><span class="comment">// ...相当于 JS 中的 rest 运算符，...unknown[] 表示 0 个或无数个</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">IsNotEmptyArray</span>&lt;<span class="title class_">Arr</span> <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = <span class="title class_">Arr</span> <span class="keyword">extends</span> [...infer X, infer Y] ? <span class="literal">true</span> : <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>递归</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 反转元组</span></span><br><span class="line"><span class="keyword">type</span> A = [<span class="string">&#x27;ji&#x27;</span>, <span class="string">&#x27;ni&#x27;</span>, <span class="string">&#x27;tai&#x27;</span>, <span class="string">&#x27;mei&#x27;</span>]</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Reverse</span>&lt;<span class="title class_">Arr</span> <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = <span class="title class_">Arr</span> <span class="keyword">extends</span> [...infer <span class="title class_">Rest</span>, infer <span class="title class_">Last</span>]</span><br><span class="line">  ? [<span class="title class_">Last</span>, ...<span class="title class_">Reverse</span>&lt;<span class="title class_">Rest</span>&gt;]</span><br><span class="line">  : <span class="title class_">Arr</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Reverse</span>&lt;A&gt; <span class="comment">// [&#x27;mei&#x27;, &#x27;tai&#x27;, &#x27;ni&#x27;, &#x27;ji&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>注：经测试，元组递归的层数最多 <code>48</code> 层，普通对象的层数限制未测出。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 未知层数的对象类型属性添加 readonly</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">DeepReadonly</span>&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T]: <span class="title class_">DeepReadonly</span>&lt;T[P]&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">SomeObject</span> &#123;</span><br><span class="line">  <span class="attr">a</span>: &#123;</span><br><span class="line">    <span class="attr">b</span>: &#123;</span><br><span class="line">      <span class="attr">c</span>: <span class="built_in">number</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>: <span class="title class_">DeepReadonly</span>&lt;<span class="title class_">SomeObject</span>&gt; = &#123;<span class="attr">a</span>: &#123;<span class="attr">b</span>: &#123;<span class="attr">c</span>: <span class="number">2</span>&#125;&#125;&#125;</span><br><span class="line">obj.<span class="property">a</span>.<span class="property">b</span>.<span class="property">c</span> = <span class="number">23</span> <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>比较运算</li>
+</ul>
+<p>TypeScript 中没有 <code>==</code>，但是通过 <code>extends</code> 可以实现类似的效果。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">EqEq</span>&lt;<span class="variable constant_">T1</span>, <span class="variable constant_">T2</span>&gt; = [<span class="variable constant_">T1</span>] <span class="keyword">extends</span> [<span class="variable constant_">T2</span>] </span><br><span class="line">  ? ([<span class="variable constant_">T2</span>] <span class="keyword">extends</span> [<span class="variable constant_">T1</span>] ? <span class="literal">true</span> : <span class="literal">false</span>) </span><br><span class="line">  : <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result1</span> = <span class="title class_">EqEq</span>&lt;<span class="number">5</span>, <span class="number">10</span>&gt;;  <span class="comment">// false</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result2</span> = <span class="title class_">EqEq</span>&lt;<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;abc&quot;</span>&gt;;  <span class="comment">// true</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result3</span> = <span class="title class_">EqEq</span>&lt;<span class="literal">true</span>, <span class="literal">false</span>&gt;;  <span class="comment">// false</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result4</span> = <span class="title class_">EqEq</span>&lt;<span class="built_in">never</span>, <span class="built_in">never</span>&gt;;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>模式匹配和 infer 引用</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Tuple</span> = [<span class="string">&#x27;ji&#x27;</span>, <span class="string">&#x27;ni&#x27;</span>, <span class="string">&#x27;tai&#x27;</span>, <span class="string">&#x27;mei&#x27;</span>]</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result1</span> = <span class="title class_">Tuple</span> <span class="keyword">extends</span> [infer <span class="title class_">First</span>, ...infer <span class="title class_">Rest</span>] ? <span class="title class_">First</span> : <span class="built_in">never</span> <span class="comment">// &#x27;ji&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result2</span> = <span class="title class_">Tuple</span> <span class="keyword">extends</span> [infer <span class="title class_">First</span>, ...infer <span class="title class_">Rest</span>] ? <span class="title class_">Rest</span> : <span class="built_in">never</span> <span class="comment">// [&#x27;ni&#x27;, &#x27;tai&#x27;, &#x27;mei&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="元组的基本体操"><a href="#元组的基本体操" class="headerlink" title="元组的基本体操"></a>元组的基本体操</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 扩展元组</span></span><br><span class="line"><span class="keyword">type</span> A = [<span class="number">1</span>]</span><br><span class="line"><span class="keyword">type</span> B = [...A, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取元组最后一项</span></span><br><span class="line"><span class="keyword">type</span> A = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Last</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = T <span class="keyword">extends</span> [...<span class="built_in">unknown</span>[], infer <span class="title class_">Last</span>] ? <span class="title class_">Last</span> : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Last</span>&lt;A&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不能用 JS 的思维实现，下面这样是错的</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Last</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = T[T[<span class="string">&#x27;length&#x27;</span>] - <span class="number">1</span>] <span class="comment">// TS 中没有提供减法操作，4 - 1 在 TS 中无法计算</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取元组除了最后一项的其他项</span></span><br><span class="line"><span class="keyword">type</span> A = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">NotLast</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = T <span class="keyword">extends</span> [...infer X, <span class="built_in">unknown</span>] ? X : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">NotLast</span>&lt;A&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不能用 JS 的思维实现，下面这样是错的</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Last</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = T[T[<span class="string">&#x27;length&#x27;</span>] - <span class="number">1</span>] <span class="comment">// TS 中没有提供减法操作，4 - 1 在 TS 中无法计算</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串的基本体操"><a href="#字符串的基本体操" class="headerlink" title="字符串的基本体操"></a>字符串的基本体操</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 大小写切换</span></span><br><span class="line"><span class="keyword">type</span> A = <span class="string">&#x27;tracy&#x27;</span></span><br><span class="line"><span class="keyword">type</span> B = <span class="title class_">Capitalize</span>&lt;A&gt; <span class="comment">// &#x27;Tracy&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> C = <span class="string">&#x27;ji&#x27;</span> | <span class="string">&#x27;ni&#x27;</span> | <span class="string">&#x27;tai&#x27;</span> | <span class="string">&#x27;mei&#x27;</span></span><br><span class="line"><span class="keyword">type</span> D = <span class="title class_">Capitalize</span>&lt;C&gt; <span class="comment">// 联合类型在泛型中会按分配律计算，结果为 &#x27;Ji&#x27; | &#x27;Ni&#x27; | &#x27;Tai&#x27; | &#x27;Mei&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>除了 <code>Capitalize</code> 首字母大写外，TypeScript 还内置了 <code>Uppercase</code> 全变成大写，<code>Uncapitalize</code> 首字母小写，<code>Lowercase</code> 全变成小写。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板字符串</span></span><br><span class="line"><span class="keyword">type</span> A = <span class="string">&#x27;ji&#x27;</span></span><br><span class="line"><span class="keyword">type</span> B = <span class="string">&#x27;ni&#x27;</span></span><br><span class="line"><span class="keyword">type</span> C = <span class="string">&#x27;tai&#x27;</span></span><br><span class="line"><span class="keyword">type</span> D = <span class="string">&#x27;mei&#x27;</span></span><br><span class="line"><span class="keyword">type</span> X = <span class="string">`<span class="subst">$&#123;A&#125;</span> <span class="subst">$&#123;B&#125;</span> <span class="subst">$&#123;C&#125;</span> <span class="subst">$&#123;D&#125;</span>`</span> <span class="comment">// &#x27;ji ni tai mei&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 转字符串</span></span><br><span class="line"><span class="comment">// 将类型转为字符串有一定的限制，仅支持下面的类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">CanStringified</span> = <span class="built_in">string</span> | <span class="built_in">number</span> | <span class="built_in">bigint</span> | <span class="built_in">boolean</span> | <span class="literal">null</span> | <span class="literal">undefined</span></span><br><span class="line"><span class="comment">// 将支持的类型转化为字符串</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Stringify</span>&lt;T <span class="keyword">extends</span> <span class="title class_">CanStringified</span>&gt; = <span class="string">`<span class="subst">$&#123;T&#125;</span>`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result1</span> = <span class="title class_">Stringify</span>&lt;<span class="number">0</span>&gt; <span class="comment">// &#x27;0&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result2</span> = <span class="title class_">Stringify</span>&lt;-<span class="number">1</span>&gt; <span class="comment">// &#x27;-1&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result3</span> = <span class="title class_">Stringify</span>&lt;<span class="number">0.1</span>&gt; <span class="comment">// &#x27;0.1&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result4</span> = <span class="title class_">Stringify</span>&lt;<span class="string">&#x27;0.2&#x27;</span>&gt; <span class="comment">// &#x27;0.2&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取第一个字符</span></span><br><span class="line"><span class="keyword">type</span> A = <span class="string">&#x27;ji ni tai mei&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">First</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>&gt; = T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer F&#125;</span><span class="subst">$&#123;<span class="built_in">string</span>&#125;</span>`</span> ? F : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">First</span>&lt;A&gt; <span class="comment">// &#x27;j&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>注：使用模式匹配只能获取第一个字符和其它剩下字符，不能获取最后一个字符，如果想要获取最后一个字符，可转为元组操作。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取最后一个字符</span></span><br><span class="line"><span class="keyword">type</span> A = <span class="string">&#x27;ji ni tai mei&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">LastOfTuple</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[]&gt; = T <span class="keyword">extends</span> [...infer _, infer L] ? L : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">StringToTuple</span>&lt;S <span class="keyword">extends</span> <span class="built_in">string</span>&gt; = S <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer F&#125;</span><span class="subst">$&#123;infer R&#125;</span>`</span></span><br><span class="line">  ? [F, ...<span class="title class_">StringToTuple</span>&lt;R&gt;]</span><br><span class="line">  : []</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">LastOfString</span>&lt;S <span class="keyword">extends</span> <span class="built_in">string</span>&gt; = <span class="title class_">LastOfTuple</span>&lt;<span class="title class_">StringToTuple</span>&lt;S&gt;&gt;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">LastOfString</span>&lt;A&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串转联合类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">StringToUnion</span>&lt;S <span class="keyword">extends</span> <span class="built_in">string</span>&gt; = S <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer First&#125;</span><span class="subst">$&#123;infer Rest&#125;</span>`</span></span><br><span class="line">  ? <span class="title class_">First</span> | <span class="title class_">StringToUnion</span>&lt;<span class="title class_">Rest</span>&gt;</span><br><span class="line">  : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">StringToUnion</span>&lt;<span class="string">&#x27;jinitaimei&#x27;</span>&gt; <span class="comment">// &quot;j&quot; | &quot;i&quot; | &quot;n&quot; | &quot;t&quot; | &quot;a&quot; | &quot;m&quot; | &quot;e&quot;，联合类型会自动去重</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串转元组</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">StringToTuple</span>&lt;S <span class="keyword">extends</span> <span class="built_in">string</span>&gt; = S <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer First&#125;</span><span class="subst">$&#123;infer Rest&#125;</span>`</span></span><br><span class="line">  ? [<span class="title class_">First</span>, ...<span class="title class_">StringToTuple</span>&lt;<span class="title class_">Rest</span>&gt;]</span><br><span class="line">  : []</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">StringToTuple</span>&lt;<span class="string">&#x27;jinitaimei&#x27;</span>&gt; <span class="comment">// [&quot;j&quot;, &quot;i&quot;, &quot;n&quot;, &quot;i&quot;, &quot;t&quot;, &quot;a&quot;, &quot;i&quot;, &quot;m&quot;, &quot;e&quot;, &quot;i&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Type-Challenges"><a href="#Type-Challenges" class="headerlink" title="Type-Challenges"></a>Type-Challenges</h3><p><a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges/blob/main/README.zh-CN.md#%E4%BB%8B%E7%BB%8D">Type-Challenges</a> 中常见问题解法。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0004 Pick</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Pick</span>&lt;T, <span class="title class_">Key</span> <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [K <span class="keyword">in</span> <span class="title class_">Key</span>]: T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Pick</span>&lt;&#123;<span class="attr">a</span>: <span class="number">1</span>; <span class="attr">b</span>: <span class="number">2</span>; <span class="attr">c</span>: <span class="number">3</span>&#125;, <span class="string">&#x27;a&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可使用代入法来思考泛型</span></span><br><span class="line">&#123;</span><br><span class="line">  [K <span class="keyword">in</span> <span class="string">&#x27;a&#x27;</span>]: &#123;<span class="attr">a</span>: <span class="number">1</span>; <span class="attr">b</span>: <span class="number">2</span>; <span class="attr">c</span>: <span class="number">3</span>&#125;[<span class="string">&#x27;a&#x27;</span>] <span class="comment">// 即 &#x27;a&#x27;: 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3321 Parameters</span></span><br><span class="line"><span class="comment">// 获取函数参数类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Parameters</span>&lt;F <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">any</span>[]) =&gt; <span class="built_in">any</span>&gt; = F <span class="keyword">extends</span> (...<span class="attr">args</span>: infer X) =&gt; <span class="built_in">any</span> ? X : <span class="built_in">never</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo = (<span class="attr">arg1</span>: <span class="built_in">string</span>, <span class="attr">arg2</span>: <span class="built_in">number</span>): <span class="function"><span class="params">void</span> =&gt;</span> &#123;&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = <span class="title class_">Parameters</span>&lt;<span class="keyword">typeof</span> foo&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0189 Awaited</span></span><br><span class="line"><span class="comment">// 获取 Promise resove 的数据类型</span></span><br><span class="line"><span class="comment">// 注意，不能直接使用 Promise 类型，否则 Thenable 用例不能通过</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Awaited</span>&lt;P <span class="keyword">extends</span> <span class="title class_">PromiseLike</span>&lt;<span class="built_in">any</span>&gt;&gt; = P <span class="keyword">extends</span> <span class="title class_">PromiseLike</span>&lt;infer X&gt;</span><br><span class="line">  ? X <span class="keyword">extends</span> <span class="title class_">PromiseLike</span>&lt;<span class="built_in">any</span>&gt; </span><br><span class="line">    ? <span class="title class_">Awaited</span>&lt;X&gt; </span><br><span class="line">    : X</span><br><span class="line">  : <span class="built_in">never</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4471 Zip</span></span><br><span class="line"><span class="comment">// 像拉拉链一样将元组交叉组合</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Zip</span>&lt;A <span class="keyword">extends</span> <span class="built_in">any</span>[], B <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = A <span class="keyword">extends</span> [infer <span class="title class_">AFirst</span>, ...infer <span class="title class_">ARest</span>]</span><br><span class="line">  ? B <span class="keyword">extends</span> [infer <span class="title class_">BFirst</span>, ...infer <span class="title class_">BRest</span>]</span><br><span class="line">    ? [[<span class="title class_">AFirst</span>, <span class="title class_">BFirst</span>], ...<span class="title class_">Zip</span>&lt;<span class="title class_">ARest</span>, <span class="title class_">BRest</span>&gt;]</span><br><span class="line">      : []</span><br><span class="line">    : []</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4484 IsTuple</span></span><br><span class="line"><span class="comment">// 判断是否为元组</span></span><br><span class="line"><span class="comment">// 元组的长度是固定的，length 返回固定值，而数组长度是不固定的，length 返回 number</span></span><br><span class="line"><span class="comment">// 泛型中的 never 会直接返回 never，为了使其返回 true false，这里使用 [] 包裹，当然使用 &#123;&#125; 或函数类型包裹效果也一样</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">IsTuple</span>&lt;T&gt; = [T] <span class="keyword">extends</span> [<span class="built_in">never</span>] </span><br><span class="line">  ? <span class="literal">false</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="keyword">readonly</span> <span class="built_in">any</span>[]</span><br><span class="line">    ? <span class="built_in">number</span> <span class="keyword">extends</span> T[<span class="string">&#x27;length&#x27;</span>] <span class="comment">// 如果是数组则返回 false</span></span><br><span class="line">      ? <span class="literal">false</span></span><br><span class="line">      : <span class="literal">true</span></span><br><span class="line">    :<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 5310 Join</span></span><br><span class="line"><span class="comment">// 将元组使用分隔符连接成字符串</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Join</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>[], U <span class="keyword">extends</span> <span class="built_in">string</span> | <span class="built_in">number</span>&gt; = T <span class="keyword">extends</span> [infer <span class="title class_">First</span> <span class="keyword">extends</span> <span class="built_in">string</span>, ...infer <span class="title class_">Rest</span> <span class="keyword">extends</span> <span class="built_in">string</span>[]]</span><br><span class="line">  ? <span class="title class_">Rest</span>[<span class="string">&#x27;length&#x27;</span>] <span class="keyword">extends</span> <span class="number">0</span></span><br><span class="line">    ? <span class="title class_">First</span></span><br><span class="line">    : <span class="string">`<span class="subst">$&#123;First&#125;</span><span class="subst">$&#123;U&#125;</span><span class="subst">$&#123;Join&lt;Rest, U&gt;&#125;</span>`</span></span><br><span class="line">  : <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

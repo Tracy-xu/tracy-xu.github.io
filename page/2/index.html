@@ -139,6 +139,37 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/04/25/engineering/Git-Flow/">
+                Git Flow
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-25</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Engineering/">Engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。</p>
+        </div>
+        <a href="/2019/04/25/engineering/Git-Flow/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/04/20/engineering/Git-Commit-Message-Style-Guide/">
                 Git Commit Message Style Guide
             </a>
@@ -201,18 +232,18 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/">
-                自定义字体
+            <a href="/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/">
+                造轮子
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-07-19</span>
+                <span class="date">2018-03-15</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/Web/">Web</a>
+                    <a href="/categories/JavaScript/">JavaScript</a>
                 </span>
             
         </div>
@@ -220,9 +251,9 @@
 
     
         <div class="content">
-            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>字体文件其实就是一个以 Unicode 作为索引的字形表。用 FontCreator 打开系统安装中的某个字体文件，双击里面的某个字形，你可以对它进行编辑，也能猜得出来每个字形其实就是一个矢量图，因此 ttf 文件所表示的字库也叫矢量字库，说到这个再稍微提及一下另一种字库——点阵字库，两者最大的区别就是点阵字库可以在 Console Mode（命令行模式）下被渲染出来，而矢量字库必须在 Graphics Mode（图形模式）中被渲染。比如早期没有图形接口的 DOS 系统或者某些 Linux 终端，这些字体的索引需要靠固化到硬件驱动上点阵字库，因为早期的计算机只支持英文，这也是后来“汉卡”的由来。</p>
+            <p>不依赖任何框架、库，无需编译，用最原生的 JavaScript 造轮子。</p>
         </div>
-        <a href="/2018/07/19/css/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/" class="read-more">Read More</a>
+        <a href="/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/" class="read-more">Read More</a>
     
 
 </div>
@@ -233,7 +264,7 @@
     <div class="post-header index">
         <h1 class="title">
             <a href="/2017/12/24/algorithm/Tree-Structure/">
-                树形结构的生成
+                树形结构
             </a>
         </h1>
         <div class="post-info">
@@ -251,8 +282,8 @@
 
     
         <div class="content">
-            <p>后端返回扁平的树形数据，前端需将其处理为一个树形结构，这是在前后端交互中是非常常见的一种场景。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">56</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">81</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">74</span>, <span class="attr">parentId</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">76</span>, <span class="attr">parentId</span>: <span class="number">80</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">63</span>, <span class="attr">parentId</span>: <span class="number">62</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">80</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">87</span>, <span class="attr">parentId</span>: <span class="number">86</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">62</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">86</span>, <span class="attr">parentId</span>: <span class="number">74</span> &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+            <p>树形结构是一种层次嵌套的结构。它提供了一种有序的组织方式，能够方便地表示层次关系和结构化数据，在文件系统、数据库索引、DOM 等场景中被广泛应用。树形结构的遍历、搜索和操作等算法也是计算机中常见的问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tree = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">74</span>,</span><br><span class="line">    <span class="string">&quot;parentId&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="string">&quot;children&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;id&quot;</span>: <span class="number">62</span>,</span><br><span class="line">        <span class="string">&quot;parentId&quot;</span>: <span class="number">74</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;id&quot;</span>: <span class="number">86</span>,</span><br><span class="line">        <span class="string">&quot;parentId&quot;</span>: <span class="number">74</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
         </div>
         <a href="/2017/12/24/algorithm/Tree-Structure/" class="read-more">Read More</a>
     
@@ -333,38 +364,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/04/02/javascript/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-                异步编程
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-04-02</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/JavaScript/">JavaScript</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>异步、事件驱动使 JavaScript 这个单线程语言在不阻塞的情况下可以并行的执行多任务，这带来了性能的极大提升，然而异步风格也给流程控制，错误处理带来了更多的麻烦。</p>
-<p>处理异步的 5 种方式，Callback、Event&#x2F;发布订阅、Promise、Generator、Async&#x2F;Await。</p>
-        </div>
-        <a href="/2017/04/02/javascript/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2017/02/01/foundation/Character-Encoding/">
                 字符编码
             </a>
@@ -427,8 +426,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/12/02/javascript/Currying/">
-                科里化函数
+            <a href="/2016/12/02/javascript/Functional-Programming/">
+                函数式编程
             </a>
         </h1>
         <div class="post-info">
@@ -446,10 +445,10 @@
 
     
         <div class="content">
-            <p>科里话的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。</p>
+            <h2 id="科里化函数"><a href="#科里化函数" class="headerlink" title="科里化函数"></a>科里化函数</h2><p>科里化的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2016/12/02/javascript/Currying/" class="read-more">Read More</a>
+        <a href="/2016/12/02/javascript/Functional-Programming/" class="read-more">Read More</a>
     
 
 </div>
@@ -497,7 +496,7 @@
         
         <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         

@@ -159,18 +159,18 @@
         
 
         <!-- Post Content -->
-        <h2 id="HTML4-x2F-XHTML-嵌套规则"><a href="#HTML4-x2F-XHTML-嵌套规则" class="headerlink" title="HTML4&#x2F;XHTML 嵌套规则"></a>HTML4&#x2F;XHTML 嵌套规则</h2><p>在 HTML4&#x2F;XHTML DTD 中，将元素的分为 inline level (行内级) 和 block level (块级) 两类。</p>
+        <h2 id="HTML4-x2F-XHTML-嵌套规则"><a href="#HTML4-x2F-XHTML-嵌套规则" class="headerlink" title="HTML4&#x2F;XHTML 嵌套规则"></a>HTML4&#x2F;XHTML 嵌套规则</h2><h3 id="Inline-Level-和-Block-Level"><a href="#Inline-Level-和-Block-Level" class="headerlink" title="Inline Level 和 Block Level"></a>Inline Level 和 Block Level</h3><p>在 HTML4&#x2F;XHTML DTD 中，将元素的分为 inline level (行内级) 和 block level (块级) 两类。</p>
 <ul>
 <li>inline level</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">span、a、dfn、abbr、cite、img、label、q、u、em、i、strong、b、big、small、sub、sup、表单类；计算机输出类(tt、kbd、code、var、samp)</span><br></pre></td></tr></table></figure>
 
+<span id="more"></span>
+
 <ul>
 <li>block level</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div、h1-h6、hr、ul、ol、dl、li、fieldset、address、from、table、html5 中新增的结构化语义标签、pre、blockquote、dir、menu</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
 
 <p>注：HTML 中的 inline level、block level 与 CSS 中的 inline、block 意义不一样，HTML 强调的是语义和结构，而 CSS 强调的是样式。要不然无法解释：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123;<span class="attribute">display</span>: block;&#125;</span><br></pre></td></tr></table></figure>
@@ -188,19 +188,44 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 错 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">ol</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ol</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 错 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="HTML5-嵌套规则"><a href="#HTML5-嵌套规则" class="headerlink" title="HTML5 嵌套规则"></a>HTML5 嵌套规则</h2><p>在 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/dom.html#element-definitions">HTML5 规范</a>中，已经不按 inline level 和 block level 来区分元素类型了，元素按 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content">Categories</a> 分类，元素的 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/dom.html#content-models">Content Model</a> 规定了合法的元素内容类型。</p>
-<ul>
-<li>Categories</li>
+<h3 id="Categories"><a href="#Categories" class="headerlink" title="Categories"></a>Categories</h3><ul>
+<li>Metadata 元数据信息元素</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* Metadata 元数据信息元素 base, link, meta, noscript, script, style, template, title</span><br><span class="line">* Flow 流式元素，所有可以放在 body 标签内，构成文档内容的元素均属于 Flow 元素。除 base, link, meta, style, title 等只能放在head 标签内的元素外，剩下的均属 Flow 元素</span><br><span class="line">* Sectioning 结构元素 article, aside, nav, section</span><br><span class="line">* Heading 标题元素 h1, h2, h3, h4, h5, h6</span><br><span class="line">* Phrasing 短语元素，所有可以放在 p 标签内，构成段落内容的元素均属于 Phrasing 元素。HTML5 中的 Phrasing 元素大致就是 HTML4 中所定义的 inline level 元素。另外，所有 Phrasing 元素均属于 Flow 元素</span><br><span class="line">* Embedded 嵌入资源元素 audio, video, img, canvas, svg, iframe, embed, object, math</span><br><span class="line">* Interactive 交互元素 a, audio, video, button, details, embed, iframe, img, input, label, object, select, textarea</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base, link, meta, noscript, script, style, template, title</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>Content Model</li>
+<li>Flow 流式元素</li>
 </ul>
-<p>各元素都有自己的 Content Model，比如 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a 元素</a>的 Content Model 为 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/dom.html#transparent-content-models">transparent</a>，这类元素本身内部可以有任何类型的内容，是否合法要看其父元素的 Content Model 和其内容的 Categories，还有 p 元素，其内容模型为 Phrasing, 这意味着 p 元素只接受 Phrasing 元素为子元素（p 自身 Categories 类型为 Flow content，因而 p 不能嵌套 p）。</p>
+<p>所有可以放在 <code>body</code> 标签内，构成文档内容的元素均属于 Flow 元素，即，除了 <code>base</code>, <code>link</code>, <code>meta</code>, <code>style</code>, <code>title</code> 等只能放在 <code>head</code> 标签内的元素外，剩下的均属 Flow 元素。</p>
+<ul>
+<li>Sectioning 结构元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">article, aside, nav, section</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Heading 标题元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1, h2, h3, h4, h5, h6</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Phrasing 短语元素</li>
+</ul>
+<p>所有可以放在 <code>p</code> 标签内，构成段落内容的元素均属于 Phrasing 元素。HTML5 中的 Phrasing 元素大致就是 HTML4 中所定义的 inline level 元素。另外，所有 Phrasing 元素均属于 Flow 元素。</p>
+<ul>
+<li>Embedded 嵌入资源元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">audio, video, img, canvas, svg, iframe, embed, object, math</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Interactive 交互元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, audio, video, button, details, embed, iframe, img, input, label, object, select, textarea</span><br></pre></td></tr></table></figure>
+
+<h3 id="Content-Model"><a href="#Content-Model" class="headerlink" title="Content Model"></a>Content Model</h3><p>各元素都有自己的 Content Model，比如 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a 元素</a>的 Content Model 为 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/dom.html#transparent-content-models">transparent</a>，这类元素本身内部可以有任何类型的内容，是否合法要看其父元素的 Content Model 和其内容的 Categories，还有 <code>p</code> 元素，其内容模型为 Phrasing, 这意味着 <code>p</code> 元素只接受 Phrasing 元素为子元素（<code>p</code> 自身 Categories 类型为 Flow content，因而 <code>p</code> 不能嵌套 <code>p</code>）。</p>
+<p>下面例子中的嵌套都是不合法的。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- p&gt;ins&gt;a&gt;div 错误 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">ins</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">ins</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ul&gt;li&gt;h4&gt;a&gt;div 错误 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">h4</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h4</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>上面两个例子都是不合法的。</p>
-<p><a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p 元素</a>的 content model 是 phrasing content，<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a> 本身属于 phrasing content 故可以嵌套；ins 元素的 content model 是 transparent，故在此时里面是否能有 a 需检查 p&gt;a 的合法性；a 元素也属于 phrasing content，故 p&gt;ins&gt;a 合法；a 元素的 content model 也是 transparent，故此时里面包含 div 的合法性向上传递，检查 ins&gt;div 又向上传递，变成检查 p&gt;div。所以，div 不属于 phrasing content，这个嵌套是不合法。</p>
+<p><a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p 元素</a>的 content model 是 phrasing content，<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a> 本身属于 phrasing content 故可以嵌套；<code>ins</code> 元素的 content model 是 transparent，故在此时里面是否能有 <code>a</code> 需检查 <code>p&gt;a</code> 的合法性；<code>a</code> 元素也属于 phrasing content，故 <code>p&gt;ins&gt;a</code> 合法；<code>a</code> 元素的 content model 也是 transparent，故此时里面包含 <code>div</code> 的合法性向上传递，检查 <code>ins&gt;div</code> 又向上传递，变成检查 <code>p&gt;div</code>。所以，<code>div</code> 不属于 phrasing content，这个嵌套是不合法。</p>
 
     </div>
 
@@ -239,7 +264,7 @@
         
         <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         

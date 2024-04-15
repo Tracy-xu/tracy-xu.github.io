@@ -196,7 +196,46 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">angle2rad</span>(<span class="params">a</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a * (<span class="title class_">Math</span>.<span class="property">PI</span> / <span class="number">180</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> h = <span class="title class_">Math</span>.<span class="title function_">tan</span>(<span class="title function_">angle2rad</span>(<span class="number">1</span> / (<span class="number">2</span> * <span class="number">60</span>))) * <span class="number">2</span> * <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> ppi = <span class="number">1</span> / h;  <span class="comment">// 343</span></span><br></pre></td></tr></table></figure>
 
 <p>Retina Display 是 Apple 的商标，在安卓手机中没有此叫法，安卓手机中，屏幕根据 PPI 来划分为不同的等级。PPI 在 120 - 160 之间的手机被归为低密度手机，160 - 240 被归为中密度（Medium），240 - 320 被归为高密度（High），320 - 480 以上被归为超高密度，480 - 640 被归为超超高密度，640 以上被称为超超超高密度。</p>
-<p>| ldpi | mdpi | hdpi | xhdpi | xxhdpi | xxxhdpi |<br>| —|—|—|—|— | — | — |<br>| 密度分界 | 120 | 160 | 240 | 320 | 480 | 640 |<br>| 常见屏幕分辨率 | 240 * 320 | 320 * 480 | 480 * 850 | 640 * 960 | 1080 * 1920 | 1440 * 2560 |<br>| 默认缩放比例 | 0.75 | 1.0 | 1.5 | 2.0 | 3 | 4 |</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ldpi</th>
+<th>mdpi</th>
+<th>hdpi</th>
+<th>xhdpi</th>
+<th>xxhdpi</th>
+<th>xxxhdpi</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>密度分界</td>
+<td>120</td>
+<td>160</td>
+<td>240</td>
+<td>320</td>
+<td>480</td>
+<td>640</td>
+</tr>
+<tr>
+<td>常见屏幕分辨率</td>
+<td>240 * 320</td>
+<td>320 * 480</td>
+<td>480 * 850</td>
+<td>640 * 960</td>
+<td>1080 * 1920</td>
+<td>1440 * 2560</td>
+</tr>
+<tr>
+<td>默认缩放比例</td>
+<td>0.75</td>
+<td>1.0</td>
+<td>1.5</td>
+<td>2.0</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody></table>
 <p>附：点密度 DPI (Dots Per Inch) 指的是每英寸包括的点数。这里的点是一个抽象的单位，它可以是屏幕像素点，图片像素点也可以是打印机的墨点，当 DPI 来描述图片和屏幕时，等价于 PPI，描述打印机时，表示打印机每英寸可以打印的点数，打印机的 DPI 越高，打印图像的精细程度就越高，同时这也会消耗更多的墨点和时间。另外，PPI&#x2F;DPI 有时候也被称为分辨率，比如，打印分辨率、扫描分辨率。</p>
 <h2 id="设备独立像素"><a href="#设备独立像素" class="headerlink" title="设备独立像素"></a>设备独立像素</h2><p>设备独立像素（Density-Independent Pixel）又叫逻辑像素、密度无关像素，简称为 dips，单位为 dp，可以认为是计算机坐标系统中得一个点，这个点代表一个可以由程序使用的虚拟像素，然后由相关系统按设备像素比转换为物理像素在屏幕上显示出来。Web 的 px、Android 的 dp、IOS 的 pt，都是对 dp 的实现，<code>1px = 1dp = 1pt</code>。</p>
 <p>之所以使用抽象的设备独立像素而不直接使用设备像素，目的是为了适配，图形系统会自动将应用程序的抽象像素转换为适合于特定设备的物理像素。</p>
@@ -247,7 +286,7 @@
         
         <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="JavaScript 类型系统"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>JavaScript 类型系统 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/07/26/javascript/JavaScript-Type-System/">
+                JavaScript 类型系统
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-07-26</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/JavaScript/">JavaScript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>类型动静态强调的是静态类型检测，类型强弱强调的是隐式类型转换，JavaScript 是一门动态类型（dynamically typed）且弱类型（weakly typed）语言，既不对类型进行静态检测，又允许隐式类型转换。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="number">42</span>; <span class="comment">// foo 是 number</span></span><br><span class="line">foo = <span class="string">&#x27;hello&#x27;</span>; <span class="comment">// foo 是 string</span></span><br><span class="line">foo = <span class="literal">true</span>;  <span class="comment">// foo 是 boolean</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> + <span class="string">&#x27;&#x27;</span>; <span class="comment">// number 转成了 string</span></span><br><span class="line">!!<span class="number">1</span>; <span class="comment">// number 转成了 boolean</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JavaScript 中一共有 8 种内置（Built-In）数据类型，其中包括 7 种原始类型和 1 种对象类型。</p>
+<h3 id="原始类型（Primitive-types）"><a href="#原始类型（Primitive-types）" class="headerlink" title="原始类型（Primitive types）"></a>原始类型（Primitive types）</h3><p>原始类型也被称为基本类型，表示不能再细分下去的类型，具有原子性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* string: 一串表示文本值的字符序列</span><br><span class="line">* number: 整数或浮点数，还有一些特殊值（-Infinity、+Infinity、NaN）</span><br><span class="line">* boolean: 包含两个值 true 和 false</span><br><span class="line">* null: 只包含一个值 null</span><br><span class="line">* undefined: 只包含一个值 undefined</span><br><span class="line">* symbol: 一种实例是唯一且不可改变的数据类型</span><br><span class="line">* bigInt</span><br></pre></td></tr></table></figure>
+
+<p>按内存分配方式，由于这些类型被存储在栈内存中，也被称为值类型。又由于这些类型的值是不可变的，又被称为不可变类型，原始类型是不可变的，没有任何方法可以直接改变其值，只会生成新的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">foo.<span class="title function_">substr</span>(<span class="number">1</span>);</span><br><span class="line">foo.<span class="title function_">toLowerCase</span>(<span class="number">1</span>);</span><br><span class="line">foo[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo);  <span class="comment">// hello</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 栈内存原始空间中的值并没有改变，只是开辟了一块新空间，将变量名指向新的空间</span></span><br><span class="line">foo += <span class="string">&#x27;world&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+
+<p>内存模型图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack（栈）         |  heap（堆）</span><br><span class="line">---------------------------------</span><br><span class="line">&#x27;hello&#x27;            |</span><br><span class="line">foo &#x27;hello world&#x27;  |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Number</li>
+</ul>
+<p>JavaScrip 使用 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">IEEE 754 标准</a>的双精度（double） 64 位（64 比特 bit）浮点数来存储数字。该标准定义了浮点数的格式，最大最小范围，以及超过范围的舍入方式等规范。JavaScript 中的 <code>Number</code> 类型的实际上是双精度 64 位的浮点型。</p>
+<p>这种表示方式使用 64 位二进制格式，共 8 个字节，其中，63 位存储符号（正负），52 到 62 存储指数，0 到 51 存储尾数（数字）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s | eee eeeeeeee | ffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff</span><br><span class="line">1        11                                  52  </span><br></pre></td></tr></table></figure>
+
+<p>一个数字的范围只能在 <code>-(2^53-1)</code> 至 <code>2^53-1</code>（<code>-9007199254740991</code> ~ <code>9007199254740991</code>，即二进制 <code>0b五十三个1</code>）之间，如果十进制转为二进制，有限或无限超出了其表示范围，则会被舍入。这也是导致小数和大整数出现精度丢失的原因。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 小数</span></span><br><span class="line"><span class="comment">// 加</span></span><br><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> <span class="comment">// 0.30000000000000004</span></span><br><span class="line"><span class="number">2.22</span> + <span class="number">0.1</span> <span class="comment">// 2.3200000000000003</span></span><br><span class="line"><span class="comment">// 减</span></span><br><span class="line"><span class="number">0.3</span> - <span class="number">0.2</span> <span class="comment">// 0.09999999999999998</span></span><br><span class="line"><span class="number">1.5</span> - <span class="number">1.2</span> <span class="comment">// 0.30000000000000004</span></span><br><span class="line"><span class="comment">// 乘</span></span><br><span class="line"><span class="number">19.9</span> * <span class="number">100</span> <span class="comment">// 1989.9999999999998，19.9 * 10 * 10 结果 位 1990</span></span><br><span class="line"><span class="number">1306377.64</span> * <span class="number">100</span> <span class="comment">// 130637763.99999999</span></span><br><span class="line"><span class="number">0.7</span> * <span class="number">180</span> <span class="comment">// 125.99999999999999</span></span><br><span class="line"><span class="comment">// 除</span></span><br><span class="line"><span class="number">0.3</span> / <span class="number">0.1</span> <span class="comment">// 2.9999999999999996</span></span><br><span class="line"><span class="number">0.69</span> / <span class="number">10</span> <span class="comment">// 0.06899999999999999</span></span><br><span class="line"><span class="comment">// toFixed 不会四舍五入</span></span><br><span class="line"><span class="number">1.335</span>.<span class="title function_">toFixed</span>(<span class="number">2</span>) <span class="comment">// 1.33</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 大整数</span></span><br><span class="line"><span class="comment">// 加</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> + <span class="number">1</span> === <span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> + <span class="number">2</span> <span class="comment">// true</span></span><br><span class="line"><span class="comment">// 乘</span></span><br><span class="line"><span class="number">99999999999999999</span> * <span class="number">1</span> <span class="comment">// 100000000000000000</span></span><br><span class="line"><span class="comment">// 比较</span></span><br><span class="line"><span class="number">1000000000000000128</span> === <span class="number">1000000000000000129</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">9999999999999999</span> + <span class="number">1</span> === <span class="number">9999999999999999</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>以 <code>0.1 + 0.2</code> 问题为例，十进制小数 <code>0.1</code> 和 <code>0.2</code> 正好被转成无限循环的二进制小数，为了满足规范，做舍入，最终导致精度损失。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.1 =&gt; 0.0001 1001 1001 1001…（无限循环小数）</span><br><span class="line">0.2 =&gt; 0.0011 0011 0011 0011…（无限循环小数）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>/<span class="number">2</span>).<span class="title function_">toString</span>(<span class="number">2</span>) <span class="comment">// 0.1</span></span><br><span class="line">(<span class="number">1</span>/<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">2</span>) <span class="comment">// 0.0001100110011001100110011001100110011001100110011001101...</span></span><br></pre></td></tr></table></figure>
+
+<p>所有采用 IEEE-754 浮点数标准的语言都存在这个问题，只不过 JavaScript 是一门动态类型的语言，没有静态语音那样对浮点数有严格的数据类型（比如 Java 中的 <code>flot</code>、<code>double</code>），精度误差问题显得格外突出。</p>
+<p>注：IEEE-754 中还有单精度浮点数标准。</p>
+<h3 id="对象类型（Object-types）"><a href="#对象类型（Object-types）" class="headerlink" title="对象类型（Object types）"></a>对象类型（Object types）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* object</span><br></pre></td></tr></table></figure>
+
+<p>声明一个对象通常有以下几种方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;&#125;; <span class="comment">// 字面量形式，推荐</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> <span class="title class_">Object</span>(); <span class="comment">// new 调用</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="title class_">Object</span>(); <span class="comment">// 与 new 调用相同</span></span><br><span class="line">cosnt foo = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>); <span class="comment">// 空对象</span></span><br></pre></td></tr></table></figure>
+
+<p>由于 <code>Array</code>、<code>String</code>、<code>Number</code>、<code>Boolean</code>、<code>Function</code>、<code>Date</code>、<code>RegExp</code>… 这些对象都是 <code>Object</code> 对象的子类，所以全部归类为 <code>object</code> 类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> === <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>按内存分配方式，由于对象类型被存储在堆内存中，也被称为引用类型。又由于值是可变的，又被称为可变类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;</span><br><span class="line">  <span class="attr">msg</span>: <span class="string">&#x27;hello&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> bar = foo;</span><br><span class="line">foo.<span class="property">msg</span> = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line">bar; <span class="comment">// &#123;msg: &#x27;hello world&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">foo[foo.<span class="property">length</span>] = foo.<span class="property">length</span> + <span class="number">1</span>; <span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line">foo.<span class="title function_">push</span>(<span class="number">5</span>); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br><span class="line">foo.<span class="property">length</span> = <span class="number">0</span>; <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+
+<p>内存模型图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack（栈）      |  heap（堆）</span><br><span class="line">---------------------------------</span><br><span class="line">foo 0x01 ---&gt;   |  0x01 hello world</span><br><span class="line">bar 0x01 ---&gt;   |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>包装对象</li>
+</ul>
+<p>基本数据类型调用对象方法或访问属性时，，。在使用完这些方法和属性后，包装对象会被销毁，</p>
+<p>包装对象即原始类型的“包装对象（Wapper object）”。<code>string</code>、<code>number</code>、<code>boolean</code> 这三种原始类型值在引用属性和方法时，JavaScript 引擎会创建一个临时包装对象 <code>new String()</code>、<code>new Number()</code> 和 <code>new Boolean()</code>，该对象具有对应的方法和属性，一旦引用结束，便会销毁这个临时包装对象，返回原始的基本数据类型。这三个对象是引擎内部用的，不要在代码中使用。</p>
+<p>不是所有的原始类型都有包装对象，<code>null</code> 和 <code>undefined</code> 就没有包装对象，访问它们的属性会报类型错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = <span class="number">42</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(n.<span class="title function_">toFixed</span>(<span class="number">2</span>)) <span class="comment">// 作为基本类型的 n 没有 toFixed 方法，引擎会创建临时包装对象处理 toFixed 调用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let temp = new Number(42)</span></span><br><span class="line"><span class="comment">// value = temp.toFixed(2)</span></span><br><span class="line"><span class="comment">// 删除 temp</span></span><br><span class="line"><span class="comment">// 返回 value</span></span><br></pre></td></tr></table></figure>
+
+<p>不要因为原始类型可以转化为对应的包装对象，而得出 “JavaScript 中一切皆对象” 这一错误的论断，原始类型和原始类型的包装对象是两个东西。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;seymoe&#x27;</span>; <span class="comment">// &#x27;string&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&#x27;seymoe&#x27;</span>); <span class="comment">// &#x27;object&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="title class_">String</span>(<span class="string">&#x27;seymoe&#x27;</span>); <span class="comment">// &#x27;string&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">foo.<span class="property">bar</span> = <span class="string">&#x27;word&#x27;</span>; <span class="comment">// foo 是原始类型，添加属性是无效的</span></span><br><span class="line">foo.<span class="property">bar</span>; <span class="comment">// 原始类型就是原始类型，如果万物皆对象这里不会返回 undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>注：<code>Number</code>、<code>String</code> 和 <code>Boolean</code> 只有作为构造函数调用（加 <code>new</code> 调用），才会返回包装对象，如果当作普通函数调用，返回的是字面量，这常用于将任意类型的值转为数值、字符串和布尔值。</p>
+<h2 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h2><h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p><code>typeof</code> 操作符被用来检测数据的类型，其返回一个字符串，代表操作数的类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> <span class="comment">// &#x27;boolean&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">1337</span> <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;foo&#x27;</span> <span class="comment">// &#x27;string&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; <span class="comment">// &#x27;object&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">parseInt</span> <span class="comment">// &#x27;function&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="title class_">Symbol</span>() <span class="comment">// &#x27;symbol&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">127n</span> <span class="comment">// &#x27;bigint&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>typeof</code> 能检测除 <code>null</code> 和值为 <code>function</code> 的 <code>object</code> 类型外的所有类型。<code>null</code> 由于历史设计失误，<code>typeof</code> 返回了 <code>object</code>（如果从 <code>Java</code> 的角度所有的值皆对象，<code>null</code> 是 Object 的零值，也能自洽），而 <code>function</code> 由于很特殊（构造函数）<code>typeof</code> 特殊处理返回了 <code>function</code>。</p>
+<p><code>typeof</code> 不能检测除 <code>function</code> 外的 <code>object</code> 子类型，如果想要检测子类型，则需要使用 <code>instanceof</code> 或 <code>Object.prototype.toString</code> 方法。</p>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p><code>instanceof</code> 运算符用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="title class_">Array</span> <span class="comment">// true</span></span><br><span class="line">(&#123;&#125;) <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">// true</span></span><br><span class="line">(<span class="function">()=&gt;</span>&#123;&#125;) <span class="keyword">instanceof</span> <span class="title class_">Function</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>instanceof</code> 用来检测类型有缺陷，首先它会检测整个原型链，另外，它不能在 iframe 中跨页面检测，因为不在同一个 <code>window</code> 对象下，原型链无法关联。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="title class_">Object</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>[].__proto__ === Array.prototype</code>，而又 <code>Array</code> 属于 <code>Object</code> 子类型，即 <code>Array.prototype.__proto__ === Object.prototype</code>，最终 <code>[].__proto__.__proto__ === Object.prototype</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">frames</span>[<span class="number">0</span>].<span class="title function_">foo</span>(arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">// iframe</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data <span class="keyword">instanceof</span> <span class="title class_">Array</span>);  <span class="comment">// false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例化 <code>data</code> 时的 <code>Array</code> 跟 iframe 里的 <code>Array</code> 属于不同的 <code>window</code> 对象下，不是同一个类。</p>
+<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h3><p>终极解决方案，不但能检测基本类型，还能检测 object 子类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="string">&#x27;hello&#x27;</span>); <span class="comment">// &#x27;[object String]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="number">1</span>); <span class="comment">// &#x27;[object Number]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">true</span>); <span class="comment">// &#x27;[object Boolean]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">null</span>); <span class="comment">// &#x27;[object Null]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;[object Undefined]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="title class_">Symbol</span>()); <span class="comment">// &#x27;[object Symbol]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="title class_">BigInt</span>(<span class="number">2</span>)) <span class="comment">// &quot;[object BigInt]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(&#123;&#125;); <span class="comment">// &#x27;[object Object]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>([]); <span class="comment">// &#x27;[object Array]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="function">() =&gt;</span> &#123;&#125;); <span class="comment">// &#x27;[object Function]&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()); <span class="comment">// &#x27;[object Date]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">RegExp</span>());</span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="title class_">Math</span>); <span class="comment">// &#x27;[object Math]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Set</span>()); <span class="comment">// &#x27;[object Set]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">WeakSet</span>()); <span class="comment">// &#x27;[object WeakSet]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Map</span>()); <span class="comment">// &#x27;[object Map]&#x27;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">WeakMap</span>()); <span class="comment">// &#x27;[object WeakMap]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>将值从一种类型转换为另一种类型被称为类型转换，JavaScript 中类型转换都属于强制类型转换，其又分为隐式强制类型转换和显式强制类型转换。参考 <a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/types-grammar/ch4.md">《You Dont Know JS》</a>。</p>
+<h3 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h3><p>JavaScript 中常见的隐式类型转换有：</p>
+<ul>
+<li><code>+</code> 运算符</li>
+</ul>
+<p><code>+</code> 运算符中其他所有类型会被隐式转换（<code>toString</code>）为字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;1&#x27;</span> + <span class="number">1</span> <span class="comment">// 数字会隐式转换为字符串</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>逻辑运算符、条件语句</li>
+</ul>
+<p>逻辑运算符、条件语句中其他所有类型都会被隐式转换布尔值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&amp;&amp;、||</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;1&#x27;</span>) &#123;&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">null</span>) &#123;&#125;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>算术运算、比较运算</li>
+</ul>
+<p>在算术运算符 <code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 和比较运算符 <code>&lt;</code>、<code>&gt;</code>、<code>==</code> 中布尔值会隐式转换为数字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span> + <span class="literal">true</span> <span class="comment">// 2</span></span><br><span class="line"><span class="literal">true</span> &gt; <span class="literal">false</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span> + <span class="number">0</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="string">&#x27;1&#x27;</span> + [<span class="string">&#x27;hello&#x27;</span>, <span class="number">1</span>]; <span class="comment">// 1hello,1</span></span><br><span class="line">&#123;&#125; + []; <span class="comment">// 0</span></span><br><span class="line">[] + &#123;&#125;; <span class="comment">// [object Object]</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="string">&#x27;2&#x27;</span> + &#123;&#125;; <span class="comment">// 2[object Object]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="string">&#x27;2&#x27;</span> + obj; <span class="comment">// 2hello</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span> == <span class="number">1</span>;</span><br><span class="line"><span class="literal">false</span> === <span class="number">0</span>; <span class="comment">// false</span></span><br><span class="line"><span class="literal">false</span> + <span class="literal">false</span> === <span class="number">0</span>; <span class="comment">// true</span></span><br><span class="line">[] == ![];</span><br><span class="line">[<span class="literal">undefined</span>] == <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h3><ul>
+<li>toString</li>
+</ul>
+<p>基础类型强制转为 string 类型在规范中明确说明了，也比较符合直觉。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="number">1</span>); <span class="comment">// &quot;1&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">true</span>); <span class="comment">// &quot;true&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &quot;null&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &quot;undefined&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="title class_">Symbol</span>(<span class="string">&#x27;hello&#x27;</span>)); <span class="comment">// &quot;Symbol(hello)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>object 类型在强制转换为 string 类型的时候，调用的是该类型原型上的 <code>toString</code> 方法，而 object 的各个子类型基本都重写了 <code>toString</code> 方法，所以在进行 <code>toString</code> 操作的时候表现有差异。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;); <span class="comment">// &quot;[object Object]&quot;</span></span><br><span class="line"><span class="title class_">String</span>([<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// &quot;1,2&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="regexp">/reg/g</span>); <span class="comment">// &quot;/reg/g&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">arr.<span class="title function_">toString</span>(); <span class="comment">// &quot;1,2&quot;</span></span><br><span class="line"><span class="title class_">String</span>(arr); <span class="comment">// &quot;1,2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重写toString</span></span><br><span class="line">arr.<span class="property">toString</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">String</span>(arr); <span class="comment">// &quot;1/2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>toNumber</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ToNumber</span>(<span class="string">&#x27;42&#x27;</span>); <span class="comment">// 42</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="string">&#x27;123px&#x27;</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="string">&#x27;&#x27;</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="string">&#x27; &#x27;</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="literal">true</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="literal">false</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="literal">null</span>);  <span class="comment">// 0</span></span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="literal">undefined</span>); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

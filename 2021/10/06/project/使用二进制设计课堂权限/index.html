@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="使用二进制设计课堂权限"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>使用二进制设计课堂权限 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/">
+                使用二进制设计课堂权限
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-10-06</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/项目设计/">项目设计</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>使用二进制能很方便的表达和计算（组合、切换和校验）权限，以 Linux 文件权限为例。</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>字母表示</th>
+<th>数字表示</th>
+<th>二进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读</td>
+<td>r</td>
+<td>4</td>
+<td>0b100</td>
+</tr>
+<tr>
+<td>写</td>
+<td>w</td>
+<td>2</td>
+<td>0b010</td>
+</tr>
+<tr>
+<td>执行</td>
+<td>x</td>
+<td>1</td>
+<td>0b001</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<p>权限之间可组合：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 读写 = <span class="number">0b100</span> | <span class="number">0b010</span> <span class="comment">// 6 即 0b110</span></span><br><span class="line"><span class="keyword">const</span> 读写执行 = <span class="number">0b100</span> | <span class="number">0b010</span> | <span class="number">0b001</span> <span class="comment">// 7 即 0b111</span></span><br></pre></td></tr></table></figure>
+
+<p>总的组合结果共 <code>C(2,1) * C(2,1) * C(2,1)</code>，8 种，无权限 <code>0</code> (<code>---</code>)，读权限 <code>4</code> (<code>r--</code>)，写权限 <code>2</code> (<code>-w-</code>)，执行权限 <code>1</code> (<code>--x</code>)，读和写权限 <code>6</code> (<code>rw-</code>)，读和执行权限 <code>5</code> (<code>r-x</code>)，写和执行权限 <code>3</code> (<code>-wx</code>)，读、写和执行权限 <code>7</code> (<code>rwx</code>)。</p>
+<h2 id="二进制运算符"><a href="#二进制运算符" class="headerlink" title="二进制运算符"></a>二进制运算符</h2><p>二进制位运算符包括 <code>|</code>（按位或 OR）、<code>&amp;</code>（按位与 AND）、<code>^</code>（按位异或 XOR）、<code>~</code>（按位非，取反 NOT）、<code>&lt;&lt;</code>（左移 Left shift）、<code>&gt;&gt;</code>（有符号右移）、<code>&gt;&gt;&gt;</code>（无符号右移）。</p>
+<p>JavaScript 位运算是基于 32 位整数的，会先把 64 位浮点数转换为 32 位整数计算，计算完成后再将 32 位转为 64 位。</p>
+<ul>
+<li><code>|</code> 运算符</li>
+</ul>
+<p><code>|</code> 运算将两个操作数的每个对应位进行或运算，结果中，两个操作数对应位上至少有一个为 <code>1</code> 时才为 <code>1</code>，否则为 <code>0</code>（相当于求并），即 <code>1 | 1 = 1</code>、<code>0 | 0 = 0</code>、<code>0 | 1 = 1</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  1100</span><br><span class="line">| 0010</span><br><span class="line">-------</span><br><span class="line">  1110</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&amp;</code> 运算符</li>
+</ul>
+<p><code>&amp;</code> 运算将两个操作数的每个对应位进行与运算，结果中，两个操作数对应位上都为 <code>1</code> 时才为 <code>1</code>，否则为 <code>0</code>，即 <code>1 &amp; 1 = 1</code>、<code>0 &amp; 0 = 0</code>、<code>0 &amp; 1 = 0</code>。以操作数 <code>0010</code> 为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  xxyx</span><br><span class="line">&amp; 0010</span><br><span class="line">-------</span><br><span class="line">  00a0</span><br></pre></td></tr></table></figure>
+
+<p>上述例子中 <code>x</code> 位为任何数，<code>&amp;</code> 运算的结果都是 <code>0</code>，最终结果只受 <code>y</code> 位影响，当 <code>y = 0</code> 时，结果为 <code>0000</code>，<code>y = 1</code> 时，结果为 <code>0010</code>。即如果 <code>a &amp; b === b</code> 为 <code>true</code>，则说明 <code>a</code> 包含 <code>b</code>。</p>
+<ul>
+<li><code>^</code> 运算符</li>
+</ul>
+<p><code>^</code> 运算将两个操作数的每个对应位进行异或运算，结果中，两个操作数对应位上不相同时才为 <code>1</code>，相同时为 <code>0</code>。利用这个特点，可实现 Toggle 计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  0001</span><br><span class="line">^ 0010</span><br><span class="line">-------</span><br><span class="line">  0011</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  0011</span><br><span class="line">^ 0010</span><br><span class="line">-------</span><br><span class="line">  0001</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>~</code> 运算符</li>
+</ul>
+<p><code>~</code> 将操作数的每一位取反。有点类似于反码，但不同的是，<code>~</code> 会将符号位也取反，而取反码，符号位不变。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1010</span><br><span class="line">-------</span><br><span class="line">0101</span><br></pre></td></tr></table></figure>
+
+<p>以 <code>~10</code> (<code>~0b1010</code>) 为例，其 32 位二进制为 <code>00000000000000000000000000001010</code> (正数的补码就是原码)，<code>~</code> 取反得到 <code>11111111111111111111111111110101</code>，由于符号位是 <code>1</code>，所以这是一个负数，而计算机中存储负数是以补码的方式来存储的，所以对补码求原码再转成十进制即可，对补码求原码就是使用此补码再求一遍补码，也就是先取反码再补 <code>1</code>，即 <code>10000000000000000000000000001010</code> 加 <code>1</code>，结果为 <code>10000000000000000000000000001011</code>，即 <code>-11</code>。</p>
+<p><code>~-2</code> 的 32 位二进制为 <code>11111111111111111111111111111110</code>（负数的补码需要反码再加 1），<code>~</code> 取反得到 <code>00000000000000000000000000000001</code>，再将结果转为十进制，即 <code>1</code>。</p>
+<p>任何数字 <code>x</code> 的按位非运算结果都是 <code>-(x + 1)</code>。例如，<code>~-5</code> 运算结果为 <code>4</code>。</p>
+<ul>
+<li><code>&lt;&lt;</code> 左移运算符</li>
+</ul>
+<p>将数值的二进制码向左移动一定的位（&lt; 32），右边用 <code>0</code> 填充。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 1010 &gt;&gt; 1</span><br><span class="line">10100</span><br></pre></td></tr></table></figure>
+
+<p>使用左移还可用来取整。位运算操作的是整数，忽略小数部分，等同于数值的整数部分，左移 0 位，结果还是整数部分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.111</span> &lt;&lt; <span class="number">0</span> <span class="comment">// 1</span></span><br><span class="line"><span class="number">2.344</span> &lt;&lt; <span class="number">0</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&gt;&gt;</code> 右移运算符</li>
+</ul>
+<p>将数值的二进制码向右移动一定的位（&lt;32），遗弃被丢出的位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1010 &gt;&gt; 1</span><br><span class="line"> 101</span><br></pre></td></tr></table></figure>
+
+<h2 id="课堂权限设计"><a href="#课堂权限设计" class="headerlink" title="课堂权限设计"></a>课堂权限设计</h2><p>定义课堂黑板权限为 <code>1</code>、语音权限为 <code>2</code>、视频权限为 <code>4</code>。权限间可组合，同时拥有黑板、语音和视频权限 <code>Board | Audio | Video</code>，即 <code>0111</code>。使用左移 <code>&lt;&lt;</code> 定义权限、使用按位或 <code>|</code> 组合权限、使用按位异或 <code>^</code> 切换权限（添加或删除权限）、使用按位与 <code>&amp;</code> 校验权限。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &lt;&lt; 定义权限</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Permission</span> &#123;</span><br><span class="line">  <span class="title class_">None</span> = <span class="number">0</span>, <span class="comment">// 0000</span></span><br><span class="line">  <span class="title class_">Board</span> = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">// 0001，左移 0 位</span></span><br><span class="line">  <span class="title class_">Audio</span> = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">// 0010，左移 1 位</span></span><br><span class="line">  <span class="title class_">Video</span> = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">// 0100，左移 2 位</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Student</span> = &#123;</span><br><span class="line">  <span class="attr">permission</span>: <span class="title class_">Permission</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">student</span>: <span class="title class_">Student</span> = &#123;</span><br><span class="line">  <span class="attr">permission</span>: <span class="title class_">Permission</span>.<span class="property">Board</span> | <span class="title class_">Permission</span>.<span class="property">Audio</span> <span class="comment">// 0011</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &amp; 校验权限</span></span><br><span class="line"><span class="comment">// 用户的权限和黑板权限做与运算，结果依然等于黑板权限，则说明用户拥有黑板权限</span></span><br><span class="line"><span class="keyword">if</span> ((student.<span class="property">permission</span> &amp; <span class="title class_">Permission</span>.<span class="property">Board</span>) === <span class="title class_">Permission</span>.<span class="property">Board</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;拥有黑板权限&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ((student.<span class="property">permission</span> &amp; <span class="title class_">Permission</span>.<span class="property">Audio</span>) === <span class="title class_">Permission</span>.<span class="property">Audio</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;拥有语音权限&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ((student.<span class="property">permission</span> &amp; <span class="title class_">Permission</span>.<span class="property">Video</span>) === <span class="title class_">Permission</span>.<span class="property">Video</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;拥有视频权限&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ^ 切换权限</span></span><br><span class="line">student.<span class="property">permission</span> = student.<span class="property">permission</span> ^ <span class="title class_">Permission</span>.<span class="property">Audio</span> <span class="comment">// 如果没有语音权限授予语音权限，如果有则删除</span></span><br></pre></td></tr></table></figure>
+
+<p>注：如果只是单纯的添加权限，可以使用按位或 <code>|</code>，单纯的删除权限，则可以先取反，再执行与操作 <code>&amp;(~feature)</code>。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student.<span class="property">permission</span> = student.<span class="property">permission</span> &amp;(~<span class="title class_">Permission</span>.<span class="property">Audio</span>)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

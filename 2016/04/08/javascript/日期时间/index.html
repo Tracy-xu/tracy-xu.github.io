@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="日期时间"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>日期时间 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/04/08/javascript/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/">
+                日期时间
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-04-08</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/JavaScript/">JavaScript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="GMT、UTC、CST"><a href="#GMT、UTC、CST" class="headerlink" title="GMT、UTC、CST"></a>GMT、UTC、CST</h2><ul>
+<li>GMT</li>
+</ul>
+<p>GMT (Greenwich Mean Time) 格林威治标准时间，指位于英国伦敦郊区的皇家格林威治天文台的标准时间，太阳每天经过家格林威治天文台的时间就是中午 12 点，本初子午线被定义为通过那里的经线。然而由于地球的不规则自转，导致 GMT 时间有误差，因此目前已不被当作标准时间使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toGMTString</span>()</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<ul>
+<li>UTC</li>
+</ul>
+<p>UTC (Coordinated Universal Time) 协调世界时间（世界标准时间、世界统一时间），是经过平均太阳时（以格林威治时间 GMT 为准）、地轴运动修正后的新时标以及以「秒」为单位的国际原子时所综合精算而成的时间。UTC 比 GMT 来得更加精准，其误差值必须保持在 0.9 秒以内，若大于 0.9 秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使 UTC 与地球自转周期一致。日常使用中，GMT 与 UTC 的功能与精确度是没有差别的。</p>
+<p>GMT 是根据地球自转计算时间，而 UTC 是根据原子钟来计算时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toUTCString</span>()</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toISOString</span>() <span class="comment">// ISO 格式的 UTC 时间，toJSON 或 JSON.stringify 结果一样</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>地方时</li>
+</ul>
+<p>整个地球分为二十四时区，每个时区都有自己的本地时间，世界各国的本地时间的都是基于 UTC 的，规则为 <code>本地时间 = UTC + 偏移量 (时区差)</code>。比如，北京时间（CST，China Standard Time，古巴的标准时间和美国、澳大利亚中部时间也被称为 CST）采用东八区的地方时（<code>+0800</code>），即 <code>CST = UTC + 8</code>（北京时间是东经 120° 地方的地方时间，不是北京地方东经 116.4° 的时间），而英国伦敦的本地时与 GMT 和 UTC 相同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toLocaleString</span>()</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>() <span class="comment">// RFC 2822 格式的本地时间</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="日期时间的表示标准"><a href="#日期时间的表示标准" class="headerlink" title="日期时间的表示标准"></a>日期时间的表示标准</h2><p>日期时间的表示标准有两种，分别是 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/NOTE-datetime">ISO 8601</a> 和 <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc2822#page-14">RFC 2822</a>。前者是国际标准化组织的日期和时间表示方法，后者是 Internet 标准中关于电子邮件消息格式的标准，其中涵盖了日期时间标准。</p>
+<h3 id="ISO-8601"><a href="#ISO-8601" class="headerlink" title="ISO 8601"></a>ISO 8601</h3><ul>
+<li>格式</li>
+</ul>
+<p>年用 4 位表示，月、日用 2 位表示，时分秒用 2 位表示，时区用 4 位表示（或者 Z）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yyyy 年，比如：2016</span><br><span class="line">yyyy-mm 年月，比如：2016-03</span><br><span class="line">yyyy-mm-dd 年月日，比如：2016-03-08</span><br><span class="line">YYYY-MM-DDThh:mm:ss[.s]TZD 年月日时分秒，比如：2016-03-08T02:54:17.159Z</span><br></pre></td></tr></table></figure>
+
+<p><code>T</code> 用来分割日期和时间，<code>.</code> 后面代表毫秒，<code>TZD</code> time zone designator 表示时区，值可以是 <code>Z</code>（代表 UTC 时间，即 0 时区时间）、<code>+hh:mm</code>、<code>-hh:mm</code>。如果不是 UTC 时间，比如北京时间，就需要表示为 <code>2016-03-25T06:26:01.927+08:00</code>。</p>
+<ul>
+<li>生成和解析</li>
+</ul>
+<p>JavaScript 中使用 <code>toISOString()</code>、<code>toJSON()</code>、<code>JSON.stringify()</code> 来生成 ISO 8601 格式的日期时间，使用 <code>new Date(dateString)</code> 来解析 IOS 8601 格式的时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toISOString</span>() <span class="comment">// 2016-03-08T02:54:17.159Z，注意这是 UTC 时间，不是本地时间</span></span><br><span class="line"><span class="comment">// 解析</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2016-01-25T09:14:10.099+00:00&#x27;</span>) <span class="comment">// ISO 8601 时间格式是 UTC 时间（+00:00 表示 0 时区，跟 Z 一个概念），new Date 会自动处理为本地时区时间</span></span><br></pre></td></tr></table></figure>
+
+<p>如果日期时间格式不带时区，则会以本地时区来解析。</p>
+<p>注意：在 Chrome 中时区也可以用 <code>+0800</code> 这种 RFC2822 形式表示，然而 IE 和老的 iPhone 上不支持这种混搭写法，解析时会提示 <code>NaN</code> 异常，对于这个问题，要么后端返回标准的格式，要么前端纠正。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2016-01-25T09:14:10.099+0000&#x27;</span>).<span class="title function_">getTime</span>() <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 +0000 替换为 +00:00</span></span><br><span class="line"><span class="keyword">const</span> dateString = <span class="string">&#x27;2016-01-25T09:14:10.099+0000&#x27;</span>.<span class="title function_">replace</span>(<span class="regexp">/([+-]\d&#123;2&#125;)(\d&#123;2&#125;)$/</span>, <span class="string">&#x27;$1:$2&#x27;</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(dateString)</span><br></pre></td></tr></table></figure>
+
+<p>注意：数据库应该始终存储 ISO 8601 格式的 UTC 日期时间，而不是本地时间，本地时间的转换交给客户端，以确保在不同地区的用户都能正确地看到适当的本地时间。</p>
+<h3 id="RFC-2822"><a href="#RFC-2822" class="headerlink" title="RFC 2822"></a>RFC 2822</h3><ul>
+<li>格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">YYYY/MM/DD HH:MM:SS TZD(时区用4位数字表示)，比如：2016/03/08 02:54:17+0000</span><br><span class="line">[Wdy,] DD Mon YYYY HH:MM:SS TZD，比如：Fri Mar 08 2016 02:54:17 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<p>RFC 2822 允许使用括号形式的注释。</p>
+<ul>
+<li>生成和解析</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>() <span class="comment">// Fri Jan 25 2016 17:14:10 GMT+0800 (中国标准时间)，返回的是 RFC 2822 格式的 LocalDate</span></span><br><span class="line"><span class="comment">// 解析</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Fri Jan 25 2016 17:14:10 GMT+0800&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意：现代所有浏览器使用 <code>toString()</code> 生成日期时间，返回的都是 RFC 2822 格式，而 IE 返回的是 RFC-850&#x2F;1036 格式，另外在解析时，IE8 只支持 RFC 2822，不支持 ISO 8601。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>() <span class="comment">// IE：Fri Mar 8 17:44:13 UTC+0800 2016</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Date-API"><a href="#Date-API" class="headerlink" title="Date API"></a>Date API</h2><p>JavaScript 中对日期时间的处理可以归结为解析、生成、计算和格式化这几方面。</p>
+<h3 id="日期解析"><a href="#日期解析" class="headerlink" title="日期解析"></a>日期解析</h3><p>使用 <code>new Date</code> 解析日期时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(value) <span class="comment">// Unix 时间戳</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(datString) <span class="comment">// 符合 ISO 8601 标准或者 RFC 2822 标准的字符串时间</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(dateObject) <span class="comment">// Date 对象</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 日期验证</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidDate</span>(<span class="params">dateString</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> dateObject = <span class="keyword">new</span> <span class="title class_">Date</span>(dateString)</span><br><span class="line">  <span class="keyword">return</span> !<span class="built_in">isNaN</span>(dateObject.<span class="title function_">getTime</span>())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isValidDate</span>(<span class="string">&#x27;2023-11-25&#x27;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title function_">isValidDate</span>(<span class="string">&#x27;invalid-date&#x27;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="日期生成"><a href="#日期生成" class="headerlink" title="日期生成"></a>日期生成</h3><ul>
+<li>生成标准日期时间</li>
+</ul>
+<p><code>toISOString()、toJSON()、JSON.stringify()</code> 都能生成 ISO 8601 格式的 UTC 时间，<code>toString()</code> 会生成 RFC 2822 格式的本地时间。</p>
+<p>需要说明一下 <code>JSON.stringify</code> 工作原理，<code>JSON.stringify</code> 在处理对象时，会调用该对象的 <code>toJSON</code> 方法，<code>Data.prototype.toJSON</code> 返回的是 ISO-8601 格式的 UTC 时间，而不是本地时间，结果比北京时间晚 8 小时。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()) <span class="comment">// 2016-03-08T02:54:17.159Z</span></span><br></pre></td></tr></table></figure>
+
+<p>可以重载此方法，使其返回本地时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Date</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toJSON</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">toLocaleString</span>() </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> o = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(o) <span class="comment">// 输出自定义的本地时间：“2016年6月11日 10:57:27”，与 toString 返回的数据一致</span></span><br><span class="line"></span><br><span class="line">o.<span class="title function_">toString</span>() <span class="comment">// 默认格式：“Wed Jun 11 2016 10:51:42 GMT+0800”</span></span><br></pre></td></tr></table></figure>
+
+<p>对任何 Object 实例修改 <code>toJSON</code> 都会影响 <code>JSON.stringify</code> 的输出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toJSON</span> = <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;this is an instance of Foo&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="keyword">new</span> <span class="title class_">Foo</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成本地日期时间</li>
+</ul>
+<p><code>toLocaleString</code> 默认返回格式受浏览器或操作系统的语言设置影响，格式不统一，ES6 基于 <code>Intl</code> API 扩展了 <code>toLocaleString</code> 方法，可设置 option 参数统一格式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  <span class="attr">year</span>: <span class="string">&#x27;numeric&#x27;</span>,</span><br><span class="line">  <span class="attr">month</span>: <span class="string">&#x27;2-digit&#x27;</span>,</span><br><span class="line">  <span class="attr">day</span>: <span class="string">&#x27;2-digit&#x27;</span>,</span><br><span class="line">  <span class="attr">hour</span>: <span class="string">&#x27;2-digit&#x27;</span>,</span><br><span class="line">  <span class="attr">minute</span>: <span class="string">&#x27;2-digit&#x27;</span>,</span><br><span class="line">  <span class="attr">second</span>: <span class="string">&#x27;2-digit&#x27;</span>,</span><br><span class="line">  <span class="attr">hour12</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toLocaleString</span>(<span class="string">&#x27;zh-CN&#x27;</span>, options).<span class="title function_">replace</span>(<span class="regexp">/\//g</span>, <span class="string">&#x27;-&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>toLocaleDateString</code>、<code>toLocaleTimeString</code> 同理。</p>
+<ul>
+<li>获取 Unix 时间戳</li>
+</ul>
+<p>Unix 时间戳表示自 1970 年 1 月 1 日 00:00:00 UTC (Unix 纪元，Unix Epoch) 以来的毫秒数。在 JavaScript 中，有多种方法可以获取时间戳。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">valueOf</span>()</span><br><span class="line">+<span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line"><span class="title class_">Date</span>.<span class="title function_">parse</span>(dateString) <span class="comment">// 从一个字符串中读取日期，并且返回 Unix 时间戳，作用等同于 new Date(dateString).getTime()</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="日期计算"><a href="#日期计算" class="headerlink" title="日期计算"></a>日期计算</h3><ul>
+<li>相对计算</li>
+</ul>
+<p><code>setDate</code> 方法根据本地时间来指定一个日期对象的天数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取指定日期之前或之后的日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getSubtractDate</span>(<span class="params">subtractNum, date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>(date)</span><br><span class="line">  d.<span class="title function_">setDate</span>(d.<span class="title function_">getDate</span>() + subtractNum)</span><br><span class="line">  <span class="keyword">return</span> d.<span class="title function_">toISOString</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getSubtractDate</span>(-<span class="number">10</span>) <span class="comment">// 10 天前的日期</span></span><br><span class="line"><span class="title function_">getSubtractDate</span>(<span class="number">10</span>) <span class="comment">// 10 天后的日期</span></span><br><span class="line"><span class="title function_">getSubtractDate</span>(<span class="number">10</span>, <span class="string">&#x27;2016-04-08&#x27;</span>) <span class="comment">// 2016-04-08 10 天后的日期</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取一周的开始日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getStartOfWeek</span>(<span class="params">date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>(date)</span><br><span class="line">  <span class="keyword">const</span> dayOfWeek = today.<span class="title function_">getDay</span>()</span><br><span class="line">  <span class="keyword">const</span> startOfWeek = <span class="keyword">new</span> <span class="title class_">Date</span>(today)</span><br><span class="line">  startOfWeek.<span class="title function_">setDate</span>(today.<span class="title function_">getDate</span>() - (dayOfWeek + <span class="number">6</span>) % <span class="number">7</span>) <span class="comment">// 调整到本周的第一天（星期一）</span></span><br><span class="line">  <span class="comment">// startOfWeek.setDate(today.getDate() - dayOfWeek) // 调整到本周的第一天（星期日）</span></span><br><span class="line">  <span class="keyword">return</span> startOfWeek</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取一月的开始日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getStartOfMonth</span>(<span class="params">date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>(date)</span><br><span class="line">  <span class="keyword">const</span> startOfMonth = <span class="keyword">new</span> <span class="title class_">Date</span>(today.<span class="title function_">getFullYear</span>(), today.<span class="title function_">getMonth</span>(), <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> startOfMonth</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>setDate</code> 参数如果超出了月份的合理范围，会向上个月或下个月设置，<code>&lt;= 0</code> 时，会设置上个月的日期，<code>0</code> 是最后一天，<code>-1</code> 是倒数第二天，以此类推，超出范围的正整数同理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">d.<span class="title function_">setDate</span>(<span class="number">0</span>)</span><br><span class="line">d <span class="comment">// 返回上个月最后一天日期</span></span><br></pre></td></tr></table></figure>
+
+<p>可以利用这个特性来获取月份的天数和判断是否是闰年。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取月份天数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getDaysInMonth</span>(<span class="params">year, month</span>) &#123;</span><br><span class="line">  <span class="comment">// new Date 第三个参数本质也是 setDate</span></span><br><span class="line">  <span class="comment">// JS 中 month 从 0 开始计算，n 月计算时实际上是 n-1 月，但由于 0 会往上一个月，所以此处无需 -1</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Date</span>(year, month, <span class="number">0</span>).<span class="title function_">getDate</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">getDaysInMonth</span>(<span class="number">2017</span>, <span class="number">10</span>)   <span class="comment">// 31</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一年中所有月份天数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getDaysInYear</span>(<span class="params">year</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> daysInMonth = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123; <span class="attr">length</span>: <span class="number">12</span> &#125;, <span class="function">(<span class="params">_, month</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Date</span>(year, month + <span class="number">1</span>, <span class="number">0</span>).<span class="title function_">getDate</span>()</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> daysInMonth</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">getDaysInYear</span>(<span class="number">2016</span>) <span class="comment">// [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]</span></span><br></pre></td></tr></table></figure>
+
+<p>一年中除了 2 月，其它所有月份天数都是固定的，1、3、5、7、8、10、12 月，有 31 天，4、6、9、11 月，有 30 天。2 月通常有 28 天，然而，为了与地球公转周期相匹配，每四年有一个闰年，百年不闰，四百年再闰，这时 2 月有 29 天。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 是否是闰年</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isLeapYear</span>(<span class="params">year</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (year % <span class="number">4</span> == <span class="number">0</span>) &amp;&amp; (year % <span class="number">100</span> != <span class="number">0</span> || year % <span class="number">400</span> == <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断 2 月份天数是否为 29 来判断是否为闰年</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isLeapYear</span>(<span class="params">year</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Date</span>(year, <span class="number">2</span>, <span class="number">0</span>).<span class="title function_">getDate</span>() === <span class="number">29</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isLeapYear</span>(<span class="number">2000</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>一个闰年是能被 4 整除，但是不能被 100 整除，或者能被 400 整除的年份。例如，2016 年时闰年（能被 4 整除，但是不能被 100 整除），2000 年是闰年（能被 400 整除），而 1900年不是闰年（能被 4 整除、能被 100 整除，但不能被 400 整除）。</p>
+<p>注意：当在同一个 <code>Date</code> 对象上连续执行 <code>setDate</code> 操作时，下一个 <code>setDate</code> 会在上一个 <code>setDate</code> 结果上进行操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">d.<span class="title function_">setDate</span>(<span class="number">0</span>)</span><br><span class="line">d  <span class="comment">// 2 月 28</span></span><br><span class="line"></span><br><span class="line">d.<span class="title function_">setDate</span>(-<span class="number">1</span>)</span><br><span class="line">d <span class="comment">// 在 2 月 28 基础上 setDate，结果返回 1 月 30</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>差异计算</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dateFrom = <span class="string">&#x27;2016-04-08T00:00:00Z&#x27;</span></span><br><span class="line"><span class="keyword">const</span> datefromTS = (<span class="keyword">new</span> <span class="title class_">Date</span>(dateFrom)).<span class="title function_">getTime</span>()</span><br><span class="line"><span class="keyword">const</span> nowTS = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()</span><br><span class="line"><span class="keyword">const</span> diff = <span class="title class_">Math</span>.<span class="title function_">abs</span>(datefromTS - nowTS)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Math.round 代替 Math.floor 来考虑某些 DST 情况</span></span><br><span class="line"><span class="comment">// 每天的毫秒数 = 24 小时/天 * 60 分钟/小时 * 60 秒/分钟 * 1000 毫秒/秒</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">round</span>(diff / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span>  * <span class="number">24</span>))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>比较大小</li>
+</ul>
+<p>日期对象支持 <code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code> 和 <code>&gt;=</code> 比较，但由于引用类型的缘故，不支持 <code>==</code> 比较，比较日期字符串也不靠谱，同一个日期在不同日期格式下显然无法对比，所以最好的办法是对比时间戳。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Apr 08, 2016&#x27;</span>) &lt; <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Apr 09, 2016&#x27;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Apr 08, 2016&#x27;</span>) == <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Apr 08, 2016&#x27;</span>) <span class="comment">// false，理性应该返回 true</span></span><br><span class="line"><span class="string">`<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear()&#125;</span>-<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getMonth() + <span class="number">1</span>&#125;</span>-<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getDate()&#125;</span>`</span> == <span class="string">&#x27;2016-12-25&#x27;</span> <span class="comment">// 判断是否今天是否是圣诞节</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Apr 08, 2016&#x27;</span>).<span class="title function_">getTime</span>() == <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;Apr 08, 2016&#x27;</span>).<span class="title function_">getTime</span>() <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><p>虽然 ES6 中可通过 <code>Intl.DateTimeFormat</code> 对日期时间格式化，但这个方自定义格式选项不足，开发中还是需要手动实现格式化方法。下面简单实现格式化 <code>YYYY-MM-DDThh:mm:ss</code>、<code>YYYY/MM/DDThh:mm:ss</code> 和相对时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">padZero</span>(<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="string">&#x27;0&#x27;</span> + s).<span class="title function_">slice</span>(-<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="keyword">let</span> date = d.<span class="title function_">getFullYear</span>() + <span class="string">&#x27;-&#x27;</span> + <span class="title function_">padZero</span>(d.<span class="title function_">getMonth</span>() + <span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span> + <span class="title function_">padZero</span>(d.<span class="title function_">getDate</span>())</span><br><span class="line">date += <span class="string">&#x27; &#x27;</span></span><br><span class="line">date += <span class="title function_">padZero</span>(d.<span class="title function_">getHours</span>()) + <span class="string">&#x27;:&#x27;</span> + <span class="title function_">padZero</span>(d.<span class="title function_">getMinutes</span>()) + <span class="string">&#x27;:&#x27;</span> + <span class="title function_">padZero</span>(d.<span class="title function_">getSeconds</span>())</span><br><span class="line">date <span class="comment">// 2016-04-08 09:12:53</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同上</span></span><br><span class="line"><span class="comment">// 使用 join 做字符串拼接，正则补零</span></span><br><span class="line"><span class="keyword">const</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="keyword">const</span> date = [</span><br><span class="line">  [d.<span class="title function_">getFullYear</span>(), d.<span class="title function_">getMonth</span>() + <span class="number">1</span>, d.<span class="title function_">getDate</span>()].<span class="title function_">join</span>(<span class="string">&#x27;-&#x27;</span>),</span><br><span class="line">  [d.<span class="title function_">getHours</span>(), d.<span class="title function_">getMinutes</span>(), d.<span class="title function_">getSeconds</span>()].<span class="title function_">join</span>(<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">].<span class="title function_">join</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">replace</span>(<span class="regexp">/(?=\b\d\b)/g</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">date <span class="comment">// 2016-04-08 09:25:01</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 toISOString</span></span><br><span class="line"><span class="keyword">const</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">d.<span class="title function_">setMinutes</span>(d.<span class="title function_">getMinutes</span>() - d.<span class="title function_">getTimezoneOffset</span>()) <span class="comment">// 处理时区偏移</span></span><br><span class="line"><span class="keyword">const</span> date = d.<span class="title function_">toISOString</span>().<span class="title function_">slice</span>(<span class="number">0</span>, -<span class="number">5</span>).<span class="title function_">replace</span>(<span class="regexp">/[T]/g</span>, <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">date <span class="comment">// 2016-04-08 09:30:15</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">formatDateTime</span>(<span class="params">date, format</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> year = date.<span class="title function_">getFullYear</span>()</span><br><span class="line">  <span class="keyword">const</span> month = <span class="title function_">padZero</span>(date.<span class="title function_">getMonth</span>() + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">const</span> day = <span class="title function_">padZero</span>(date.<span class="title function_">getDate</span>())</span><br><span class="line">  <span class="keyword">const</span> hours = <span class="title function_">padZero</span>(date.<span class="title function_">getHours</span>())</span><br><span class="line">  <span class="keyword">const</span> minutes = <span class="title function_">padZero</span>(date.<span class="title function_">getMinutes</span>())</span><br><span class="line">  <span class="keyword">const</span> seconds = <span class="title function_">padZero</span>(date.<span class="title function_">getSeconds</span>())</span><br><span class="line">  format = format.<span class="title function_">replace</span>(<span class="string">&#x27;yyyy&#x27;</span>, year)</span><br><span class="line">  format = format.<span class="title function_">replace</span>(<span class="string">&#x27;MM&#x27;</span>, month)</span><br><span class="line">  format = format.<span class="title function_">replace</span>(<span class="string">&#x27;dd&#x27;</span>, day)</span><br><span class="line">  format = format.<span class="title function_">replace</span>(<span class="string">&#x27;HH&#x27;</span>, hours)</span><br><span class="line">  format = format.<span class="title function_">replace</span>(<span class="string">&#x27;mm&#x27;</span>, minutes)</span><br><span class="line">  format = format.<span class="title function_">replace</span>(<span class="string">&#x27;ss&#x27;</span>, seconds)</span><br><span class="line">  <span class="keyword">return</span> format</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">formatDateTime</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(), <span class="string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>)</span><br><span class="line"><span class="title function_">formatDateTime</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(), <span class="string">&#x27;yyyy/MM/dd HH:mm:ss&#x27;</span>)</span><br><span class="line"><span class="title function_">formatDateTime</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(), <span class="string">&#x27;HH:mm:ss&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间戳</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getUnix</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">  <span class="keyword">return</span> date.<span class="title function_">getTime</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取今天 0 点 0 分 0 秒的时间戳</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getTodayUnix</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">  date.<span class="title function_">setHours</span>(<span class="number">0</span>)</span><br><span class="line">  date.<span class="title function_">setMinutes</span>(<span class="number">0</span>)</span><br><span class="line">  date.<span class="title function_">setSeconds</span>(<span class="number">0</span>)</span><br><span class="line">  date.<span class="title function_">setMilliseconds</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> date.<span class="title function_">getTime</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取年月日</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getDate</span> = time =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(time)</span><br><span class="line">  <span class="keyword">const</span> month = <span class="string">`0<span class="subst">$&#123;date.getMonth() + <span class="number">1</span>&#125;</span>`</span>.<span class="title function_">slice</span>(-<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">const</span> day = <span class="string">`0<span class="subst">$&#123;date.getDate()&#125;</span>`</span>.<span class="title function_">slice</span>(-<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">return</span> date.<span class="title function_">getFullYear</span>() + <span class="string">&#x27;-&#x27;</span> + month + <span class="string">&#x27;-&#x27;</span> + day</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 格式化相对时间</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getFormatTime</span> = fromTS =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> nowTS = <span class="title function_">getUnix</span>() <span class="comment">// 当前时间戳</span></span><br><span class="line">  <span class="keyword">const</span> todayTS = <span class="title function_">getTodayUnix</span>() <span class="comment">// 今天 0 点时间戳</span></span><br><span class="line">  <span class="keyword">const</span> diff = (nowTS - fromTS) / <span class="number">1000</span> <span class="comment">// 转换为秒级时间戳</span></span><br><span class="line">  <span class="keyword">let</span> tip = <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">if</span> (diff &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    tip = <span class="string">&#x27;刚刚&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title class_">Math</span>.<span class="title function_">floor</span>(diff / <span class="number">60</span>) &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    tip = <span class="string">&#x27;刚刚&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (diff &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">    tip = <span class="title class_">Math</span>.<span class="title function_">floor</span>(diff / <span class="number">60</span>) + <span class="string">&#x27;分钟前&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (diff &gt;= <span class="number">3600</span> &amp;&amp; fromTS - todayTS &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    tip = <span class="title class_">Math</span>.<span class="title function_">floor</span>(diff / <span class="number">3600</span>) + <span class="string">&#x27;小时前&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (diff / <span class="number">86400</span> &lt;= <span class="number">31</span>) &#123;</span><br><span class="line">    tip = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(diff / <span class="number">86400</span>) + <span class="string">&#x27;天前&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    tip = <span class="title function_">getDate</span>(fromTS)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tip</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Temporal-API"><a href="#Temporal-API" class="headerlink" title="Temporal API"></a>Temporal API</h2><p>Date API 设计存在问题，计算 API 缺失，日期时间计算需要手动实现，只支持 UTC 和用户 PC 时间，不支持非公历，开发中一般需要通过 moment、dayjs 这样一些第三方库使用。为了解决 Date API 的问题，TC39 提出了新的日期时间 API <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-temporal">Temporal</a>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">仅可以创建和处理不可变 Temporal 对象</span><br><span class="line">提供用于日期和时间计算的简单 API</span><br><span class="line">支持所有时区</span><br><span class="line">从 ISO-8601 格式进行严格的日期解析</span><br><span class="line">支持非公历</span><br></pre></td></tr></table></figure>
+
+<p>截止 2022 年 2 月，该 API 尚处 Stage 3 阶段。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

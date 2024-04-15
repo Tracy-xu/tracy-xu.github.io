@@ -173,7 +173,7 @@
 <p>一个项目可拥有一个 site，使用 gh-pages 分支，也可以在 Settings –&gt; GitHub Pages 下设置，通过 <code>username.github.io/project-name</code> 访问。</p>
 <h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>为 GitHub Pages 绑定域名需要两步：第一步生成 CNAME 文件，第二步域名解析。</p>
 <h3 id="生成-CNAME-文件"><a href="#生成-CNAME-文件" class="headerlink" title="生成 CNAME 文件"></a>生成 CNAME 文件</h3><p>GitHub Pages CNAME 文件记录自定义域名，其作用是，当访问自定义域名时，会通过 DNS 解析到 GitHub 的服务器 IP，GitHub 仓库千万个，GitHub 服务器会根据 HTTP Host 匹配对应 CNAME 文件所在的仓库，如果没有这个文件，GitHub 服务器不知道返回哪个仓库，会显示 404。</p>
-<p>在 <code>tracy-xu.github.io</code> 这个 rep 中点击 Settings，然后在 Custom domain 中填入要绑定的域名 <code>yunguxt.cn</code>。这个操作会在项目的根目录生成 CNAME 文件，里面内容就是所要绑定的域名 <code>yunguxt.cn</code>。</p>
+<p>在 <code>tracy-xu.github.io</code> 这个 rep 中点击 Settings，然后在 Custom domain 中填入要绑定的域名 <code>tracyxu.cn</code>。这个操作会在项目的根目录生成 CNAME 文件，里面内容就是所要绑定的域名 <code>tracyxu.cn</code>。</p>
 <p>注：为防止在像 Hexo 这样一些博客系统中被打包覆盖，可以在 Hexo 中手动创建 CNAME。</p>
 <h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>以阿里云为例，登陆阿里云控制台进行域名解析。记录类型有两种方式可选择：A 记录（A 将域名指向一个 IPV4 地址）、CNAME（CNAME 将域名指向另外一个域名）记录。</p>
 <ul>
@@ -214,7 +214,7 @@
 <td>修改,暂停,删除,备注</td>
 </tr>
 </tbody></table>
-<p>注意：主机记录 www 和 @ 都要添加，这是为了 <code>www.yunguxt.cn</code> 和 <code>yunguxt.cn</code> 都能访问到页面。</p>
+<p>注意：主机记录 www 和 @ 都要添加，这是为了 <code>www.tracyxu.cn</code> 和 <code>tracyxu.cn</code> 都能访问到页面。</p>
 <ul>
 <li>CNAME 记录</li>
 </ul>
@@ -306,7 +306,7 @@
         
         <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
-        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
         

@@ -365,6 +365,9 @@ section.main .post .content img {
   margin: 0 auto;
   max-width: 100%;
 }
+section.main .post .content svg {
+  max-width: 100%;
+}
 section.main .post .content .video-container {
   position: relative;
   padding-top: 56.25%;
