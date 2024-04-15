@@ -139,37 +139,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/04/25/engineering/Git-Flow/">
-                Git Flow
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-04-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/Engineering/">Engineering</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。</p>
-        </div>
-        <a href="/2019/04/25/engineering/Git-Flow/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2019/04/20/engineering/Git-Commit-Message-Style-Guide/">
                 Git Commit Message Style Guide
             </a>
@@ -449,6 +418,38 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">currying</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> === <span class="number">0</span>) &#123; <span class="comment">// 通过手动调用的方式（即不传参数）来判断收集结束</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">currying</span>(fn.<span class="title function_">bind</span>(<span class="literal">null</span>, ...args));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> total + num;</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add = <span class="title function_">currying</span>(add);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 须手动结束调用</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">20</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">6</span>, <span class="number">2</span>)();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
         </div>
         <a href="/2016/12/02/javascript/Functional-Programming/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/09/05/algorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                排序算法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-09-05</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>外循环控制几轮冒泡，内循环进行冒泡（比较大小交换位置，就像气泡一样从数组底部”冒泡”到数组的顶部）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bubbleSort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = arr.<span class="property">length</span></span><br><span class="line">  <span class="comment">// 共进行 arr.length 轮冒泡</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 冒泡</span></span><br><span class="line">    <span class="comment">// 俩俩对比，最后一个元素后面没有元素了，所以减 1，已冒泡上去的元素无需再参与，所以减 i</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]] <span class="comment">// distribute 交换数组位置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">bubbleSort</span>([<span class="number">3</span>, <span class="number">44</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>])</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2016/09/05/algorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="read-more">Read More</a>
     
 
 </div>
