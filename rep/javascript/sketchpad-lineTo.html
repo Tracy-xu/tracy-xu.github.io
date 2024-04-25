@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sketchpad</title>
+    <style type="text/css">
+      body, html {
+        overscroll-behavior: none;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        border: 1px red solid;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <canvas id="canvas" width="373" height="665"></canvas>
+    <script type="text/javascript">
+      const canvas = document.querySelector('#canvas')
+      const ctx = canvas.getContext('2d')
+
+      ctx.strokeStyle = 'red'
+      ctx.lineWidth = 2
+      ctx.lineJoin = 'round'
+      ctx.lineCap = 'round'
+
+      canvas.addEventListener('mousedown', handleStartDraw)
+      canvas.addEventListener('touchstart', handleStartDraw)
+
+      let beginPoint = null
+      function handleStartDraw(ev) {
+        beginPoint = getPosition(ev)
+        
+        canvas.addEventListener('mousemove', handleDrawing)
+        canvas.addEventListener('mouseup', handleEndDraw)
+        canvas.addEventListener('touchmove', handleDrawing, { passive: false })
+        canvas.addEventListener('touchend', handleEndDraw)
+      }
+
+      function handleDrawing(ev) {
+        ev.preventDefault()
+        
+        const endPoint = getPosition(ev)
+        drawLine(beginPoint, endPoint)
+        beginPoint = endPoint
+      }
+
+      function handleEndDraw(ev) {
+        const endPoint = getPosition(ev)
+        drawLine(beginPoint, endPoint)
+        beginPoint = null
+
+        canvas.removeEventListener('mousemove', handleDrawing)
+        canvas.removeEventListener('mouseup', handleEndDraw)
+        canvas.removeEventListener('touchmove', handleDrawing)
+        canvas.removeEventListener('touchend', handleEndDraw)
+      }
+
+      function getPosition(ev) {
+        const isTouch = (ev) => {
+          const { type } = ev
+          return type.indexOf('touch') >= 0
+        }
+
+        const rect = ev.target.getBoundingClientRect()
+        if (isTouch(ev)) {
+          const touchs = ev.type === 'touchend' ? ev.changedTouches : ev.targetTouches
+          return {
+            x: touchs[0].clientX - rect.left,
+            y: touchs[0].clientY - rect.top,
+          }
+        } else {
+          return {
+            x: ev.clientX - rect.left,
+            y: ev.clientY - rect.top,
+          }
+        }
+      }
+
+      function drawLine(beginPoint, endPoint) {
+        ctx.beginPath()
+        ctx.moveTo(beginPoint.x, beginPoint.y)
+        ctx.lineTo(endPoint.x, endPoint.y)
+        ctx.stroke()
+        ctx.closePath()
+      }
+    </script>
+  </body>
+</html>

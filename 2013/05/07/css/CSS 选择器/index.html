@@ -200,11 +200,13 @@
 <h3 id="选择器的妙用"><a href="#选择器的妙用" class="headerlink" title="选择器的妙用"></a>选择器的妙用</h3><ul>
 <li>:nth-child()</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 奇偶</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(odd)</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(even)</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>n)</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 奇偶选择</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(odd)</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(even)</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>n)</span><br><span class="line">E<span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>n+<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 选择 <span class="number">1</span> 到 <span class="number">3</span> 的元素</span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(-n+<span class="number">3</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 范围选择</span><br><span class="line">// 选择 <span class="number">3</span> 开始的元素</span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(-n+<span class="number">3</span>) &#123;&#125;</span><br><span class="line">// 选择 <span class="number">1</span> 到 <span class="number">3</span> 的元素</span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(-n+<span class="number">3</span>) &#123;&#125;</span><br><span class="line">// 选择 <span class="number">3</span> 到 <span class="number">6</span> 的元素</span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(n+<span class="number">3</span>)<span class="selector-pseudo">:nth-child</span>(-n+<span class="number">6</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>注：<code>n</code> 从 <code>1</code> 开始。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 周期选择</span><br><span class="line">nth-child(an+<span class="selector-tag">b</span>) // 为偏移量</span><br></pre></td></tr></table></figure>
+
+<p>注：<code>n</code> 从 <code>0</code> 开始。</p>
 <ul>
 <li>:not()</li>
 </ul>
@@ -276,11 +278,11 @@
         
         <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
         
+        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        
         <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
         <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
-        
-        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
         
     </p>
 </div>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="画板的抗锯齿"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>画板的抗锯齿 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2021/10/01/canvas/%E7%94%BB%E6%9D%BF%E7%9A%84%E7%88%86%E7%82%B9%E5%92%8C%E6%8A%97%E9%94%AF%E9%BD%BF/">
+                画板的抗锯齿
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2021-10-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/可视化/">可视化</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="抗锯齿"><a href="#抗锯齿" class="headerlink" title="抗锯齿"></a>抗锯齿</h2><h3 id="折线问题"><a href="#折线问题" class="headerlink" title="折线问题"></a>折线问题</h3><p>通过 <code>lineTo</code> 实现自由画笔，本质是点与点连接的线段，无论点如何密集，都无法避免线段间的折线，快速移动下爆点率更低，线段更长，折线还会更明显。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">moveTo</span>(beginPoint.<span class="property">x</span>, beginPoint.<span class="property">y</span>)</span><br><span class="line">ctx.<span class="title function_">lineTo</span>(endPoint.<span class="property">x</span>, endPoint.<span class="property">y</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p><a href="/rep/javascript/sketchpad-lineTo.html">Demo</a></p>
+<ul>
+<li>使用二次贝塞尔曲线处理折线</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">moveTo</span>(beginPoint.<span class="property">x</span>, beginPoint.<span class="property">y</span>)</span><br><span class="line">ctx.<span class="title function_">quadraticCurveTo</span>(ctrlPoint.<span class="property">x</span>, ctrlPoint.<span class="property">y</span>, endPoint.<span class="property">x</span>, endPoint.<span class="property">y</span>)</span><br></pre></td></tr></table></figure>
+
+<p>二次贝塞尔曲线需要三个点，起点、终点和控制点，控制点确定了曲线的方向和形状。以 <code>[A, B, C, D, E, F]</code> 六点为例，其关键点算法为，以 <code>A</code> 为起点，<code>B</code> 为控制点，<code>B</code>, <code>C</code> 的中间点 <code>B1</code> 为终点，绘制二次贝塞尔曲线线段，接下来以 <code>B1</code> 为起点，<code>C</code> 为控制点，<code>C</code>, <code>D</code> 的中间点 <code>C1</code> 为终点，依此类推，直到最后。</p>
+<p>注：使用最后两个点的中间点作为终点，而不是最后一个点作为终点，可以使得曲线的转折更加平滑，更自然地过渡，而不会出现突然的转折。除了首尾点外，整个线条串过的均为中间点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> points = []</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleDrawing</span>(<span class="params">ev</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> curPoint = <span class="title function_">getPosition</span>(ev)</span><br><span class="line">  points.<span class="title function_">push</span>(curPoint)</span><br><span class="line">  <span class="keyword">if</span> (points.<span class="property">length</span> &gt; <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> lastTwoPoints = points.<span class="title function_">slice</span>(-<span class="number">2</span>)</span><br><span class="line">    <span class="comment">// 控制点</span></span><br><span class="line">    <span class="keyword">const</span> ctrlPoint = lastTwoPoints[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">// 终点</span></span><br><span class="line">    <span class="keyword">const</span> endPoint = &#123;</span><br><span class="line">      <span class="attr">x</span>: (lastTwoPoints[<span class="number">0</span>].<span class="property">x</span> + lastTwoPoints[<span class="number">1</span>].<span class="property">x</span>) / <span class="number">2</span>,</span><br><span class="line">      <span class="attr">y</span>: (lastTwoPoints[<span class="number">0</span>].<span class="property">y</span> + lastTwoPoints[<span class="number">1</span>].<span class="property">y</span>) / <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">drawLine</span>(ctrlPoint, beginPoint, endPoint)</span><br><span class="line">    <span class="comment">// 重置起点</span></span><br><span class="line">    beginPoint = endPoint</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="/rep/javascript/sketchpad-quadraticCurveTo.html">Demo</a></p>
+<h3 id="高分屏显示虚化"><a href="#高分屏显示虚化" class="headerlink" title="高分屏显示虚化"></a>高分屏显示虚化</h3><p>在 Retina 屏中，一个逻辑像素对应多个物理像素，如果逻辑像素不足，必然会导致显示虚化。在 Canvas 中，可以先按物理像素放大，再按逻辑像素缩小解决。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dpr = <span class="variable language_">window</span>.<span class="property">devicePixelRatio</span></span><br><span class="line"><span class="keyword">const</span> retinaWidth = canvas.<span class="property">width</span> * dpr</span><br><span class="line"><span class="keyword">const</span> retinaHeight = canvas.<span class="property">height</span> * dpr</span><br><span class="line">canvas.<span class="property">width</span> = retinaWidth</span><br><span class="line">canvas.<span class="property">height</span> = retinaHeight</span><br><span class="line">canvas.<span class="property">style</span>.<span class="property">width</span> = <span class="string">`<span class="subst">$&#123;retinaWidth / dpr&#125;</span>px`</span></span><br><span class="line">canvas.<span class="property">style</span>.<span class="property">height</span> = <span class="string">`<span class="subst">$&#123;retinaHeight / dpr&#125;</span>px`</span></span><br><span class="line">ctx.<span class="title function_">scale</span>(dpr, dpr)</span><br></pre></td></tr></table></figure>
+
+<p><a href="/rep/javascript/sketchpad-retina.html">Demo</a></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">项目设计</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
