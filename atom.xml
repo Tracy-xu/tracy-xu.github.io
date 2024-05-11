@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2024-04-15T05:45:58.869Z</updated>
+  <updated>2024-05-11T04:05:21.584Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,11 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>WebSocket 连接共享</title>
+    <link href="https://tracyxu.cn/2024/03/26/javascript/WebSocket%20%E8%BF%9E%E6%8E%A5%E5%85%B1%E4%BA%AB/"/>
+    <id>https://tracyxu.cn/2024/03/26/javascript/WebSocket%20%E8%BF%9E%E6%8E%A5%E5%85%B1%E4%BA%AB/</id>
+    <published>2024-03-25T16:00:00.000Z</published>
+    <updated>2024-05-11T04:05:21.584Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;1000 多个用户同时在线，用户打开多个 Tab 页，每个 Tab 页都会创建一个 WS 连接，最终创建了 140000 多个 WS 连接，导致服务端奔溃。通过使用 &lt;code&gt;SharedWorker&lt;/code&gt; 转发 WS 消息，让所有页面共用一个 WS 连接来解决问题。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目设计" scheme="https://tracyxu.cn/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Typescript 类型编程</title>
     <link href="https://tracyxu.cn/2022/06/01/javascript/Typescript%20%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A8%8B/"/>
     <id>https://tracyxu.cn/2022/06/01/javascript/Typescript%20%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A8%8B/</id>
     <published>2022-05-31T16:00:00.000Z</published>
-    <updated>2024-04-15T05:45:58.869Z</updated>
+    <updated>2024-04-30T03:34:15.429Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;泛型编程&quot;&gt;&lt;a href=&quot;#泛型编程&quot; class=&quot;headerlink&quot; title=&quot;泛型编程&quot;&gt;&lt;/a&gt;泛型编程&lt;/h2&gt;&lt;p&gt;泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性，主要作用是对不特定数据类型的支持，以实现函数、接口（Interface）、类的复用。&lt;/p&gt;</summary>
@@ -38,7 +55,7 @@
     <link href="https://tracyxu.cn/2022/03/02/scratch/Scratch/"/>
     <id>https://tracyxu.cn/2022/03/02/scratch/Scratch/</id>
     <published>2022-03-01T16:00:00.000Z</published>
-    <updated>2024-01-08T07:09:05.549Z</updated>
+    <updated>2024-04-30T03:34:15.432Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/scratch/scratch.jpg&quot; alt=&quot;Scratch&quot;&gt;&lt;/p&gt;</summary>
@@ -55,7 +72,7 @@
     <link href="https://tracyxu.cn/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/"/>
     <id>https://tracyxu.cn/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/</id>
     <published>2021-10-05T16:00:00.000Z</published>
-    <updated>2024-04-14T14:55:42.938Z</updated>
+    <updated>2024-04-30T03:34:15.432Z</updated>
     
     
     <summary type="html">&lt;p&gt;使用二进制能很方便的表达和计算（组合、切换和校验）权限，以 Linux 文件权限为例。&lt;/p&gt;
@@ -100,7 +117,7 @@
     <link href="https://tracyxu.cn/2021/10/01/canvas/%E7%94%BB%E6%9D%BF%E7%9A%84%E7%88%86%E7%82%B9%E5%92%8C%E6%8A%97%E9%94%AF%E9%BD%BF/"/>
     <id>https://tracyxu.cn/2021/10/01/canvas/%E7%94%BB%E6%9D%BF%E7%9A%84%E7%88%86%E7%82%B9%E5%92%8C%E6%8A%97%E9%94%AF%E9%BD%BF/</id>
     <published>2021-09-30T16:00:00.000Z</published>
-    <updated>2024-04-25T07:12:28.952Z</updated>
+    <updated>2024-04-30T03:34:15.422Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;抗锯齿&quot;&gt;&lt;a href=&quot;#抗锯齿&quot; class=&quot;headerlink&quot; title=&quot;抗锯齿&quot;&gt;&lt;/a&gt;抗锯齿&lt;/h2&gt;&lt;h3 id=&quot;折线问题&quot;&gt;&lt;a href=&quot;#折线问题&quot; class=&quot;headerlink&quot; title=&quot;折线问题&quot;&gt;&lt;/a&gt;折线问题&lt;/h3&gt;&lt;p&gt;通过 &lt;code&gt;lineTo&lt;/code&gt; 实现自由画笔，本质是点与点连接的线段，无论点如何密集，都无法避免线段间的折线，快速移动下爆点率更低，线段更长，折线还会更明显。&lt;/p&gt;
@@ -118,7 +135,7 @@
     <link href="https://tracyxu.cn/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/"/>
     <id>https://tracyxu.cn/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/</id>
     <published>2020-07-31T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.470Z</updated>
+    <updated>2024-04-30T03:34:15.432Z</updated>
     
     
     <summary type="html">&lt;p&gt;函数参数的&lt;a href=&quot;https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085&quot;&gt;求值策略 Evaluation Strategy&lt;/a&gt; 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。&lt;/p&gt;</summary>
@@ -135,7 +152,7 @@
     <link href="https://tracyxu.cn/2020/04/25/network/XSS-CSRF/"/>
     <id>https://tracyxu.cn/2020/04/25/network/XSS-CSRF/</id>
     <published>2020-04-24T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.449Z</updated>
+    <updated>2024-04-30T03:34:15.431Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;XSS&quot;&gt;&lt;a href=&quot;#XSS&quot; class=&quot;headerlink&quot; title=&quot;XSS&quot;&gt;&lt;/a&gt;XSS&lt;/h2&gt;&lt;p&gt;XSS (Cross-site scripting) 跨站脚本攻击，首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将意为“交叉”的 Cross 改以交叉形的 X 做为缩写。&lt;/p&gt;</summary>
@@ -152,7 +169,7 @@
     <link href="https://tracyxu.cn/2020/04/22/linux/SSH/"/>
     <id>https://tracyxu.cn/2020/04/22/linux/SSH/</id>
     <published>2020-04-21T16:00:00.000Z</published>
-    <updated>2024-01-06T15:22:28.260Z</updated>
+    <updated>2024-04-30T03:34:15.431Z</updated>
     
     
     <summary type="html">&lt;p&gt;SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。&lt;/p&gt;
@@ -170,7 +187,7 @@
     <link href="https://tracyxu.cn/2020/01/15/pl/Pointer-Reference/"/>
     <id>https://tracyxu.cn/2020/01/15/pl/Pointer-Reference/</id>
     <published>2020-01-14T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.470Z</updated>
+    <updated>2024-04-30T03:34:15.431Z</updated>
     
     
     <summary type="html">&lt;p&gt;指针是内存地址，指针变量是用来存放内存地址的变量，指向内存的一个存储单元。&lt;/p&gt;
@@ -188,7 +205,7 @@
     <link href="https://tracyxu.cn/2019/07/01/engineering/Sinopia/"/>
     <id>https://tracyxu.cn/2019/07/01/engineering/Sinopia/</id>
     <published>2019-06-30T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
+    <updated>2024-04-30T03:34:15.426Z</updated>
     
     
     <summary type="html">&lt;p&gt;npm 私仓可用于提高包的下载速度和保护内部代码，常见的 npm 私仓技术方案有以下几种：&lt;/p&gt;
@@ -206,7 +223,7 @@
     <link href="https://tracyxu.cn/2019/06/20/engineering/Git-Pages/"/>
     <id>https://tracyxu.cn/2019/06/20/engineering/Git-Pages/</id>
     <published>2019-06-19T16:00:00.000Z</published>
-    <updated>2024-01-13T15:41:30.993Z</updated>
+    <updated>2024-04-30T03:34:15.426Z</updated>
     
     
     <summary type="html">&lt;p&gt;GitHub Pages 用于介绍用户个人和托管在 GitHub 中的项目的，免费，虽然&lt;a href=&quot;https://help.github.com/en/articles/what-is-github-pages#usage-limits&quot;&gt;空间和流量有限制&lt;/a&gt;（空间上限 1G、月流量上限 100G、每小时更新不超过 10 次），但绝对够用。&lt;/p&gt;</summary>
@@ -223,7 +240,7 @@
     <link href="https://tracyxu.cn/2019/04/25/engineering/Git-Flow/"/>
     <id>https://tracyxu.cn/2019/04/25/engineering/Git-Flow/</id>
     <published>2019-04-24T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
+    <updated>2024-04-30T03:34:15.425Z</updated>
     
     
     <summary type="html">&lt;p&gt;Git 工作流（Work Flow）是一种分支管理策略。在开发人员较少，项目不复杂时，可以采用简单的工作流，比如只有一个 Master 分支，但当项目庞大，迭代周期长，多人协作，多需求并行时，就需要更加严格的 Work Flow 来管理开发、测试、发布和热修复了。在 Git 中常见的工作流有 Git Flow、GitHub Flow、GitLab Flow。&lt;/p&gt;</summary>
@@ -240,7 +257,7 @@
     <link href="https://tracyxu.cn/2019/04/20/engineering/Git-Commit-Message-Style-Guide/"/>
     <id>https://tracyxu.cn/2019/04/20/engineering/Git-Commit-Message-Style-Guide/</id>
     <published>2019-04-20T08:44:35.000Z</published>
-    <updated>2023-09-19T14:17:56.489Z</updated>
+    <updated>2024-04-30T03:34:15.425Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 Git 中，我们使用 &lt;code&gt;git commit -m &amp;quot;xxx&amp;quot;&lt;/code&gt; 来提交代码，参数 &lt;code&gt;-m&lt;/code&gt; 用来指定 Commit Message（提交说明），直接执行 &lt;code&gt;git commit&lt;/code&gt; 会进入编辑器模式，可提交多行说明。Commit Message 应规范化，规范化的 Commit Message 能带来很多好处：&lt;/p&gt;</summary>
@@ -257,7 +274,7 @@
     <link href="https://tracyxu.cn/2019/01/08/linux/SFTP/"/>
     <id>https://tracyxu.cn/2019/01/08/linux/SFTP/</id>
     <published>2019-01-07T16:00:00.000Z</published>
-    <updated>2023-10-31T01:56:07.510Z</updated>
+    <updated>2024-04-30T03:34:15.430Z</updated>
     
     
     <summary type="html">&lt;p&gt;SFTP 是 Secure File Transfer Protocol 的缩写，安全文件传送协议。可以为传输文件提供一种安全的网络的加密方法。SFTP 与 FTP 有着几乎一样的语法和功能。&lt;/p&gt;</summary>
@@ -274,7 +291,7 @@
     <link href="https://tracyxu.cn/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/"/>
     <id>https://tracyxu.cn/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/</id>
     <published>2018-03-14T16:00:00.000Z</published>
-    <updated>2024-03-05T15:07:53.521Z</updated>
+    <updated>2024-04-30T03:34:15.430Z</updated>
     
     
     <summary type="html">&lt;p&gt;不依赖任何框架、库，无需编译，用最原生的 JavaScript 造轮子。&lt;/p&gt;</summary>
@@ -291,7 +308,7 @@
     <link href="https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/"/>
     <id>https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/</id>
     <published>2017-12-23T16:00:00.000Z</published>
-    <updated>2024-01-13T15:09:26.436Z</updated>
+    <updated>2024-04-30T03:34:15.421Z</updated>
     
     
     <summary type="html">&lt;p&gt;树形结构是一种层次嵌套的结构。它提供了一种有序的组织方式，能够方便地表示层次关系和结构化数据，在文件系统、数据库索引、DOM 等场景中被广泛应用。树形结构的遍历、搜索和操作等算法也是计算机中常见的问题。&lt;/p&gt;
@@ -309,7 +326,7 @@
     <link href="https://tracyxu.cn/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/"/>
     <id>https://tracyxu.cn/2017/10/01/algorithm/LeetCode-JavaScript-Solutions/</id>
     <published>2017-09-30T16:00:00.000Z</published>
-    <updated>2024-01-13T15:46:35.235Z</updated>
+    <updated>2024-04-30T03:34:15.421Z</updated>
     
     
       
@@ -335,7 +352,7 @@
     <link href="https://tracyxu.cn/2017/05/10/foundation/Base-64/"/>
     <id>https://tracyxu.cn/2017/05/10/foundation/Base-64/</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2023-11-05T13:44:20.904Z</updated>
+    <updated>2024-04-30T03:34:15.427Z</updated>
     
     
     <summary type="html">&lt;p&gt;Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。&lt;/p&gt;
@@ -353,7 +370,7 @@
     <link href="https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/"/>
     <id>https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/</id>
     <published>2017-01-31T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.455Z</updated>
+    <updated>2024-04-30T03:34:15.427Z</updated>
     
     
     <summary type="html">&lt;p&gt;计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。&lt;/p&gt;</summary>
@@ -370,7 +387,7 @@
     <link href="https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
     <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2023-09-17T13:48:25.454Z</updated>
+    <updated>2024-04-30T03:34:15.423Z</updated>
     
     
     <summary type="html">&lt;p&gt;大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。&lt;/p&gt;</summary>
@@ -378,24 +395,6 @@
     
     
     <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>函数式编程</title>
-    <link href="https://tracyxu.cn/2016/12/02/javascript/Functional-Programming/"/>
-    <id>https://tracyxu.cn/2016/12/02/javascript/Functional-Programming/</id>
-    <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2024-01-08T07:24:55.745Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;科里化函数&quot;&gt;&lt;a href=&quot;#科里化函数&quot; class=&quot;headerlink&quot; title=&quot;科里化函数&quot;&gt;&lt;/a&gt;科里化函数&lt;/h2&gt;&lt;p&gt;科里化的关键是返回函数实现连式调用、参数收集、以及判断收集结束做最终调用。判断收集结束有很多办法：对比实参和形参的长度；判断实参的个数是否为 0（不传）。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;fn&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (args.&lt;span class=&quot;property&quot;&gt;length&lt;/span&gt; === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 通过手动调用的方式（即不传参数）来判断收集结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;fn&lt;/span&gt;(...args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(fn.&lt;span class=&quot;title function_&quot;&gt;bind&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, ...args));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; args.&lt;span class=&quot;title function_&quot;&gt;reduce&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;total, num&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; total + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;add = &lt;span class=&quot;title function_&quot;&gt;currying&lt;/span&gt;(add);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 须手动结束调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;title function_&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(result);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
     
     
   </entry>
