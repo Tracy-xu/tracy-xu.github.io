@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2024-08-13T14:58:48.986Z</updated>
+  <updated>2024-08-13T15:37:38.081Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/"/>
     <id>https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/</id>
     <published>2024-08-12T16:00:00.000Z</published>
-    <updated>2024-08-13T14:58:48.986Z</updated>
+    <updated>2024-08-13T15:37:38.081Z</updated>
     
     
     <summary type="html">&lt;p&gt;接口和类型的定义是一件耗时费力的工作，通过解析 OpenAPI&amp;#x2F;Swagger 文档，自动化生成接口是一种很好的解决方案，这也便于接口更新时做 &lt;code&gt;git diff&lt;/code&gt;，清晰的显示接口更新的内容。&lt;/p&gt;
