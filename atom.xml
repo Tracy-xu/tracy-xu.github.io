@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2024-05-11T04:05:21.584Z</updated>
+  <updated>2024-08-13T14:58:48.986Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TypeScript 接口和类型生成</title>
+    <link href="https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/"/>
+    <id>https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/</id>
+    <published>2024-08-12T16:00:00.000Z</published>
+    <updated>2024-08-13T14:58:48.986Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;接口和类型的定义是一件耗时费力的工作，通过解析 OpenAPI&amp;#x2F;Swagger 文档，自动化生成接口是一种很好的解决方案，这也便于接口更新时做 &lt;code&gt;git diff&lt;/code&gt;，清晰的显示接口更新的内容。&lt;/p&gt;
+&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;AppResetPasswordReq&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;email&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;password&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;code&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;resetPassword&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;params: AppResetPasswordReq&lt;/span&gt;): &lt;span class=&quot;title class_&quot;&gt;Promise&lt;/span&gt;&amp;lt;&lt;span class=&quot;title class_&quot;&gt;Result&lt;/span&gt;&amp;lt;&lt;span class=&quot;built_in&quot;&gt;boolean&lt;/span&gt;&amp;gt;&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; axios.&lt;span class=&quot;title function_&quot;&gt;post&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;#x27;/app/reset/password&amp;#x27;&lt;/span&gt;, params)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// more...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>WebSocket 连接共享</title>
@@ -308,7 +326,7 @@
     <link href="https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/"/>
     <id>https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/</id>
     <published>2017-12-23T16:00:00.000Z</published>
-    <updated>2024-04-30T03:34:15.421Z</updated>
+    <updated>2024-06-15T04:46:30.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;树形结构是一种层次嵌套的结构。它提供了一种有序的组织方式，能够方便地表示层次关系和结构化数据，在文件系统、数据库索引、DOM 等场景中被广泛应用。树形结构的遍历、搜索和操作等算法也是计算机中常见的问题。&lt;/p&gt;
@@ -378,23 +396,6 @@
     
     
     <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CSS 设计模式</title>
-    <link href="https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://tracyxu.cn/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
-    <published>2016-12-01T16:00:00.000Z</published>
-    <updated>2024-04-30T03:34:15.423Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;大型的 CSS 项目中，往往会遇到 CSS 结构混乱、多人协作命名冲突、没有组件化无法复用…等等问题。为了解决这些问题于是引入 CSS 设计模式，用 BEM 来解决命名空间的问题，用 SMACSS 来解决代码分层问题，用 OOCSS 来解决解构复用问题。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
     
     
   </entry>

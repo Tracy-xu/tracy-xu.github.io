@@ -139,6 +139,38 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/">
+                TypeScript 接口和类型生成
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-08-13</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Engineering/">Engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>接口和类型的定义是一件耗时费力的工作，通过解析 OpenAPI&#x2F;Swagger 文档，自动化生成接口是一种很好的解决方案，这也便于接口更新时做 <code>git diff</code>，清晰的显示接口更新的内容。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> <span class="title class_">AppResetPasswordReq</span> &#123;</span><br><span class="line">  <span class="attr">email</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">password</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">code</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">resetPassword</span>(<span class="params">params: AppResetPasswordReq</span>): <span class="title class_">Promise</span>&lt;<span class="title class_">Result</span>&lt;<span class="built_in">boolean</span>&gt;&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> axios.<span class="title function_">post</span>(<span class="string">&#x27;/app/reset/password&#x27;</span>, params)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// more...</span></span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2024/03/26/javascript/WebSocket%20%E8%BF%9E%E6%8E%A5%E5%85%B1%E4%BA%AB/">
                 WebSocket 连接共享
             </a>
@@ -440,38 +472,6 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="type">int</span> *p1;</span><br><span class="line">  <span class="type">int</span> **p2;</span><br><span class="line"></span><br><span class="line">  p1 = &amp;a; <span class="comment">// 指针 p1 指向 a</span></span><br><span class="line">  p2 = &amp;p1; <span class="comment">// 指针 p2 指向指针 p1，即 p2 的内容为 p1 的地址</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p1); <span class="comment">// 10</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, **p2); <span class="comment">// 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         <a href="/2020/01/15/pl/Pointer-Reference/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/07/01/engineering/Sinopia/">
-                NPM 私仓
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-07-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/Engineering/">Engineering</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>npm 私仓可用于提高包的下载速度和保护内部代码，常见的 npm 私仓技术方案有以下几种：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* npm on-site  # 缺点是收费，而且 npm 在国内访问慢</span><br><span class="line">* Git + SSH 直接引用到 GitHub 项目地址 # 缺点是不能更新（npm update），不能使用 Semver（语义化版本规范），而且 URL 不美观</span><br><span class="line">* cnpm</span><br><span class="line">* Sinopia/Verdaccio</span><br><span class="line">* Nexus</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2019/07/01/engineering/Sinopia/" class="read-more">Read More</a>
     
 
 </div>
