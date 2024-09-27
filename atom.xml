@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2024-08-13T15:37:38.081Z</updated>
+  <updated>2024-09-27T17:53:29.402Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>弹框的函数调用</title>
+    <link href="https://tracyxu.cn/2024/09/28/javascript/%E5%BC%B9%E6%A1%86%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/"/>
+    <id>https://tracyxu.cn/2024/09/28/javascript/%E5%BC%B9%E6%A1%86%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/</id>
+    <published>2024-09-27T16:00:00.000Z</published>
+    <updated>2024-09-27T17:53:29.402Z</updated>
+    
+    
+    <summary type="html">&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;van-popup v-&lt;span class=&quot;attr&quot;&gt;model&lt;/span&gt;:show=&lt;span class=&quot;string&quot;&gt;&amp;quot;visiblePopup&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Comp&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;v-if&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;visiblePopup&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;:some-props&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;someProps&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/van-popup&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;lang&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;ts&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;setup&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &amp;#123;ref, reactive&amp;#125; &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;#x27;vue&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; visiblePopup = &lt;span class=&quot;title function_&quot;&gt;ref&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; someProps = &lt;span class=&quot;title function_&quot;&gt;reactive&lt;/span&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;像上面这样的模板式弹框代码，在项目中是最常见不过的，以 &lt;code&gt;Component&lt;/code&gt; 方式调用弹框，如果代码组织不好，会使得 &lt;code&gt;template&lt;/code&gt; 变得异常凌乱，更重要的是其中充斥着诸如 &lt;code&gt;visiblePopup&lt;/code&gt;、&lt;code&gt;someProps&lt;/code&gt; 等这样的中间变量，显得尤为不优雅。而像下面这样以函数方式调用则简洁得多。&lt;/p&gt;
+&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;handleOpenComp&lt;/span&gt; = (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) =&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;title function_&quot;&gt;showPopup&lt;/span&gt;(comp, someProps)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>TypeScript 接口和类型生成</title>
     <link href="https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/"/>
     <id>https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/</id>
     <published>2024-08-12T16:00:00.000Z</published>
-    <updated>2024-08-13T15:37:38.081Z</updated>
+    <updated>2024-08-29T01:58:49.106Z</updated>
     
     
     <summary type="html">&lt;p&gt;接口和类型的定义是一件耗时费力的工作，通过解析 OpenAPI&amp;#x2F;Swagger 文档，自动化生成接口是一种很好的解决方案，这也便于接口更新时做 &lt;code&gt;git diff&lt;/code&gt;，清晰的显示接口更新的内容。&lt;/p&gt;
@@ -81,6 +101,26 @@
     
     
     <category term="少儿编程" scheme="https://tracyxu.cn/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>用户角色权限设计</title>
+    <link href="https://tracyxu.cn/2022/01/06/project/%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/"/>
+    <id>https://tracyxu.cn/2022/01/06/project/%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/</id>
+    <published>2022-01-05T16:00:00.000Z</published>
+    <updated>2024-08-29T02:33:02.514Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在多角色的系统中（比如管理端）一般会给不同角色的用户分配不同的权限。权限一般有以下分类：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;* 页面权限&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 操作权限&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 数据权限&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* API 权限&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;页面一般通过路由分发，所以页面权限也叫做路由权限。在这些权限中，API 权限是后端权限，其他都是前端权限，下面从前端角度介绍用户角色权限的设计。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目设计" scheme="https://tracyxu.cn/categories/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/"/>
     
     
   </entry>
@@ -361,41 +401,6 @@
     
     
     <category term="数据结构与算法" scheme="https://tracyxu.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Base 64 编码</title>
-    <link href="https://tracyxu.cn/2017/05/10/foundation/Base-64/"/>
-    <id>https://tracyxu.cn/2017/05/10/foundation/Base-64/</id>
-    <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2024-04-30T03:34:15.427Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Base64 是一种用 64 个可打印字符来表示任意二进制数据的二进制编码方法。可以用来处理和传输任意二进制数据。&lt;/p&gt;
-&lt;p&gt;Base64 最初是用在电子邮件中，为了满足电子邮件中不能直接使用非 ASCII 码字符的规定，用来传输二进制文件的。除此之外，它还可将任意不可打印的二进制数据，转化为可打印的文本编码，使用文本软件进行编辑（二进制流中有很多都是无法显示和打印的，比如 ASCII 中的控制字符，二进制文件 jpg、pad、exe 等，如果用记事本打开这些文件，会看到一堆乱码）。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>字符编码</title>
-    <link href="https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/"/>
-    <id>https://tracyxu.cn/2017/02/01/foundation/Character-Encoding/</id>
-    <published>2017-01-31T16:00:00.000Z</published>
-    <updated>2024-04-30T03:34:15.427Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;计算机只能处理数字，如果要处理文本，就必须先把文本编码转换为数字才能处理（图片、语音、视频…，这些多媒体文件也一样）。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="计算机组成原理" scheme="https://tracyxu.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
     
   </entry>

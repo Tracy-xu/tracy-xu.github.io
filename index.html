@@ -139,6 +139,40 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2024/09/28/javascript/%E5%BC%B9%E6%A1%86%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
+                弹框的函数调用
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-09-28</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/JavaScript/">JavaScript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-popup v-<span class="attr">model</span>:show=<span class="string">&quot;visiblePopup&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Comp</span> <span class="attr">v-if</span>=<span class="string">&quot;visiblePopup&quot;</span> <span class="attr">:some-props</span>=<span class="string">&quot;someProps&quot;</span> /&gt;</span></span></span><br><span class="line">&lt;/van-popup&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123;ref, reactive&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> visiblePopup = <span class="title function_">ref</span>(<span class="literal">false</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> someProps = <span class="title function_">reactive</span>()</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>像上面这样的模板式弹框代码，在项目中是最常见不过的，以 <code>Component</code> 方式调用弹框，如果代码组织不好，会使得 <code>template</code> 变得异常凌乱，更重要的是其中充斥着诸如 <code>visiblePopup</code>、<code>someProps</code> 等这样的中间变量，显得尤为不优雅。而像下面这样以函数方式调用则简洁得多。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleOpenComp</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">showPopup</span>(comp, someProps)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <a href="/2024/09/28/javascript/%E5%BC%B9%E6%A1%86%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/">
                 TypeScript 接口和类型生成
             </a>
@@ -255,6 +289,40 @@
             <p><img src="/images/scratch/scratch.jpg" alt="Scratch"></p>
         </div>
         <a href="/2022/03/02/scratch/Scratch/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2022/01/06/project/%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/">
+                用户角色权限设计
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-01-06</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/项目设计/">项目设计</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>在多角色的系统中（比如管理端）一般会给不同角色的用户分配不同的权限。权限一般有以下分类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 页面权限</span><br><span class="line">* 操作权限</span><br><span class="line">* 数据权限</span><br><span class="line">* API 权限</span><br></pre></td></tr></table></figure>
+
+<p>页面一般通过路由分发，所以页面权限也叫做路由权限。在这些权限中，API 权限是后端权限，其他都是前端权限，下面从前端角度介绍用户角色权限的设计。</p>
+        </div>
+        <a href="/2022/01/06/project/%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/" class="read-more">Read More</a>
     
 
 </div>
@@ -408,70 +476,6 @@
             <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>XSS (Cross-site scripting) 跨站脚本攻击，首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将意为“交叉”的 Cross 改以交叉形的 X 做为缩写。</p>
         </div>
         <a href="/2020/04/25/network/XSS-CSRF/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/04/22/linux/SSH/">
-                SSH
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-04-22</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/Linux/">Linux</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>SSH 是一种网络协议，用于计算机之间的加密登录。传统的网络服务程序，如：FTP、PoP 和 Telnet 在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，非常容易就可以截获这些口令和数据。</p>
-<p>除了可以代替 Telnet 做远程登录外（Telnet 因为采用明文传送报文，安全性不好，很多 Linux 服务器都不开放 Telnet 服务，要想使用 Telnet 需要安装），SSH 还可以为 FTP、PoP、甚至为 PPP 提供一个安全的”通道”（比如 SFTP）。</p>
-        </div>
-        <a href="/2020/04/22/linux/SSH/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/01/15/pl/Pointer-Reference/">
-                指针和引用
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-01-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/编程语言/">编程语言</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>指针是内存地址，指针变量是用来存放内存地址的变量，指向内存的一个存储单元。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="type">int</span> *p1;</span><br><span class="line">  <span class="type">int</span> **p2;</span><br><span class="line"></span><br><span class="line">  p1 = &amp;a; <span class="comment">// 指针 p1 指向 a</span></span><br><span class="line">  p2 = &amp;p1; <span class="comment">// 指针 p2 指向指针 p1，即 p2 的内容为 p1 的地址</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p1); <span class="comment">// 10</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, **p2); <span class="comment">// 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2020/01/15/pl/Pointer-Reference/" class="read-more">Read More</a>
     
 
 </div>
