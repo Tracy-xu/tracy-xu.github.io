@@ -164,7 +164,7 @@
 
 <span id="more"></span>
 
-<h2 id="Sinopia-x2F-Verdaccio"><a href="#Sinopia-x2F-Verdaccio" class="headerlink" title="Sinopia&#x2F;Verdaccio"></a>Sinopia&#x2F;Verdaccio</h2><p>Sinopia 是一个零配置的私有的带缓存功能的 npm 包管理工具。使用 Sinopia，不用安装 CouchDB 或 MYSQL 之类的数据库，Sinopia 有自己的迷你数据库，如果要下载的包不存在，它将自动去你配置的 npm 地址上去下载，而且硬盘中只缓存你现在过的包，以节省空间。</p>
+<h2 id="Sinopia-x2F-Verdaccio"><a href="#Sinopia-x2F-Verdaccio" class="headerlink" title="Sinopia&#x2F;Verdaccio"></a>Sinopia&#x2F;Verdaccio</h2><p>Sinopia 是一个零配置的私有的带缓存功能的 npm 包管理平台。使用 Sinopia，不用安装 CouchDB 或 MYSQL 之类的数据库，Sinopia 有自己的迷你数据库，如果要下载的包不存在，它将自动去你配置的 npm 地址上去下载，而且硬盘中只缓存你现在过的包，以节省空间。</p>
 <p>Sinopia 特点：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 不同步拉取 npm 库，占据大量硬盘，没有硬盘被撑爆的问题</span><br><span class="line">* 安装配置极其简单，不需要数据库</span><br><span class="line">* 支持配置上游 Registry 配置，一次拉取即缓存</span><br><span class="line">* 支持 Forever 及 Pm2 守护进程管理</span><br></pre></td></tr></table></figure>
 
@@ -219,7 +219,7 @@
 <li>packages 配置</li>
 </ul>
 <p>配置大致分为两个部分，一个是以 <code>@*/*</code> 为开头的，另一个则是通配符 <code>*</code>。</p>
-<p>这个当然就是对 package.json 中的 name 字段进行匹配，比如 @webassemblyjs&#x2F;<a href="mailto:&#97;&#115;&#x74;&#x40;&#x31;&#x2e;&#x33;&#x2e;&#49;">&#97;&#115;&#x74;&#x40;&#x31;&#x2e;&#x33;&#x2e;&#49;</a> 将匹配第一个配置，而 express 则匹配第二个。这里这么配置的意义在于：一般团队或者公司的私有项目，会采用不同的权限控制，于是这里借用了 npm 的 scoped name 即 @company 的形式，例如 @weflex&#x2F;app 即表示 WeFlex 下属的 app 项目了。</p>
+<p>这个当然就是对 package.json 中的 name 字段进行匹配，比如 @webassemblyjs&#x2F;<a href="mailto:&#x61;&#x73;&#x74;&#64;&#49;&#x2e;&#x33;&#x2e;&#49;">&#x61;&#x73;&#x74;&#64;&#49;&#x2e;&#x33;&#x2e;&#49;</a> 将匹配第一个配置，而 express 则匹配第二个。这里这么配置的意义在于：一般团队或者公司的私有项目，会采用不同的权限控制，于是这里借用了 npm 的 scoped name 即 @company 的形式，例如 @weflex&#x2F;app 即表示 WeFlex 下属的 app 项目了。</p>
 <p>接下来，每一个命名过滤器（filter）下都有三项基本设置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">access    # 表示哪一类用户可以对匹配的项目进行安装(install)</span><br><span class="line">publish   # 表示哪一类用户可以对匹配的项目进行发布(publish)</span><br><span class="line">proxy     # 如其名，这里的值是对应于 uplinks 的</span><br></pre></td></tr></table></figure>
 
@@ -230,10 +230,10 @@
 <ul>
 <li>为 packages 中 <code>@*/*</code> 字段配置代理源</li>
 </ul>
-<p><code>&#39;@*/*&#39;</code> 下添加 <code>proxy: npmjs</code> 配置，给 scoped packages（<a target="_blank" rel="noopener" href="https://docs.npmjs.com/misc/scope">npm 官方的定义</a>） 添加代理源，使得能够安装 scoped packages 类型的包（比如 @webassemblyjs&#x2F;<a href="mailto:&#97;&#115;&#116;&#x40;&#49;&#46;&#x33;&#x2e;&#x31;">&#97;&#115;&#116;&#x40;&#49;&#46;&#x33;&#x2e;&#x31;</a>）。如果不配置此项，安装基本的包没有问题，但是，安装 scoped packages 包时，比如  webpack，会提示错误：</p>
+<p><code>&#39;@*/*&#39;</code> 下添加 <code>proxy: npmjs</code> 配置，给 scoped packages（<a target="_blank" rel="noopener" href="https://docs.npmjs.com/misc/scope">npm 官方的定义</a>） 添加代理源，使得能够安装 scoped packages 类型的包（比如 @webassemblyjs&#x2F;<a href="mailto:&#x61;&#115;&#x74;&#x40;&#x31;&#x2e;&#x33;&#46;&#49;">&#x61;&#115;&#x74;&#x40;&#x31;&#x2e;&#x33;&#46;&#49;</a>）。如果不配置此项，安装基本的包没有问题，但是，安装 scoped packages 包时，比如  webpack，会提示错误：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack</span><br><span class="line"></span><br><span class="line"># 出现以下错误</span><br><span class="line">npm ERR! code E404</span><br><span class="line">npm ERR! 404 Not Found: @webassemblyjs/ast@1.3.1</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Administrator\AppData\Roaming\npm-cache\_logs\2018-05-09T06_26_23_190Z-debug.log</span><br></pre></td></tr></table></figure>
 
-<p>这是在安装 @webassemblyjs&#x2F;<a href="mailto:&#x61;&#115;&#116;&#x40;&#49;&#46;&#x33;&#46;&#x31;">&#x61;&#115;&#116;&#x40;&#49;&#46;&#x33;&#46;&#x31;</a> 这个包时出的问题，sinopia 会提示 404。上面安装的包就是这类的包，常见的有 @angular @type 等。修改配置和代码后，重启 sinopia，这时再次安装就会提示成功。</p>
+<p>这是在安装 @webassemblyjs&#x2F;<a href="mailto:&#x61;&#115;&#x74;&#64;&#49;&#46;&#51;&#46;&#x31;">&#x61;&#115;&#x74;&#64;&#49;&#46;&#51;&#46;&#x31;</a> 这个包时出的问题，sinopia 会提示 404。上面安装的包就是这类的包，常见的有 @angular @type 等。修改配置和代码后，重启 sinopia，这时再次安装就会提示成功。</p>
 <p>如果还不成功，可能就是老版本 sinopia 的 bug 导致的（我这版中没出息这个问题），sinopia 每次向 npmjs 请求安装某个包时，请求地址都是转码后再向 npm 请求的，所以会将 @ 转码为 %40，但是 npm 不能识别 %40，所以导致 404 的错误。</p>
 <p>这个时候只需要修改 sinopia 中的转码的地方就可以了。转码的文件是 up-storage.js,，修改 up-storage.js 中的 encode 为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var encode = function (url) &#123;</span><br><span class="line">  return encodeURIComponent(url).replace(/^%40/, &#x27;@&#x27;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>

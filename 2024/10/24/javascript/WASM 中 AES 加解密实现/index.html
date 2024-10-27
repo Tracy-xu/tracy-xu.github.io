@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="WASM 中 AES 加解密实现"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>WASM 中 AES 加解密实现 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2024/10/24/javascript/WASM%20%E4%B8%AD%20AES%20%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0/">
+                WASM 中 AES 加解密实现
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-10-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/JavaScript/">JavaScript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>最近对项目所有的 HTTP 请求响应进行了 AES 加解密改造，但在 JavaScript 中保管 AES Key 有着非常大的安全风险，将加解密逻辑交由难以反编译的 WebAssembly 实现，则是一种比较安全的选择。</p>
+<span id="more"></span>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;bytes&quot;</span></span><br><span class="line">    <span class="string">&quot;encoding/base64&quot;</span></span><br><span class="line">    <span class="string">&quot;encoding/hex&quot;</span></span><br><span class="line">    <span class="string">&quot;errors&quot;</span></span><br><span class="line">    <span class="string">&quot;syscall/js&quot;</span></span><br><span class="line">    <span class="string">&quot;crypto/cipher&quot;</span></span><br><span class="line">    <span class="string">&quot;crypto/aes&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> aesDefaultKeyHex = <span class="string">&quot;d86d7bab3d6fc0aab9dccad97652f2d2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// AES 加密函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">aesEncrypt</span><span class="params">(data <span class="type">string</span>, aesKeyHex <span class="type">string</span>)</span></span> (<span class="type">string</span>, <span class="type">error</span>) &#123;</span><br><span class="line">    aesKey, err := hex.DecodeString(aesKeyHex)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    block, err := aes.NewCipher(aesKey)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 填充数据</span></span><br><span class="line">    dataBytes := []<span class="type">byte</span>(data)</span><br><span class="line">    blockSize := block.BlockSize()</span><br><span class="line">    paddedData := pad(dataBytes, blockSize)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ECB 加密</span></span><br><span class="line">    ciphertext := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="built_in">len</span>(paddedData))</span><br><span class="line">    mode := newECB(block)</span><br><span class="line">    mode.Encrypt(ciphertext, paddedData)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> base64.StdEncoding.EncodeToString(ciphertext), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AES 解密函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">aesDecrypt</span><span class="params">(encryptedData <span class="type">string</span>, aesKeyHex <span class="type">string</span>)</span></span> (<span class="type">string</span>, <span class="type">error</span>) &#123;</span><br><span class="line">    aesKey, err := hex.DecodeString(aesKeyHex)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    block, err := aes.NewCipher(aesKey)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解码 base64 的密文</span></span><br><span class="line">    ciphertext, err := base64.StdEncoding.DecodeString(encryptedData)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查密文长度是否为块大小的倍数</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(ciphertext)%block.BlockSize() != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, errors.New(<span class="string">&quot;密文长度不是块大小的倍数&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ECB 解密</span></span><br><span class="line">    decrypted := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="built_in">len</span>(ciphertext))</span><br><span class="line">    mode := newECB(block)</span><br><span class="line">    mode.Decrypt(decrypted, ciphertext)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 去填充</span></span><br><span class="line">    unpaddedData, err := unpad(decrypted)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="type">string</span>(unpaddedData), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 填充数据</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">pad</span><span class="params">(data []<span class="type">byte</span>, blockSize <span class="type">int</span>)</span></span> []<span class="type">byte</span> &#123;</span><br><span class="line">    pad := blockSize - <span class="built_in">len</span>(data)%blockSize</span><br><span class="line">    padding := bytes.Repeat([]<span class="type">byte</span>&#123;<span class="type">byte</span>(pad)&#125;, pad)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">append</span>(data, padding...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 去填充数据</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unpad</span><span class="params">(data []<span class="type">byte</span>)</span></span> ([]<span class="type">byte</span>, <span class="type">error</span>) &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(data)</span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">&quot;数据长度为 0&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    pad := data[length<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">if</span> pad &gt; <span class="type">byte</span>(length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">&quot;填充无效&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data[:length-<span class="type">int</span>(pad)], <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ECB 模式实现</span></span><br><span class="line"><span class="keyword">type</span> ecb <span class="keyword">struct</span> &#123;</span><br><span class="line">    b cipher.Block</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 ECB 模式实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newECB</span><span class="params">(b cipher.Block)</span></span> *ecb &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;ecb&#123;b: b&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ECB 加密函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *ecb)</span></span> Encrypt(dst, src []<span class="type">byte</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(src)%e.b.BlockSize() != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="built_in">panic</span>(<span class="string">&quot;输入数据大小必须为块大小的整数倍&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(src) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        e.b.Encrypt(dst, src[:e.b.BlockSize()])</span><br><span class="line">        src = src[e.b.BlockSize():]</span><br><span class="line">        dst = dst[e.b.BlockSize():]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ECB 解密函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *ecb)</span></span> Decrypt(dst, src []<span class="type">byte</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(src)%e.b.BlockSize() != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="built_in">panic</span>(<span class="string">&quot;输入数据大小必须为块大小的整数倍&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(src) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        e.b.Decrypt(dst, src[:e.b.BlockSize()])</span><br><span class="line">        src = src[e.b.BlockSize():]</span><br><span class="line">        dst = dst[e.b.BlockSize():]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 暴露 AES 加密函数到 JavaScript</span></span><br><span class="line">    js.Global().Set(<span class="string">&quot;aesEncrypt&quot;</span>, js.FuncOf(<span class="function"><span class="keyword">func</span><span class="params">(this js.Value, p []js.Value)</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">        data := p[<span class="number">0</span>].String()</span><br><span class="line">        key := aesDefaultKeyHex</span><br><span class="line">        encrypted, err := aesEncrypt(data, key)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> js.ValueOf(err.Error())</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> js.ValueOf(encrypted)</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 暴露 AES 解密函数到 JavaScript</span></span><br><span class="line">    js.Global().Set(<span class="string">&quot;aesDecrypt&quot;</span>, js.FuncOf(<span class="function"><span class="keyword">func</span><span class="params">(this js.Value, p []js.Value)</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">        encryptedData := p[<span class="number">0</span>].String()</span><br><span class="line">        key := aesDefaultKeyHex</span><br><span class="line">        decrypted, err := aesDecrypt(encryptedData, key)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> js.ValueOf(err.Error())</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> js.ValueOf(decrypted)</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">    &lt;-<span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;) <span class="comment">// 防止程序退出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将上述 Go 代码编译为 WebAssembly，生成 <code>aes.wasm</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$env</span>:GOOS=<span class="string">&quot;js&quot;</span>; <span class="variable">$env</span>:GOARCH=<span class="string">&quot;wasm&quot;</span>; go build -o aes.wasm aes.go</span><br></pre></td></tr></table></figure>
+
+<p>在 JavaScript 中调用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;wasm_exec.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;inputText&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;encryptBtn&quot;</span>&gt;</span>加密<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Encrypted: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;encryptedText&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;inputEncryptedText&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;decryptBtn&quot;</span>&gt;</span>解密<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Decrypted: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;decryptedText&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> go = <span class="keyword">new</span> <span class="title class_">Go</span>()</span></span><br><span class="line"><span class="language-javascript">  <span class="title class_">WebAssembly</span>.<span class="title function_">instantiateStreaming</span>(<span class="title function_">fetch</span>(<span class="string">&#x27;aes.wasm&#x27;</span>), go.<span class="property">importObject</span>).<span class="title function_">then</span>(</span></span><br><span class="line"><span class="language-javascript">    <span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      go.<span class="title function_">run</span>(result.<span class="property">instance</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  )</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;encryptBtn&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> inputText = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;inputText&#x27;</span>).<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> encrypted = <span class="title function_">aesEncrypt</span>(inputText)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;encryptedText&#x27;</span>).<span class="property">innerText</span> = encrypted</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;decryptBtn&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> inputEncryptedText = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;inputEncryptedText&#x27;</span>).<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> decrypted = <span class="title function_">aesDecrypt</span>(inputEncryptedText)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;decryptedText&#x27;</span>).<span class="property">innerText</span> = decrypted</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+<!-- 百度统计 -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body>
+
+</html>

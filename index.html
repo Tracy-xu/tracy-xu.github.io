@@ -139,8 +139,39 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2024/09/28/javascript/%E5%BC%B9%E6%A1%86%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
-                弹框的函数调用
+            <a href="/2024/10/24/javascript/WASM%20%E4%B8%AD%20AES%20%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0/">
+                WASM 中 AES 加解密实现
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-10-24</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/JavaScript/">JavaScript</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>最近对项目所有的 HTTP 请求响应进行了 AES 加解密改造，但在 JavaScript 中保管 AES Key 有着非常大的安全风险，将加解密逻辑交由难以反编译的 WebAssembly 实现，则是一种比较安全的选择。</p>
+        </div>
+        <a href="/2024/10/24/javascript/WASM%20%E4%B8%AD%20AES%20%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2024/09/28/javascript/Component%20%E7%BB%84%E4%BB%B6%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
+                Component 组件的函数调用
             </a>
         </h1>
         <div class="post-info">
@@ -163,7 +194,7 @@
 <p>像上面这样的模板式弹框代码，在项目中是最常见不过的，以 <code>Component</code> 方式调用弹框，如果代码组织不好，会使得 <code>template</code> 变得异常凌乱，更重要的是其中充斥着诸如 <code>visiblePopup</code>、<code>someProps</code> 等这样的中间变量，显得尤为不优雅。而像下面这样以函数方式调用则简洁得多。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleOpenComp</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">showPopup</span>(comp, someProps)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
-        <a href="/2024/09/28/javascript/%E5%BC%B9%E6%A1%86%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" class="read-more">Read More</a>
+        <a href="/2024/09/28/javascript/Component%20%E7%BB%84%E4%BB%B6%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" class="read-more">Read More</a>
     
 
 </div>
@@ -445,37 +476,6 @@
             <p>函数参数的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085">求值策略 Evaluation Strategy</a> 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。</p>
         </div>
         <a href="/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/04/25/network/XSS-CSRF/">
-                XSS 和 CSRF
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-04-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/计算机网络/">计算机网络</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>XSS (Cross-site scripting) 跨站脚本攻击，首字母缩写本应为 CSS，但因为 CSS 在网页设计领域已经被广泛指层叠样式表（Cascading Style Sheets），所以将意为“交叉”的 Cross 改以交叉形的 X 做为缩写。</p>
-        </div>
-        <a href="/2020/04/25/network/XSS-CSRF/" class="read-more">Read More</a>
     
 
 </div>
