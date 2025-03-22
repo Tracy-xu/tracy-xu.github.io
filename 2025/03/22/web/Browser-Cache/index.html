@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="浏览器缓存技术指南"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>浏览器缓存技术指南 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2025/03/22/web/Browser-Cache/">
+                浏览器缓存技术指南
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2025-03-22</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Web/">Web</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载。</p>
+<p>缓存机制主要通过 HTTP 头部控制，包括强缓存（Strong Cache）和协商缓存（Negotiated Cache）。强缓存会直接读取本地缓存，协商缓存则是与服务器协商读取。缓存未过期使用强缓存机制，过期了则使用协商缓存机制。</p>
+<pre class="mermaid">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#fff',
+      'tertiaryColor': '#fff',
+      'fontSize': '12px',
+      'max-width': '10000px'
+    }
+  }
+}%%
+
+graph TD;
+    A[浏览器请求资源] --> B{是否存在缓存}
+    B -- 否<br>no-store --> C[向服务器请求资源]
+    C --> D{决策返回<br>200 or 304?}
+    D -- 200 --> E[设置缓存信息<br>Last-Modified, ETag]
+    E --> F[使用资源]
+    D -- 304 --> G[更新缓存信息<br>Last-Modified, ETag]
+    G --> F
+
+    B -- 是 --> H{是否可直接使用}
+    H -- 否<br>no-cache --> I[获取验证信息<br>If-Modified-Since / If-None-Match]
+    I --> C
+
+    H -- 是 --> K{是否过期<br>expires/max-age/s-maxage}
+    K -- 是 --> I
+    K -- 否 --> L[从缓存中获取资源]
+    L --> F</pre>
+
+<p>(缓存控制流程图)</p>
+<span id="more"></span>
+
+<h2 id="强缓存（Strong-Cache）"><a href="#强缓存（Strong-Cache）" class="headerlink" title="强缓存（Strong Cache）"></a>强缓存（Strong Cache）</h2><p>强缓存指的是浏览器直接从本地缓存中读取资源，状态码返回 <code>200</code>，无需向服务器发起请求。</p>
+<p>强缓存利用 HTTP 头部中的 <code>Expires</code> 和 <code>Cache-Control</code> 控制。</p>
+<ul>
+<li>Expires</li>
+</ul>
+<p><code>Expires</code> 指定资源的过期时间，在此时间之前，浏览器直接从缓存读取资源，无需请求服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expires: Fri, 22 Mar 2025 12:00:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p><code>Expires</code> 在 HTTP&#x2F;1.0 规范中定义，由于 Expires 是服务器设置的绝对时间，可能会因客户端与服务器时间不同步而失效，因此在 HTTP&#x2F;1.1 中被 <code>Cache-Control</code> 取代。</p>
+<ul>
+<li>Cache-Control</li>
+</ul>
+<p><code>Cache-Control</code> 是 HTTP&#x2F;1.1 中引入，提供了更精细的缓存控制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=3600, public</span><br></pre></td></tr></table></figure>
+
+<p><code>Cache-Control</code> 一些常设置值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* max-age=xxx 过期时间，表示资源可以缓存多少秒（3600 即 1 小时），基于相对时间</span><br><span class="line">* public 允许浏览器和代理服务器缓存该资源</span><br><span class="line">* private 只允许浏览器缓存，代理服务器不能缓存</span><br><span class="line">* no-cache 缓存，但是不走强缓存机制，而直接走协商缓存机制（表示缓存资源必须经过服务器验证后才能使用）</span><br><span class="line">* no-store 禁止缓存（不使用协商缓存，所有请求都会重新从服务器获取资源）</span><br><span class="line">* immutable 表示资源不会改变，即使用户刷新页面也不会重新请求（Ctrl + R 强制刷新也不会重新请求，除非清除缓存），SPA 最佳拍档</span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>no-cache</code> (必须验证) 和 <code>max-age=0</code> (过期) 都表示直接使用协商缓存。</p>
+<p>为了向后兼容性，一般会同时设置 <code>expires</code> 和 <code>Cache-Control</code>，比如 Nginx 配置中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location /static/ &#123;</span><br><span class="line">    # 旧版浏览器</span><br><span class="line">    expires 7d;</span><br><span class="line">    # 现代浏览器</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=604800&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="协商缓存（Negotiated-Cache）"><a href="#协商缓存（Negotiated-Cache）" class="headerlink" title="协商缓存（Negotiated Cache）"></a>协商缓存（Negotiated Cache）</h2><p>缓存过期或 <code>Cache-Control</code> 被设置为 <code>max-age=0</code> 或 <code>no-cache</code>，这时会采用协商缓存机制与服务器验证缓存是否仍然有效。如果资源没有改变，服务器会返回 <code>304 Not Modified</code>，浏览器继续使用本地缓存。</p>
+<p>注：有缓存下，会优先使用强缓机制，缓存过期才使用协商缓存机制。</p>
+<p>协商缓存利用 <code>Last-Modified</code>，<code>If-Modified-Since</code> 和 <code>ETag</code>、<code>If-None-Match</code> 这两组 HTTP 头部控制。</p>
+<ul>
+<li>Last-Modified 和 If-Modified-Since</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Last-Modified: Mon, 20 Mar 2025 10:00:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p>服务器返回资源时，会带上 <code>Last-Modified</code> 头部，表示资源的最后修改时间。浏览器在下次请求时，会在请求头中带上 <code>If-Modified-Since</code>，其值是上一次请求时返回的 <code>Last-Modified</code> 值，询问服务器资源是否更新。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-Modified-Since: Mon, 20 Mar 2025 10:00:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p>服务器再次收到资源请求时，根据传过来 <code>If-Modified-Since</code> 和资源在服务器上的最后修改时间比较日期大小，判断资源是否有变化，如果资源没有变更，服务器返回 <code>304 Not Modified</code>，浏览器继续使用缓存，否则，服务器返回新的资源。<code>Last-Modified</code> 头部会更新为新生成的返回。</p>
+<p>注意：如果资源内容没有变，但 Last-Modified 发生变化，仍然会触发重新下载。</p>
+<ul>
+<li>ETag 和 If-None-Match</li>
+</ul>
+<p><code>Last-Modified</code> 只能精确到秒级，在高频操作中，如果资源在 1 秒内被多次修改，<code>Last-Modified</code> 无法区分这些变化，另外 <code>Last-Modified</code> 依赖服务器时间，如果服务器时间被修改（比如时钟回拨），可能会导致缓存错乱。</p>
+<p>为了更精准地判断资源是否变化，可以使用 <code>ETag</code>（Entity Tag）。<code>ETag</code> 更精确，不受时间精度影响，能识别内容相同但修改时间不同的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag: &quot;abc123&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>ETag</code> 是资源的唯一标识符（通常是文件的哈希值）。浏览器请求时，会带上 <code>If-None-Match</code> 头部，值是上一次请求时返回的 <code>ETag</code> 的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match: &quot;abc123&quot;</span><br></pre></td></tr></table></figure>
+
+<p>服务器再次收到资源请求时，根据传过来 <code>If-None-Match</code> 和新生成的 <code>ETag</code> 比较，如果相同，返回 <code>304 Not Modified</code>，否则返回新的资源。<code>ETag</code> 头部会更新为新生成的返回。</p>
+<h2 id="浏览器缓存策略的选择"><a href="#浏览器缓存策略的选择" class="headerlink" title="浏览器缓存策略的选择"></a>浏览器缓存策略的选择</h2><p>对于 HTML 文件这样更新频率高的文件，采用 <code>Cache-Control: no-cache</code> + <code>Last-Modified</code> + <code>ETag</code> 协商缓存机制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache</span><br><span class="line">ETag: &quot;abc123&quot;</span><br></pre></td></tr></table></figure>
+
+<p>对于 JS、CSS、图片等更新不频繁的静态资源文件，采用 <code>Cache-Control: max-age</code> 强缓存机制。但应配合文件指纹或内容哈希使用，否则强缓存机制会导致缓存更新问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=31536000, immutable</span><br></pre></td></tr></table></figure>
+
+<p>现代前端开发中，文件名普遍使用内容哈希，这类资源，可放心采用强缓存机制。</p>
+<p>CSR 项目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 默认采用协商缓存</span><br><span class="line">location / &#123;</span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line"></span><br><span class="line">    expires -1;</span><br><span class="line">    add_header Cache-Control &quot;no-cache, must-revalidate&quot;; # &quot;public, max-age=0, must-revalidate&quot; 效果一样</span><br><span class="line">    add_header Last-Modified $date_gmt;</span><br><span class="line">    etag on; # 启用 ETag</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 带哈希的静态文件采用强缓存</span><br><span class="line"># 基于目录匹配比基于扩展名白名单匹配会更简单</span><br><span class="line">location ~* \.[a-f0-9]&#123;8,&#125;\.(js|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot)$ &#123;</span><br><span class="line">    expires 30d;</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=2592000, immutable&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SSR 项目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /_nuxt/ &#123;</span><br><span class="line">    root /white-page/public;</span><br><span class="line">    expires max;</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=31536000, immutable&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>缓存更新问题</li>
+</ul>
+<p>在强缓存机制下，甚至没有配置 <code>ETag</code> 的协商缓存机制下，可能会出现更新资源无法生效问题，浏览器会继续加载旧资源。</p>
+<p>使用以下方案解决避免：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 使用带 Cache-Control: no-cache + Last-Modified + ETag 的协商缓存机制，不走强缓存</span><br><span class="line">* 使用强缓存机制，但资源带文件指纹（如 app.js?v=abc1234）或内容哈希（如 app.abc123.js）</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  nuxt:
+    build: .
+    container_name: nuxt_app
+    restart: unless-stopped
+    # ports:
+    #   - '3000:3000' # 通过 nginx 代理，则无需映射端口
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - nuxt-public:/white-page/public
+    networks:
+      - nuxt-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    volumes:
+      # - ./nginx/nginx.conf:/etc/nginx/nginx.conf # 不要轻易覆盖主配置文件，如果 ./nginx.conf 中没有 include /etc/nginx/conf.d/*.conf;，会导致 nginx 会无法加载 conf.d 目录下的其它配置文件
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro # 生产环境中一般会将配置 COPY 进 nginx 容器，防止 ./default.conf 在宿主机上被删，具体见下面 nginx service 配置段
+      - nuxt-public:/white-page/public:ro # 通过命名卷实现容器间的数据共享，而不是使用主机目录来共享 - ./.output/public:/white-page/public:ro
+    depends_on:
+      - nuxt
+    networks:
+      - nuxt-network
+
+  # nginx:
+  #   build: ./nginx # 指向包含Dockerfile的目录
+  #   container_name: nginx_proxy
+  #   restart: unless-stopped
+  #   ports:
+  #     - '80:80'
+  #   volumes:
+  #     - nuxt-public:/white-page/public:ro
+  #   depends_on:
+  #     - nuxt
+  #   networks:
+  #     - nuxt-network
+
+networks:
+  nuxt-network:
+    driver: bridge
+
+volumes:
+  nuxt-public:

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="CSS3 过渡与动画"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>CSS3 过渡与动画 - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2014/05/18/web/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
+                CSS3 过渡与动画
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2014-05-18</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Web/">Web</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition</span>: [property duration timing-function delay]</span><br></pre></td></tr></table></figure>
+
+<p><code>property</code> 默认值 <code>all</code>，<code>duration</code> 和 <code>delay</code> 默认值 <code>0</code>，<code>timing-function</code> 默认值 <code>ease</code>。可使用 <code>,</code> 分割，实现多个动画，配合 <code>duration</code>，还可实现队列动画。</p>
+<span id="more"></span>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">65px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#92B901</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.4</span>;</span><br><span class="line">  <span class="attribute">transition</span>: transform <span class="number">1s</span>, opacity <span class="number">1s</span>, background <span class="number">1s</span>, width <span class="number">1s</span>, height <span class="number">1s</span>, font-size <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">90px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#1ec7e6</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>transition</code> 不会在页面加载时自动执行动画，它需要交互或异步去触发，比如 CSS 的伪类 <code>:hover</code>，JS 事件或 <code>setTimeout</code> 去执行动画。</p>
+<p>开启硬件加速，可以使 <code>transition</code> 运行更加流畅：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a>transition-property</h3><p>不是所有的 CSS 属性都支持 transition，<strong>属性存在中间状态，且能计算出中间状态（开始状态和结束状态是具体数值），才支持 transition</strong>。像 <code>visibility</code>、<code>display</code> 就不存在中间状态，<code>height: auto</code> 不能计算出中间状态，支持的属性常见有以下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* length/percentage: 真实的数字 如：`word-spacing`, `width`, `vertical-align`, `top`, `right`, `bottom`, `left`, `padding`, `outline-width`, `margin`, `min-width`, `min-height`, `max-width`, `max-height`, `line-height`, `height`, `border-width`, `border-spacing`, `background-position` 等；</span><br><span class="line">* number 真实的（浮点型）数值，如：`zoom`, `opacity`, `font-weight` 等；</span><br><span class="line">* color: RGB 和 Alpha 值，如：`background-color`, `border-color`, `color`, `outline-color` 等 CSS 属性；</span><br><span class="line">* shadow: x, y, blur 和 color，如：text-shadow</span><br><span class="line">* transform list</span><br></pre></td></tr></table></figure>
+
+<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* ease：逐渐变慢（默认值），等同于贝塞尔曲线 (0.25, 0.1, 0.25, 1.0)；</span><br><span class="line">* linear：匀速，等同于贝塞尔曲线 (0.0, 0.0, 1.0, 1.0)；</span><br><span class="line">* ease-in：加速，等同于贝塞尔曲线 (0.42, 0, 1.0, 1.0)；</span><br><span class="line">* ease-out：减速，等同于贝塞尔曲线 (0, 0, 0.58, 1.0)；</span><br><span class="line">* ease-in-out：加速然后减速，等同于贝塞尔曲线 (0.42, 0, 0.58, 1.0)；</span><br><span class="line">* cubic-bezier (n,n,n,n)：在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。实际用到的很少，可以到工具网站中设置值 http://cubic-bezier.com；</span><br></pre></td></tr></table></figure>
+
+<p>这几个贝塞尔值的区别：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;ease&quot;</span>&gt;</span>ease<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;ease-in&quot;</span>&gt;</span>ease-in<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;ease-out&quot;</span>&gt;</span>ease-out<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;ease-in-out&quot;</span>&gt;</span>ease-in-out<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;linear&quot;</span>&gt;</span>linear<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> red solid;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ease</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">4s</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ease-in</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">4s</span> ease-in;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ease-out</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">4s</span> ease-out;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ease-in-out</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">4s</span> ease-in-out;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.linear</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">4s</span> linear;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="transition-与-animation-区别"><a href="#transition-与-animation-区别" class="headerlink" title="transition 与 animation 区别"></a>transition 与 animation 区别</h3><p><code>transition</code> 是属性过渡动画，<code>animation</code> 是关键帧过渡动画，两种动画触发方式不一样，属性过渡必须通过交互或者异步修改属性值，而关键帧只需要应用即可，可以在交互时，也可以不在交互时。</p>
+<p>另外，在 CSS <code>:hover</code> 中，当鼠标移出时，属性值会恢复，发生过渡，<code>transition</code> 的逆向动画被触发，而 <code>animation</code> 关键帧动画不会 <code>reverse</code>，需另声明 <code>reverse</code> 的关键帧来实现，而且需通过事件来应用，要不然进入时会发生 <code>reverse</code> 动画。</p>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">animation</span>: [name duration timing-function delay iteration-count direction fill-mode play-state]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* animation-name 关键帧名，默认值 none</span><br><span class="line">* animation-duration 动画时长，默认值 0</span><br><span class="line">* animation-timing-function 动画速度，默认值 ease</span><br><span class="line">* animation-delay 延迟，默认值 0</span><br><span class="line">* animation-iteration-count 播放次数，默认值 1</span><br><span class="line">* animation-direction 轮流反向播放，默认值 normal</span><br><span class="line">* animation-play-state 默认值 running（播放）、paused（暂停）</span><br><span class="line">* animation-fill-mode 默认值 none（不改变默认行为）、forwards（保持在最后一个关键帧中定义的状态）、backwards（保持在第一个关键帧中定义的状态）、both</span><br></pre></td></tr></table></figure>
+
+<p><code>animation</code> 属性简写至少要有名称和时长。</p>
+<p><code>animation</code> 使用时需先定义关键帧 <code>@keyframes</code>，再在 <code>animation</code> 中使用关键帧。关键帧中，用百分比来规定变化发生的时间，或用关键词 <code>from</code> (动画开始) 和 <code>to</code> (动画完成)，等同于 <code>0%</code> 和 <code>100%</code>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> fade &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#f00</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> &#123;<span class="attribute">width</span>: <span class="number">100px</span>; <span class="attribute">height</span>: <span class="number">100px</span>; <span class="attribute">background</span>: <span class="number">#f00</span>; <span class="attribute">animation</span>: fade <span class="number">1s</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
+
+</body>
+
+</html>

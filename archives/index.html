@@ -137,10 +137,26 @@
       
       
       <div class="archive-page-counter">
-        还行! 目前共计 40 篇日志。 继续努力。
+        还行! 目前共计 42 篇日志。 继续努力。
       </div>
 
       
+      
+        
+        
+          
+          <div class="archive-year">
+            <a href="/archives/2025">2025</a>
+          </div>
+        
+        <div class="archive-post">
+    <a href="/2025/03/22/web/Browser-Cache/">
+        <span class="archive-date">
+            03-22
+        </span>
+        浏览器缓存技术指南
+    </a>
+  </div>
       
         
         
@@ -210,6 +226,17 @@
         
         
         <div class="archive-post">
+    <a href="/2022/05/15/engineering/Docker/">
+        <span class="archive-date">
+            05-15
+        </span>
+        Docker Guide
+    </a>
+  </div>
+      
+        
+        
+        <div class="archive-post">
     <a href="/2022/03/02/scratch/Scratch/">
         <span class="archive-date">
             03-02
@@ -245,40 +272,13 @@
     </a>
   </div>
       
-        
-        
-        <div class="archive-post">
-    <a href="/2021/10/01/canvas/%E7%94%BB%E6%9D%BF%E7%9A%84%E7%88%86%E7%82%B9%E5%92%8C%E6%8A%97%E9%94%AF%E9%BD%BF/">
-        <span class="archive-date">
-            10-01
-        </span>
-        画板的抗锯齿
-    </a>
-  </div>
-      
-        
-        
-          
-          <div class="archive-year">
-            <a href="/archives/2020">2020</a>
-          </div>
-        
-        <div class="archive-post">
-    <a href="/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/">
-        <span class="archive-date">
-            08-01
-        </span>
-        函数参数的求值策略
-    </a>
-  </div>
-      
     </section>
 
     <!-- paginator -->
     
       <nav class="paginator">
         
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &raquo;</a>
       </nav>
     
   </div>
@@ -354,7 +354,6 @@
 
 
 <!-- After footer scripts -->
-
 <!-- jQuery -->
 <script src="/plugins/jquery-2.1.4.min.js"></script>
 
@@ -374,14 +373,23 @@
 
 <!-- 百度统计 -->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-    })();
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
 </script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
 
 </body>
 

@@ -168,7 +168,7 @@
         
           
             <li class="category-list__item">
-              <a href="/categories/Web/" title="Web">Web<span class="category-list__count"> (9)</span></a>
+              <a href="/categories/Web/" title="Web">Web<span class="category-list__count"> (10)</span></a>
             </li>
           
         
@@ -180,7 +180,7 @@
         
           
             <li class="category-list__item">
-              <a href="/categories/Engineering/" title="Engineering">Engineering<span class="category-list__count"> (6)</span></a>
+              <a href="/categories/Engineering/" title="Engineering">Engineering<span class="category-list__count"> (7)</span></a>
             </li>
           
         
@@ -276,7 +276,6 @@
 
 
 <!-- After footer scripts -->
-
 <!-- jQuery -->
 <script src="/plugins/jquery-2.1.4.min.js"></script>
 
@@ -296,14 +295,23 @@
 
 <!-- 百度统计 -->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-    })();
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
 </script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
 
 </body>
 

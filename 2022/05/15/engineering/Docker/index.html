@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Tracy-xu&#39;Blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tracy Xu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Docker Guide"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Docker Guide - Tracy-xu&#39;Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Gallery -->
+    <link href="/plugins/featherlight/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/static/katex.min.css">
+
+<link rel="stylesheet" href="/static/hexo-math.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav class="menu-bar">
+    <a></a>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2022/05/15/engineering/Docker/">
+                Docker Guide
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-05-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Engineering/">Engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>在现代软件开发和部署中，Docker 作为一种容器技术，极大地简化了运行环境的搭建和应用程序的部署。与传统的虚拟机（VM）不同，Docker 容器利用宿主机的操作系统内核，而不是虚拟出一整套硬件和操作系统，从而实现轻量级和高效的资源利用。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Windows-11"><a href="#Windows-11" class="headerlink" title="Windows 11"></a>Windows 11</h3><p>Windows 下的 Docker Desktop 运行于 WSL 上，会默认安装 WSL，并创建两个仅供 Docker 使用的 Linux 发行版（distro）: <code>docker-desktop</code> 和 <code>docker-desktop-data</code>。其中，<code>docker-desktop</code> 用于运行 Docker engine，<code>docker-desktop-data</code> 用于存储 containers 和 images。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wsl --list -v <span class="comment"># 查看已安装 Linux 发行版</span></span><br><span class="line">  NAME                   STATE           VERSION</span><br><span class="line">* Ubuntu                 Running         2</span><br><span class="line">  docker-desktop         Running         2</span><br><span class="line">  docker-desktop-data    Running         2</span><br><span class="line"></span><br><span class="line">wsl -d docker-desktop <span class="comment"># 登录 docker-desktop，注，docker-desktop-data 不能登录</span></span><br></pre></td></tr></table></figure>
+
+<p>WSL 发行版使用 <code>ext4.vhdx</code> 虚拟硬盘文件进行存储，在 <code>%LOCALAPPDATA%/Docker/wsl</code> 目录下。Docker Desktop 创建的 Linux 发行版也存储在此虚拟存储硬盘中，其中，<code>docker-desktop</code> 存储在 <code>distro/ext4.vhdx</code>，<code>docker-desktop-data</code> 存储在 <code>data/ext4.vhdx</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注销卸载这两个发行版</span></span><br><span class="line">wsl --unregister docker-desktop-data</span><br><span class="line">wsl --unregister docker-desktop</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>迁移 docker-desktop-data</li>
+</ul>
+<p>可将 docker-desktop-data 迁移至其它盘或其它机器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导出 </span></span><br><span class="line"><span class="comment"># wsl --export &lt;Distribution Name&gt; &lt;FileName&gt;</span></span><br><span class="line">wsl --<span class="built_in">export</span> docker-desktop-data D:\docker\docker-desktop-data.tar</span><br><span class="line">wsl --<span class="built_in">export</span> docker-desktop D:\docker\docker-desktop.tar</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入 </span></span><br><span class="line"><span class="comment"># wsl --import &lt;Distribution Name&gt; &lt;InstallLocation&gt; &lt;FileName&gt;</span></span><br><span class="line"><span class="comment"># 导入至原本目录，%LOCALAPPDATA%/Docker/wsl/data</span></span><br><span class="line">wsl --import docker-desktop-data D:\docker\data D:\docker\docker-desktop-data.tar --version 2</span><br><span class="line">wsl --import docker-desktop D:\docker\docker-desktop D:\docker\docker-desktop.tar --version 2 <span class="comment"># 一般只需迁移 docker-desktop-data</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意，如果发行版已存在，需先卸载，再导入</span></span><br><span class="line">wsl --unregister docker-desktop</span><br><span class="line">wsl --unregister docker-desktop-data</span><br></pre></td></tr></table></figure>
+
+<p>注意，在导出或导入前，需使用 <code>wsl --shutdown</code> 关闭所有 WSL 发行版，以确保虚拟磁盘未被使用。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>Docker 的配置文件为 <code>daemon.json</code>，在 <code>C:\Users\用户名\.docker</code> 目录下，可以直接编辑此文件，也可以在 Docker Desktop 中修改。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// 镜像源</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> </span><br><span class="line">    <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span> <span class="comment">// 中科大源</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 镜像仓库</span></span><br><span class="line">docker login -u &lt;user-name&gt; -p &lt;password&gt; [host] <span class="comment"># 登录 docker 镜像仓库，不指定 host，则默认为 docker hub 官方仓库</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 镜像操作</span></span><br><span class="line">docker pull &lt;contain-name&gt; <span class="comment"># 拉取镜像，不加 tag，则默认 latest 最新</span></span><br><span class="line">docker push &lt;image-name[:tag]&gt; <span class="comment"># 上传镜像至 docker 镜像仓库</span></span><br><span class="line">docker search &lt;contain-name&gt; <span class="comment"># 查找镜像</span></span><br><span class="line">docker images &lt;image-name&gt; <span class="comment"># 查看已拉取镜像</span></span><br><span class="line">docker rmi &lt;image-name&gt; <span class="comment"># 删除镜像</span></span><br><span class="line">docker build -t &lt;image-name[:tag]&gt; &lt;dockerfile-path&gt;  <span class="comment"># 构建镜像</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 容器操作</span></span><br><span class="line">docker run &lt;image-name&gt; <span class="comment"># 运行容器（创建并启动）</span></span><br><span class="line">docker start &lt;contain&gt; <span class="comment"># 启动容器</span></span><br><span class="line">docker stop &lt;contain&gt; <span class="comment"># 停止容器</span></span><br><span class="line">docker restart &lt;contain&gt; <span class="comment"># 重启容器</span></span><br><span class="line">docker ps <span class="comment"># 查看正在运行容器，docker ps -a 查看所有容器</span></span><br><span class="line">docker <span class="built_in">rm</span> &lt;contain&gt; <span class="comment"># 删除指定容器，docker rm `docker ps -a -q` 删除所有容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it &lt;contain&gt; /bin/bash  <span class="comment"># 进入容器终端，-it 即 -i (以交互模式运行容器) -t (为容器分配一个终端)</span></span><br><span class="line">docker inspect &lt;contain&gt; <span class="comment"># 查看容器信息</span></span><br><span class="line">docker logs &lt;contain&gt; <span class="comment"># 查看容器日志</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据卷操作</span></span><br><span class="line">docker volume create &lt;volume-name&gt; <span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume <span class="built_in">ls</span> <span class="comment"># 查看所有数据卷</span></span><br><span class="line">docker volume inspect &lt;volume-name&gt; <span class="comment"># 查看指定数据卷详情信息</span></span><br><span class="line">docker volume <span class="built_in">rm</span> &lt;volume-name&gt; <span class="comment"># 删除数据卷</span></span><br><span class="line">docker volume prune <span class="comment"># 删除所有未使用数据卷</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网络</span></span><br><span class="line">docker network create [--driver=&lt;bridge | host | overlay | ipvlan| macvlan | none&gt;] [--gateway=&lt;getway&gt;] [--subnet=&lt;subnet&gt;] &lt;network-name&gt; <span class="comment"># 创建网络，--driver 指定驱动程序类型，默认 bridge，--gateway 指定网关，--subnet 指定子网，gateway 和 subnet 不指定则会自动生成</span></span><br><span class="line">docker network <span class="built_in">ls</span> <span class="comment"># 查看网络</span></span><br><span class="line">docker network <span class="built_in">rm</span> &lt;network-name&gt; <span class="comment"># 删除网络</span></span><br><span class="line">docker network prune <span class="comment"># 删除所有未使用网络</span></span><br><span class="line">docker network connect &lt;network-name&gt; &lt;contain&gt; <span class="comment"># 将容器连接到指定网络</span></span><br><span class="line">docker network disconnect &lt;network-name&gt; &lt;contain&gt; <span class="comment"># 断开容器的网络</span></span><br><span class="line">docker network inspect &lt;network&gt; <span class="comment"># 查看网络信息</span></span><br></pre></td></tr></table></figure>
+
+<p>注：上面命令中 <code>contain</code> 可以是 <code>contain-id</code> 也可以是 <code>contain-name</code>。</p>
+<h3 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">–-name：容器名，不指定则采用默认</span><br><span class="line">-e：配置信息</span><br><span class="line">-p：端口映射，&quot;:&quot; 前为主机端口，之后为容器端口。使宿主机本地的应用程序能够访问容器内的服务</span><br><span class="line">-d：后台运行容器，保证在退出终端后容器继续运行</span><br><span class="line">-v：主机和容器的目录映射关系，&quot;:&quot; 前为主机目录或数据卷，之后为容器目录。需要注意的是 docker-compose 中 volumes 支持相对路径，但 docker run -v 不支持，需写为绝对路径（可使用环境变量）</span><br><span class="line">--network: 指定容器使用的网络模式</span><br><span class="line">--restart：指定容器重启策略</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>docker run</code> 时，如果本地没有镜像，则会自动 <code>pull</code> 拉取。</p>
+<p>注意：<code>$(pwd)</code>、`<code>pwd</code>`、<code>$PWD</code> 在 PowerShell 中返回的是 Windows 中反斜杠路径风格 <code>D:\project\docker-data\wordpress</code>，Git Bash 中虽然能返回左斜杆，但是路径不对，需要再加一个 <code>/</code>，即 <code>//d/project/docker-data/wordpress</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows Git Bash 中添加 /，PowerShell 不用</span></span><br><span class="line">docker run --name wordpress -v /$(<span class="built_in">pwd</span>):/var/www/html -p 8080:80 -d wordpress</span><br></pre></td></tr></table></figure>
+
+<p>实践中为了方便管理、复用以及自动化，常将 <code>docker run</code> 保存为 <code>*.sh</code>  <code>*.ps1</code> Bash 或 PowerShell 脚本。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">bash run-mysql.sh or powershell run-mysql.ps1</span></span><br><span class="line">docker run \</span><br><span class="line">  --name mysql \</span><br><span class="line">  -d \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  -v /home/mysql/log:/var/log/mysql \ # 日志文件挂载</span><br><span class="line">  -v /home/mysql/data:/var/lib/mysql \ # 数据文件挂载</span><br><span class="line">  -v /home/mysql/conf/my.cnf:/etc/mysql/my.cnf \ # 配置文件挂载</span><br><span class="line">  -e TZ=Asia/Shanghai \ # 时区设置</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=123456 \ # MySQL root 用户密码</span><br><span class="line">  mysql:5.7.38 # 使用的 MySQL 镜像版本</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">run-nginx.sh</span></span><br><span class="line">docker run --name nginx -d -p 80:80 \</span><br><span class="line">  -v /home/user/nginx/html:/usr/share/nginx/html:ro \ # 静态资源文件挂载，ro 即 read-only 只读，表示容器内部只能读取宿主机文件不能修改</span><br><span class="line">  -v /home/user/nginx/conf.d:/etc/nginx/conf.d:ro \ # 配置文件挂载</span><br><span class="line">  nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="docker-build"><a href="#docker-build" class="headerlink" title="docker build"></a>docker build</h3><p><code>docker build</code> 命令用于根据 Dockerfile 创建 Docker 镜像。用来实现基础镜像的扩展和应用程序的发布。在实践中，通过 <code>docker build</code> 将应用程序代码（<code>COPY</code>）、依赖（<code>RUN</code>）和运行时环境（<code>FROM</code>）打包成一个镜像，方便应用程序的部署，还可以与 CI&#x2F;CD 配合使用，实现自动化的镜像构建和部署。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t image-name:tag dockerfile-path <span class="comment"># -t 指定要创建的目标镜像名及 tag（tag 默认为 latest），dockerfile-path 为 Dockerfile 所在目录</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p>Dockerfile 是 <code>docker build</code> 的描述文件，文本内容包含了一条条构建镜像所需的指令。常用指令有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM: 指定基础镜像</span><br><span class="line">WORKDIR: 设置工作目录。后续的指令（如 RUN、CMD、ENTRYPOINT 等）都将在这个目录下执行</span><br><span class="line">ENV: 设置环境变量</span><br><span class="line">COPY: 从构建主机复制文件到镜像中</span><br><span class="line">RUN: 镜像构建时执行的命令</span><br><span class="line">CMD: 指定容器默认执行的命令</span><br><span class="line">EXPOSE: 指定容器暴露的端口</span><br></pre></td></tr></table></figure>
+
+<p>注：<code>COPY</code> 和 <code>WORKDIR</code> 指令会自动创建目录，无需 <code>RUN mkdir -p /test</code>。</p>
+<p>以打包部署前端应用程序镜像为例，其 <code>Dockerfile</code> 和 <code>default.conf</code> 配置如下所示：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash">  dist /usr/share/nginx/html/</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./default.conf /etc/nginx/conf.d/default.conf</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    root /usr/share/nginx/html;</span><br><span class="line">    index index.html;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t geki:1.0.0 . <span class="comment"># 使用当前目录的 Dockerfile 构建镜像</span></span><br><span class="line">docker run --name geki -p 8080:80 -d geki:1.0.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="构建缓存-Build-Cache"><a href="#构建缓存-Build-Cache" class="headerlink" title="构建缓存 Build Cache"></a>构建缓存 Build Cache</h3><p>Docker 镜像是分层构建的，每个 Dockerfile 指令（如 <code>FROM</code>、<code>COPY</code>、<code>RUN</code> 等）都会创建一个新的镜像层（Layer），这些层是只读的，且会被缓存。首次构建时，所有层均会执行，生成缓存，后续构建，如果 Docker 发现某一层已经构建过，并且前面的层没有发生变化，就会直接复用缓存，避免重复执行。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /white-page</span></span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=production</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> package.json pnpm-lock.yaml ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm config <span class="built_in">set</span> registry https://registry.npmmirror.com/ &amp;&amp; npm i -g pnpm &amp;&amp; pnpm install</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm run build</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">3000</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;.output/server/index.mjs&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：设置 .dockerignore 文件，否则 <code>COPY . .</code> 会拷贝 node_modules，不但慢，而且不利于缓存。</p>
+<ul>
+<li>优化缓存利用的原则</li>
+</ul>
+<p>固定不变的内容放前面，容易变化的内容放后面，避免缓存层失效：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先安装依赖，利用缓存</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> package.json package-lock.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 再复制代码，减少影响</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br></pre></td></tr></table></figure>
+
+<p>合并 <code>RUN</code> 命令，减少层数：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y curl git</span></span><br></pre></td></tr></table></figure>
+
+<p>利用 .dockerignore 文件，避免不必要的文件影响 <code>COPY</code> 指令的缓存：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">.git</span><br><span class="line">.dockerignore</span><br></pre></td></tr></table></figure>
+
+<h3 id="多阶段构建"><a href="#多阶段构建" class="headerlink" title="多阶段构建"></a>多阶段构建</h3><p>在 Dockerfile 中，多阶段构建（multi-stage build）是指使用多个 <code>FROM</code> 语句来构建镜像，每个 <code>FROM</code> 代表一个独立的构建阶段（Stage），主要意义是减少最终镜像的体积，并确保最终运行环境只包含必要的文件。<code>AS &lt;stage&gt;</code> 定义阶段名，，<code>--from=&lt;stage&gt;</code> 用来跨阶段复制文件。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建阶段</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /white-page</span></span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=production</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> package.json pnpm-lock.yaml ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm config <span class="built_in">set</span> registry https://registry.npmmirror.com/ &amp;&amp; \ </span></span><br><span class="line">    npm i -g pnpm &amp;&amp; \</span><br><span class="line">    pnpm install</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm run build</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行阶段</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /white-page</span></span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=production</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=builder /white-page/.output ./.output</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">3000</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;.output/server/index.mjs&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p>Docker Volumes (数据卷) 用于解决容器的数据持久化和数据共享（宿主机到容器，容器间）问题。Docker Volumes 有三种类型：Volumes (卷)、Bind mounts (绑定挂载)、tmpfs mounts (临时挂载)</p>
+<ul>
+<li>Volumes</li>
+</ul>
+<p>Volumes 分为命名卷（Named Volumes）和匿名卷（Anonymous Volumes）。Linux 下默认存储在 <code>/var/lib/docker/volumes/&lt;卷名&gt;</code>，Windows 下的 Docker Volumes 则存储在 WSL 2 虚拟机的文件系统中。</p>
+<p>命名卷的生命周期独立于容器，即使容器被删除，卷仍然存在，直到手动删除 (<code>docker volume rm</code>)，而匿名卷的生命周期与容器绑定，当容器删除时，匿名卷也会被删除，除非使用 <code>docker run --rm</code> 运行临时容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wsl</span></span><br><span class="line">wsl</span><br><span class="line"><span class="built_in">cd</span> /mnt/wsl/docker-desktop-data/version-pack-data/community/docker/volumes</span><br><span class="line"><span class="comment"># PowderShell</span></span><br><span class="line"><span class="built_in">cd</span> \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes</span><br></pre></td></tr></table></figure>
+
+<p>匿名卷不指定卷名称，仅指定容器内的挂载路径，Docker 会自动分配随机卷名。<code>-v 容器目录/文件</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 匿名卷挂载（仅指定容器内路径）</span></span><br><span class="line">docker run -v /app/data my-image</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建命名卷</span></span><br><span class="line">docker volume create my-named-volume</span><br><span class="line"><span class="comment"># 挂载到容器</span></span><br><span class="line">docker run -v my-named-volume:/app/data my-image</span><br><span class="line"><span class="comment"># 指定卷的权限，限制容器内对挂载文件的修改权限</span></span><br><span class="line">docker run -v my-named-volume:/app/data:ro my-image</span><br></pre></td></tr></table></figure>
+
+<p>命名卷适合数据持久化（比如数据库存储、日志存储）和跨容器数据共享（比如 Nginx 直接托管 Nuxt 静态资源，做动静分离）。“卷”虽然初始化配置稍微复杂一点，灵活性也不如“绑定挂载”，但它不依赖宿主机的文件系统，直接由 Docker 管理，具有更高的可移植性、安全性和 I&#x2F;O 性能。</p>
+<ul>
+<li>绑定挂载</li>
+</ul>
+<p>直接将宿主机的目录或文件挂载到容器中 <code>-v 主机目录/文件:容器目录/文件</code>。绑定挂载直接依赖宿主机的目录，Docker 不会管理它的生命周期，数据不会随容器删除而丢失。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -v /home/user/data:/app/data my-image</span><br></pre></td></tr></table></figure>
+
+<p>绑定挂载灵活，简单，但依赖宿主机文件系统（ext4、xfs、NTFS…），可移植性差，如果主机文件发生变化，会影响容器运行，而且由于额外的抽象层，I&#x2F;O 性能也可能不如 Docker 直接管理的卷。</p>
+<p>绑定挂载通常用在本地开发环境中将本地代码目录挂载到容器以及共享配置（比如共享宿主机 Nginx 配置），实现热更新，方便开发调试。在生产环境中，应用程序代码（如 NodeJS、Nuxt 的业务代码）和配置（如 Nginx 配置）会通过自定义构建镜像，<code>COPY</code> 进镜像中，而不是通过数据卷挂载。数据卷通常用于存储动态数据，如数据库、日志等，而非静态的应用程序代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发环境（Windows Git Bash 加 /）</span></span><br><span class="line">docker run -d -p 80:80 \</span><br><span class="line">  -v /$(<span class="built_in">pwd</span>)/dist:/usr/share/nginx/html \</span><br><span class="line">  -v /$(<span class="built_in">pwd</span>)/default.conf:/etc/nginx/conf.d/default.conf \</span><br><span class="line">  --name nginx-test nginx:alpine</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生产环境</span></span><br><span class="line"><span class="keyword">FROM</span> nginx:alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash">  dist /usr/share/nginx/html/</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./default.conf /etc/nginx/conf.d/default.conf</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：挂载主机目录，<code>docker run -v</code> 相对路径是相对于命令执行的目录，即当前 shell 终端所在的路径（pwd），docker-composer.yml 中相对路径则相对于 docker-compose.yml 文件所在的目录。</p>
+<ul>
+<li>临时挂载</li>
+</ul>
+<p>只适用于 Linux，数据存储在内存中，不会写入磁盘，容器停止后数据会丢失。适用于存储临时数据（如 session、缓存）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --tmpfs /app/data:rw,size=64m my-image</span><br></pre></td></tr></table></figure>
+
+<p>TODO：Docker Volumes 数据的迁移、备份、恢复</p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>Docker 安装完成后会自动创建三个网络，其中 name 为 bridge 的网络使用 bridge 驱动，是容器的默认网络。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\tracy&gt;docker network <span class="built_in">ls</span></span><br><span class="line">NETWORK ID     NAME      DRIVER    SCOPE</span><br><span class="line">95f596f81598   bridge    bridge    <span class="built_in">local</span></span><br><span class="line">065201a9720e   host      host      <span class="built_in">local</span></span><br><span class="line">20ae04041c1c   none      null      <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">C:\Users\tracy&gt;docker network inspect bridge</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建自定义网络</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create [--driver=&lt;bridge | host | overlay | ipvlan| macvlan | none&gt;] [--gateway=&lt;gateway&gt;] [--subnet=&lt;subnet&gt;] [network-name]</span><br></pre></td></tr></table></figure>
+
+<p>Docker 的几种网络模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bridge 桥接模式，是默认的网络驱动程序，用于多个容器在同一个宿主机上通信</span><br><span class="line">host 主机模式，不创建任何网络接口，直接使用宿主机的 ip 地址与外界进行通信，不再需要额外的 NAT 转换。（host 模式下，无需指定 -p 端口映射）</span><br><span class="line">none 无网络模式，不为容器进行任何网络配置。容器没有网卡、ip、路由等信息，只有一个lo接口，无法与外界通信</span><br><span class="line">overlay 模式，网络基于 Linux 网桥和 Vxlan，实现跨主机的容器通信</span><br><span class="line">macvlan 模式，用于跨主机通信场景</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，Docker 容器会使用 <code>bridge</code> 网络，各个容器可以通过桥接网络（即 <code>docker0</code> 网桥）访问彼此，但只有通过明确的链接或自定义网络，容器才能知道彼此的存在。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建自定义网络</span></span><br><span class="line">docker network create mynetwork</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>指定自定义网络</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个桥接类型的网络</span></span><br><span class="line">docker network create --driver=bridge test-net</span><br><span class="line"><span class="comment"># 创建并运行容器时指定网络</span></span><br><span class="line">docker run --network test-net</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为已存在的容器指定网络</span></span><br><span class="line">docker network connect test-net [container-name]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 docker-compose 给一组容器指定网络</span></span><br><span class="line"><span class="comment"># docker-compose 编排的一组容器会默认创建一个网络，这组容器全部都会加入到此网络中。也可使用 `networks` 字段自定义网络</span></span><br><span class="line"><span class="comment"># docker-compose.yaml</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">s1:</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">s2:</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">test</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">test:</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p>Docker Compose 是 Docker 提供的单机容器编排工具，用来定义和运行多个容器。Docker Compose 使用一个名为 <code>docker-compose.yml</code> 的 YAML 文件来配置应用程序的服务，这个文件中定义了一系列 <code>docker volume</code>、<code>docker network</code>、<code>docker build</code> 和 <code>docker run</code> 的组合，从而使得管理和编排多个容器变得更加方便。</p>
+<p><code>docker-compose.yaml</code> 配置说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">service-name: </span><br><span class="line">  image: 指定镜像</span><br><span class="line">  container_name: 设置容器名称，即 -name</span><br><span class="line">  environment: 设置环境变量，即 -e</span><br><span class="line">  volumes: 挂载宿主机目录或命令卷到容器，即 -v</span><br><span class="line">  ports: 端口映射，即 -p</span><br><span class="line">  restart: 设置重启策略，no，always，no-failure，unless-stopped，即 -restart</span><br><span class="line">  depends_on: 设置依赖关系和启动顺序</span><br><span class="line">  networks: 指定已定义网络</span><br><span class="line">  build: 指定构建配件</span><br><span class="line">    context: 指定 Dockerfile 文件所在的路径，即 path</span><br><span class="line">    dockerfile: 指定 Dockerfile 的名称，即 -f</span><br><span class="line">volumes: 定义数据卷，即 docker volume create volume-name</span><br><span class="line">networks: 定义网络</span><br></pre></td></tr></table></figure>
+
+<p><code>docker-compose</code> 常用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build <span class="comment"># 构建镜像（当前 docker-compose 下的所有服务）。如果 docker-compose.yml 中已配置 build 字段，通常不需要单独运行 docker-compose build，首次 docker-compose up -d 时，会自动构建镜像</span></span><br><span class="line">docker-compose [-p &lt;compose-name&gt;] [-f &lt;configuration-file&gt;] up -d <span class="comment"># 构建镜像并启动容器，-p 指定 compose-name，默认为文件夹名，-f 指定配置文件，默认为当前目录 docker-compose.yaml，--build 强制重新构建镜像</span></span><br><span class="line">docker-compose [-p &lt;compose-name&gt;] down <span class="comment"># 停止并删除 Docker Compose 管理的容器、网络和匿名卷，-v 参数还会删除命名卷（但不会删除外部挂载卷）</span></span><br><span class="line">docker-compose ps <span class="comment"># 列出所有运行容器</span></span><br><span class="line">docker-compose start <span class="comment"># 启动服务</span></span><br><span class="line">docker-compose stop <span class="comment"># 停止服务</span></span><br><span class="line"></span><br><span class="line">docker-compose restart <span class="comment"># 重启服务</span></span><br><span class="line">docker-compose logs <span class="comment"># 日志</span></span><br></pre></td></tr></table></figure>
+
+<p>常用的 docker-compose，<a href="/rep/engineering/docker/lnmp/docker-compose.yml">lnmp</a>, <a href="/rep/engineering/docker/wordpress/docker-compose.yaml">wordpress</a>，更多查看此项目 <a target="_blank" rel="noopener" href="https://github.com/docker/awesome-compose/tree/master">awesome-compose</a>。</p>
+<h2 id="私有镜像仓库"><a href="#私有镜像仓库" class="headerlink" title="私有镜像仓库"></a>私有镜像仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动私有镜像仓库</span></span><br><span class="line">docker run -d -p 5000:5000 --name registry registry:2</span><br><span class="line"><span class="comment"># 登录私有镜像仓库</span></span><br><span class="line">docker login localhost:5000 <span class="comment"># 在没有配置身份验证的情况下，Docker 会接受任何用户名和密码组合。指定用户名密码 docker login -u $&#123;user-name&#125; -p $&#123;password&#125; localhost:5000</span></span><br><span class="line"><span class="comment"># 退出登录</span></span><br><span class="line">docker login localhost:5000 <span class="comment"># 不指定仓库地址，默认官方 https://index.docker.io/v1/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建镜像</span></span><br><span class="line">docker build -t &lt;image-name&gt;:&lt;tag&gt; . <span class="comment"># docker build -t tracyblog:1.0.0 .</span></span><br><span class="line"><span class="comment"># 标记镜像</span></span><br><span class="line">docker tag &lt;image-name&gt;:&lt;tag&gt; &lt;registry-domain&gt;/&lt;image-name&gt;:&lt;tag&gt; <span class="comment"># docker tag 命令用于将本地镜像标记为特定的仓库地址。如果不使用 docker tag，Docker 不会知道你要将哪个本地镜像推送到哪个远程仓库。docker tag tracyblog:1.0.0 localhost:5000/tracyblog:1.0.0</span></span><br><span class="line"><span class="comment"># 构建完整仓库地址的镜像，这样就不用在 push 前额外打标签</span></span><br><span class="line">docker build -t &lt;registry-domain&gt;/&lt;image-name&gt;:&lt;tag&gt; . <span class="comment"># docker build -t localhost:5000/tracyblog:1.0.0 .</span></span><br><span class="line"><span class="comment"># 推送镜像</span></span><br><span class="line">docker push &lt;registry-domain&gt;/&lt;image-name&gt;:&lt;tag&gt; <span class="comment"># docker push localhost:5000/tracyblog:1.0.0</span></span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull &lt;registry-domain&gt;/&lt;image-name&gt;:&lt;tag&gt; <span class="comment"># docker pull localhost:5000/tracyblog:1.0.0</span></span><br><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker run --name &lt;contain-name&gt; -p 8080:80 -d &lt;registry-domain&gt;/&lt;image-name&gt;:&lt;tag&gt; <span class="comment"># docker run --name tracyblog -p 8080:80 -d localhost:5000/tracyblog:1.0.0</span></span><br></pre></td></tr></table></figure>
+
+<p>注：<code>registry-domain</code> 不能带 <code>http://</code> 或 <code>https://</code>，另外，直接在 <code>docker build</code> 命令中指定镜像的完整名称和标签（比如，<code>docker build -t localhost:5000/tracyblog:1.0.0 .</code>），这样在构建镜像时就已经给镜像打上了标签，<code>docker tag</code> 步骤可省略。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证镜像</span></span><br><span class="line">curl &lt;registry-domain&gt;/v2/_catalog <span class="comment"># 比如 http://localhost:5000/v2/_catalog</span></span><br><span class="line">curl &lt;registry-domain&gt;/v2/&lt;image-name&gt;/tags/list <span class="comment"># curl http://localhost:5000/v2/tracyblog/tags/list</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户认证</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 htpasswd 工具生成认证文件</span></span><br><span class="line"><span class="built_in">mkdir</span> auth</span><br><span class="line">docker run --entrypoint htpasswd httpd:2 -Bbn abc 123 &gt; auth/htpasswd <span class="comment"># registry 只支持 bcrypt 格式的密钥，所以需要带上 -B 参数</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：Windows PowerShell 中使用 <code>&gt;</code> 重定向符号时，默认会将输出保存为 UTF-16 LE (带 BOM) 编码。而 htpasswd 工具生成的密码文件要求是 ASCII 或 UTF-8 (无 BOM) 编码。PowerShell 中应使用以下方式生成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> --entrypoint htpasswd httpd:2 -Bbn abc 123 | Set-Content -Encoding ASCII auth/htpasswd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行带有身份验证的私有 Registry</span></span><br><span class="line">docker run -d `</span><br><span class="line">  --restart always `</span><br><span class="line">  --name registry `</span><br><span class="line">  -p 5000:5000 `</span><br><span class="line">  -e REGISTRY_AUTH=htpasswd `</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd `</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_REALM=<span class="string">&quot;Registry Realm&quot;</span> `</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$&#123;PWD&#125;</span>/data:/var/lib/registry&quot;</span> `</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$&#123;PWD&#125;</span>/auth:/auth&quot;</span> `</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure>
+
+<p>注意：上述命令在 Windows Git Bash 上执行时，需添加 <code>/</code>，即  <code>/$&#123;PWD&#125;</code> 或 <code>/$(pwd)</code>。另外，Git Bash 会自动将 <code>REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd</code> 转为 <code>REGISTRY_AUTH_HTPASSWD_PATH=C:/Program Files/Git/auth/htpasswd</code>，改为 <code>./auth/htpasswd</code> 则不转换。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --restart always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  -e REGISTRY_AUTH=htpasswd \</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_PATH=./auth/htpasswd \</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_REALM=<span class="string">&quot;Registry Realm&quot;</span> \</span><br><span class="line">  -v <span class="string">&quot;/<span class="variable">$&#123;PWD&#125;</span>/data:/var/lib/registry&quot;</span> \</span><br><span class="line">  -v <span class="string">&quot;/<span class="variable">$&#123;PWD&#125;</span>/auth:/auth&quot;</span> \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证环境变量设置</span></span><br><span class="line">docker <span class="built_in">exec</span> -it registry sh</span><br><span class="line"><span class="built_in">env</span> | grep REGISTRY_AUTH_HTPASSWD_PATH <span class="comment"># 合并一行 docker exec registry env | grep REGISTRY_AUTH_HTPASSWD_PATH</span></span><br><span class="line"><span class="comment"># 验证挂载</span></span><br><span class="line">docker <span class="built_in">exec</span> -it registry sh -c <span class="string">&quot;cat /auth/htpasswd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>访问 <code>http://localhost:5000/v2/</code>、<code>curl -u abc:123 http://localhost:5000/v2/</code>，或者 <code>docker login</code> 测试登录。</p>
+<p>docker-compose.yml 是更好的选择，不用考虑 Windows 路径规范和自动路径转换的问题。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">registry:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">registry:2</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5000</span><span class="string">:5000</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="comment"># REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt</span></span><br><span class="line">      <span class="comment"># REGISTRY_HTTP_TLS_KEY: /certs/domain.key</span></span><br><span class="line">      <span class="attr">REGISTRY_AUTH:</span> <span class="string">htpasswd</span></span><br><span class="line">      <span class="attr">REGISTRY_AUTH_HTPASSWD_PATH:</span> <span class="string">/auth/htpasswd</span></span><br><span class="line">      <span class="attr">REGISTRY_AUTH_HTPASSWD_REALM:</span> <span class="string">Registry</span> <span class="string">Realm</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/var/lib/registry</span></span><br><span class="line">      <span class="comment"># - ./certs:/certs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./auth:/auth</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-about">
+                <h2>About</h2>
+                <p>
+                    愿你走出半生，归来仍是少年
+                </p>
+            </div>
+            
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-categories">
+    <h2>Categories</h2>
+    <p>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+        <a class="footer-post" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
+        
+        <a class="footer-post" href="/categories/%E5%B0%91%E5%84%BF%E7%BC%96%E7%A8%8B/">少儿编程</a>
+        
+        <a class="footer-post" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+        
+    </p>
+</div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-search">
+    <h2>Search</h2>
+    <form class="site-search-form">
+        <input type="text" id="local-search-input" class="st-search-input" />
+    </form>
+    <div id="local-search-result" class="local-search-result-cls"></div>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="/plugins/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="/plugins/featherlight/featherlight.min.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
+
+</body>
+
+</html>

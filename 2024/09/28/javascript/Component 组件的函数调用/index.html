@@ -169,6 +169,8 @@
 <p>很多 UI 库均提供了弹框的函数调用，比如 Vant UI 的 <code>Dialog</code>，Arco Design 的 <code>Modal</code>，如果没有提供，则需手动改造。以 Vant UI 的 <code>Popup</code> 为例，将其由 <code>Component</code> 组件转换为函数组件。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createVNode, render, h, nextTick &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">Component</span>, <span class="title class_">VNode</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">PopupProps</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Popup</span> <span class="keyword">from</span> <span class="string">&#x27;./popup.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Options</span> <span class="keyword">extends</span> <span class="title class_">PopupProps</span> &#123;</span><br><span class="line">  title?: <span class="built_in">string</span></span><br><span class="line">  showConfirmButton?: <span class="built_in">boolean</span></span><br><span class="line">  showCancelButton?: <span class="built_in">boolean</span></span><br><span class="line">  onBeforeConfirm?: <span class="function">() =&gt;</span> <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">CloseType</span> = <span class="string">&#x27;close&#x27;</span> | <span class="string">&#x27;cancel&#x27;</span> | <span class="string">&#x27;confirm&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ShowPopup</span> &#123;</span><br><span class="line">  (<span class="attr">comp</span>: <span class="title class_">Component</span>, <span class="attr">props</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; | <span class="literal">null</span>, <span class="attr">options</span>: <span class="title class_">Partial</span>&lt;<span class="title class_">Options</span>&gt;): <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">showPopup</span>: <span class="title class_">ShowPopup</span> = <span class="function">(<span class="params">comp, props = &#123;&#125;, options = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> container = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(container)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">closePopup</span> = (<span class="params"><span class="keyword">type</span>: CloseType</span>) =&gt; &#123;</span><br><span class="line">      <span class="title function_">render</span>(<span class="literal">null</span>, container)</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(container)</span><br><span class="line">      <span class="keyword">type</span> === <span class="string">&#x27;confirm&#x27;</span> ? <span class="title function_">resolve</span>() : <span class="title function_">reject</span>(<span class="keyword">type</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">onUpdateShow</span> = <span class="keyword">async</span> (<span class="params">value: <span class="built_in">boolean</span>, <span class="keyword">type</span>: CloseType</span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">nextTick</span>()</span><br><span class="line">      <span class="keyword">if</span> (!value) &#123;</span><br><span class="line">        <span class="title function_">closePopup</span>(<span class="keyword">type</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> vnode = <span class="title function_">createVNode</span>(</span><br><span class="line">      <span class="title class_">Popup</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        ...options,</span><br><span class="line">        <span class="attr">show</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&#x27;onUpdate:show&#x27;</span>: onUpdateShow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">default</span>: (): <span class="function"><span class="params">VNode</span> =&gt;</span> <span class="title function_">h</span>(comp, &#123; ...props, closePopup &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="title function_">render</span>(vnode, container)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>需要注意的是，组件一但使用函数调用，组件参数以函数参数传递，将不具有 props 响应式特点，在一些异步参数时，需要等待异步数据请求完成，再调用弹框。一些根据数据显示的弹框，还是使用 Component 调用更方便。</p>
+
     </div>
 
     
@@ -252,7 +254,6 @@
 
 
 <!-- After footer scripts -->
-
 <!-- jQuery -->
 <script src="/plugins/jquery-2.1.4.min.js"></script>
 
@@ -272,14 +273,23 @@
 
 <!-- 百度统计 -->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-    })();
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
 </script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
 
 </body>
 

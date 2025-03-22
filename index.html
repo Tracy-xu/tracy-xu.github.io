@@ -139,6 +139,70 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2025/03/22/web/Browser-Cache/">
+                浏览器缓存技术指南
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2025-03-22</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Web/">Web</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载。</p>
+<p>缓存机制主要通过 HTTP 头部控制，包括强缓存（Strong Cache）和协商缓存（Negotiated Cache）。强缓存会直接读取本地缓存，协商缓存则是与服务器协商读取。缓存未过期使用强缓存机制，过期了则使用协商缓存机制。</p>
+<pre class="mermaid">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#fff',
+      'tertiaryColor': '#fff',
+      'fontSize': '12px',
+      'max-width': '10000px'
+    }
+  }
+}%%
+
+graph TD;
+    A[浏览器请求资源] --> B{是否存在缓存}
+    B -- 否<br>no-store --> C[向服务器请求资源]
+    C --> D{决策返回<br>200 or 304?}
+    D -- 200 --> E[设置缓存信息<br>Last-Modified, ETag]
+    E --> F[使用资源]
+    D -- 304 --> G[更新缓存信息<br>Last-Modified, ETag]
+    G --> F
+
+    B -- 是 --> H{是否可直接使用}
+    H -- 否<br>no-cache --> I[获取验证信息<br>If-Modified-Since / If-None-Match]
+    I --> C
+
+    H -- 是 --> K{是否过期<br>expires/max-age/s-maxage}
+    K -- 是 --> I
+    K -- 否 --> L[从缓存中获取资源]
+    L --> F</pre>
+
+<p>(缓存控制流程图)</p>
+        </div>
+        <a href="/2025/03/22/web/Browser-Cache/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2024/10/24/javascript/WASM%20%E4%B8%AD%20AES%20%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0/">
                 WASM 中 AES 加解密实现
             </a>
@@ -298,6 +362,37 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2022/05/15/engineering/Docker/">
+                Docker Guide
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-05-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/Engineering/">Engineering</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>在现代软件开发和部署中，Docker 作为一种容器技术，极大地简化了运行环境的搭建和应用程序的部署。与传统的虚拟机（VM）不同，Docker 容器利用宿主机的操作系统内核，而不是虚拟出一整套硬件和操作系统，从而实现轻量级和高效的资源利用。</p>
+        </div>
+        <a href="/2022/05/15/engineering/Docker/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2022/03/02/scratch/Scratch/">
                 Scratch 编程
             </a>
@@ -417,69 +512,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2021/10/01/canvas/%E7%94%BB%E6%9D%BF%E7%9A%84%E7%88%86%E7%82%B9%E5%92%8C%E6%8A%97%E9%94%AF%E9%BD%BF/">
-                画板的抗锯齿
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2021-10-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/可视化/">可视化</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="抗锯齿"><a href="#抗锯齿" class="headerlink" title="抗锯齿"></a>抗锯齿</h2><h3 id="折线问题"><a href="#折线问题" class="headerlink" title="折线问题"></a>折线问题</h3><p>通过 <code>lineTo</code> 实现自由画笔，本质是点与点连接的线段，无论点如何密集，都无法避免线段间的折线，快速移动下爆点率更低，线段更长，折线还会更明显。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">moveTo</span>(beginPoint.<span class="property">x</span>, beginPoint.<span class="property">y</span>)</span><br><span class="line">ctx.<span class="title function_">lineTo</span>(endPoint.<span class="property">x</span>, endPoint.<span class="property">y</span>)</span><br></pre></td></tr></table></figure>
-        </div>
-        <a href="/2021/10/01/canvas/%E7%94%BB%E6%9D%BF%E7%9A%84%E7%88%86%E7%82%B9%E5%92%8C%E6%8A%97%E9%94%AF%E9%BD%BF/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/">
-                函数参数的求值策略
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-08-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/编程语言/">编程语言</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>函数参数的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/22991085">求值策略 Evaluation Strategy</a> 指的是函数调用时，实参（表达式）的求值和传值方式，主要有两种求值策略，按值传递和按引用传递。</p>
-        </div>
-        <a href="/2020/08/01/pl/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%B1%82%E5%80%BC%E7%AD%96%E7%95%A5/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -569,7 +601,6 @@
 
 
 <!-- After footer scripts -->
-
 <!-- jQuery -->
 <script src="/plugins/jquery-2.1.4.min.js"></script>
 
@@ -589,14 +620,23 @@
 
 <!-- 百度统计 -->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-    })();
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
 </script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
 
 </body>
 

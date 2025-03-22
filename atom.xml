@@ -6,7 +6,7 @@
   <link href="https://tracyxu.cn/atom.xml" rel="self"/>
   
   <link href="https://tracyxu.cn/"/>
-  <updated>2024-10-27T09:05:09.191Z</updated>
+  <updated>2025-03-22T05:09:07.565Z</updated>
   <id>https://tracyxu.cn/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>浏览器缓存技术指南</title>
+    <link href="https://tracyxu.cn/2025/03/22/web/Browser-Cache/"/>
+    <id>https://tracyxu.cn/2025/03/22/web/Browser-Cache/</id>
+    <published>2025-03-21T16:00:00.000Z</published>
+    <updated>2025-03-22T05:09:07.565Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载。&lt;/p&gt;
+&lt;p&gt;缓存机制主要通过 HTTP 头部控制，包括强缓存（Strong Cache）和协商缓存（Negotiated Cache）。强缓存会直接读取本地缓存，协商缓存则是与服务器协商读取。缓存未过期使用强缓存机制，过期了则使用协商缓存机制。&lt;/p&gt;
+&lt;pre class=&quot;mermaid&quot;&gt;%%{
+  init: {
+    &#39;theme&#39;: &#39;base&#39;,
+    &#39;themeVariables&#39;: {
+      &#39;primaryBorderColor&#39;: &#39;#7C0000&#39;,
+      &#39;lineColor&#39;: &#39;#fff&#39;,
+      &#39;tertiaryColor&#39;: &#39;#fff&#39;,
+      &#39;fontSize&#39;: &#39;12px&#39;,
+      &#39;max-width&#39;: &#39;10000px&#39;
+    }
+  }
+}%%
+
+graph TD;
+    A[浏览器请求资源] --&gt; B{是否存在缓存}
+    B -- 否&lt;br&gt;no-store --&gt; C[向服务器请求资源]
+    C --&gt; D{决策返回&lt;br&gt;200 or 304?}
+    D -- 200 --&gt; E[设置缓存信息&lt;br&gt;Last-Modified, ETag]
+    E --&gt; F[使用资源]
+    D -- 304 --&gt; G[更新缓存信息&lt;br&gt;Last-Modified, ETag]
+    G --&gt; F
+
+    B -- 是 --&gt; H{是否可直接使用}
+    H -- 否&lt;br&gt;no-cache --&gt; I[获取验证信息&lt;br&gt;If-Modified-Since / If-None-Match]
+    I --&gt; C
+
+    H -- 是 --&gt; K{是否过期&lt;br&gt;expires/max-age/s-maxage}
+    K -- 是 --&gt; I
+    K -- 否 --&gt; L[从缓存中获取资源]
+    L --&gt; F&lt;/pre&gt;
+
+&lt;p&gt;(缓存控制流程图)&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Web" scheme="https://tracyxu.cn/categories/Web/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>WASM 中 AES 加解密实现</title>
     <link href="https://tracyxu.cn/2024/10/24/javascript/WASM%20%E4%B8%AD%20AES%20%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0/"/>
     <id>https://tracyxu.cn/2024/10/24/javascript/WASM%20%E4%B8%AD%20AES%20%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0/</id>
     <published>2024-10-23T16:00:00.000Z</published>
-    <updated>2024-10-27T09:05:09.191Z</updated>
+    <updated>2024-10-27T15:06:44.731Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近对项目所有的 HTTP 请求响应进行了 AES 加解密改造，但在 JavaScript 中保管 AES Key 有着非常大的安全风险，将加解密逻辑交由难以反编译的 WebAssembly 实现，则是一种比较安全的选择。&lt;/p&gt;</summary>
@@ -38,7 +88,7 @@
     <link href="https://tracyxu.cn/2024/09/28/javascript/Component%20%E7%BB%84%E4%BB%B6%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/"/>
     <id>https://tracyxu.cn/2024/09/28/javascript/Component%20%E7%BB%84%E4%BB%B6%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/</id>
     <published>2024-09-27T16:00:00.000Z</published>
-    <updated>2024-10-24T03:05:31.770Z</updated>
+    <updated>2024-12-25T04:05:35.861Z</updated>
     
     
     <summary type="html">&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;van-popup v-&lt;span class=&quot;attr&quot;&gt;model&lt;/span&gt;:show=&lt;span class=&quot;string&quot;&gt;&amp;quot;visiblePopup&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Comp&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;v-if&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;visiblePopup&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;:some-props&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;someProps&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/van-popup&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;lang&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;ts&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;setup&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &amp;#123;ref, reactive&amp;#125; &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;#x27;vue&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; visiblePopup = &lt;span class=&quot;title function_&quot;&gt;ref&lt;/span&gt;(&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; someProps = &lt;span class=&quot;title function_&quot;&gt;reactive&lt;/span&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;language-xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -58,7 +108,7 @@
     <link href="https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/"/>
     <id>https://tracyxu.cn/2024/08/13/engineering/TypeScript%20%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%94%9F%E6%88%90/</id>
     <published>2024-08-12T16:00:00.000Z</published>
-    <updated>2024-08-29T01:58:49.106Z</updated>
+    <updated>2025-02-17T03:20:21.323Z</updated>
     
     
     <summary type="html">&lt;p&gt;接口和类型的定义是一件耗时费力的工作，通过解析 OpenAPI&amp;#x2F;Swagger 文档，自动化生成接口是一种很好的解决方案，这也便于接口更新时做 &lt;code&gt;git diff&lt;/code&gt;，清晰的显示接口更新的内容。&lt;/p&gt;
@@ -101,6 +151,23 @@
     
     
     <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Docker Guide</title>
+    <link href="https://tracyxu.cn/2022/05/15/engineering/Docker/"/>
+    <id>https://tracyxu.cn/2022/05/15/engineering/Docker/</id>
+    <published>2022-05-14T16:00:00.000Z</published>
+    <updated>2025-03-16T04:39:22.831Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在现代软件开发和部署中，Docker 作为一种容器技术，极大地简化了运行环境的搭建和应用程序的部署。与传统的虚拟机（VM）不同，Docker 容器利用宿主机的操作系统内核，而不是虚拟出一整套硬件和操作系统，从而实现轻量级和高效的资源利用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Engineering" scheme="https://tracyxu.cn/categories/Engineering/"/>
     
     
   </entry>
@@ -357,41 +424,6 @@
     
     
     <category term="Linux" scheme="https://tracyxu.cn/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>造轮子</title>
-    <link href="https://tracyxu.cn/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/"/>
-    <id>https://tracyxu.cn/2018/03/15/javascript/%E9%80%A0%E8%BD%AE%E5%AD%90/</id>
-    <published>2018-03-14T16:00:00.000Z</published>
-    <updated>2024-04-30T03:34:15.430Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;不依赖任何框架、库，无需编译，用最原生的 JavaScript 造轮子。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tracyxu.cn/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>树形结构</title>
-    <link href="https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/"/>
-    <id>https://tracyxu.cn/2017/12/24/algorithm/Tree-Structure/</id>
-    <published>2017-12-23T16:00:00.000Z</published>
-    <updated>2024-06-15T04:46:30.688Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;树形结构是一种层次嵌套的结构。它提供了一种有序的组织方式，能够方便地表示层次关系和结构化数据，在文件系统、数据库索引、DOM 等场景中被广泛应用。树形结构的遍历、搜索和操作等算法也是计算机中常见的问题。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; tree = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&amp;quot;parentId&amp;quot;&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&amp;quot;children&amp;quot;&lt;/span&gt;: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;parentId&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;86&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&amp;quot;parentId&amp;quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;74&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="数据结构与算法" scheme="https://tracyxu.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
   </entry>

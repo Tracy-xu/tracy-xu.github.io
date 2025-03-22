@@ -137,7 +137,7 @@
       
       
       <div class="archive-page-counter">
-        还行! 目前共计 40 篇日志。 继续努力。
+        还行! 目前共计 42 篇日志。 继续努力。
       </div>
 
       
@@ -343,7 +343,6 @@
 
 
 <!-- After footer scripts -->
-
 <!-- jQuery -->
 <script src="/plugins/jquery-2.1.4.min.js"></script>
 
@@ -363,14 +362,23 @@
 
 <!-- 百度统计 -->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-    })();
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
 </script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
 
 </body>
 

@@ -137,10 +137,26 @@
       
       
       <div class="archive-page-counter">
-        还行! 目前共计 40 篇日志。 继续努力。
+        还行! 目前共计 42 篇日志。 继续努力。
       </div>
 
       
+      
+        
+        
+          
+          <div class="archive-year">
+            <a href="/archives/2025">2025</a>
+          </div>
+        
+        <div class="archive-post">
+    <a href="/2025/03/22/web/Browser-Cache/">
+        <span class="archive-date">
+            03-22
+        </span>
+        浏览器缓存技术指南
+    </a>
+  </div>
       
         
         
@@ -150,7 +166,7 @@
           </div>
         
         <div class="archive-post">
-    <a href="/2016/12/02/css/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+    <a href="/2016/12/02/web/CSS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
         <span class="archive-date">
             12-02
         </span>
@@ -161,7 +177,7 @@
         
         
         <div class="archive-post">
-    <a href="/2016/07/02/css/Adaptation-Rule/">
+    <a href="/2016/07/02/web/Adaptation-Rule/">
         <span class="archive-date">
             07-02
         </span>
@@ -172,7 +188,7 @@
         
         
         <div class="archive-post">
-    <a href="/2016/06/15/css/Pixel-Viewport-2/">
+    <a href="/2016/06/15/web/Pixel-Viewport-2/">
         <span class="archive-date">
             06-15
         </span>
@@ -183,7 +199,7 @@
         
         
         <div class="archive-post">
-    <a href="/2016/06/10/css/Pixel-Viewport-1/">
+    <a href="/2016/06/10/web/Pixel-Viewport-1/">
         <span class="archive-date">
             06-10
         </span>
@@ -199,7 +215,7 @@
           </div>
         
         <div class="archive-post">
-    <a href="/2015/06/02/css/Media%20Query/">
+    <a href="/2015/06/02/web/Media%20Query/">
         <span class="archive-date">
             06-02
         </span>
@@ -215,7 +231,7 @@
           </div>
         
         <div class="archive-post">
-    <a href="/2014/06/15/html/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/">
+    <a href="/2014/06/15/web/HTML%20%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99/">
         <span class="archive-date">
             06-15
         </span>
@@ -226,7 +242,7 @@
         
         
         <div class="archive-post">
-    <a href="/2014/05/18/css/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
+    <a href="/2014/05/18/web/CSS3%20%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/">
         <span class="archive-date">
             05-18
         </span>
@@ -242,7 +258,7 @@
           </div>
         
         <div class="archive-post">
-    <a href="/2013/06/22/css/CSS%20%E5%8D%95%E4%BD%8D/">
+    <a href="/2013/06/22/web/CSS%20%E5%8D%95%E4%BD%8D/">
         <span class="archive-date">
             06-22
         </span>
@@ -253,7 +269,7 @@
         
         
         <div class="archive-post">
-    <a href="/2013/05/07/css/CSS%20%E9%80%89%E6%8B%A9%E5%99%A8/">
+    <a href="/2013/05/07/web/CSS%20%E9%80%89%E6%8B%A9%E5%99%A8/">
         <span class="archive-date">
             05-07
         </span>
@@ -338,7 +354,6 @@
 
 
 <!-- After footer scripts -->
-
 <!-- jQuery -->
 <script src="/plugins/jquery-2.1.4.min.js"></script>
 
@@ -358,14 +373,23 @@
 
 <!-- 百度统计 -->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-    })();
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ccf93dea02efa86a1adbfce533e0752f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
 </script>
+
+<!-- mermaid chart -->
+<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
 
 </body>
 
