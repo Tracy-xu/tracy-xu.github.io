@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="Tracy-xu&#39;Blog">
+        <meta name="description" content="Tracy-xu&#39;s Blog">
     
 
     <!--Author-->
@@ -25,11 +25,11 @@
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+        <meta property="og:description" content="Tracy-xu&#39;s Blog" />
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+    <meta property="og:site_name" content="Tracy-xu&#39;s Blog"/>
 
     <!--Type page-->
     
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>用户角色权限设计 - Tracy-xu&#39;Blog</title>
+    <title>用户角色权限设计 - Tracy-xu&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -67,7 +67,7 @@
 <link rel="stylesheet" href="/static/katex.min.css">
 
 <link rel="stylesheet" href="/static/hexo-math.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu's Blog" type="application/atom+xml">
 </head>
 
 
@@ -165,29 +165,29 @@
 <p>页面一般通过路由分发，所以页面权限也叫做路由权限。在这些权限中，API 权限是后端权限，其他都是前端权限，下面从前端角度介绍用户角色权限的设计。</p>
 <span id="more"></span>
 
-<h2 id="权限配置"><a href="#权限配置" class="headerlink" title="权限配置"></a>权限配置</h2><p>页面权限包含了所有权限类型，操作和数据都在页面内，操作权限和数据权限可作为页面权限的子权限。页面绝大多数由菜单触发（少数由按钮或地址栏输入触发），以菜单为载体不但能配置菜单本身，还能配置权限。</p>
+<h2 id="权限配置"><a href="#权限配置" class="headerlink" title="权限配置"></a>权限配置</h2><p>页面权限包含了所有权限类型，操作和数据都在页面内，操作权限和数据权限可作为页面权限的子权限。</p>
 <p>权限既可以在服务端配置，也可以在客户端配置，在服务端配置更容易维护。</p>
 <ul>
 <li>服务端配置</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// ID</span></span><br><span class="line">  <span class="attr">parentId</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 父级菜单 ID</span></span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 菜单名称（菜单管理列表的显示名称）</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 路由或 URL</span></span><br><span class="line">  <span class="attr">sort</span>: <span class="number">0</span>, <span class="comment">// 排序</span></span><br><span class="line">  <span class="attr">icon</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 图标</span></span><br><span class="line">  <span class="attr">hidden</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 是否隐藏，不生成菜单</span></span><br><span class="line">  <span class="attr">functions</span>: <span class="string">&#x27;&#x27;</span> <span class="comment">// 操作权限（增、删、改、查...）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 页面 ID</span></span><br><span class="line">  <span class="attr">parentId</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 父级页面 ID</span></span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 页面名称（用于页面管理列表的显示名称或菜单名称）</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 路由（支持动态路由 /agent/report/:userId?）或 URL</span></span><br><span class="line">  <span class="attr">sort</span>: <span class="number">0</span>, <span class="comment">// 排序</span></span><br><span class="line">  <span class="attr">icon</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 图标</span></span><br><span class="line">  <span class="attr">hidden</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 是否隐藏，不生成菜单。默认 false</span></span><br><span class="line">  <span class="attr">functions</span>: [] <span class="comment">// 操作权限（增、删、改、查...）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>菜单权限列表是一个树形结构，描述了菜单的从属关系，决定了菜单的生成层级。对于那些不需要生成菜单的页面（由按钮触发或地址直接打开的页面），可通过 <code>hidden</code> 字段描述菜单项是否显示。</p>
-<p>实际操作中，一般由菜单管理生成总的菜单权限列表，角色管理时为角色勾选权限，然后在用户管理中为用户赋予角色。</p>
+<p>页面权限列表是一个树形结构，描述了页面的从属关系，决定了菜单的生成层级。对于那些不需要生成菜单的页面（由按钮触发或地址直接打开的页面），可通过 <code>hidden</code> 字段描述菜单项是否显示。</p>
+<p>实际操作中，一般由页面管理生成总的页面权限列表，角色管理时为角色勾选权限，然后在用户管理中为用户赋予角色。</p>
 <ul>
 <li>客户端配置</li>
 </ul>
 <p>以在前端路由表中配置为例（当然不一定写在路由表中，独立一个菜单权限文件也可以）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  meta : &#123;</span><br><span class="line">    <span class="attr">hidden</span>: <span class="literal">false</span> <span class="comment">// 是否生成菜单</span></span><br><span class="line">    <span class="attr">roles</span>: [<span class="string">&#x27;admin&#x27;</span>, <span class="string">&#x27;teacher&#x27;</span>], <span class="comment">// 空表示不需要权限，任何角色都可访问，即为开放菜单</span></span><br><span class="line">    <span class="attr">functions</span>: &#123;</span><br><span class="line">      <span class="attr">admin</span>: [<span class="string">&#x27;add&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;edit&#x27;</span>, <span class="string">&#x27;export&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  meta : &#123;</span><br><span class="line">    <span class="attr">hidden</span>: <span class="literal">false</span> <span class="comment">// 是否生成菜单</span></span><br><span class="line">    <span class="attr">roles</span>: [<span class="string">&#x27;admin&#x27;</span>, <span class="string">&#x27;teacher&#x27;</span>], <span class="comment">// 空表示不需要权限，任何角色都可访问</span></span><br><span class="line">    <span class="attr">functions</span>: &#123;</span><br><span class="line">      <span class="attr">admin</span>: [<span class="string">&#x27;add&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;edit&#x27;</span>, <span class="string">&#x27;export&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="鉴权"><a href="#鉴权" class="headerlink" title="鉴权"></a>鉴权</h2><ul>
 <li>路由鉴权</li>
 </ul>
-<p>页面权限采用白名单制，不在此名单内的访问和操作都是非法的，实际需求中并不是所有的页面都需要权限，比如 404，登录页，活动页等，这些页面都不需要权限。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 鉴权列表外的，直接放行</span></span><br><span class="line"><span class="keyword">if</span> (!totalRoutePermitList.<span class="title function_">includes</span>(curRouteName)) &#123;</span><br><span class="line">  <span class="comment">// 有权限</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (myRoutePermitList.<span class="title function_">includes</span>(curRouteName)) &#123;</span><br><span class="line">    <span class="comment">// 有权限</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 无权限</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>页面权限采用白名单制，不在此名单内的访问和操作都是非法的，实际需求中并不是所有的页面都需要权限，比如 404，登录页，活动页等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">hasPagePermission</span>(<span class="params">path, router</span>) &#123;</span><br><span class="line">  <span class="comment">// 是否需要鉴权（不是所有的页面都需要鉴权）</span></span><br><span class="line">  <span class="comment">// 支持服务端配置的动态路由</span></span><br><span class="line">  <span class="keyword">const</span> needPermission = <span class="variable language_">this</span>.<span class="property">allPagePermitList</span>.<span class="title function_">some</span>(</span><br><span class="line">    <span class="function">(<span class="params">item</span>) =&gt;</span> <span class="title function_">isPathMatched</span>(router, path, item.<span class="property">data</span>.<span class="property">pagePath</span>)</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">if</span> (!needPermission) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 是否具有权限</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">this</span>.<span class="property">myPagePermitMaps</span>.<span class="title function_">keys</span>()).<span class="title function_">some</span>(<span class="function">(<span class="params">item</span>) =&gt;</span></span><br><span class="line">    <span class="title function_">isPathMatched</span>(router, path, item)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>或者将这些不需鉴权页面作为访问白名单加入到我的权限列表进行鉴权，但这需要维护白名单。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将白名单列表合并到我的权限列表</span></span><br><span class="line">myRoutePermitList = [...routePermitWhiteList, ...myRoutePermitList]</span><br><span class="line"><span class="keyword">if</span> (myRoutePermitList.<span class="title function_">includes</span>(curRouteName)) &#123;</span><br><span class="line">  <span class="comment">// 有权限</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 无权限</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者将这些不需鉴权页面加入到我的页面权限列表进行鉴权，但这需要维护白名单。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将白名单列表合并到我的权限列表</span></span><br><span class="line">myPagePermitList = [...pagePermitWhiteList, ...myPagePermitList]</span><br><span class="line"><span class="keyword">if</span> (myPagePermitList.<span class="title function_">includes</span>(curRouteName)) &#123;</span><br><span class="line">  <span class="comment">// 有权限</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 无权限</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>操作鉴权</li>
@@ -271,7 +271,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
-                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                    Copyright©Tracy-xu's Blog. All Rights Reserved.
                 </div>
             </div>
         </div>
@@ -308,13 +308,16 @@
   })();
 </script>
 
-<!-- mermaid chart -->
-<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<!-- mermaid -->
+<!-- 注意：Hexo 的 _config.yml 通过 config 取值，主题的 _config.yml 通过 theme 取值 -->
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
 <script>
   if (window.mermaid) {
     mermaid.initialize({ theme: 'forest' });
   }
 </script>
+
 
 
 </body>

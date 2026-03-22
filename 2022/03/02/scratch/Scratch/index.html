@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="Tracy-xu&#39;Blog">
+        <meta name="description" content="Tracy-xu&#39;s Blog">
     
 
     <!--Author-->
@@ -25,11 +25,11 @@
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+        <meta property="og:description" content="Tracy-xu&#39;s Blog" />
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+    <meta property="og:site_name" content="Tracy-xu&#39;s Blog"/>
 
     <!--Type page-->
     
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>Scratch 编程 - Tracy-xu&#39;Blog</title>
+    <title>Scratch 编程 - Tracy-xu&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -67,7 +67,7 @@
 <link rel="stylesheet" href="/static/katex.min.css">
 
 <link rel="stylesheet" href="/static/hexo-math.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu's Blog" type="application/atom+xml">
 </head>
 
 
@@ -169,7 +169,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">Fibonacci</span>&lt;</span><br><span class="line">  T <span class="keyword">extends</span> number,</span><br><span class="line">  <span class="title class_">TArray</span> <span class="keyword">extends</span> <span class="title class_">ReadonlyArray</span>&lt;unknown&gt; = [unknown, unknown, unknown],</span><br><span class="line">  <span class="title class_">PrePre</span> <span class="keyword">extends</span> <span class="title class_">ReadonlyArray</span>&lt;unknown&gt; = [unknown],</span><br><span class="line">  <span class="title class_">Pre</span> <span class="keyword">extends</span> <span class="title class_">ReadonlyArray</span>&lt;unknown&gt; = [unknown],</span><br><span class="line">&gt; = T <span class="keyword">extends</span> <span class="number">1</span></span><br><span class="line">  ? <span class="number">1</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="number">2</span></span><br><span class="line">    ? <span class="number">1</span></span><br><span class="line">    : <span class="title class_">TArray</span>[<span class="string">&#x27;length&#x27;</span>] <span class="keyword">extends</span> T</span><br><span class="line">      ? [...<span class="title class_">Pre</span>, ...<span class="title class_">PrePre</span>][<span class="string">&#x27;length&#x27;</span>]</span><br><span class="line">      : <span class="title class_">Fibonacci</span>&lt;T, [...<span class="title class_">TArray</span>, unknown], <span class="title class_">Pre</span>, [...<span class="title class_">Pre</span>, ...<span class="title class_">PrePre</span>]&gt;</span><br><span class="line">  </span><br><span class="line">type <span class="title class_">Result</span> = <span class="title class_">Fibonacci</span>&lt;<span class="number">6</span>&gt; <span class="comment">// 8，(1 + 1 + 2 + 3 + 5 + 8)</span></span><br></pre></td></tr></table></figure>
 
 <p>计算机语言有很多，大部分程序都是基于文本的，比如 C、Python…，Scratch 是 MIT 开发的一款可视化图形编程语言，以搭积木的形式编写程序，这让学习编程更加容易和有趣。</p>
-<h2 id="Scratch-语法"><a href="#Scratch-语法" class="headerlink" title="Scratch 语法"></a>Scratch 语法</h2><p>积木是 Scratch 语法的最基本要素，不同的积木代表着不同的编程命令、操作和功能，类似于文本语言中的语句或表达式。积木分为十大模块，运动、外观、声音、事件、控制、侦测、运算、变量、自制积木、扩展积木，按功能又分为命令积木（语句）和功能积木（表达式）。积木可以传参，凹槽的形状决定了参数的数据类型。</p>
+<h2 id="Scratch-基础语法"><a href="#Scratch-基础语法" class="headerlink" title="Scratch 基础语法"></a>Scratch 基础语法</h2><p>积木是 Scratch 语法的最基本要素，不同的积木代表着不同的编程命令、操作和功能，类似于文本语言中的语句或表达式。积木分为十大模块，运动、外观、声音、事件、控制、侦测、运算、变量、自制积木、扩展积木，按功能又分为命令积木（语句）和功能积木（表达式）。积木可以传参，凹槽的形状决定了参数的数据类型。</p>
 <p>命令积木用于控制程序的流程和执行命令。包括流程控制、事件触发、改变程序状态（如移动到某个位置）等积木。功能积木用于执行计算或操作。包括数学运算、逻辑运算、变量操作。功能积木有返回值，可作为参数传递给功能积木或命令积木。功能积木有两种形状，六边形和圆角，前者返回布尔类型值，后者返回数字或字符串类型值。</p>
 <h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><p>流程控制是编程的最基础要素，循序指重复做一件事情。日常生活等红绿灯、跳绳、购物、穿着选择都是最常见的例子。</p>
 <ul>
@@ -205,7 +205,7 @@
 <li><a href="/rep/scratch/%E9%80%92%E5%BD%92.sb3">递归</a></li>
 </ul>
 <p>注意：形参可通过拖拉的方式应用到对应的地方使用。</p>
-<h2 id="GUI-编程"><a href="#GUI-编程" class="headerlink" title="GUI 编程"></a>GUI 编程</h2><p>在 Scratch 中，对角色或舞台进行编程，脚本必须在角色或舞台下，脚本可不可以应用到多个角色。</p>
+<h2 id="角色与舞台编程"><a href="#角色与舞台编程" class="headerlink" title="角色与舞台编程"></a>角色与舞台编程</h2><p>在 Scratch 中，对角色或舞台进行编程，脚本必须在角色或舞台下，脚本不可以应用到多个角色。</p>
 <h3 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h3><p>角色的中心点（中心点是针对角色的，每个角色都有中心点，跟位置不同，中心点一般用来描述运动的基点）和角色的位置。</p>
 <h3 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h3><p>外观不但可用来打印输出结果，也可以控制背景、角色、角色造型的显示。</p>
 <ul>
@@ -225,7 +225,7 @@
 <li><a href="/rep/scratch/%E8%9C%98%E8%9B%9B%E7%BD%91.sb3">蜘蛛网</a></li>
 <li><a href="/rep/scratch/%E9%A3%8E%E8%BD%A6.sb3">风车</a></li>
 </ul>
-<h2 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h2><ul>
+<h2 id="综合实践"><a href="#综合实践" class="headerlink" title="综合实践"></a>综合实践</h2><ul>
 <li><a href="/rep/scratch/%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC.sb3">鸡兔同笼</a></li>
 <li><a href="/rep/scratch/%E8%A7%81%E7%BC%9D%E6%8F%92%E9%92%88.sb3">见缝插针</a></li>
 <li><a href="/rep/scratch/%E6%A6%82%E7%8E%87.sb3">概率</a></li>
@@ -307,7 +307,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
-                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                    Copyright©Tracy-xu's Blog. All Rights Reserved.
                 </div>
             </div>
         </div>
@@ -344,13 +344,16 @@
   })();
 </script>
 
-<!-- mermaid chart -->
-<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<!-- mermaid -->
+<!-- 注意：Hexo 的 _config.yml 通过 config 取值，主题的 _config.yml 通过 theme 取值 -->
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
 <script>
   if (window.mermaid) {
     mermaid.initialize({ theme: 'forest' });
   }
 </script>
+
 
 
 </body>

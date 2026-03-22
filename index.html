@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="Tracy-xu&#39;Blog">
+        <meta name="description" content="Tracy-xu&#39;s Blog">
     
 
     <!--Author-->
@@ -20,16 +20,16 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Tracy-xu&#39;Blog"/>
+        <meta property="og:title" content="Tracy-xu&#39;s Blog"/>
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+        <meta property="og:description" content="Tracy-xu&#39;s Blog" />
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+    <meta property="og:site_name" content="Tracy-xu&#39;s Blog"/>
 
     <!--Type page-->
     
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>Tracy-xu&#39;Blog</title>
+    <title>Tracy-xu&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -67,7 +67,7 @@
 <link rel="stylesheet" href="/static/katex.min.css">
 
 <link rel="stylesheet" href="/static/hexo-math.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu's Blog" type="application/atom+xml">
 </head>
 
 
@@ -127,7 +127,7 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Tracy-xu'Blog</h1>
+            <h1 id="main-title" class="title">Tracy-xu's Blog</h1>
         
     </div>
 </header>
@@ -158,40 +158,7 @@
 
     
         <div class="content">
-            <p>浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载。</p>
-<p>缓存机制主要通过 HTTP 头部控制，包括强缓存（Strong Cache）和协商缓存（Negotiated Cache）。强缓存会直接读取本地缓存，协商缓存则是与服务器协商读取。缓存未过期使用强缓存机制，过期了则使用协商缓存机制。</p>
-<pre class="mermaid">%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryBorderColor': '#7C0000',
-      'lineColor': '#fff',
-      'tertiaryColor': '#fff',
-      'fontSize': '12px',
-      'max-width': '10000px'
-    }
-  }
-}%%
-
-graph TD;
-    A[浏览器请求资源] --> B{是否存在缓存}
-    B -- 否<br>no-store --> C[向服务器请求资源]
-    C --> D{决策返回<br>200 or 304?}
-    D -- 200 --> E[设置缓存信息<br>Last-Modified, ETag]
-    E --> F[使用资源]
-    D -- 304 --> G[更新缓存信息<br>Last-Modified, ETag]
-    G --> F
-
-    B -- 是 --> H{是否可直接使用}
-    H -- 否<br>no-cache --> I[获取验证信息<br>If-Modified-Since / If-None-Match]
-    I --> C
-
-    H -- 是 --> K{是否过期<br>expires/max-age/s-maxage}
-    K -- 是 --> I
-    K -- 否 --> L[从缓存中获取资源]
-    L --> F</pre>
-
-<p>(缓存控制流程图)</p>
+            <p>浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载，节省服务器带宽。</p>
         </div>
         <a href="/2025/03/22/web/Browser-Cache/" class="read-more">Read More</a>
     
@@ -458,13 +425,13 @@ graph TD;
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/">
+            <a href="/2020/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/">
                 使用二进制设计课堂权限
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2021-10-06</span>
+                <span class="date">2020-10-06</span>
             
             
             
@@ -507,7 +474,7 @@ graph TD;
 </tr>
 </tbody></table>
         </div>
-        <a href="/2021/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/" class="read-more">Read More</a>
+        <a href="/2020/10/06/project/%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%AE%BE%E8%AE%A1%E8%AF%BE%E5%A0%82%E6%9D%83%E9%99%90/" class="read-more">Read More</a>
     
 
 </div>
@@ -592,7 +559,7 @@ graph TD;
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
-                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                    Copyright©Tracy-xu's Blog. All Rights Reserved.
                 </div>
             </div>
         </div>
@@ -629,13 +596,16 @@ graph TD;
   })();
 </script>
 
-<!-- mermaid chart -->
-<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<!-- mermaid -->
+<!-- 注意：Hexo 的 _config.yml 通过 config 取值，主题的 _config.yml 通过 theme 取值 -->
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
 <script>
   if (window.mermaid) {
     mermaid.initialize({ theme: 'forest' });
   }
 </script>
+
 
 
 </body>

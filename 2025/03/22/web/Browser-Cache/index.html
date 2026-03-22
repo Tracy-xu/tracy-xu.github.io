@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="Tracy-xu&#39;Blog">
+        <meta name="description" content="Tracy-xu&#39;s Blog">
     
 
     <!--Author-->
@@ -25,11 +25,11 @@
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Tracy-xu&#39;Blog" />
+        <meta property="og:description" content="Tracy-xu&#39;s Blog" />
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Tracy-xu&#39;Blog"/>
+    <meta property="og:site_name" content="Tracy-xu&#39;s Blog"/>
 
     <!--Type page-->
     
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>浏览器缓存技术指南 - Tracy-xu&#39;Blog</title>
+    <title>浏览器缓存技术指南 - Tracy-xu&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -67,7 +67,7 @@
 <link rel="stylesheet" href="/static/katex.min.css">
 
 <link rel="stylesheet" href="/static/hexo-math.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu'Blog" type="application/atom+xml">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tracy-xu's Blog" type="application/atom+xml">
 </head>
 
 
@@ -159,8 +159,11 @@
         
 
         <!-- Post Content -->
-        <p>浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载。</p>
-<p>缓存机制主要通过 HTTP 头部控制，包括强缓存（Strong Cache）和协商缓存（Negotiated Cache）。强缓存会直接读取本地缓存，协商缓存则是与服务器协商读取。缓存未过期使用强缓存机制，过期了则使用协商缓存机制。</p>
+        <p>浏览器缓存（Browser Cache）是指浏览器会将访问过的资源（如 HTML、CSS、JS、图片等）存储在本地，以便在后续请求时可以直接从缓存中获取，而不是重新向服务器请求。在 Web 开发中，浏览器缓存是一项至关重要的优化技术，它能够减少网络请求，提升页面加载速度，提高用户体验，同时降低服务器负载，节省服务器带宽。</p>
+<span id="more"></span>
+
+<p>缓存机制主要通过 HTTP 头部控制，包括强缓存（Strong Cache）和协商缓存（Negotiated Cache）。强缓存会直接读取本地缓存，协商缓存则是与服务器协商读取。强缓存和协商缓存被同时设置时，会优先使用强缓，缓存过期才使用协商缓存。</p>
+<p>缓存机制需要服务器支持，强缓存需要设置响应缓存头部，协商缓存不但需要设置响应缓存头部，还需要实现校验逻辑。</p>
 <pre class="mermaid">%%{
   init: {
     'theme': 'base',
@@ -193,10 +196,10 @@ graph TD;
     L --> F</pre>
 
 <p>(缓存控制流程图)</p>
-<span id="more"></span>
+<h2 id="强缓存（Strong-Cache）"><a href="#强缓存（Strong-Cache）" class="headerlink" title="强缓存（Strong Cache）"></a>强缓存（Strong Cache）</h2><p>强缓存是指浏览器直接从本地缓存中读取资源，状态码返回 <code>200</code>，无需向服务器发起请求。</p>
+<p>强缓存利用 HTTP 头部中的 <code>Expires</code> 和 <code>Cache-Control</code> 控制，由服务器响应时设置，在有效期内，浏览器可直接使用缓存，缓存命中，不再发起请求。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 首次请求</span><br><span class="line">GET /style.css HTTP/1.1</span><br><span class="line"></span><br><span class="line"># 响应（缓存 1 小时）</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Cache-Control: max-age=3600</span><br><span class="line"></span><br><span class="line"># 1 小时内再次请求（浏览器直接使用缓存，不发请求）</span><br><span class="line">GET /style.css HTTP/1.1</span><br></pre></td></tr></table></figure>
 
-<h2 id="强缓存（Strong-Cache）"><a href="#强缓存（Strong-Cache）" class="headerlink" title="强缓存（Strong Cache）"></a>强缓存（Strong Cache）</h2><p>强缓存指的是浏览器直接从本地缓存中读取资源，状态码返回 <code>200</code>，无需向服务器发起请求。</p>
-<p>强缓存利用 HTTP 头部中的 <code>Expires</code> 和 <code>Cache-Control</code> 控制。</p>
 <ul>
 <li>Expires</li>
 </ul>
@@ -211,45 +214,50 @@ graph TD;
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=3600, public</span><br></pre></td></tr></table></figure>
 
 <p><code>Cache-Control</code> 一些常设置值：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* max-age=xxx 过期时间，表示资源可以缓存多少秒（3600 即 1 小时），基于相对时间</span><br><span class="line">* public 允许浏览器和代理服务器缓存该资源</span><br><span class="line">* private 只允许浏览器缓存，代理服务器不能缓存</span><br><span class="line">* no-cache 缓存，但是不走强缓存机制，而直接走协商缓存机制（表示缓存资源必须经过服务器验证后才能使用）</span><br><span class="line">* no-store 禁止缓存（不使用协商缓存，所有请求都会重新从服务器获取资源）</span><br><span class="line">* immutable 表示资源不会改变，即使用户刷新页面也不会重新请求（Ctrl + R 强制刷新也不会重新请求，除非清除缓存），SPA 最佳拍档</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* max-age=xxx 过期时间，表示资源可以缓存多少秒（3600 即 1 小时），基于相对时间</span><br><span class="line">* public 允许浏览器和代理服务器缓存该资源</span><br><span class="line">* private 只允许浏览器缓存，代理服务器不能缓存</span><br><span class="line">* no-cache 缓存，但不可直接使用，需通过协商缓存机制，经服务器验证后才能使用</span><br><span class="line">* no-store 禁止缓存（不使用协商缓存，所有请求都会重新从服务器获取资源）</span><br><span class="line">* immutable 表示资源不会改变，即使用户刷新页面也不会重新请求（Ctrl + R 强制刷新也不会重新请求，除非清除缓存），SPA 最佳拍档</span><br></pre></td></tr></table></figure>
 
-<p>注意：<code>no-cache</code> (必须验证) 和 <code>max-age=0</code> (过期) 都表示直接使用协商缓存。</p>
-<p>为了向后兼容性，一般会同时设置 <code>expires</code> 和 <code>Cache-Control</code>，比如 Nginx 配置中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location /static/ &#123;</span><br><span class="line">    # 旧版浏览器</span><br><span class="line">    expires 7d;</span><br><span class="line">    # 现代浏览器</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=604800&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>no-cache</code> (必须验证) 和 <code>max-age=0</code> (过期) 都表示直接使用协商缓存。</p>
+<p>注意：为了向后兼容性，可同时设置 <code>expires</code> 和 <code>Cache-Control</code>，比如 Nginx 配置中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location /static/ &#123;</span><br><span class="line">    # 旧版浏览器</span><br><span class="line">    expires 7d;</span><br><span class="line">    # 现代浏览器</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=604800&quot;;</span><br><span class="line"></span><br><span class="line">    # 注意：Nginx 中 expires -1 也会生成 Cache-Control: &quot;no-cache&quot; 头，导致下面配置出现两个 &quot;no-cache&quot; 头，移除 expires -1 即可</span><br><span class="line">    # expires -1;</span><br><span class="line">    # add_header Cache-Control &quot;no-cache, must-revalidate&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="协商缓存（Negotiated-Cache）"><a href="#协商缓存（Negotiated-Cache）" class="headerlink" title="协商缓存（Negotiated Cache）"></a>协商缓存（Negotiated Cache）</h2><p>缓存过期或 <code>Cache-Control</code> 被设置为 <code>max-age=0</code> 或 <code>no-cache</code>，这时会采用协商缓存机制与服务器验证缓存是否仍然有效。如果资源没有改变，服务器会返回 <code>304 Not Modified</code>，浏览器继续使用本地缓存。</p>
-<p>注：有缓存下，会优先使用强缓机制，缓存过期才使用协商缓存机制。</p>
-<p>协商缓存利用 <code>Last-Modified</code>，<code>If-Modified-Since</code> 和 <code>ETag</code>、<code>If-None-Match</code> 这两组 HTTP 头部控制。</p>
+<h2 id="协商缓存（Negotiated-Cache）"><a href="#协商缓存（Negotiated-Cache）" class="headerlink" title="协商缓存（Negotiated Cache）"></a>协商缓存（Negotiated Cache）</h2><p>协商缓存是指浏览器与服务器间通过协商来决定是否使用缓存。缓存过期（<code>Cache-Control: max-age=n</code> 到期）或不可直接使用（<code>Cache-Control: no-cache</code>）时，会通过协商缓存机制与服务器校验缓存是否仍然有效。如果资源没有改变，服务器会返回 <code>304 Not Modified</code>，浏览器继续使用本地缓存，否则返回 <code>200</code> 新的资源内容。</p>
+<p>协商缓存利用 <code>Last-Modified</code>，<code>If-Modified-Since</code> 和 <code>ETag</code>、<code>If-None-Match</code> 这两组 HTTP 头部控制。服务器响应设置 <code>Cache-Control</code> (如果直接使用协商缓存则应设为 <code>max-age=0</code> 或 <code>no-cache</code>，否则等待强缓存过期)、<code>Last-Modified</code>, <code>ETag</code>，浏览器再次请求携带缓存校验信息 <code>If-Modified-Since</code> 、<code>If-None-Match</code>，服务器校验返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 首次请求</span><br><span class="line">GET /index.html HTTP/1.1</span><br><span class="line"></span><br><span class="line"># 响应（Cache-Control: max-age=0 表示必须进行协商缓存）</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Last-Modified: Wed, 20 Mar 2025 12:00:00 GMT</span><br><span class="line">ETag: &quot;abc123&quot;</span><br><span class="line"></span><br><span class="line"># 再次请求（携带缓存校验信息）</span><br><span class="line">GET /index.html HTTP/1.1</span><br><span class="line">If-Modified-Since: Wed, 20 Mar 2025 12:00:00 GMT</span><br><span class="line">If-None-Match: &quot;abc123&quot;</span><br><span class="line"></span><br><span class="line"># 响应</span><br><span class="line">HTTP/1.1 304 Not Modified</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>Last-Modified 和 If-Modified-Since</li>
 </ul>
+<p><code>Last-Modified</code> 头部，表示资源的最后修改时间，服务器返回资源时，携带 <code>Last-Modified</code> 头部，浏览器在下次请求时，会在请求头中携带 <code>If-Modified-Since</code>，其值是上一次请求时返回的 <code>Last-Modified</code> 值，询问服务器资源是否更新。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Last-Modified: Mon, 20 Mar 2025 10:00:00 GMT</span><br></pre></td></tr></table></figure>
 
-<p>服务器返回资源时，会带上 <code>Last-Modified</code> 头部，表示资源的最后修改时间。浏览器在下次请求时，会在请求头中带上 <code>If-Modified-Since</code>，其值是上一次请求时返回的 <code>Last-Modified</code> 值，询问服务器资源是否更新。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-Modified-Since: Mon, 20 Mar 2025 10:00:00 GMT</span><br></pre></td></tr></table></figure>
 
-<p>服务器再次收到资源请求时，根据传过来 <code>If-Modified-Since</code> 和资源在服务器上的最后修改时间比较日期大小，判断资源是否有变化，如果资源没有变更，服务器返回 <code>304 Not Modified</code>，浏览器继续使用缓存，否则，服务器返回新的资源。<code>Last-Modified</code> 头部会更新为新生成的返回。</p>
-<p>注意：如果资源内容没有变，但 Last-Modified 发生变化，仍然会触发重新下载。</p>
+<p>服务器再次收到资源请求时，根据传过来 <code>If-Modified-Since</code> 和资源在服务器上的最后修改时间比较日期大小，判断资源是否有变化，如果资源没有变更，服务器返回 <code>304 Not Modified</code>，浏览器继续使用缓存，否则，服务器返回 <code>200</code> 新的资源，且 <code>Last-Modified</code> 头部会更新为新生成的返回。</p>
+<p><code>Last-Modified</code> 只能精确到秒级，在高频操作中，如果资源在 1 秒内被多次修改，<code>Last-Modified</code> 无法区分这些变化，另外 <code>Last-Modified</code> 依赖服务器时间，如果服务器时间被修改（比如时钟回拨），可能会导致缓存错乱。</p>
+<p>为了更精准地判断资源是否变化，可以使用 <code>ETag</code>，<code>ETag</code> 更精确，不受时间精度影响，能识别内容相同但修改时间不同的情况。</p>
 <ul>
 <li>ETag 和 If-None-Match</li>
 </ul>
-<p><code>Last-Modified</code> 只能精确到秒级，在高频操作中，如果资源在 1 秒内被多次修改，<code>Last-Modified</code> 无法区分这些变化，另外 <code>Last-Modified</code> 依赖服务器时间，如果服务器时间被修改（比如时钟回拨），可能会导致缓存错乱。</p>
-<p>为了更精准地判断资源是否变化，可以使用 <code>ETag</code>（Entity Tag）。<code>ETag</code> 更精确，不受时间精度影响，能识别内容相同但修改时间不同的情况。</p>
+<p><code>ETag</code> (Entity Tag) 是资源的唯一标识符，通常是文件的哈希值。浏览器请求时会携带 <code>If-None-Match</code> 头部，值是上一次请求时返回的 <code>ETag</code> 的值。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag: &quot;abc123&quot;</span><br></pre></td></tr></table></figure>
 
-<p><code>ETag</code> 是资源的唯一标识符（通常是文件的哈希值）。浏览器请求时，会带上 <code>If-None-Match</code> 头部，值是上一次请求时返回的 <code>ETag</code> 的值。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match: &quot;abc123&quot;</span><br></pre></td></tr></table></figure>
 
-<p>服务器再次收到资源请求时，根据传过来 <code>If-None-Match</code> 和新生成的 <code>ETag</code> 比较，如果相同，返回 <code>304 Not Modified</code>，否则返回新的资源。<code>ETag</code> 头部会更新为新生成的返回。</p>
-<h2 id="浏览器缓存策略的选择"><a href="#浏览器缓存策略的选择" class="headerlink" title="浏览器缓存策略的选择"></a>浏览器缓存策略的选择</h2><p>对于 HTML 文件这样更新频率高的文件，采用 <code>Cache-Control: no-cache</code> + <code>Last-Modified</code> + <code>ETag</code> 协商缓存机制。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache</span><br><span class="line">ETag: &quot;abc123&quot;</span><br></pre></td></tr></table></figure>
+<p>服务器再次收到资源请求时，根据传过来 <code>If-None-Match</code> 和新生成的 <code>ETag</code> 比较，如果相同，返回 <code>304 Not Modified</code>，否则返回新的资源，且 <code>ETag</code> 头部会更新为新生成的返回。</p>
+<h2 id="浏览器默认缓存机制"><a href="#浏览器默认缓存机制" class="headerlink" title="浏览器默认缓存机制"></a>浏览器默认缓存机制</h2><p>即使服务器没有响应 <code>Cache-Control</code> 缓存头，如果满足某些条件，浏览器仍会使用默认缓存机制对资源进行缓存。现代浏览器（比如 Chrome）默认的缓存机制是启发式缓存（Heuristic Caching），这依赖于 <code>Last-Modified</code> (如果响应中连 <code>Last-Modified</code> 也没有，浏览器则会完全放弃缓存，视为 <code>no-store</code>)，计算规则为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">缓存时间 = (响应 Date - Last-Modified) * 10%</span><br></pre></td></tr></table></figure>
+
+<p>比如，<code>Last-Modified</code> 是 10 天前，浏览器则会缓存 1 天。如果不希望浏览器使用默认缓存机制自行推测缓存时间，应需明确设置 <code>Cache-Control</code>。</p>
+<h2 id="服务器实现"><a href="#服务器实现" class="headerlink" title="服务器实现"></a>服务器实现</h2><p>在 NodeJS 静态资源服务器中缓存的实现，详情见 npm 包 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/@telei/explorer">@telei&#x2F;explorer</a>。</p>
+<h2 id="浏览器缓存机制的选择"><a href="#浏览器缓存机制的选择" class="headerlink" title="浏览器缓存机制的选择"></a>浏览器缓存机制的选择</h2><p>对于 HTML 文件这样更新频率高的文件，采用 <code>Cache-Control: no-cache</code> + <code>Last-Modified</code> + <code>ETag</code> 协商缓存机制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache</span><br><span class="line">ETag: &quot;abc123&quot;</span><br><span class="line">Last-Modified: Mon, 20 Mar 2025 10:00:00 GMT</span><br></pre></td></tr></table></figure>
 
 <p>对于 JS、CSS、图片等更新不频繁的静态资源文件，采用 <code>Cache-Control: max-age</code> 强缓存机制。但应配合文件指纹或内容哈希使用，否则强缓存机制会导致缓存更新问题。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=31536000, immutable</span><br></pre></td></tr></table></figure>
 
 <p>现代前端开发中，文件名普遍使用内容哈希，这类资源，可放心采用强缓存机制。</p>
 <p>CSR 项目：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 默认采用协商缓存</span><br><span class="line">location / &#123;</span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line"></span><br><span class="line">    expires -1;</span><br><span class="line">    add_header Cache-Control &quot;no-cache, must-revalidate&quot;; # &quot;public, max-age=0, must-revalidate&quot; 效果一样</span><br><span class="line">    add_header Last-Modified $date_gmt;</span><br><span class="line">    etag on; # 启用 ETag</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 带哈希的静态文件采用强缓存</span><br><span class="line"># 基于目录匹配比基于扩展名白名单匹配会更简单</span><br><span class="line">location ~* \.[a-f0-9]&#123;8,&#125;\.(js|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot)$ &#123;</span><br><span class="line">    expires 30d;</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=2592000, immutable&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 默认采用协商缓存</span><br><span class="line">location / &#123;</span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line"></span><br><span class="line">    add_header Cache-Control &quot;no-cache, must-revalidate&quot;; # &quot;public, max-age=0, must-revalidate&quot; 效果一样</span><br><span class="line">    # etag on; # Nginx 中 ETag 默认启用，无需设置，Last-Modified 也会自动设置，特殊需求下可手动设置，如 add_header Last-Modified $date_gmt 设置为动态时间，永远返回 200</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 带哈希的静态文件采用强缓存</span><br><span class="line"># location /assets/ 基于目录匹配比基于扩展名白名单匹配会更简单</span><br><span class="line">location ~* \.[a-f0-9]&#123;8,&#125;\.(js|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot)$ &#123;</span><br><span class="line">    expires 30d;</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=2592000, immutable&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>SSR 项目：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /_nuxt/ &#123;</span><br><span class="line">    root /white-page/public;</span><br><span class="line">    expires max;</span><br><span class="line">    add_header Cache-Control &quot;public, max-age=31536000, immutable&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -257,8 +265,8 @@ graph TD;
 <ul>
 <li>缓存更新问题</li>
 </ul>
-<p>在强缓存机制下，甚至没有配置 <code>ETag</code> 的协商缓存机制下，可能会出现更新资源无法生效问题，浏览器会继续加载旧资源。</p>
-<p>使用以下方案解决避免：</p>
+<p>在强缓存机制下，甚至没有设置 <code>ETag</code> 的协商缓存机制下，可能出现更新资源无法生效问题，浏览器会继续加载旧资源。</p>
+<p>可使用以下方案解决：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 使用带 Cache-Control: no-cache + Last-Modified + ETag 的协商缓存机制，不走强缓存</span><br><span class="line">* 使用强缓存机制，但资源带文件指纹（如 app.js?v=abc1234）或内容哈希（如 app.abc123.js）</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -335,7 +343,7 @@ graph TD;
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
-                    Copyright©Tracy-xu'Blog. All Rights Reserved.
+                    Copyright©Tracy-xu's Blog. All Rights Reserved.
                 </div>
             </div>
         </div>
@@ -372,13 +380,16 @@ graph TD;
   })();
 </script>
 
-<!-- mermaid chart -->
-<script src="https://unpkg.com/mermaid@latest/dist/mermaid.min.js"></script>
+<!-- mermaid -->
+<!-- 注意：Hexo 的 _config.yml 通过 config 取值，主题的 _config.yml 通过 theme 取值 -->
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
 <script>
   if (window.mermaid) {
     mermaid.initialize({ theme: 'forest' });
   }
 </script>
+
 
 
 </body>
